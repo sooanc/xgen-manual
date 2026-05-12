@@ -54,15 +54,16 @@ jobs:
         working-directory: Xgen_Manual
         run: npm ci
 
-      - name: Build xgen-standard (HTML)
+      - name: Build all customers (HTML) + index
         working-directory: Xgen_Manual
-        run: node build/build.mjs --customer xgen-standard --formats html
+        run: node build/build.mjs --customer all --formats html
 
       - name: Prepare Pages artifact
         run: |
           rm -rf public
-          cp -r Xgen_Manual/dist/site/docs/xgen-standard public
+          cp -r Xgen_Manual/dist/site public
           test -f public/index.html
+          test -d public/docs/xgen-standard
 
       - uses: actions/upload-pages-artifact@v3
         with:
