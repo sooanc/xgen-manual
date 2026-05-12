@@ -10,6 +10,7 @@ import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
+import { maskCustomerLabel } from './mask.mjs';
 
 function escapeHtml(s) {
   return String(s).replace(
@@ -94,8 +95,8 @@ function render({ customers, targets, manifests, history }) {
     const statusClass = c.built ? 'ok' : 'warn';
     const statusText = c.built ? '✓ 빌드됨' : '⚠ 미빌드';
     return `<tr>
-      <td><strong>${escapeHtml(c.name)}</strong></td>
-      <td><code>${escapeHtml(c.id)}</code></td>
+      <td><strong>${escapeHtml(maskCustomerLabel(c.name))}</strong></td>
+      <td><code>${escapeHtml(maskCustomerLabel(c.id))}</code></td>
       <td>${escapeHtml(industryLabel)}</td>
       <td>${escapeHtml(c.version || '—')}</td>
       <td><span class="status ${statusClass}">${statusText}</span></td>
@@ -108,7 +109,7 @@ function render({ customers, targets, manifests, history }) {
     const lastDeploy = m
       ? `<div class="meta-row"><span class="label">최근 배포</span> ${escapeHtml(new Date(m.deployed_at).toLocaleString('ko-KR'))} (by ${escapeHtml(m.deployer || 'unknown')})</div>
          <div class="meta-row"><span class="label">파일 수</span> ${escapeHtml(String(m.artifacts?.file_count ?? '—'))}개 (${((m.artifacts?.total_bytes ?? 0) / 1024).toFixed(1)} KB)</div>
-         <div class="meta-row"><span class="label">고객사</span> ${escapeHtml(m.customers?.map(c => `${c.name}@${c.version || '?'}`).join(', ') || '—')}</div>
+         <div class="meta-row"><span class="label">고객사</span> ${escapeHtml(m.customers?.map(c => `${maskCustomerLabel(c.name)}@${c.version || '?'}`).join(', ') || '—')}</div>
          <div class="meta-row"><span class="label">Git</span> <code>${escapeHtml((m.git?.commit ?? '').slice(0,8) || '—')}</code> ${m.git?.dirty ? '<span class="status warn">dirty</span>' : ''}</div>`
       : '<div class="meta-row dim">아직 이 환경으로 배포된 적이 없습니다.</div>';
 

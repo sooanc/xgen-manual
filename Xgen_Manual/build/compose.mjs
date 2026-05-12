@@ -11,6 +11,7 @@ import { existsSync } from 'node:fs';
 import { join, relative, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
+import { maskCustomerLabel } from './lib/mask.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = join(__dirname, '..');
@@ -145,8 +146,14 @@ export async function compose(customerId) {
   }
 
   // 6. 변수 치환 — 모든 .md 파일에 대해
+  //    고객사명은 대외비라 마스킹된 버전을 macro context 와 site_name 에 주입.
+  //    표준 매뉴얼(xgen-standard)은 마스킹 제외. customer.id 는 경로용이라 raw 유지.
+  const isStandard = customerId === 'xgen-standard';
+  const displayCustomer = isStandard
+    ? cfg.customer
+    : { ...cfg.customer, name: maskCustomerLabel(cfg.customer.name) };
   const ctx = {
-    customer: cfg.customer,
+    customer: displayCustomer,
     product: cfg.product,
     manual: cfg.manual,
     build: cfg.build ?? {},
@@ -161,7 +168,7 @@ export async function compose(customerId) {
 
   // 7. mkdocs.yml 생성
   const baseMkdocs = parseYaml(await readFile(PATHS.mkdocsBase, 'utf8'));
-  baseMkdocs.site_name = `${cfg.customer.name} - ${cfg.product.name} 솔루션 매뉴얼`;
+  baseMkdocs.site_name = `${displayCustomer.name} - ${cfg.product.name} 솔루션 매뉴얼`;
   baseMkdocs.site_dir = join(ROOT, 'dist', 'site', 'docs', cfg.customer.id);
   baseMkdocs.docs_dir = 'docs';
   if (cfg.outputs?.html?.site_url && /^https?:\/\//.test(cfg.outputs.html.site_url)) {
@@ -171,7 +178,7 @@ export async function compose(customerId) {
   }
   baseMkdocs.extra = {
     ...(baseMkdocs.extra ?? {}),
-    customer: cfg.customer,
+    customer: displayCustomer,
     product: cfg.product,
     manual: cfg.manual,
     build: cfg.build ?? {},

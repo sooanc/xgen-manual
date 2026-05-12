@@ -6,6 +6,7 @@ import { readFile, writeFile, readdir, stat, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
+import { maskCustomerLabel } from './mask.mjs';
 
 const INDUSTRY_LABELS = {
   financial: '금융',
@@ -21,17 +22,6 @@ function escapeHtml(s) {
     /[&<>"']/g,
     (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]
   );
-}
-
-// 고객사명·ID 대외비 마스킹 — 단어별로 첫 글자만 노출, 나머지는 *.
-// 구분자(공백·하이픈·괄호 등)는 그대로 유지하여 내부 관계자가 형태로 식별 가능하도록.
-// 예: "제주은행" → "제***", "jeju-bank" → "j***-b***", "ACME은행" → "A*****"
-function maskCustomerLabel(s) {
-  if (!s) return s;
-  return String(s).replace(/[\p{L}\p{N}]+/gu, (run) => {
-    if (run.length <= 1) return run;
-    return run[0] + '*'.repeat(run.length - 1);
-  });
 }
 
 export async function buildSiteIndex({ siteRoot, customersRoot }) {

@@ -6,6 +6,7 @@ import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
+import { maskCustomerLabel } from './mask.mjs';
 
 const INDUSTRY_LABELS = {
   financial: '금융',
@@ -148,8 +149,8 @@ function render({ baseInv, customers }) {
           ? `${escapeHtml(c.manualVersion)}${c.manualReleasedAt ? ` <span class="dim">(${escapeHtml(c.manualReleasedAt)})</span>` : ''}`
           : '—';
         return `<tr>
-          <td><strong>${escapeHtml(c.name)}</strong></td>
-          <td><code>${escapeHtml(c.id)}</code></td>
+          <td><strong>${escapeHtml(maskCustomerLabel(c.name))}</strong></td>
+          <td><code>${escapeHtml(maskCustomerLabel(c.id))}</code></td>
           <td>${escapeHtml(industryLabel)}</td>
           <td>${escapeHtml(c.version || '—')}</td>
           <td>${manualVer}</td>
