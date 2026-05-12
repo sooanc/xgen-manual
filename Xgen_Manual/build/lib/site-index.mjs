@@ -23,6 +23,17 @@ function escapeHtml(s) {
   );
 }
 
+// 고객사명·ID 대외비 마스킹 — 단어별로 첫 글자만 노출, 나머지는 *.
+// 구분자(공백·하이픈·괄호 등)는 그대로 유지하여 내부 관계자가 형태로 식별 가능하도록.
+// 예: "제주은행" → "제***", "jeju-bank" → "j***-b***", "ACME은행" → "A*****"
+function maskCustomerLabel(s) {
+  if (!s) return s;
+  return String(s).replace(/[\p{L}\p{N}]+/gu, (run) => {
+    if (run.length <= 1) return run;
+    return run[0] + '*'.repeat(run.length - 1);
+  });
+}
+
 export async function buildSiteIndex({ siteRoot, customersRoot }) {
   const docsDir = join(siteRoot, 'docs');
   if (!existsSync(docsDir)) {
@@ -113,6 +124,9 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
           ? '<span class="tag tag-standard">📖 표준 매뉴얼</span>'
           : '';
         const builtAt = item.builtAt.toLocaleString('ko-KR');
+        // 표준 매뉴얼은 마스킹 제외, 일반 고객사는 이름·ID 마스킹 (대외비)
+        const displayName = item.isStandard ? item.name : maskCustomerLabel(item.name);
+        const displayId = item.isStandard ? item.id : maskCustomerLabel(item.id);
         const productLine =
           item.productName
             ? `<div><span class="label">제품</span> ${escapeHtml(item.productName)}${item.version ? ' v' + escapeHtml(item.version) : ''}</div>`
@@ -121,13 +135,15 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
           item.manualVersion
             ? `<div><span class="label">매뉴얼</span> v${escapeHtml(item.manualVersion)}${item.manualReleasedAt ? ` <span class="muted">(${escapeHtml(item.manualReleasedAt)})</span>` : ''}</div>`
             : '';
-        return `<a class="card${item.isStandard ? ' card-standard' : ''}" href="${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html" data-search="${escapeHtml((item.name + ' ' + item.id + ' ' + (item.industry || '') + ' ' + industryLabel).toLowerCase())}">
+        // 검색 대상도 마스킹된 표시값 기준 — 비-내부자가 실명으로 검색해 들춰내지 못하도록
+        const searchData = (displayName + ' ' + displayId + ' ' + industryLabel).toLowerCase();
+        return `<a class="card${item.isStandard ? ' card-standard' : ''}" href="${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html" data-search="${escapeHtml(searchData)}">
       <div class="card-head">
-        <h2>${escapeHtml(item.name)}</h2>
+        <h2>${escapeHtml(displayName)}</h2>
         ${standardTag}${industryTag}
       </div>
       <div class="card-meta">
-        <div><span class="label">ID</span> <code>${escapeHtml(item.id)}</code></div>
+        <div><span class="label">ID</span> <code>${escapeHtml(displayId)}</code></div>
         ${productLine}
         ${manualLine}
         <div><span class="label">최근 빌드</span> ${escapeHtml(builtAt)}</div>
