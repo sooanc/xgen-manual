@@ -4,10 +4,10 @@ This chapter covers what a system administrator needs to know upon first logging
 
 ## Access
 
-The admin console is not reached via a direct URL. Click the **Admin Settings** button — one of the four mode-switch buttons at the top-left of the solution — to enter the admin area.
+The admin console is not reached via a direct URL. Click the **Admin Settings** button — one of the two mode-switch buttons (**Agent Workspace** / **Admin Settings**) at the top-left of the solution — to enter the admin area.
 
 1. Log in with an account that has administrator privileges
-2. From the top-left mode-switch buttons (Agent Workspace / AI Model Management / AI Governance / **Admin Settings**), click **Admin Settings**
+2. From the top-left mode-switch buttons (**Agent Workspace** / **Admin Settings**), click **Admin Settings**
 3. You land on **Environment → All Settings**, the default entry point of the admin console
 
 ![Admin Settings entry — clicking "Admin Settings" in the top-left mode-switch buttons opens Environment → All Settings](images/admin-entry.png)
