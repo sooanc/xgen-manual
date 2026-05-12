@@ -1,8 +1,8 @@
 # xgen-manual
 
-Xgen 솔루션 매뉴얼 — 캡처 자동화 + MkDocs 빌드 + GitLab Pages 배포.
+Xgen 솔루션 매뉴얼 — 캡처 자동화 + MkDocs 빌드 + GitHub Pages 배포.
 
-`xgen-frontend` 본 레포(`xgen2.0/xgen-frontend`)와 분리된 별도 저장소입니다.
+`xgen-frontend` 본 레포(GitLab `xgen2.0/xgen-frontend`)와 분리된 별도 저장소입니다.
 매뉴얼 캡처는 `stg-xgen.x2bee.com` 라이브 서버를 Playwright로 호출하므로
 xgen-frontend 소스 의존성은 없습니다.
 
@@ -21,7 +21,7 @@ xgen-manual/
 │   ├── capture-manual-user.mjs   # 사용자 매뉴얼용 22개 화면
 │   └── capture-manual-admin.mjs  # 관리자 매뉴얼용 19개 화면
 ├── .env.xgen-stg.sample      # 자격증명 템플릿
-├── .gitlab-ci.yml            # GitLab Pages 자동 배포
+├── .github/workflows/pages.yml  # GitHub Pages 자동 배포
 └── package.json
 ```
 
@@ -65,13 +65,16 @@ npm run build:all           # 전 고객사 HTML
 npm run serve
 ```
 
-## 자동 배포 (GitLab Pages)
+## 자동 배포 (GitHub Pages)
 
-`main` 브랜치 push 시 [.gitlab-ci.yml](.gitlab-ci.yml) 의 `pages` 잡이 실행되어
-빌드 결과를 GitLab Pages에 게시합니다. 캡처는 CI에서 안 돌고 로컬에서
-수동 갱신 후 PNG를 커밋하는 모델입니다 (stg 접속 자격증명을 CI에 두지 않기 위함).
+`main` 브랜치 push 시 [.github/workflows/pages.yml](.github/workflows/pages.yml) 의
+`build` + `deploy` 잡이 실행되어 빌드 결과를 GitHub Pages에 게시합니다. 캡처는
+CI에서 안 돌고 로컬에서 수동 갱신 후 PNG를 커밋하는 모델입니다 (stg 접속 자격증명을
+CI에 두지 않기 위함).
 
-배포 URL 패턴: `https://xgen2-0.gitlab.io/xgen-manual/` (GitLab 그룹 설정에 따라 다를 수 있음)
+배포 URL: `https://sooanc.github.io/xgen-manual/`
+
+**최초 1회 설정 필요** — GitHub 레포 Settings → Pages → **Source: GitHub Actions** 로 변경.
 
 ## 자격증명 보호
 
