@@ -81,6 +81,8 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra:
   customer: {}
