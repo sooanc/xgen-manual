@@ -1,0 +1,96 @@
+# Xgen_Manual 공통 MkDocs 설정 템플릿
+# compose.mjs가 이 파일을 기반으로 고객사별 mkdocs.yml을 생성합니다.
+# 이 파일을 직접 수정하면 모든 고객사 빌드에 영향을 줍니다.
+
+site_name: "Xgen 솔루션 매뉴얼"
+site_description: "Xgen 솔루션 사용자 및 관리자 매뉴얼"
+site_author: "Xgen Team"
+docs_dir: docs
+site_dir: ../../dist/site/_unset
+
+# 파일 단위 링크 (admin.html 등) → HTTP 서버 + file:// 직접 열기 둘 다 동작
+use_directory_urls: false
+
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  font:
+    text: Noto Sans KR
+    code: JetBrains Mono
+
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: ko
+          default: true
+          name: 한국어
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            홈: Home
+            공통: Common
+            사용자: User
+            관리자: Admin
+  - awesome-pages
+  - glightbox
+  - git-revision-date-localized:
+      type: datetime
+      locale: ko
+      enable_creation_date: true
+      fallback_to_build_date: true
+  - macros:
+      on_undefined: keep
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+
+extra:
+  customer: {}
+  product: {}
+  vars: {}
+
+extra_css:
+  - assets/css/gnb.css
+  - assets/css/look-and-feel.v2.css
+
+extra_javascript:
+  - assets/js/back-to-main.js
+  - assets/js/toc-active-default.js

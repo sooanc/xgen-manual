@@ -1,0 +1,76 @@
+# System Monitor
+
+This chapter covers monitoring server resources (CPU, memory, disk, network) and configuring alert thresholds.
+
+## System Overview
+
+Select **Admin → System Status → System Monitoring** in the left sidebar.
+
+![System Monitoring — CPU / Memory / Disk / Network metric cards and time-series charts](images/admin-system-monitor.png)
+
+The following information is displayed in real time.
+
+| Metric | Korean | Items Shown |
+|---|---|---|
+| CPU | CPU | Per-core utilization (%), average, peak |
+| Memory | 메모리 | Used / free / total (GB), utilization (%) |
+| Disk | 디스크 | Per-partition used / free / utilization |
+| Network | 네트워크 | Tx / Rx (MB/s), connection state |
+| Uptime | 가동 시간 | Time elapsed since boot |
+
+The **Pause** / **Resume** buttons at the top control screen refresh (server-side monitoring continues regardless).
+
+## Utilization Levels
+
+Each metric's utilization is color-coded into four levels.
+
+| Level | Korean | Color | Meaning |
+|---|---|---|---|
+| Low | 낮음 | Green | Plenty of headroom |
+| Medium | 보통 | Yellow | Normal range |
+| High | 높음 | Orange | Caution |
+| Critical | 위험 | Red | Immediate action required |
+
+Default thresholds, adjustable per environment:
+
+| Metric | Medium | High | Critical |
+|---|---|---|---|
+| CPU | 60% | 80% | 90% |
+| Memory | 70% | 85% | 95% |
+| Disk | 70% | 85% | 95% |
+
+## Configuring Thresholds
+
+1. Click the **Settings (⚙)** button at the top right of System Monitor
+2. Adjust the per-metric threshold sliders
+3. **Notification Channel** — select where to send threshold alerts (email, webhook, etc.)
+4. **Save**
+
+!!! note "Threshold-settings modal screenshot pending"
+    A screenshot of the threshold-slider and notification-channel modal (opened via the Settings ⚙ button) will be added in a future manual update.
+
+!!! info "Ignoring Brief Spikes"
+    Brief spikes from batch jobs or sudden user surges are normal. Configuring **Critical** alerts to fire only when sustained for over an hour reduces noise.
+
+## Resource History
+
+The **Resource History** tab shows time-series charts for past trends.
+
+| Period Option | Data Resolution |
+|---|---|
+| Last 1 hour | 1-second granularity |
+| Last 24 hours | 1-minute granularity |
+| Last 7 days | 5-minute granularity |
+| Last 30 days | 1-hour granularity |
+
+When investigating spikes, cross-reference the audit log around the same time to infer causes.
+
+## Operational Recommendations
+
+- **Weekly review** — Inspect the 30-day chart on **Resource History** weekly. Disks fill gradually, so weekly checks are essential.
+- **Watch for unplanned restarts** — Abnormally short uptime (e.g., under one day) suggests an unplanned restart. Check the audit log for cause.
+- **Periodic threshold recalibration** — Baseline utilization rises with user growth. Reassess threshold appropriateness quarterly.
+
+## Contact
+
+For questions about System Monitor, please contact {{vars.support_email}}.

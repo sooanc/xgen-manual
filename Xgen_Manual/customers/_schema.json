@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Xgen_Manual customer config",
+  "description": "각 고객사 customer.yml 파일이 따라야 하는 스키마. 매뉴얼 본문은 customers/<id>/manual/ 안에서 자유롭게 관리되며, 이 파일은 메타데이터·변수·빌드 옵션만 담습니다.",
+  "type": "object",
+  "required": ["customer", "product", "manual"],
+  "additionalProperties": false,
+  "properties": {
+    "customer": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "고객사 식별자. 폴더명과 일치해야 함. 소문자/숫자/하이픈만 허용."
+        },
+        "name": {"type": "string", "description": "고객사 표시명 (한글 가능)"},
+        "industry": {
+          "type": "string",
+          "enum": ["financial", "manufacturing", "public", "retail", "healthcare", "other"]
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": ["name", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string", "description": "제품 솔루션 빌드 버전 (예: 2.3.0)"},
+        "domain": {"type": "string"}
+      }
+    },
+    "manual": {
+      "type": "object",
+      "required": ["version"],
+      "additionalProperties": false,
+      "description": "매뉴얼 문서 자체의 리비전. 같은 product.version에 대해 여러 매뉴얼 버전이 존재할 수 있음.",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "매뉴얼 버전 (예: 2.3.0-rev1). 보통 product.version-revN 또는 독립적인 sem-ver 사용"
+        },
+        "released_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "매뉴얼 발행일 (YYYY-MM-DD)"
+        },
+        "channel": {
+          "type": "string",
+          "enum": ["draft", "internal", "ga"],
+          "description": "draft(작성중) | internal(사내검토) | ga(고객공개)"
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "매뉴얼이 작성·검증된 빌드 환경 메타데이터. 인트로 페이지의 \"빌드 출처\" 표에 사용됨.",
+      "properties": {
+        "branch": {
+          "type": "string",
+          "description": "기준 소스 브랜치 (예: main, stage)"
+        },
+        "environment": {
+          "type": "string",
+          "description": "환경 식별자 (예: 운영, STG, DEV)"
+        },
+        "capture_url": {
+          "type": "string",
+          "description": "스크린샷이 캡처된 도메인 (예: xgen.x2bee.com, stg-xgen.x2bee.com)"
+        },
+        "repository": {
+          "type": "string",
+          "description": "GitLab 저장소 식별자 (예: xgen2.0/xgen-frontend)"
+        }
+      }
+    },
+    "vars": {
+      "type": "object",
+      "description": "본문에서 {{vars.키}} 형태로 치환되는 자유 변수"
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "html": {
+          "type": "object",
+          "properties": {
+            "base_url": {"type": "string"},
+            "site_url": {"type": "string", "description": "전체 스킴 포함 URL일 때만 mkdocs site_url로 적용"}
+          }
+        },
+        "docx": {
+          "type": "object",
+          "properties": {
+            "reference": {"type": "string", "description": "branding/reference.docx 등 reference 파일 경로 (customer 폴더 기준)"},
+            "cover": {"type": "string"}
+          }
+        },
+        "pdf": {
+          "type": "object",
+          "properties": {
+            "page_size": {"enum": ["A4", "Letter"]},
+            "header": {"type": "string"}
+          }
+        },
+        "pptx": {"type": "object"}
+      }
+    }
+  }
+}

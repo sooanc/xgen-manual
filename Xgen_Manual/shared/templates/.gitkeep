@@ -1,0 +1,3 @@
+# shared/templates/ 에 reference.default.docx 파일을 두면
+# 고객사 customer.yml에서 outputs.docx.reference 가 비어 있을 때 기본값으로 사용됩니다.
+# Pandoc 호환 docx 파일이어야 합니다 (Word에서 표지·머리말·스타일 정의 후 저장).

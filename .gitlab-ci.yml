@@ -1,0 +1,50 @@
+# GitLab Pages 자동 배포
+#
+# main 브랜치 push 시:
+#   1. base/ + Xgen_Manual/customers/ 를 컴포즈
+#   2. MkDocs로 HTML 빌드 → Xgen_Manual/dist/site/
+#   3. 표준 매뉴얼(xgen-standard)을 public/ 으로 복사
+#   4. GitLab Pages에 게시 (https://<group>.gitlab.io/xgen-manual/)
+#
+# 캡처는 CI에서 안 돈다 — stg 자격증명을 CI 환경에 두지 않기 위함.
+# 로컬에서 npm run capture:all 로 PNG 갱신 후 커밋.
+
+image: node:20-bookworm
+
+variables:
+  PIP_BREAK_SYSTEM_PACKAGES: "1"
+  # mkdocs-git-revision-date-localized-plugin 이 full git history 필요
+  GIT_DEPTH: "0"
+
+stages:
+  - build
+
+pages:
+  stage: build
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq python3-pip git
+    - >
+      pip3 install --quiet
+      mkdocs-material
+      mkdocs-macros-plugin
+      mkdocs-awesome-pages-plugin
+      mkdocs-glightbox
+      mkdocs-git-revision-date-localized-plugin
+      mkdocs-static-i18n
+      pymdown-extensions
+    - cd Xgen_Manual && npm ci && cd ..
+  script:
+    - cd Xgen_Manual
+    - node build/build.mjs --customer xgen-standard --formats html
+    - cd ..
+    - rm -rf public
+    - cp -r Xgen_Manual/dist/site/docs/xgen-standard public
+    # 루트 / 로 접근 시 표준 매뉴얼 index 로 진입
+    - test -f public/index.html
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

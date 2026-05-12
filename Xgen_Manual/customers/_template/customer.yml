@@ -1,0 +1,36 @@
+# 신규 고객사는 보통 다음 명령으로 한 번에 생성합니다:
+#   node build/new-customer.mjs --id <customer-id> --name "고객사명"
+# 이 명령이 base/를 customers/<id>/manual/로 복사하고 customer.yml을 생성합니다.
+#
+# 이 _template 폴더는 수동으로 만들 때 참고용입니다.
+
+customer:
+  id: customer-id-here          # (필수) 폴더명과 동일. 소문자/숫자/하이픈만
+  name: "고객사 정식명"          # (필수) 표지/HTML 타이틀에 표시됨
+  industry: other               # financial | manufacturing | public | retail | healthcare | other
+
+product:
+  name: "Xgen"                  # (필수)
+  version: "2.3.0"              # (필수) 솔루션 빌드 버전
+  domain: "xgen.example.com"    # 본문에서 {{product.domain}}으로 참조
+
+# 매뉴얼 문서 자체의 리비전. 같은 product.version에 대해 여러 매뉴얼 버전이 존재할 수 있다.
+# 본문에서 {{manual.version}}, {{manual.released_at}}으로 참조 가능
+manual:
+  version: "2.3.0-rev1"         # (필수) 매뉴얼 버전 — 보통 product.version-revN
+  released_at: "2026-05-11"     # 발행일 (YYYY-MM-DD)
+  channel: draft                # draft | internal | ga
+
+# 본문에서 {{vars.<키>}} 형태로 치환됨
+vars:
+  support_email: "x2bee_tech@plateer.com"
+
+outputs:
+  html:
+    base_url: "/docs/customer-id-here"
+  docx:
+    reference: "branding/reference.docx"  # 없으면 shared/templates/reference.default.docx 사용
+    cover: "branding/cover.md"            # 없으면 manual/index.md 사용
+  pdf:
+    page_size: A4
+    header: "{{customer.name}} 전용 - 대외비"

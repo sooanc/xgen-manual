@@ -1,0 +1,21 @@
+{
+  "name": "xgen-manual-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Xgen 솔루션 매뉴얼 — 캡처 + 빌드 워크스페이스. 본문은 Xgen_Manual/ 에, 캡처 자동화는 scripts/ 에 위치.",
+  "type": "module",
+  "scripts": {
+    "capture:user": "node scripts/capture-manual-user.mjs",
+    "capture:admin": "node scripts/capture-manual-admin.mjs",
+    "capture:all": "npm run capture:user && npm run capture:admin",
+    "build": "cd Xgen_Manual && node build/build.mjs --customer xgen-standard --formats html",
+    "build:all": "cd Xgen_Manual && node build/build.mjs --customer all --formats html",
+    "serve": "cd Xgen_Manual && npm run serve:base"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

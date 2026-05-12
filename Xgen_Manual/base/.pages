@@ -1,0 +1,5 @@
+nav:
+  - 홈: index.md
+  - 공통: common
+  - 사용자: user
+  - 관리자: admin

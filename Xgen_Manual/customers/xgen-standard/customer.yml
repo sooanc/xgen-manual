@@ -1,0 +1,35 @@
+# Xgen 표준 매뉴얼 (STG 환경 기준) — 모든 고객사 매뉴얼의 원본(base)을 그대로 빌드한 결과.
+#
+# 이 entry는 일반 고객사가 아닙니다. customers/xgen-standard/manual/ 폴더는 두지 않고,
+# compose.mjs가 이 ID를 만나면 자동으로 base/ 디렉토리를 source로 사용합니다.
+# 따라서 base/ 를 수정하면 다음 빌드 시 표준 매뉴얼에 즉시 반영됩니다.
+
+customer:
+  id: xgen-standard
+  name: "표준 매뉴얼 (STG)"
+  # industry는 의도적으로 비움 — 표준 매뉴얼은 특정 산업에 종속되지 않음
+
+product:
+  name: "Xgen"
+  version: "2.3.0"
+  domain: "stg-xgen.x2bee.com"
+
+manual:
+  version: "2.3.0-rev1"
+  released_at: "2026-05-11"
+  channel: draft
+
+# 빌드 환경 메타데이터 — 인트로 페이지 "빌드 출처" 표에 사용
+build:
+  branch: stage
+  environment: STG
+  capture_url: stg-xgen.x2bee.com
+  repository: xgen2.0/xgen-frontend
+
+vars:
+  support_email: "x2bee_tech@plateer.com"
+
+outputs:
+  html:
+    base_url: "/docs/xgen-standard"
+  docx: {}

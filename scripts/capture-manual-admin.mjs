@@ -1,0 +1,177 @@
+// capture-manual-admin.mjs
+// Xgen_Manual 관리자 매뉴얼(base/admin/*) 에 들어갈 화면 캡처.
+//
+//   node scripts/capture-manual-admin.mjs
+//
+// 자격증명: .env.xgen-stg
+// 출력 위치: Xgen_Manual/base/admin/images/
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { chromium } from 'playwright';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(__dirname, '..');
+const ENV_FILE = path.join(REPO_ROOT, '.env.xgen-stg');
+const OUT_DIR = path.join(REPO_ROOT, 'Xgen_Manual', 'base', 'admin', 'images');
+
+const env = {};
+fs.readFileSync(ENV_FILE, 'utf8').split(/\r?\n/).forEach((l) => {
+  const t = l.trim();
+  if (!t || t.startsWith('#')) return;
+  const i = t.indexOf('=');
+  if (i < 0) return;
+  env[t.slice(0, i).trim()] = t.slice(i + 1).trim().replace(/^["']|["']$/g, '');
+});
+const BASE = env.XGEN_BASE_URL.replace(/\/$/, '');
+const EMAIL = env.XGEN_LOGIN_EMAIL;
+const PASS = env.XGEN_LOGIN_PASSWORD;
+
+fs.mkdirSync(OUT_DIR, { recursive: true });
+
+// 각 항목: { path | view, file, label, [fullPage], [wait], [selector] }
+// view 가 있으면 /admin?view=<view>, path 가 있으면 ${BASE}${path}
+const SHOTS = [
+  // 20-admin-overview.md
+  { path: '/admin', file: 'admin-entry.png', label: 'Admin entry (default dashboard)' },
+  { path: '/admin', file: 'admin-sidebar.png', label: 'Admin sidebar' },
+
+  // 21-user-management.md
+  { view: 'admin-users', file: 'admin-users.png', label: 'User management' },
+
+  // 22-role-permission.md
+  { view: 'admin-role-management', file: 'admin-roles.png', label: 'Role / Permission management' },
+
+  // 23-llm-settings.md
+  { view: 'admin-setting-llm', file: 'admin-llm.png', label: 'LLM settings' },
+
+  // 24-embedding-settings.md
+  { view: 'admin-setting-embed', file: 'admin-embed.png', label: 'Embedding / Search settings' },
+
+  // 25-pii-policy.md
+  { view: 'admin-setting-guarder', file: 'admin-guardrails.png', label: 'Guardrails / PII policies' },
+
+  // 26-system-monitor.md
+  { view: 'admin-system-monitor', file: 'admin-system-monitor.png', label: 'System monitoring' },
+
+  // 27-audit-log.md
+  { view: 'admin-audit-logs', file: 'admin-data-audit-logs.png', label: 'Data audit log' },
+
+  // 28-mcp-market.md
+  { view: 'admin-mcp-market', file: 'admin-mcp-market.png', label: 'MCP library' },
+  { view: 'admin-mcp-station', file: 'admin-mcp-station.png', label: 'MCP operations & monitoring' },
+
+  // 29-governance-dashboard.md
+  { view: 'gov-monitoring', file: 'admin-gov-monitoring.png', label: 'Governance monitoring' },
+  { view: 'gov-risk-management', file: 'admin-gov-risk.png', label: 'AI risk assessment' },
+  { view: 'gov-control-policy', file: 'admin-gov-control-policy.png', label: 'Control policy management' },
+  { view: 'gov-audit-tracking', file: 'admin-gov-audit-tracking.png', label: 'Service change history' },
+
+  // 30-dashboard.md  (admin 로그인 상태로 본 /dashboard)
+  { path: '/dashboard', file: 'admin-dashboard-view.png', label: 'Admin /dashboard view' },
+
+  // 31-tech-support-handling.md
+  { view: 'admin-support-notice', file: 'admin-support-notice.png', label: 'Admin notice board' },
+  { view: 'admin-support-faq', file: 'admin-support-faq.png', label: 'Admin FAQ' },
+  { view: 'admin-support-qna', file: 'admin-support-qna.png', label: 'Admin 1:1 Inquiries' },
+];
+
+const log = (...a) => console.log('[admin-capture]', ...a);
+
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  const ctx = await browser.newContext({
+    viewport: { width: 1600, height: 1000 },
+    locale: 'ko-KR',
+  });
+  const page = await ctx.newPage();
+
+  // 1) Login
+  log('navigating to', BASE);
+  await page.goto(BASE, { waitUntil: 'networkidle', timeout: 60_000 });
+  if (await page.$('#login-email')) {
+    log('submitting credentials');
+    await page.fill('#login-email', EMAIL);
+    await page.fill('#login-password', PASS);
+    const [loginRes] = await Promise.all([
+      page.waitForResponse(
+        (r) => /\/api\/auth\/login\b/.test(r.url()) && r.request().method() === 'POST',
+        { timeout: 30_000 }
+      ),
+      page.click('button[type="submit"]'),
+    ]);
+    log('  login API:', loginRes.status());
+    if (loginRes.status() !== 200) throw new Error(`login failed: ${loginRes.status()}`);
+    await page.waitForURL((u) => !u.toString().includes('/login'), { timeout: 30_000 });
+  }
+  await page.waitForLoadState('networkidle', { timeout: 30_000 }).catch(() => {});
+
+  // 2) Warm up /admin (mode switch)
+  log('entering admin mode');
+  await page.goto(`${BASE}/admin`, { waitUntil: 'networkidle', timeout: 30_000 });
+  await page.waitForSelector('aside button', { timeout: 20_000 }).catch(() => {});
+  await page.waitForTimeout(2500);
+
+  // 모든 사이드바 섹션 펼치기 (admin-sidebar.png 캡처 전)
+  await page.evaluate(() => {
+    document.querySelectorAll('aside [data-sidebar-trigger="true"]').forEach((el) => {
+      const txt = (el.textContent || '').trim();
+      if (/최|swan|admin@|My\s*Page|Settings\s*$/i.test(txt) || el.getAttribute('aria-label') === 'More') return;
+      el.click();
+    });
+  });
+  await page.waitForTimeout(1000);
+
+  // 8971/41107: hydration placeholder, 36798: "Page not found"
+  const PLACEHOLDER_SIZES = new Set([8971, 41107, 36798]);
+
+  for (const shot of SHOTS) {
+    const dest = path.join(OUT_DIR, shot.file);
+    const target = shot.path ? `${BASE}${shot.path}` : `${BASE}/admin?view=${shot.view}`;
+    log(`→ ${shot.file}  [${shot.label}]  ${target}`);
+
+    let lastSize = 0;
+    let lastNotFound = false;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        await page.goto(target, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+        await page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {});
+        await page.waitForSelector('aside button', { timeout: 15_000 }).catch(() => {});
+        await page.waitForTimeout((shot.wait ?? 3500) + (attempt - 1) * 2000);
+
+        const notFound = await page
+          .locator('text=/Page not found|페이지를 찾을 수 없/i')
+          .first()
+          .isVisible({ timeout: 500 })
+          .catch(() => false);
+
+        if (shot.selector) {
+          const el = await page.$(shot.selector);
+          if (!el) throw new Error(`selector not found: ${shot.selector}`);
+          await el.screenshot({ path: dest });
+        } else {
+          await page.screenshot({ path: dest, fullPage: !!shot.fullPage });
+        }
+        lastSize = fs.statSync(dest).size;
+        lastNotFound = notFound;
+        if (!notFound && !PLACEHOLDER_SIZES.has(lastSize)) {
+          log(`   saved ${lastSize} bytes  (attempt ${attempt})`);
+          break;
+        }
+        log(`   ${notFound ? 'Page-not-found' : 'placeholder'} ${lastSize} bytes — retry ${attempt}/3`);
+      } catch (e) {
+        log(`   attempt ${attempt} error: ${e.message.slice(0, 100).replace(/\s+/g, ' ')}`);
+      }
+    }
+    if (lastNotFound || PLACEHOLDER_SIZES.has(lastSize)) {
+      log(`   final: BAD CAPTURE (${lastSize} bytes, notFound=${lastNotFound}) — view '${shot.view ?? shot.path}' likely invalid`);
+    }
+  }
+
+  await browser.close();
+  log('done. files in:', OUT_DIR);
+})().catch((err) => {
+  console.error('FATAL:', err);
+  process.exit(1);
+});

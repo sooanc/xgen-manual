@@ -1,0 +1,28 @@
+# 운영 배포 설정 — node build/deploy.mjs --target <name> 으로 사용
+# 각 target은 배포 환경별 정책을 담습니다.
+
+targets:
+  staging:
+    description: "스테이징 환경 (운영 사전 검증)"
+    base_url: "https://staging.xgen-manual.example.com"
+    customers: all                    # all | [id1, id2, ...]
+    include_admin_index: true         # /admin/ 인덱스 페이지 포함 여부
+    strip_root_index: false           # /index.html 제거 여부 (false=유지, true=빈 placeholder로 교체)
+    strip_base_preview: true          # __base_preview__ 산출물 제거
+    require_clean_git: false
+    notes: |
+      스테이징은 내부 QA용. /admin/ 페이지를 포함하여 빌드 결과를 점검합니다.
+
+  production:
+    description: "운영 환경 (실제 고객사 노출)"
+    base_url: "https://xgen-manual.example.com"
+    customers: all
+    include_admin_index: false        # 운영에서는 /admin/ 제외 (별도 관리 도메인 권장)
+    strip_root_index: true            # 고객사 목록 노출 방지
+    strip_base_preview: true
+    require_clean_git: true
+    notes: |
+      운영 배포 전 확인:
+      1. 모든 변경이 커밋되어 있는가
+      2. PR 리뷰가 완료되었는가
+      3. 고객사 customer.yml의 product.version이 정확한가

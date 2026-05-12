@@ -1,0 +1,28 @@
+# 제주은행 고객사 설정.
+# 매뉴얼 본문은 manual/ 디렉토리에서 자유롭게 관리됩니다.
+
+customer:
+  id: jeju-bank
+  name: "제주은행"
+  industry: financial
+
+product:
+  name: "Xgen"
+  version: "2.3.0"
+  domain: "xgen.jejubank.co.kr"
+
+manual:
+  version: "2.3.0-rev1"
+  released_at: "2026-05-11"
+  channel: draft
+
+vars:
+  support_email: "support@jejubank.co.kr"
+
+outputs:
+  html:
+    base_url: "/docs/jeju-bank"
+  docx: {}
+  pdf:
+    page_size: A4
+    header: "제주은행 전용 - 대외비"

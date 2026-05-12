@@ -1,0 +1,18 @@
+{
+  "name": "xgen-manual",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Xgen 솔루션 매뉴얼 - base + 고객사 overlay 구조의 멀티 포맷 문서 빌드 시스템",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "build:sample": "node build/build.mjs --customer sample-customer --formats html,docx",
+    "build:html-all": "node build/build.mjs --customer all --formats html",
+    "serve:base": "node build/build.mjs --base-only --formats html --serve",
+    "list": "node build/build.mjs --list",
+    "index": "node build/build.mjs --index-only"
+  },
+  "dependencies": {
+    "yaml": "^2.6.1"
+  }
+}

@@ -1,0 +1,136 @@
+/*
+ * gnb.css — GNB(헤더 + 탭 스트립) 라이트 테마
+ *
+ * 모던 개발자 문서 사이트 스타일 (Vercel/Stripe/X2BEE Dev 등):
+ *   - 흰색 배경 + 다크 텍스트
+ *   - 인디고 액센트 (#4f46e5)
+ *   - 탭 스트립 하단에만 미세 보더
+ *   - 헤더 + 탭 스트립이 시각적으로 한 덩어리(흰색 카드)
+ */
+
+.md-header {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #18181b !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+/* 헤더 타이틀 — 다크 텍스트 */
+.md-header__title,
+.md-header__topic .md-ellipsis,
+.md-header__topic--active .md-ellipsis {
+  color: #18181b !important;
+  font-weight: 600;
+}
+
+/* 로고와 아이콘 버튼 — 미디엄 그레이, 호버 시 인디고 */
+.md-header__button.md-icon,
+.md-header__button.md-logo {
+  color: #52525b !important;
+  transition: color 0.12s;
+}
+
+.md-header__button.md-icon:hover,
+.md-header__button.md-logo:hover {
+  color: #4f46e5 !important;
+}
+
+/* 헤더 로고 아이콘과 사이트 타이틀 사이 간격 좁히기 */
+.md-header__title {
+  margin-left: 0 !important;
+  padding-left: 0.2rem !important;
+}
+
+.md-header__button.md-logo {
+  margin-right: 0 !important;
+  padding-right: 0.1rem !important;
+}
+
+/* 검색창 — 옅은 회색 pill */
+.md-search__form {
+  background: #f4f4f5 !important;
+  color: #18181b !important;
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background: #ffffff !important;
+  border: 1px solid #e4e4e7 !important;
+}
+
+.md-search__input {
+  color: #18181b !important;
+}
+
+.md-search__input::placeholder {
+  color: #a1a1aa !important;
+}
+
+.md-search__icon {
+  color: #71717a !important;
+}
+
+/* 탭 스트립 — 흰색 + 하단 보더 1줄 */
+.md-tabs {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #52525b !important;
+  border-bottom: 1px solid #e4e4e7 !important;
+  box-shadow: none !important;
+}
+
+/* 탭 — 비활성: 미디엄 그레이 */
+.md-tabs__link {
+  color: #52525b !important;
+  font-weight: 500;
+  opacity: 1 !important;
+  margin-top: 0;
+  padding: 0.7rem 0;
+}
+
+.md-tabs__link:hover {
+  color: #4f46e5 !important;
+}
+
+/* 탭 — 활성: 인디고 + 굵게 */
+.md-tabs__link--active,
+.md-tabs__item--active .md-tabs__link {
+  color: #4f46e5 !important;
+  font-weight: 600;
+  opacity: 1 !important;
+}
+
+/* 탭 활성 — 하단 인디고 인디케이터 */
+.md-tabs__item--active {
+  position: relative;
+}
+
+.md-tabs__item--active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: #4f46e5;
+  border-radius: 2px 2px 0 0;
+}
+
+/* 언어 스위처 아이콘을 글로브 아이콘으로 교체 */
+.md-header__button[aria-label="언어설정"] svg,
+.md-header__button[aria-label="Select language"] svg {
+  display: none !important;
+}
+
+.md-header__button[aria-label="언어설정"]::before,
+.md-header__button[aria-label="Select language"]::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>") no-repeat center;
+  -webkit-mask-size: contain;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>") no-repeat center;
+  mask-size: contain;
+}

@@ -1,0 +1,565 @@
+/*
+ * look-and-feel.css — 모던 클린 개발자 문서 사이트 스타일
+ *
+ * GNB(다크 그라데이션)는 그대로 두고, 본문/사이드바/TOC를 현대 개발자 문서 사이트 스타일로 정제한다.
+ * 참고 디자인: Vercel/Stripe/Tailwind/Nextra 등의 모던 doc-site 룩앤필.
+ *
+ * 핵심 변경:
+ *   - 페이지 배경 = 옅은 회색, 본문 = 흰색 카드 (둥근 모서리 + 미세 테두리)
+ *   - 사이드바·TOC 활성 항목 = 인디고 라이트 배경 + 인디고 텍스트 (pill 형태)
+ *   - 헤딩 = 모던 타이포그래피 (큰 글자, 좁은 자간, 하단 보더 제거)
+ *   - 표·코드·admonition·blockquote = 둥근 모서리 + 부드러운 톤
+ */
+
+:root {
+  --xm-accent: #4f46e5;
+  --xm-accent-hover: #4338ca;
+  --xm-accent-bg: #eef2ff;
+  --xm-text-strong: #18181b;
+  --xm-text-primary: #27272a;
+  --xm-text-secondary: #52525b;
+  --xm-text-muted: #71717a;
+  --xm-text-faint: #a1a1aa;
+  --xm-border: #e4e4e7;
+  --xm-border-subtle: #f4f4f5;
+  --xm-bg-page: #fafafa;
+  --xm-bg-content: #ffffff;
+  --xm-bg-soft: #f8f9fa;
+  --xm-shadow-card: 0 0 0 1px rgba(0,0,0,0.04);
+  --xm-radius: 8px;
+  --xm-radius-lg: 12px;
+}
+
+/* ===== 페이지 배경 ===== */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: var(--xm-bg-page);
+}
+
+/* ===== 본문 — 흰색 카드 ===== */
+.md-content {
+  background: var(--xm-bg-content);
+  border: 1px solid var(--xm-border-subtle);
+  border-radius: var(--xm-radius-lg);
+  margin: 0.8rem 0.8rem 1.5rem;
+  padding: 1.5rem 2.2rem 2.5rem;
+  box-shadow: var(--xm-shadow-card);
+  /* 짧은 콘텐츠 페이지(예: 솔루션 개요)도 다른 페이지와 같은 세로 비율로 보이도록
+   * 카드 최소 높이를 뷰포트 기준으로 잠근다. http와 file:// 환경 모두 동일하게 적용. */
+  min-height: calc(100vh - 11rem) !important;
+  /* 카드를 column flex로 만들어 article(.md-content__inner)이 카드 전체 높이를 채우게 함.
+   * 그래야 article 안의 .md-source-file(생성일/수정일 푸터)을 margin-top:auto로 바닥에 붙일 수 있다. */
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.md-content__inner {
+  margin: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.md-content__inner:before {
+  display: none;
+}
+
+/* ===== 본문 텍스트 — 레퍼런스 기준 축소 (root 20px → 본문 14px) ===== */
+.md-typeset {
+  font-size: 0.7rem;
+  color: var(--xm-text-primary);
+  line-height: 1.7;
+}
+
+.md-typeset p {
+  color: var(--xm-text-primary);
+  margin: 0.7em 0;
+}
+
+/* ===== 헤딩 ===== */
+.md-typeset h1 {
+  font-size: 1.5rem;       /* 30px */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--xm-text-strong);
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  line-height: 1.25;
+}
+
+.md-typeset h2 {
+  font-size: 1.15rem;      /* 23px */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--xm-text-strong);
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  line-height: 1.35;
+}
+
+.md-typeset h3 {
+  font-size: 0.95rem;      /* 19px */
+  font-weight: 600;
+  color: var(--xm-text-strong);
+  margin-top: 1.4rem;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.005em;
+}
+
+.md-typeset h4 {
+  font-size: 0.82rem;      /* 16.4px */
+  font-weight: 600;
+  color: var(--xm-text-strong);
+  margin-top: 1.1rem;
+}
+
+/* ===== 링크 ===== */
+.md-typeset a:not(.md-button):not(.md-source__link):not(.md-nav__link):not(.md-tabs__link):not(.md-footer__link):not(.md-header__back-to-main):not(.md-header__button):not(.md-select__link):not(.headerlink) {
+  color: var(--xm-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.12s, color 0.12s;
+}
+
+.md-typeset a:not(.md-button):not(.md-source__link):not(.md-nav__link):not(.md-tabs__link):not(.md-footer__link):not(.md-header__back-to-main):not(.md-header__button):not(.md-select__link):not(.headerlink):hover {
+  color: var(--xm-accent-hover);
+  border-bottom-color: var(--xm-accent-hover);
+}
+
+/* ===== 좌측 사이드바 ===== */
+.md-sidebar {
+  background: transparent;
+}
+
+/* 사이드바 스크롤 — 스크롤바는 시각적으로 숨기되 휠/터치 스크롤은 유지.
+ * file:// 와 http 서버 환경의 폰트·높이 미세 차이로 스크롤바 표시 여부가 불일치하던 문제를
+ * 양쪽 모두 "안 보임"으로 통일. */
+.md-sidebar__scrollwrap {
+  overflow-y: auto;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge legacy */
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Edge */
+  width: 0;
+  height: 0;
+}
+
+/* 섹션 타이틀 — 진한 다크, 일반 대소문자 (대문자 변환 제거) */
+.md-sidebar--primary .md-nav__title {
+  color: var(--xm-text-strong);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: normal;
+  padding: 0.85rem 0.8rem 0.45rem;
+}
+
+.md-sidebar--primary .md-nav__list {
+  padding: 0;
+}
+
+.md-sidebar--primary .md-nav__item {
+  margin: 0.05rem 0;
+}
+
+/* 메뉴 아이템 — 폰트 크기 키우고 행간 여유 */
+.md-sidebar--primary .md-nav__link {
+  color: var(--xm-text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin: 0 0.4rem;
+  font-weight: 400;
+  transition: background-color 0.12s;
+}
+
+/* 섹션 인덱스 아이템 — div.md-nav__container가 외곽 래퍼라 padding/margin 이중 적용 방지.
+ * 외곽 컨테이너는 투명하게 두고, 내부 A 링크가 단독으로 padding/margin/bg를 가져 다른 메뉴와 동일 폭으로 표시되게 한다. */
+.md-sidebar--primary .md-nav__link.md-nav__container {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  display: flex;
+  align-items: stretch;
+}
+
+.md-sidebar--primary .md-nav__link.md-nav__container > .md-nav__link {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* 마우스 오버 — 배경만 변하고 텍스트 컬러는 유지 (Material 기본 accent 컬러 명시 차단) */
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:focus {
+  background: var(--xm-bg-soft);
+  color: var(--xm-text-secondary) !important;
+}
+
+/* 활성 항목만 인디고 강조 (호버보다 우선) */
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__link--active:hover,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link {
+  background: var(--xm-accent-bg);
+  color: var(--xm-accent) !important;
+  font-weight: 600;
+}
+
+/* ===== 우측 TOC ===== */
+.md-sidebar--secondary .md-nav__title {
+  color: var(--xm-text-strong);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  color: var(--xm-text-secondary);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  margin: 0.05rem 0.4rem;
+  font-weight: 400;
+  transition: background-color 0.12s;
+}
+
+/* 마우스 오버 — 배경만 변하고 텍스트 컬러는 유지 */
+.md-sidebar--secondary .md-nav__link:hover,
+.md-sidebar--secondary .md-nav__link:focus {
+  background: var(--xm-bg-soft);
+  color: var(--xm-text-secondary) !important;
+}
+
+.md-sidebar--secondary .md-nav__link--active,
+.md-sidebar--secondary .md-nav__link--active:hover {
+  background: var(--xm-accent-bg);
+  color: var(--xm-accent) !important;
+  font-weight: 600;
+  border-left: none !important;
+  padding-left: 0.7rem !important;
+}
+
+/* ===== 표 ===== */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--xm-border);
+  border-radius: var(--xm-radius);
+  overflow: hidden;
+  font-size: 0.82em;
+  margin: 1.2em 0;
+  box-shadow: none;
+  display: table;
+  width: 100%;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--xm-bg-soft);
+  color: var(--xm-text-strong);
+  font-weight: 600;
+  border-bottom: 1px solid var(--xm-border);
+  padding: 0.7rem 0.95rem;
+  text-align: left;
+  font-size: 0.95em;
+}
+
+.md-typeset table:not([class]) td {
+  border-color: var(--xm-border-subtle);
+  padding: 0.65rem 0.95rem;
+  color: var(--xm-text-primary);
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: var(--xm-bg-soft);
+}
+
+/* ===== 코드 ===== */
+.md-typeset code {
+  background: var(--xm-bg-soft);
+  color: #db2777;
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  border: 1px solid var(--xm-border-subtle);
+  font-family: 'JetBrains Mono', 'D2Coding', Consolas, monospace;
+}
+
+.md-typeset pre {
+  margin: 1.2em 0;
+  border-radius: var(--xm-radius);
+}
+
+.md-typeset pre > code {
+  background: #18181b;
+  color: #e4e4e7;
+  border: none;
+  padding: 1rem 1.2rem;
+  border-radius: var(--xm-radius);
+  font-size: 0.85em;
+}
+
+/* 코드 블록 복사 버튼 — Material 9.x 기준 (.md-code__nav > .md-code__button[data-md-type="copy"])
+ * 호버 없이도 명확하게 버튼처럼 보이도록 배경·아이콘 대비를 강화. */
+.md-typeset .md-code__nav {
+  opacity: 1 !important;
+}
+
+.md-typeset .md-code__button {
+  opacity: 1 !important;
+  color: #e4e4e7 !important;
+  background-color: rgba(255, 255, 255, 0.14) !important;
+  border-radius: 6px !important;
+  width: 1.8em !important;
+  height: 1.8em !important;
+  transition: color 0.15s, background-color 0.15s, transform 0.15s !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-typeset .md-code__button:hover,
+.md-typeset .md-code__button:focus {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.28) !important;
+  transform: scale(1.05);
+}
+
+/* Material 9에서 버튼 안쪽 아이콘은 ::after 또는 ::before mask로 렌더링됨 — 색상은 currentColor로 따라옴 */
+.md-typeset .md-code__button::before,
+.md-typeset .md-code__button::after {
+  background-color: currentColor !important;
+}
+
+/* ===== Admonition ===== */
+.md-typeset .admonition,
+.md-typeset details {
+  border: 1px solid var(--xm-border);
+  border-left: 3px solid var(--xm-accent);
+  background: var(--xm-bg-soft);
+  border-radius: var(--xm-radius);
+  box-shadow: none;
+  font-size: 0.85em;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background: transparent !important;
+  font-weight: 600;
+  color: var(--xm-text-strong);
+}
+
+.md-typeset .admonition-title::before,
+.md-typeset summary::before {
+  background-color: var(--xm-accent);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset .admonition.attention {
+  border-left-color: #f59e0b;
+}
+.md-typeset .warning > .admonition-title::before,
+.md-typeset .attention > .admonition-title::before {
+  background-color: #f59e0b;
+}
+
+.md-typeset .admonition.danger,
+.md-typeset .admonition.error,
+.md-typeset .admonition.failure {
+  border-left-color: #ef4444;
+}
+.md-typeset .danger > .admonition-title::before,
+.md-typeset .error > .admonition-title::before,
+.md-typeset .failure > .admonition-title::before {
+  background-color: #ef4444;
+}
+
+.md-typeset .admonition.tip,
+.md-typeset .admonition.success {
+  border-left-color: #10b981;
+}
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .success > .admonition-title::before {
+  background-color: #10b981;
+}
+
+/* ===== 리스트 ===== */
+.md-typeset ol,
+.md-typeset ul {
+  margin: 0.6em 0;
+  padding-left: 1.4em;
+}
+
+.md-typeset li {
+  margin: 0.3em 0;
+  color: var(--xm-text-primary);
+}
+
+.md-typeset li > p {
+  margin: 0.3em 0;
+}
+
+/* ===== Blockquote ===== */
+.md-typeset blockquote {
+  border-left: 3px solid var(--xm-border);
+  background: var(--xm-bg-soft);
+  padding: 0.6rem 1.1rem;
+  color: var(--xm-text-secondary);
+  border-radius: 0 var(--xm-radius) var(--xm-radius) 0;
+  margin: 1em 0;
+}
+
+.md-typeset blockquote > *:first-child { margin-top: 0; }
+.md-typeset blockquote > *:last-child { margin-bottom: 0; }
+
+/* ===== 페이지 푸터: git revision dates 라벨 =====
+ * git-revision-date-localized 플러그인이 렌더하는 두 개의 .md-source-file__fact 옆에
+ * (마지막 수정일) / (생성일) 라벨을 붙여 의미를 명확하게 함.
+ * 본문 article(.md-content__inner)을 column flex로 잡고 margin-top:auto로 카드 바닥에 고정. */
+.md-content__inner > .md-source-file,
+.md-typeset .md-source-file {
+  margin-top: auto !important;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--xm-border-subtle);
+  margin-bottom: 0;
+}
+
+.md-source-file__fact {
+  font-size: 0.55rem !important;
+  color: var(--xm-text-muted);
+}
+
+/* 아이콘도 폰트 크기에 맞춰 축소 */
+.md-source-file .md-icon svg {
+  width: 0.95em;
+  height: 0.95em;
+}
+
+.md-source-file__fact:nth-of-type(1)::after {
+  content: " (마지막 수정일)";
+  margin-left: 0.15rem;
+  color: var(--xm-text-faint);
+}
+
+.md-source-file__fact:nth-of-type(2)::after {
+  content: " (생성일)";
+  margin-left: 0.15rem;
+  color: var(--xm-text-faint);
+}
+
+html[lang="en"] .md-source-file__fact:nth-of-type(1)::after {
+  content: " (Last updated)";
+}
+
+html[lang="en"] .md-source-file__fact:nth-of-type(2)::after {
+  content: " (Created)";
+}
+
+/* ===== Footer (이전/다음 + meta) ===== */
+.md-footer {
+  background: var(--xm-bg-page);
+  color: var(--xm-text-secondary);
+  border-top: 1px solid var(--xm-border);
+}
+
+.md-footer__inner {
+  padding: 1.4rem 1rem;
+}
+
+.md-footer__link {
+  background: transparent;
+  border-radius: var(--xm-radius);
+  padding: 0.8rem;
+  transition: background 0.12s;
+}
+
+.md-footer__link:hover {
+  background: var(--xm-accent-bg);
+}
+
+.md-footer__link:hover .md-footer__title,
+.md-footer__link:hover .md-footer__direction {
+  color: var(--xm-accent);
+}
+
+.md-footer__direction {
+  color: var(--xm-text-muted);
+  font-size: 0.72rem;
+}
+
+.md-footer__title {
+  color: var(--xm-text-strong);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.md-footer-meta {
+  background: transparent;
+  color: var(--xm-text-muted);
+  font-size: 0.72rem;
+  border-top: 1px solid var(--xm-border);
+}
+
+/* ===== 본문 폭 ===== */
+.md-grid {
+  max-width: 64rem;
+}
+
+/* ===== 레이아웃 일관성 잠금 — 환경(http vs file://) 무관 동일 폭 보장 =====
+ * 모든 페이지에서 좌측 사이드바·본문 카드·우측 TOC가 동일한 픽셀 폭을 갖도록 강제.
+ * html 셀렉터로 우선순위를 올리고, Material 기본 flex 룰 위에 명시 폭 + min/max로 잠금. */
+@media screen and (min-width: 76.25em) {
+  /* 부모 컨테이너 — flex 정확히 행 정렬 */
+  html .md-main__inner.md-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    max-width: 64rem !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box;
+  }
+
+  /* 좌측 사이드바 — 고정 폭 */
+  html .md-sidebar.md-sidebar--primary {
+    width: 12.1rem !important;
+    min-width: 12.1rem !important;
+    max-width: 12.1rem !important;
+    flex: 0 0 12.1rem !important;
+    box-sizing: border-box;
+  }
+
+  /* 우측 TOC — 고정 폭. hidden 속성이 있어도 공간만큼 차지 (시각만 숨김) */
+  html .md-sidebar.md-sidebar--secondary,
+  html .md-sidebar.md-sidebar--secondary[hidden] {
+    width: 12.1rem !important;
+    min-width: 12.1rem !important;
+    max-width: 12.1rem !important;
+    flex: 0 0 12.1rem !important;
+    display: block !important;
+    visibility: visible;
+    box-sizing: border-box;
+  }
+
+  html .md-sidebar.md-sidebar--secondary[hidden] {
+    visibility: hidden;
+  }
+  html .md-sidebar.md-sidebar--secondary[hidden] .md-sidebar__inner {
+    display: none;
+  }
+
+  /* 본문 카드 — 나머지 폭을 모두 차지 */
+  html .md-content {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+    box-sizing: border-box;
+  }
+}
