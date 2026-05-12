@@ -61,7 +61,7 @@ plugins:
   - git-revision-date-localized:
       type: datetime
       locale: ko
-      enable_creation_date: true
+      enable_creation_date: false
       fallback_to_build_date: true
   - macros:
       on_undefined: keep
