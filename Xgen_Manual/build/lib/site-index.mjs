@@ -156,7 +156,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
     variant === 'admin'
       ? `<div class="banner banner-admin">
     <div class="banner-text">
-      <strong>🔒 관리자 전용 경로 (/admin/)</strong> — 운영 환경에서 인증 계층(SSO·관리자 그룹)으로 보호되는 위치입니다. 일반 사용자에게 노출되면 안 됩니다. 현재는 골격 데모용으로 인증 없이 접근 가능합니다.
+      <strong>🔒 관리자 전용 경로 (/admin/)</strong> — 운영 환경에서 인증 계층(SSO·관리자 그룹)으로 보호되는 위치입니다. 현재는 골격 데모용으로 인증 없이 접근 가능합니다.
     </div>
     <a class="banner-link" href="customers.html">📚 매뉴얼 관리</a>
     <a class="banner-link" href="deploy.html">🚀 운영 배포</a>
