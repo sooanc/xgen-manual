@@ -12,7 +12,7 @@ An agentflow is a visual workflow connecting multiple **nodes** that defines an 
 | Node | A single step in the flow (LLM, tool, branch, etc.) |
 | Canvas | The area for visually editing nodes |
 
-See [Glossary](../common/02-glossary.md) for full terminology.
+See [Glossary](../common/01-glossary.md) for full terminology.
 
 ## Entering Agent Workspace
 

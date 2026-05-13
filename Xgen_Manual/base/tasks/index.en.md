@@ -162,5 +162,5 @@ If your task isn't listed above, walk the menu structure directly:
 
 - [User Manual](../user/) — what end users and developers see
 - [Admin Manual](../admin/) — every Admin Settings menu
-- [Glossary](02-glossary.md) — terminology used throughout the manual
+- [Glossary](../common/01-glossary.md) — terminology used throughout the manual
 - Still missing — contact {{vars.support_email}}

@@ -1,5 +1,6 @@
 nav:
   - 홈: index.md
+  - 업무 가이드: tasks
   - 공통: common
   - 사용자: user
   - 관리자: admin

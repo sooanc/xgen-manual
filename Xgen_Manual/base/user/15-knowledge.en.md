@@ -13,7 +13,7 @@ A **collection** is a knowledge storage unit grouping related documents. The ret
 | Chunk | A small text segment a document is split into for embedding |
 | Embedding | A search-ready vector derived from a chunk |
 
-See the [Glossary](../common/02-glossary.md) for full terminology.
+See the [Glossary](../common/01-glossary.md) for full terminology.
 
 ## Collection List
 
