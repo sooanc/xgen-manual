@@ -17,7 +17,7 @@ manual:
   channel: draft
 
 vars:
-  support_email: "support@jejubank.co.kr"
+  support_email: "x2bee_tech@plateer.com"
 
 outputs:
   html:
