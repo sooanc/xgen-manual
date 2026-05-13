@@ -14,14 +14,14 @@ The AI Governance menu has **four areas**.
 
 | Area | Korean | Main Menus | Section |
 |---|---|---|---|
-| Risk Review | AI 위험도 평가 및 심사 | Risk Assessment, Agentflow Approval | [Risk Review](#risk-review) |
+| Risk Review | AI 위험도 평가 및 심사 | Risk Assessment, Agent Approval | [Risk Review](#risk-review) |
 | Inspection | AI 점검 이력 및 계획 | Inspection Monitoring, Plan, Overdue, History | [Inspection](#inspection) |
 | Service / Operation History | AI 감사·추적 관리 | Service Change History, Operation History | [Audit & Tracking](#audit--tracking) |
 | Control Policy | AI 통제 정책 관리 | PII Policy, Forbidden Words, Risk Policy | [Control Policy](#control-policy) |
 
 ## Risk Review
 
-Computes **per-category risk scores** for deployed agentflows; flows that exceed a threshold are routed to governance reviewers for explicit approval.
+Computes **per-category risk scores** for deployed agents; agents that exceed a threshold are routed to governance reviewers for explicit approval.
 
 ![AI Risk Assessment — risk-category widget grid and trend charts](images/admin-gov-risk.png)
 
@@ -44,9 +44,9 @@ Each category carries a **weight**, contributing to the overall risk score.
     - Policy Violation: 6
     - Abnormal Access: 5
 
-### Agentflow Approval
+### Agent Approval
 
-Flows whose risk score exceeds the threshold are routed automatically into the **Agentflow Approval** queue and may not be deployed/operated without explicit governance approval.
+Agents whose risk score exceeds the threshold are routed automatically into the **Agent Approval** queue and may not be deployed/operated without explicit governance approval.
 
 Approval workflow:
 
@@ -54,7 +54,7 @@ Approval workflow:
 2. Governance reviewer is notified
 3. Reviewer inspects node configuration, permission scope, and PII impact
 4. **Approve / Hold / Reject** — Hold and Reject require a reason
-5. Only approved flows appear in production
+5. Only approved agents appear in production
 
 ## Inspection
 
@@ -78,7 +78,7 @@ Records governance-policy changes and user operational actions.
 | Menu | Role |
 |---|---|
 | Service Change History | Changes to governance policies, service configuration, and approval workflows |
-| Operation History | Per-user / per-policy / per-flow action tracking (actor, approver, target, time) |
+| Operation History | Per-user / per-policy / per-agent action tracking (actor, approver, target, time) |
 
 !!! note "vs. system audit log"
     Solution-wide audit (logins, system-setting changes) lives in the separate [Audit Log](27-audit-log.md) chapter. **AI Governance audit** is scoped to governance policy and approval-workflow events.
@@ -101,7 +101,7 @@ Active-policy counts and violation trends also appear as widgets on the main gov
 
 - **Monthly review** — operations and security teams jointly review the governance dashboard and risk-review output, then act on outliers
 - **Quarterly weight tuning** — reweight risk categories to reflect new external regulation and internal incidents
-- **Documented approval process** — for flows over the risk threshold, document approvers, deadlines, and re-review cadence separately
+- **Documented approval process** — for agents over the risk threshold, document approvers, deadlines, and re-review cadence separately
 - **Automated inspection planning** — register the quarterly inspection plan in the scheduler to avoid misses
 - **Retention** — keep operation history for the regulatory retention period (typically 5+ years in financial sector)
 
