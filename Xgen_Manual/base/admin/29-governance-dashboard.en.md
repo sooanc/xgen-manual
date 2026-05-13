@@ -1,132 +1,110 @@
-# AI Governance Dashboard
+# AI Governance
 
-This chapter covers the **AI Governance Insight Dashboard** — a single view of AI usage, risk, and compliance state.
-
-## What the Governance Dashboard Provides
-
-The governance dashboard visualizes operational metrics that answer:
-
-- How and how much is the organization using AI?
-- Are there risky usage patterns (PII exposure, forbidden-word violations, etc.)?
-- What is our compliance status against regulations and internal policy?
-- Which users or departments are most active?
+This chapter covers the **Admin Settings → AI Governance** menu and how to operate each screen. It is the area where the organization manages **risk assessment, inspection, audit, and control policies** for AI usage.
 
 ## Accessing the Screen
 
-Select **AI Governance** in the left sidebar, or the **AI Governance Insight Dashboard** widget at the top of the dashboard.
+Enter **Admin Settings** from the top-left mode switch, then expand the **AI Governance** section in the left sidebar. The page opens with the governance monitoring dashboard.
 
 ![AI Governance Monitoring — combined dashboard organized as a widget grid](images/admin-gov-monitoring.png)
 
-## Main Widgets
+## Sidebar Layout
 
-### Usage
+The AI Governance menu has **four areas**.
 
-| Widget | Shows |
-|---|---|
-| DAU / WAU / MAU | Active users by daily, weekly, monthly cadence |
-| Chat message count | Daily/weekly/monthly trends |
-| Agentflow execution count | Invocation count of deployed flows |
-| Token consumption | Cumulative input/output tokens of LLM calls (for cost tracking) |
+| Area | Korean | Main Menus | Section |
+|---|---|---|---|
+| Risk Review | AI 위험도 평가 및 심사 | Risk Assessment, Agentflow Approval | [Risk Review](#risk-review) |
+| Inspection | AI 점검 이력 및 계획 | Inspection Monitoring, Plan, Overdue, History | [Inspection](#inspection) |
+| Service / Operation History | AI 감사·추적 관리 | Service Change History, Operation History | [Audit & Tracking](#audit--tracking) |
+| Control Policy | AI 통제 정책 관리 | PII Policy, Forbidden Words, Risk Policy | [Control Policy](#control-policy) |
 
-### Risk
+## Risk Review
 
-| Widget | Shows |
-|---|---|
-| Risk level distribution | Recent event ratios by risk level (Low/Medium/High/Critical) |
-| PII detection frequency | Per-policy detection counts over time |
-| Forbidden-word violations | Count of blocked inputs and responses |
-| Suspicious patterns | Off-hours access, mass downloads, etc. |
-
-### Compliance
-
-| Widget | Shows |
-|---|---|
-| Policy enablement | Number of active vs. inactive policies |
-| Audit log retention coverage | Actual retained data vs. required window |
-| Permission review status | Last permission review (warns when >90 days old) |
-| Data classification coverage | Ratio of collections with classification labels |
+Computes **per-category risk scores** for deployed agentflows; flows that exceed a threshold are routed to governance reviewers for explicit approval.
 
 ![AI Risk Assessment — risk-category widget grid and trend charts](images/admin-gov-risk.png)
 
-Additionally, the Control Policy Management screen surfaces the status of active policies.
+### Evaluation Categories
 
-![Control Policy Management — active / inactive policy counts and violation trends](images/admin-gov-control-policy.png)
+| Category | Description |
+|---|---|
+| PII Exposure | Failed or bypassed personal-information masking |
+| Data Exfiltration | Bulk download or outbound email of sensitive data |
+| Privilege Misuse | Abnormal privilege escalation |
+| Abnormal Access | Off-hours or foreign-IP access |
+| Policy Violation | Use of forbidden words or blocked tools |
 
-## Risk Assessment Categories
+Each category carries a **weight**, contributing to the overall risk score.
 
-The categories used for risk assessment have configurable weights.
-
-| Category | Korean | Description |
-|---|---|---|
-| PII Exposure | PII 노출 | PII masking failures or bypasses |
-| Data Exfiltration | 데이터 외부 반출 | Mass downloads, external emails |
-| Privilege Misuse | 권한 오용 | Use of abnormally elevated privileges |
-| Abnormal Access | 비정상 접근 | Off-hours or foreign-IP access |
-| Policy Violation | 정책 위반 | Forbidden-word usage, calls to blocked tools |
-
-Each category carries a **weight** that contributes to the aggregate risk score.
-
-## Adjusting Weights
-
-Risk priorities differ by organization, so the weights are adjustable.
-
-1. Click **Settings (⚙)** at the top right of the governance dashboard
-2. Use the per-category weight sliders (0–10)
-3. The total is auto-normalized
-4. **Save**
-
-!!! note "Weight-adjustment screen screenshot pending"
-    A screenshot of the per-category weight sliders opened by Settings (⚙) will be added in a future manual update.
-
-!!! info "Recommended Weights (Financial Sector Example)"
+!!! info "Suggested Weights (Financial Sector Example)"
     - PII Exposure: 10 (highest priority)
     - Data Exfiltration: 9
     - Privilege Misuse: 8
     - Policy Violation: 6
     - Abnormal Access: 5
 
-## Period Comparison
+### Agentflow Approval
 
-Most widgets support a **comparison** mode.
+Flows whose risk score exceeds the threshold are routed automatically into the **Agentflow Approval** queue and may not be deployed/operated without explicit governance approval.
 
-- This month vs. last month
-- This week vs. last week
-- This quarter vs. last quarter
+Approval workflow:
 
-The comparison shows percentage change (↑↓ %), making trend shifts easy to spot.
+1. Risk Review detects threshold breach → adds to queue
+2. Governance reviewer is notified
+3. Reviewer inspects node configuration, permission scope, and PII impact
+4. **Approve / Hold / Reject** — Hold and Reject require a reason
+5. Only approved flows appear in production
 
-## Alerts
+## Inspection
 
-Receive notifications when a metric crosses a threshold.
+Manages the **inspection schedule and history** for AI systems across the organization.
 
-1. Click **Alert Settings** at the top right of a widget
-2. Enter a threshold (e.g., "PII detections ≥ 100 per day")
-3. Choose notification channels (email, webhook, Slack, etc.)
-4. **Save**
+| Menu | Role |
+|---|---|
+| Inspection Monitoring | Card-style dashboard of in-progress and upcoming items |
+| Plan | Register/adjust quarterly and annual inspection plans |
+| Overdue | Track items past their due date and their owners |
+| History | Results, actions, and evidence for completed inspections |
 
-## Exporting Reports
+Inspection items are linked to risk-review results; completing an inspection re-computes the affected risk scores.
 
-Export monthly or quarterly reports as PDF or Excel.
+## Audit & Tracking
 
-1. Click **Export Report** at the top right
-2. Choose format (PDF / Excel)
-3. Choose period
-4. **Download**
-
-!!! note "Report-export options screenshot pending"
-    A screenshot of the format / period selection modal opened by "Export Report" will be added in a future manual update.
-
-The service-change history lives on a separate screen.
+Records governance-policy changes and user operational actions.
 
 ![Service Change History — tracks governance-policy and service-configuration changes](images/admin-gov-audit-tracking.png)
 
+| Menu | Role |
+|---|---|
+| Service Change History | Changes to governance policies, service configuration, and approval workflows |
+| Operation History | Per-user / per-policy / per-flow action tracking (actor, approver, target, time) |
+
+!!! note "vs. system audit log"
+    Solution-wide audit (logins, system-setting changes) lives in the separate [Audit Log](27-audit-log.md) chapter. **AI Governance audit** is scoped to governance policy and approval-workflow events.
+
+## Control Policy
+
+Registers and manages the organization's **AI usage control policies**.
+
+![Control Policy Management — active / inactive policy counts and violation trends](images/admin-gov-control-policy.png)
+
+| Area | Content | Detail |
+|---|---|---|
+| PII Policy | Targets and rules for personal-information masking (RRN, phone, email, etc.) | [PII Policy](25-pii-policy.md) |
+| Forbidden Words | Keywords/regex blocked in inputs and responses | (in PII Policy chapter) |
+| Risk Policy | Risk-category weights and automatic-action thresholds | See [Risk Review](#risk-review) above |
+
+Active-policy counts and violation trends also appear as widgets on the main governance monitoring dashboard.
+
 ## Operational Recommendations
 
-- **Monthly review** — Operations and security teams review the dashboard together each month and address anomalies.
-- **Quarterly weight recalibration** — Adjust weights to reflect external regulatory changes and internal incidents.
-- **Environment-appropriate thresholds** — As users grow, consider relative thresholds (e.g., "≥1% of total messages") instead of absolute counts.
-- **Automate reports** — Schedule quarterly reports through the scheduler for automatic delivery.
+- **Monthly review** — operations and security teams jointly review the governance dashboard and risk-review output, then act on outliers
+- **Quarterly weight tuning** — reweight risk categories to reflect new external regulation and internal incidents
+- **Documented approval process** — for flows over the risk threshold, document approvers, deadlines, and re-review cadence separately
+- **Automated inspection planning** — register the quarterly inspection plan in the scheduler to avoid misses
+- **Retention** — keep operation history for the regulatory retention period (typically 5+ years in financial sector)
 
 ## Contact
 
-For questions about the governance dashboard, please contact {{vars.support_email}}.
+For AI Governance questions, contact {{vars.support_email}}.

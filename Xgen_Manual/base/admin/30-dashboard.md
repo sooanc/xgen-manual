@@ -55,7 +55,7 @@
 ## 관련 챕터
 
 - [사용자 매뉴얼 · 대시보드](../user/18-dashboard.md) — 화면 구성과 위젯 커스터마이징 기본
-- [AI 거버넌스 대시보드](29-governance-dashboard.md) — 위험 등급·금칙어 정책 편집 화면 상세
+- [AI 거버넌스](29-governance-dashboard.md) — 위험도 평가·점검·감사·통제 정책 메뉴 상세
 - [역할/권한 관리](22-role-permission.md) — `admin.governance:*` 등 권한 부여 방법
 
 ## 문의

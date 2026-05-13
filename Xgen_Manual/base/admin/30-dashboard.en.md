@@ -55,7 +55,7 @@ The four items in the right fixed panel are the same as the user view, but **Rec
 ## Related Chapters
 
 - [User Manual · Dashboard](../user/18-dashboard.md) — layout fundamentals and widget customization
-- [AI Governance Dashboard](29-governance-dashboard.md) — detailed risk-grade / forbidden-word policy editor
+- [AI Governance](29-governance-dashboard.md) — risk review, inspection, audit, and control-policy menus
 - [Roles & Permissions](22-role-permission.md) — how to grant permissions like `admin.governance:*`
 
 ## Inquiries

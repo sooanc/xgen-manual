@@ -41,7 +41,7 @@ The Admin sidebar is organized into the following 11 sections (some may be hidde
 | Data Management | 데이터 관리 | Databases, Scheduled Queries, Batch Jobs, Data Audit Logs | (not covered) |
 | MCP Management | MCP 관리 | **MCP Library**, MCP Operations & Monitoring | [MCP Library](28-mcp-market.md) |
 | MLOps | MLOps | ML Model Management | (not covered) |
-| AI Governance | AI 거버넌스 | AI Risk Assessment, Inspection History, **Control Policy Management**, Service Change History | [PII Policy](25-pii-policy.md), [Governance Dashboard](29-governance-dashboard.md) |
+| AI Governance | AI 거버넌스 | AI Risk Assessment, Inspection History, **Control Policy Management**, Service Change History | [PII Policy](25-pii-policy.md), [AI Governance](29-governance-dashboard.md) |
 | Service Operations | 서비스 운영 | Announcements, FAQ, 1:1 Admin Inquiry | (not covered) |
 | Knowledge Operations | 지식 운영 | Collection Management | (not covered) |
 

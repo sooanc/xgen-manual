@@ -41,7 +41,7 @@
 | 데이터 관리 | Data Management | 데이터베이스, 스케줄 쿼리, 배치 작업, 데이터 감사 로그 | (별도 챕터 미수록) |
 | MCP 관리 | MCP Management | **MCP 라이브러리**, MCP 운영/모니터링 | [MCP 라이브러리](28-mcp-market.md) |
 | MLOps | MLOps | ML 모델 관리 | (별도 챕터 미수록) |
-| AI 거버넌스 | AI Governance | AI 위험도 평가, 점검 이력 관리, **통제 정책 관리**, 서비스 변경 이력 | [PII 보호 정책](25-pii-policy.md), [AI 거버넌스 대시보드](29-governance-dashboard.md) |
+| AI 거버넌스 | AI Governance | AI 위험도 평가, 점검 이력 관리, **통제 정책 관리**, 서비스 변경 이력 | [PII 보호 정책](25-pii-policy.md), [AI 거버넌스](29-governance-dashboard.md) |
 | 서비스 운영 | Service Operations | 공지 게시판, 자주 묻는 질문, 1:1 관리자 문의 | (별도 챕터 미수록) |
 | 지식 운영 | Knowledge Operations | 컬렉션 관리 | (별도 챕터 미수록) |
 
