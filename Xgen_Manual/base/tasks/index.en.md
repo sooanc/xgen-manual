@@ -17,13 +17,42 @@ This page helps you navigate the manual by **what you want to do**, not by menu 
 
 ## Standard User
 
-> Users whose main task is to **run agents and consume the results**. They use agents the organization has prepared, via chat.
+> Users who **consume** the agents the organization has already deployed, via chat. Available menus are limited to **Agent Chat / Technical Support / Dashboard (personal view)**. Anything else (Agent Creation, Tool Integration, Knowledge Management) requires Agent Developer privileges.
 
 ### I want to chat with an agent
 - Start: left sidebar **Agent Chat → New Chat**
 - Procedure: [Chat](../user/14-chat.md)
 
-### I want the agent to consult internal documents
+### I want to see my usage stats (personal dashboard)
+- Start: top header **Dashboard**
+- Procedure: [Dashboard](../user/18-dashboard.md)
+- Scope: your own chat count, frequently-used agents, recent activity. Governance and system-operations widgets render only with admin permissions.
+
+### I want to find notices, FAQ, or submit an inquiry
+- Start: left sidebar **Technical Support**
+- Procedure: [Technical Support](../user/19-tech-support.md)
+
+### This is my first time, where do I start?
+- [Getting Started](../user/10-getting-started.md) → [Login](../user/11-login.md)
+
+> To **build** agents or manage knowledge, prompts, or auth profiles, see the [Agent Developer](#agent-developer) section.
+
+---
+
+## Agent Developer
+
+> Users who **design and deploy** agents to automate their own work. On top of the standard-user menus, they get access to **Agent Creation, Tool Integration, and Knowledge Management** areas.
+
+### End-to-end flow: build → deploy → approve
+
+1. **Enter workspace** — Agent Workspace → Agent Design → [Enter Agent Workspace](../user/12-agentflow-create.md#agent-작업실-진입)
+2. **Compose nodes** — add and connect nodes on the canvas starting from the Start Node → [Create an Agentflow](../user/12-agentflow-create.md)
+3. **Connect external tools** — register API Tools / MCP nodes → [Add Nodes](../user/12-agentflow-create.md#노드-추가)
+4. **Quality evaluation** — verify response quality with test data → [Agentflow Operations - Quality](../user/13-agentflow-operations.md#에이전트-품질-분석)
+5. **Deploy** — push to production → [Agentflow Operations](../user/13-agentflow-operations.md)
+6. **Approval queue** (when over the risk threshold) — wait for governance approval → [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
+
+### I want the agent to consult internal documents (RAG)
 - Start: left sidebar **Knowledge → Collection**
 - Procedure: [Knowledge Management](../user/15-knowledge.md)
 
@@ -34,32 +63,6 @@ This page helps you navigate the manual by **what you want to do**, not by menu 
 ### I want to manage credentials for external systems safely
 - Start: left sidebar **Tool Integration → Auth Profile**
 - Procedure: [Auth Profile](../user/17-auth-profile.md)
-
-### I want to see my usage stats
-- Start: top header **Dashboard**
-- Procedure: [Dashboard](../user/18-dashboard.md)
-
-### I want to find notices, FAQ, or submit an inquiry
-- Start: left sidebar **Technical Support**
-- Procedure: [Technical Support](../user/19-tech-support.md)
-
-### This is my first time, where do I start?
-- [Getting Started](../user/10-getting-started.md) → [Login](../user/11-login.md)
-
----
-
-## Agent Developer
-
-> Users who **design and deploy** agents themselves to automate their own work. One level deeper than a standard user.
-
-### End-to-end flow: build → deploy → approve
-
-1. **Enter workspace** — Agent Workspace → Agent Design → [Enter Agent Workspace](../user/12-agentflow-create.md#agent-작업실-진입)
-2. **Compose nodes** — add and connect nodes on the canvas starting from the Start Node → [Create an Agentflow](../user/12-agentflow-create.md)
-3. **Connect external tools** — register API Tools / MCP nodes → [Add Nodes](../user/12-agentflow-create.md#노드-추가)
-4. **Quality evaluation** — verify response quality with test data → [Agentflow Operations - Quality](../user/13-agentflow-operations.md#에이전트-품질-분석)
-5. **Deploy** — push to production → [Agentflow Operations](../user/13-agentflow-operations.md)
-6. **Approval queue** (when over the risk threshold) — wait for governance approval → [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
 
 ### My agent is pending governance approval
 - Start: Admin Settings → AI Governance → Agent Approval
