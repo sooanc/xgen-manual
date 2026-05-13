@@ -7,7 +7,8 @@ This area contains content shared by all users (both end users and administrator
 | Chapter | Content |
 |---|---|
 | [Solution Overview](00-overview.md) | Key features and system requirements of {{product.name}} |
-| [Glossary](01-glossary.md) | Core terms used throughout the manual (Agentflow, Collection, Embedding, etc.) |
+| [Task Guide](01-tasks.md) | Role- and task-based entry point that maps your goal to the right chapter |
+| [Glossary](02-glossary.md) | Core terms used throughout the manual (Agentflow, Collection, Embedding, etc.) |
 
 > Dashboard and Technical Support menu usage is covered in [User Manual](../user/index.md) or [Admin Manual](../admin/index.md), as appropriate.
 

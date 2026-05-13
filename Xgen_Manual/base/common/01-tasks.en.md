@@ -2,7 +2,7 @@
 
 This page helps you navigate the manual by **what you want to do**, not by menu names. Pick your role and your task — no need to memorize menus.
 
-> For menu-structure reference, use the [Common](../common/) / [User](../user/) / [Admin](../admin/) tabs above.
+> For menu-structure reference, use the [User](../user/) / [Admin](../admin/) tabs above.
 
 ## What's Your Role?
 
@@ -162,5 +162,5 @@ If your task isn't listed above, walk the menu structure directly:
 
 - [User Manual](../user/) — what end users and developers see
 - [Admin Manual](../admin/) — every Admin Settings menu
-- [Common - Glossary](../common/01-glossary.md) — terminology used throughout the manual
+- [Glossary](02-glossary.md) — terminology used throughout the manual
 - Still missing — contact {{vars.support_email}}
