@@ -53,6 +53,7 @@ plugins:
           build: true
           nav_translations:
             홈: Home
+            업무 가이드: Task Guide
             공통: Common
             사용자: User
             관리자: Admin
