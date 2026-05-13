@@ -26,7 +26,7 @@ This page helps you navigate the manual by **what you want to do**, not by menu 
 ### Open the main screen after login (Dashboard)
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
 - Procedure: [Dashboard](../user/18-dashboard.md)
-- Scope: the main screen shown to every account with standard-user permission. Aggregates notices, FAQ, frequently-used agents, service requests, and other base-tier content. Governance and system-operations widgets are added only when admin permissions are present.
+- Scope: the main screen shown to every account with standard-user permission. Aggregates notices, FAQ, and other base-tier content. Governance and system-operations widgets render for users who hold the corresponding permission.
 
 ### I want to find notices, FAQ, or submit an inquiry
 - Start: left sidebar **Technical Support**
