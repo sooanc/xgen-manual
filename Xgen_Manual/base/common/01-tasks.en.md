@@ -23,10 +23,10 @@ This page helps you navigate the manual by **what you want to do**, not by menu 
 - Start: left sidebar **Agent Chat → New Chat**
 - Procedure: [Chat](../user/14-chat.md)
 
-### I want to see my usage stats (personal dashboard)
-- Start: top header **Dashboard**
+### Open the main screen after login (Dashboard)
+- Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
 - Procedure: [Dashboard](../user/18-dashboard.md)
-- Scope: your own chat count, frequently-used agents, recent activity. Governance and system-operations widgets render only with admin permissions.
+- Scope: the main screen shown to every account with standard-user permission. Aggregates notices, FAQ, frequently-used agents, service requests, and other base-tier content. Governance and system-operations widgets are added only when admin permissions are present.
 
 ### I want to find notices, FAQ, or submit an inquiry
 - Start: left sidebar **Technical Support**
