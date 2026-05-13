@@ -40,13 +40,11 @@ The left sidebar of User Mode (Agent Workspace) is organized into 6 sections.
 
 ![Left sidebar — six sections expanded: Agent Creation, Tool Integration, Knowledge Management, Technical Support, etc.](images/main-sidebar.png)
 
-!!! info "Four Modes in the Header"
-    The solution header exposes 4 work areas:
+!!! info "Two Modes in the Header"
+    The solution header exposes 2 work areas:
     
-    - **Agent Workspace** — the default work area for end users (the sidebar above)
-    - **AI Model Management** — model operations area
-    - **AI Governance** — governance review area
-    - **Admin** — administrator-only area
+    - **Agent Workspace** — the default work area for end users and Agent developers (the sidebar above)
+    - **Admin** — area for system administrators and governance officers
     
     Some areas may be hidden depending on your permission tier and role.
 
