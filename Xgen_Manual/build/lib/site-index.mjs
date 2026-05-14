@@ -168,7 +168,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Xgen 솔루션 매뉴얼 - 고객사 목록</title>
+<title>Xgen 솔루션 매뉴얼</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root {
