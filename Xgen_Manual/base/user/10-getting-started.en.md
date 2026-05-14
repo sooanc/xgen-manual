@@ -31,12 +31,12 @@ The left sidebar of User Mode (Agent Workspace) is organized into 6 sections.
 
 | Section | Main Menus | Manual Chapter |
 |---|---|---|
-| Analysis / Planning | Task Planning | (not covered) |
+| Analysis / Planning | Task Planning | [Task Planning](11a-task-planning.md) |
 | Agent Chat | Start Chat, Current Chat, Chat History | [Using Chat](14-chat.md) |
 | Agent Creation | Agent Creation Intro, Agent Design, Agent List, Agent Operation, Agent Quality Evaluation, Agent Prompts | [Creating an Agent](12-agentflow-create.md), [Agent Operations](13-agentflow-operations.md), [Prompt Management](16-prompt.md) |
-| Tool Integration | API Tools, Authentication Profiles | [Authentication Profile](17-auth-profile.md) |
+| Tool Integration | API Tools, Authentication Profiles | [API Tools](17a-api-tools.md), [Authentication Profile](17-auth-profile.md) |
 | Knowledge Management | Knowledge Collections, File Storage, DB Integration, Upload History | [Knowledge Management](15-knowledge.md) |
-| Technical Support (pinned bottom) | Announcements, FAQ, 1:1 Admin Inquiry | — |
+| Technical Support (pinned bottom) | Announcements, FAQ, 1:1 Admin Inquiry | [Technical Support](19-tech-support.md) |
 
 ![Left sidebar — six sections expanded: Agent Creation, Tool Integration, Knowledge Management, Technical Support, etc.](images/main-sidebar.png)
 

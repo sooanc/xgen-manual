@@ -31,12 +31,12 @@ https://{{product.domain}}
 
 | 섹션 | 주요 메뉴 | 본 매뉴얼 챕터 |
 |---|---|---|
-| 분석 / 기획 | 업무기획 | (별도 챕터 미수록) |
+| 분석 / 기획 | 업무기획 | [업무 기획](11a-task-planning.md) |
 | Agent 채팅 | 채팅 시작, 현재 채팅, 채팅 이력 | [채팅 사용](14-chat.md) |
 | Agent 제작 | Agent 제작 소개, Agent 설계, Agent 목록, Agent 운영 설정, Agent 품질 평가, Agent 프롬프트 | [에이전트 만들기](12-agentflow-create.md), [에이전트 운영](13-agentflow-operations.md), [프롬프트 관리](16-prompt.md) |
-| 도구 연동 | API 도구, 인증 프로필 | [인증 프로필](17-auth-profile.md) |
+| 도구 연동 | API 도구, 인증 프로필 | [API 도구](17a-api-tools.md), [인증 프로필](17-auth-profile.md) |
 | 지식관리 | 지식 컬렉션, 파일 저장소, DB 연동, 업로드 이력 | [지식 관리](15-knowledge.md) |
-| 기술지원 (하단 고정) | 공지 게시판, 자주묻는 질문, 1:1 관리자 문의 | — |
+| 기술지원 (하단 고정) | 공지 게시판, 자주묻는 질문, 1:1 관리자 문의 | [기술지원](19-tech-support.md) |
 
 ![좌측 사이드바 — Agent 제작·도구 연동·지식관리·기술지원 등 6개 섹션이 펼쳐진 상태](images/main-sidebar.png)
 
