@@ -56,7 +56,7 @@ The main screen for users who **build and deploy** agents themselves. On top of 
 | My Agent Operations Metrics | Call volume and failure-rate summary for agents you own |
 | Pending Approval Agents | Your agents currently awaiting governance approval due to risk threshold |
 
-The operations and approval widgets do not appear when you own no agents. Right after your first deployment, if a widget is empty, use it as a shortcut into [Agentflow Operations](13-agentflow-operations.md).
+The operations and approval widgets do not appear when you own no agents. Right after your first deployment, if a widget is empty, use it as a shortcut into [Agent Operations](13-agentflow-operations.md).
 
 ## Customizing Widgets
 

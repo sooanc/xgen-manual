@@ -1,4 +1,4 @@
-# Agentflow Operations
+# Agent Operations
 
 This chapter covers executing, deploying, sharing, and version-managing your agentflows.
 
@@ -116,4 +116,4 @@ To pause: click **Pause** on the schedule card. To resume: click **Resume**.
 
 ## Contact
 
-For questions about agentflow operations, please contact {{vars.support_email}}.
+For questions about agent operations, please contact {{vars.support_email}}.

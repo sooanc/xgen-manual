@@ -1,4 +1,4 @@
-# Creating an Agentflow
+# Creating an Agent
 
 This chapter covers building an **Agentflow** — the core deliverable of the solution.
 
@@ -95,7 +95,7 @@ Click **Save** at the top right of the canvas to persist changes. Each save crea
 
 ## Next Steps
 
-For executing, deploying, and sharing the agentflow you've built, see [Agentflow Operations](13-agentflow-operations.md).
+For executing, deploying, and sharing the agent (agentflow) you've built, see [Agent Operations](13-agentflow-operations.md).
 
 ## Contact
 

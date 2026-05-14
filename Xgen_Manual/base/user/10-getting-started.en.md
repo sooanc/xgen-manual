@@ -33,7 +33,7 @@ The left sidebar of User Mode (Agent Workspace) is organized into 6 sections.
 |---|---|---|
 | Analysis / Planning | Task Planning | (not covered) |
 | Agent Chat | Start Chat, Current Chat, Chat History | [Using Chat](14-chat.md) |
-| Agent Creation | Agent Creation Intro, Agent Design, Agent List, Agent Operation, Agent Quality Evaluation, Agent Prompts | [Creating an Agentflow](12-agentflow-create.md), [Agentflow Operations](13-agentflow-operations.md), [Prompt Management](16-prompt.md) |
+| Agent Creation | Agent Creation Intro, Agent Design, Agent List, Agent Operation, Agent Quality Evaluation, Agent Prompts | [Creating an Agent](12-agentflow-create.md), [Agent Operations](13-agentflow-operations.md), [Prompt Management](16-prompt.md) |
 | Tool Integration | API Tools, Authentication Profiles | [Authentication Profile](17-auth-profile.md) |
 | Knowledge Management | Knowledge Collections, File Storage, DB Integration, Upload History | [Knowledge Management](15-knowledge.md) |
 | Technical Support (pinned bottom) | Announcements, FAQ, 1:1 Admin Inquiry | — |
@@ -53,7 +53,7 @@ The left sidebar of User Mode (Agent Workspace) is organized into 6 sections.
 For first-time users:
 
 1. [Login](11-login.md) — understand the authentication flow
-2. [Creating an Agentflow](12-agentflow-create.md) — build your first agentflow
+2. [Creating an Agent](12-agentflow-create.md) — build your first agent on the agentflow canvas
 3. [Using Chat](14-chat.md) — converse with your agent
 4. [Knowledge Management](15-knowledge.md) — add document collections to improve answer quality
 

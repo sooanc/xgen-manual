@@ -33,7 +33,7 @@ https://{{product.domain}}
 |---|---|---|
 | 분석 / 기획 | 업무기획 | (별도 챕터 미수록) |
 | Agent 채팅 | 채팅 시작, 현재 채팅, 채팅 이력 | [채팅 사용](14-chat.md) |
-| Agent 제작 | Agent 제작 소개, Agent 설계, Agent 목록, Agent 운영 설정, Agent 품질 평가, Agent 프롬프트 | [에이전트플로우 만들기](12-agentflow-create.md), [에이전트플로우 운영](13-agentflow-operations.md), [프롬프트 관리](16-prompt.md) |
+| Agent 제작 | Agent 제작 소개, Agent 설계, Agent 목록, Agent 운영 설정, Agent 품질 평가, Agent 프롬프트 | [에이전트 만들기](12-agentflow-create.md), [에이전트 운영](13-agentflow-operations.md), [프롬프트 관리](16-prompt.md) |
 | 도구 연동 | API 도구, 인증 프로필 | [인증 프로필](17-auth-profile.md) |
 | 지식관리 | 지식 컬렉션, 파일 저장소, DB 연동, 업로드 이력 | [지식 관리](15-knowledge.md) |
 | 기술지원 (하단 고정) | 공지 게시판, 자주묻는 질문, 1:1 관리자 문의 | — |
@@ -53,7 +53,7 @@ https://{{product.domain}}
 처음이라면 다음 순서로 진행하세요.
 
 1. [로그인](11-login.md) — 인증 절차 이해
-2. [에이전트플로우 만들기](12-agentflow-create.md) — 첫 에이전트플로우 제작
+2. [에이전트 만들기](12-agentflow-create.md) — 에이전트플로우 캔버스로 첫 에이전트 제작
 3. [채팅 사용](14-chat.md) — 만든 에이전트와 대화
 4. [지식 관리](15-knowledge.md) — 답변 품질을 위해 문서 컬렉션 추가
 

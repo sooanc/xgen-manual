@@ -5,10 +5,10 @@
 ## 첫 Agent를 만들고 배포하는 전체 흐름
 
 1. **작업실 진입** — Agent 작업실 → Agent 설계 → [Agent 작업실 진입](../user/12-agentflow-create.md#agent-작업실-진입)
-2. **노드 구성** — Start Node 부터 캔버스에 노드 추가·연결 → [에이전트플로우 만들기](../user/12-agentflow-create.md)
+2. **노드 구성** — Start Node 부터 캔버스에 노드 추가·연결 → [에이전트 만들기](../user/12-agentflow-create.md)
 3. **외부 도구 연결** — API Tool / MCP 노드 등록 → [API 도구](../user/12-agentflow-create.md#노드-추가)
-4. **품질 평가** — 테스트 데이터로 응답 품질 확인 → [에이전트플로우 운영](../user/13-agentflow-operations.md#에이전트-품질-분석)
-5. **배포** — 운영 환경에 배포 → [에이전트플로우 운영](../user/13-agentflow-operations.md)
+4. **품질 평가** — 테스트 데이터로 응답 품질 확인 → [에이전트 운영](../user/13-agentflow-operations.md#에이전트-품질-분석)
+5. **배포** — 운영 환경에 배포 → [에이전트 운영](../user/13-agentflow-operations.md)
 6. **승인 대기** (위험도 임계치 초과 시) — 거버넌스 담당자 승인 후 노출 → [AI 거버넌스 - 위험도 평가 및 심사](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
 
 ## Agent에게 사내 문서를 참고하게 하고 싶다 (RAG)
@@ -30,11 +30,11 @@
 
 ## 외부 API/MCP 서버를 도구로 등록하고 싶다
 - 시작 위치: 좌측 사이드바 **도구 연동 → API Tool**
-- 절차: [에이전트플로우 만들기 - 노드 추가](../user/12-agentflow-create.md#노드-추가)
+- 절차: [에이전트 만들기 - 노드 추가](../user/12-agentflow-create.md#노드-추가)
 
 ## 운영 중인 Agent의 호출 통계·실패율을 보고 싶다
 - 시작 위치: 좌측 사이드바 **Agent 운영 설정**
-- 절차: [에이전트플로우 운영](../user/13-agentflow-operations.md)
+- 절차: [에이전트 운영](../user/13-agentflow-operations.md)
 
 ## 로그인 직후 내 역할에 맞는 메인 화면을 보고 싶다
 - 시작 위치: 로그인 직후 자동 진입 (또는 좌상단 **XGEN** 로고)
