@@ -79,6 +79,23 @@ const SHOTS = [
   { view: 'admin-support-notice', file: 'admin-support-notice.png', label: 'Admin notice board' },
   { view: 'admin-support-faq', file: 'admin-support-faq.png', label: 'Admin FAQ' },
   { view: 'admin-support-qna', file: 'admin-support-qna.png', label: 'Admin 1:1 Inquiries' },
+
+  // 32-agent-operations.md
+  { view: 'admin-agentflow-management', file: 'admin-agent-management.png', label: 'Agent management (admin view)' },
+  { view: 'admin-chat-monitoring', file: 'admin-chat-monitoring.png', label: 'Chat monitoring' },
+  { view: 'admin-feedback-monitoring', file: 'admin-feedback-monitoring.png', label: 'User feedback' },
+  { view: 'admin-prompt-store', file: 'admin-prompt-store.png', label: 'Prompt templates (admin)' },
+  { view: 'admin-agent-dev-plan', file: 'admin-agent-dev-plan.png', label: 'Task planning' },
+  // (admin-user-token-dashboard / admin-node-management / admin-agentflow-tester / admin-agent-retention 는 추후 추가)
+
+  // 33-data-management.md
+  { view: 'admin-database', file: 'admin-database.png', label: 'Database (SQL console)' },
+  { view: 'admin-db-connection', file: 'admin-db-connection.png', label: 'DB connection profiles' },
+  { view: 'admin-db-batch', file: 'admin-db-batch.png', label: 'Batch jobs' },
+  { view: 'admin-db-audit', file: 'admin-db-audit.png', label: 'Data audit log' },
+
+  // 34-knowledge-operations.md
+  { view: 'admin-knowledge-collection', file: 'admin-knowledge-collection.png', label: 'Knowledge collection management (TTL)' },
 ];
 
 const log = (...a) => console.log('[admin-capture]', ...a);

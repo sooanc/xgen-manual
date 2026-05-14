@@ -39,21 +39,19 @@ New administrators are granted the **Administrator** tier by default. We recomme
 
 ## Admin Console Layout
 
-The Admin sidebar is organized into the following 11 sections (some may be hidden depending on permissions).
+The Admin sidebar is organized into the following 9 sections (some may be hidden depending on permissions).
 
 | Section | Korean | Main Menus | Manual Chapter |
 |---|---|---|---|
-| Users / Access Control | 사용자 / 접근제어 | User Management, Role/Permission Management | [User Management](21-user-management.md), [Role/Permission](22-role-permission.md) |
-| Agent Operations | Agent 운영 | Planning, Agent Management, Chat Monitoring, User Tokens, Node Management, Prompt Templates | (not covered) |
+| Users / Access Control | 사용자 / 접근제어 | User Management, Role / Permission Management | [User Management](21-user-management.md), [Role / Permission](22-role-permission.md) |
+| Agent Operations | Agent 운영 | Agent Management, Chat Monitoring, User Tokens, Node Management, Prompt Templates, User Feedback, Response Quality Evaluation, Agent Retention Analysis, Task Planning | [Agent Operations](32-agent-operations.md) |
+| AI Governance | AI 거버넌스 | AI Risk Assessment, Inspection History, Service Change History, **Control Policy Management** | [PII Policy](25-pii-policy.md), [AI Governance](29-governance-dashboard.md) |
 | Environment | 환경 설정 | General, **LLM**, Infrastructure, **Search / Embedding**, Audio, **Guardrail**, Sidebar | [LLM Settings](23-llm-settings.md), [Embedding Settings](24-embedding-settings.md), [Guardrail Model Setup](25b-guardrail-model.md) |
-| System Status | 시스템 상태 | **System Monitoring**, System Inspection, Log Viewer | [System Monitor](26-system-monitor.md) |
-| Security & Audit | 보안 & 감사 | Security Settings, **Audit Log**, Error Logs | [Audit Log](27-audit-log.md) |
-| Data Management | 데이터 관리 | Databases, Scheduled Queries, Batch Jobs, Data Audit Logs | (not covered) |
+| System Status | 시스템 상태 | **System Monitoring**, System Inspection, Log Viewer | [System Monitor](26-system-monitor.md), [Audit Log](27-audit-log.md) |
+| Data Management | 데이터 관리 | Database, DB Connection, Batch Jobs, **Data Audit Log** | [Data Management](33-data-management.md) |
 | MCP Management | MCP 관리 | **MCP Library**, MCP Operations & Monitoring | [MCP Library](28-mcp-market.md) |
-| MLOps | MLOps | ML Model Management | (not covered) |
-| AI Governance | AI 거버넌스 | AI Risk Assessment, Inspection History, **Control Policy Management**, Service Change History | [PII Policy](25-pii-policy.md), [AI Governance](29-governance-dashboard.md) |
-| Service Operations | 서비스 운영 | Announcements, FAQ, 1:1 Admin Inquiry | (not covered) |
-| Knowledge Operations | 지식 운영 | Collection Management | (not covered) |
+| Service Operations | 서비스 운영 | Announcements, FAQ, 1:1 Admin Inquiry | [Tech Support Handling](31-tech-support-handling.md) |
+| Knowledge Operations | 지식 운영 | Collection Management | [Knowledge Operations](34-knowledge-operations.md) |
 
 !!! info "Menu Naming"
     Menu names on screen may vary slightly between solution versions and user permissions. This manual is based on {{product.name}} {{product.version}}; **bolded** menus are those this manual covers.
