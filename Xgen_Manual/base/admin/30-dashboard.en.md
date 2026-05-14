@@ -4,8 +4,6 @@ The `/dashboard` screen you land on after login is shared by all users, but acco
 
 > Refer to [User Manual · Dashboard](../user/18-dashboard.md) first for layout fundamentals and widget customization. This chapter covers the **admin-only additions**, split into the **System Administrator view** and the **Governance Officer view**.
 
-![/dashboard as seen by an admin — greeting subtitle "System Operations & Deployment Dashboard" and admin-only governance/forbidden-word widgets rendered alongside common widgets](images/admin-dashboard-view.png)
-
 ## Shared Across Both Admin Roles
 
 ### Admin Settings Button Enabled
@@ -19,6 +17,10 @@ The two quick-jump buttons at the top-right of the dashboard — **Agent Workspa
 
 > After entering `/admin`, use the left sidebar to navigate to AI Model Management, AI Governance, Users / Access Control, Environment, and other detailed areas.
 
+### Welcome Message Subtitle
+
+Both System Administrators and Governance Officers see the welcome subtitle **"System Operations & Deployment Dashboard"** with the helper text "Continuously monitors AI platform health and operational status, supporting reliable service delivery." (Standard Users and Agent Developers see "Agent 활용 Dashboard" instead — see [User Manual · Dashboard](../user/18-dashboard.md).)
+
 ### Right-Panel Interpretation Differs
 
 The four items in the right fixed panel are the same as the user view, but **Recent Service Requests TOP 3** and **My Inquiries (1:1 Admin)** are interpreted as "items to handle" for admins.
@@ -27,19 +29,21 @@ The four items in the right fixed panel are the same as the user view, but **Rec
 
 The main screen for operators of solution infrastructure, users, authentication, and LLM connections.
 
-### Welcome Message Subtitle
-
-For system administrators (`system_admin` role), the greeting subtitle reads **"System Operations & Deployment Dashboard"** with the helper text "Continuously monitors AI platform health and operational status, supporting reliable service delivery."
-
 ### Operations Widgets
+
+On top of the Standard User / Agent Developer widgets, **operations and deployment** widgets are added.
 
 | Widget | Contents |
 |---|---|
-| System Health Summary | CPU / memory / disk usage, items exceeding alert thresholds |
-| LLM / Embedding Provider Status | Connection health check results for registered providers |
-| Recent Service-Request Queue | Unhandled requests within categories you have permission to respond to |
+| Top 3 Frequent Agents / Popular Agent Templates / Shared With Me / My Feedback | (Shared) Agent-usage widgets |
+| My Agentflow Status | Total / shared / deployed counts and recent items for your agentflows |
+| Recent User Feedback | Recent feedback entries left by standard users |
+| Agent Deployment / Approval Status | Per-stage counts of deployed and pending agents |
+| Shared Assets | Tools, knowledge collections, etc. shared by you or the organization |
 
 > Operations widgets require System Administrator permissions (`admin.system:*` family). When someone reports "I can't see the widget," check permission grants first.
+
+![/dashboard as seen by the System Administrator account — "System Operations & Deployment Dashboard" subtitle with operations widgets (Agent Deployment/Approval Status, Recent User Feedback, Shared Assets) added to the common widgets](images/dashboard-system-admin.png)
 
 ### Operational Usage
 
@@ -54,6 +58,8 @@ The main screen for users responsible for **risk, control, and audit** of AI usa
 
 ### Governance-Only Widgets (requires `admin.governance:*`)
 
+On top of the System Administrator operations widgets, the following governance-policy widgets are added.
+
 | Widget | Contents |
 |---|---|
 | Risk Policy | Active status · grade ranges (critical/high/medium/low) · evaluation category and check-item counts |
@@ -61,6 +67,8 @@ The main screen for users responsible for **risk, control, and audit** of AI usa
 | Agent Approval Queue | Agents waiting on governance review for exceeding the risk threshold |
 
 These widgets only appear in the widget grid for accounts with `admin.governance:*`. Without the permission they are not even listed.
+
+![/dashboard as seen by the Governance Officer account — same "System Operations & Deployment Dashboard" subtitle with Risk Policy / Forbidden-Word Policy / Approval Queue widgets alongside the operations widgets](images/dashboard-governance.png)
 
 ### Operational Usage
 

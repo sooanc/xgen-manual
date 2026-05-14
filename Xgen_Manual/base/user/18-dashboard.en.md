@@ -36,27 +36,35 @@ Use the **More >** link in each panel header to navigate to the full list.
 
 ## Standard User View
 
-The main screen for users who **consume** the agents the organization has already deployed, via chat. Widgets focus on **frequently used agents and popular templates** so you can jump straight to a familiar agent.
+The main screen for users who **consume** the agents the organization has already deployed, via chat. The greeting subtitle reads **"Agent 활용 Dashboard"** with the helper text "Easily run agents shared with you and review service-request status and feedback at a glance."
 
 | Widget | Contents |
 |---|---|
 | Top 3 Frequent Agents | Top 3 agents you call most often |
 | Popular Agent Templates | Templates with the most views / clones |
+| Shared With Me | Agents that other users have shared with you |
+| My Feedback | Your overall satisfaction score and feedback-participation rate summary |
 
-If the widgets look empty they will fill in as your activity accumulates. "Top 3 Frequent Agents" requires that you have already called some agents.
+If the widgets look empty they will fill in as your activity accumulates.
+
+![/dashboard as seen by the Standard User account — "Agent 활용 Dashboard" subtitle and widgets: Top 3 Frequent Agents, Popular Agent Templates, Shared With Me, My Feedback](images/dashboard-standard.png)
 
 ## Agent Developer View
 
-The main screen for users who **build and deploy** agents themselves. On top of the Standard User widgets, it adds widgets so you can see **operations metrics for the agents you own** and **approval queue status** at a glance.
+The main screen for users who **build and deploy** agents themselves. The greeting subtitle is the same **"Agent 활용 Dashboard"** as the Standard User view, with **My Agentflow Status** and **Shared Assets** widgets added to the grid.
 
 | Widget | Contents |
 |---|---|
 | Top 3 Frequent Agents | (Shared) Agents you call most often |
 | Popular Agent Templates | (Shared) Templates with the most views / clones |
-| My Agent Operations Metrics | Call volume and failure-rate summary for agents you own |
-| Pending Approval Agents | Your agents currently awaiting governance approval due to risk threshold |
+| Shared With Me | (Shared) Agents shared by other users |
+| My Feedback | (Shared) Your feedback summary |
+| My Agentflow Status | Total / shared / deployed counts and recent items for your agentflows |
+| Shared Assets | Summary of tools, knowledge collections, etc. you have shared |
 
-The operations and approval widgets do not appear when you own no agents. Right after your first deployment, if a widget is empty, use it as a shortcut into [Agent Operations](13-agentflow-operations.md).
+The My Agentflow Status widget may be empty right after first deployment until data accumulates. Use it as a shortcut into [Agent Operations](13-agentflow-operations.md).
+
+![/dashboard as seen by the Agent Developer account — Standard-User widgets plus "My Agentflow Status" and "Shared Assets" widgets](images/dashboard-developer.png)
 
 ## Customizing Widgets
 
@@ -82,7 +90,7 @@ A full-page scroll of the dashboard:
 ## Common Issues
 
 - **My widgets are empty** — they fill in over time as your activity accumulates. "Top 3 Frequent Agents" only appears after you call some agents.
-- **My layout differs from a colleague's** — widget visibility, order, and hidden state are saved per user. The base widget *list* itself also differs between Standard Users and Agent Developers.
+- **My layout differs from a colleague's** — widget visibility, order, and hidden state are saved per user. The base widget *list* itself also differs between Standard Users and Agent Developers — both share the "Agent 활용 Dashboard" subtitle, but Agent Developers see additional widgets for the assets they own.
 - **Last login time is missing** — the **Last login** indicator left of your username should show your previous session. If it is missing or doesn't match your memory, contact an administrator immediately (potential security incident).
 
 ## Related Chapters
