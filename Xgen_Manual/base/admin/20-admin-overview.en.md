@@ -35,7 +35,7 @@ The Admin sidebar is organized into the following 11 sections (some may be hidde
 |---|---|---|---|
 | Users / Access Control | 사용자 / 접근제어 | User Management, Role/Permission Management | [User Management](21-user-management.md), [Role/Permission](22-role-permission.md) |
 | Agent Operations | Agent 운영 | Planning, Agent Management, Chat Monitoring, User Tokens, Node Management, Prompt Templates | (not covered) |
-| Environment | 환경 설정 | General, **LLM**, Infrastructure, **Search / Embedding**, Audio, Guardrails, Sidebar | [LLM Settings](23-llm-settings.md), [Embedding Settings](24-embedding-settings.md) |
+| Environment | 환경 설정 | General, **LLM**, Infrastructure, **Search / Embedding**, Audio, **Guardrail**, Sidebar | [LLM Settings](23-llm-settings.md), [Embedding Settings](24-embedding-settings.md), [Guardrail Model Setup](25b-guardrail-model.md) |
 | System Status | 시스템 상태 | **System Monitoring**, System Inspection, Log Viewer | [System Monitor](26-system-monitor.md) |
 | Security & Audit | 보안 & 감사 | Security Settings, **Audit Log**, Error Logs | [Audit Log](27-audit-log.md) |
 | Data Management | 데이터 관리 | Databases, Scheduled Queries, Batch Jobs, Data Audit Logs | (not covered) |

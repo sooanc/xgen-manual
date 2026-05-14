@@ -49,8 +49,11 @@ const SHOTS = [
   // 24-embedding-settings.md
   { view: 'admin-setting-embed', file: 'admin-embed.png', label: 'Embedding / Search settings' },
 
-  // 25-pii-policy.md
-  { view: 'admin-setting-guarder', file: 'admin-guardrails.png', label: 'Guardrails / PII policies' },
+  // 25-pii-policy.md  (AI 통제 정책 — gov-control-policy 항목은 29 절 아래에 함께 캡처)
+  // (PII / 금칙어 / AI 위험도 등급 탭별 캡처는 별도 스크립트 scripts/capture-control-policy.mjs 참조)
+
+  // 25b-guardrail-model.md  (환경 설정 → 가드레일: 외부 Guard 모델 호출 설정)
+  { view: 'admin-setting-guarder', file: 'admin-guardrails.png', label: 'Guardrail model setup (external Guard endpoint)' },
 
   // 26-system-monitor.md
   { view: 'admin-system-monitor', file: 'admin-system-monitor.png', label: 'System monitoring' },
@@ -65,7 +68,8 @@ const SHOTS = [
   // 29-governance-dashboard.md
   { view: 'gov-monitoring', file: 'admin-gov-monitoring.png', label: 'Governance monitoring' },
   { view: 'gov-risk-management', file: 'admin-gov-risk.png', label: 'AI risk assessment' },
-  { view: 'gov-control-policy', file: 'admin-gov-control-policy.png', label: 'Control policy management' },
+  // gov-control-policy: 25-pii-policy.md(PII 탭 기본 노출) + 29-governance-dashboard.md(요약 위젯) 양쪽이 참조
+  { view: 'gov-control-policy', file: 'admin-gov-control-policy.png', label: 'Control policy management (AI 통제 정책)' },
   { view: 'gov-audit-tracking', file: 'admin-gov-audit-tracking.png', label: 'Service change history' },
 
   // 30-dashboard.md  (admin 로그인 상태로 본 /dashboard)

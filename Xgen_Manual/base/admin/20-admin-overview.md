@@ -35,7 +35,7 @@
 |---|---|---|---|
 | 사용자 / 접근제어 | Users / Access Control | 사용자 관리, 역할/권한 관리 | [사용자 관리](21-user-management.md), [역할/권한 관리](22-role-permission.md) |
 | Agent 운영 | Agent Operations | 업무기획, Agent 관리, 채팅 모니터링, 사용자 토큰, 노드 관리, 프롬프트 템플릿 | (별도 챕터 미수록) |
-| 환경 설정 | Environment | 전체 설정, **LLM**, 인프라, **검색 / 임베딩**, 오디오, 가드레일, 사이드바 | [LLM 설정](23-llm-settings.md), [임베딩·벡터 검색 설정](24-embedding-settings.md) |
+| 환경 설정 | Environment | 전체 설정, **LLM**, 인프라, **검색 / 임베딩**, 오디오, **가드레일**, 사이드바 | [LLM 설정](23-llm-settings.md), [임베딩·벡터 검색 설정](24-embedding-settings.md), [가드레일 모델 설정](25b-guardrail-model.md) |
 | 시스템 상태 | System Status | **시스템 모니터링**, 시스템 조회, 로그 조회 | [시스템 모니터](26-system-monitor.md) |
 | 보안 & 감사 | Security & Audit | 보안 설정, **감사 로그**, 에러 로그 | [감사 로그](27-audit-log.md) |
 | 데이터 관리 | Data Management | 데이터베이스, 스케줄 쿼리, 배치 작업, 데이터 감사 로그 | (별도 챕터 미수록) |
