@@ -1,6 +1,6 @@
 # Dashboard (Admin View)
 
-The `/dashboard` screen you land on after login is shared by all users, but accounts with admin permissions see additional governance / operations widgets and have all four quick-jump buttons enabled.
+The `/dashboard` screen you land on after login is shared by all users, but accounts with admin permissions see additional governance / operations widgets and have the **Admin Settings** quick-jump button enabled.
 
 > Refer to [User Manual · Dashboard](../user/18-dashboard.md) first for layout fundamentals and widget customization. This chapter covers the **admin-only additions**, split into the **System Administrator view** and the **Governance Officer view**.
 
@@ -8,14 +8,16 @@ The `/dashboard` screen you land on after login is shared by all users, but acco
 
 ## Shared Across Both Admin Roles
 
-### All Four Quick-Jump Buttons Enabled
+### Admin Settings Button Enabled
 
-| Button | Destination | Purpose |
-|---|---|---|
-| Agent Workspace | `/main?view=agentflows` | Operate agentflows (same as user) |
-| AI Model Management | `/admin?view=admin-ml-model-control` | LLM / embedding model management |
-| AI Governance | `/admin?view=admin-gov-risk-management` | Risk-grade and forbidden-word policies |
-| Admin Settings | `/admin?view=admin-role-management` | Users, roles, permissions |
+The two quick-jump buttons at the top-right of the dashboard — **Agent Workspace** and **Admin Settings** — are simplified to those two only, and the **Admin Settings** button is enabled for any admin account.
+
+| Button | Destination | Standard User / Agent Developer | Admin |
+|---|---|---|---|
+| Agent Workspace | `/main?view=agentflows` | Enabled | Enabled |
+| Admin Settings | `/admin` | Disabled | **Enabled** (entry to all admin screens: users, roles, LLM, governance, etc.) |
+
+> After entering `/admin`, use the left sidebar to navigate to AI Model Management, AI Governance, Users / Access Control, Environment, and other detailed areas.
 
 ### Right-Panel Interpretation Differs
 
@@ -42,7 +44,7 @@ For system administrators (`system_admin` role), the greeting subtitle reads **"
 ### Operational Usage
 
 1. **Daily system health check** — Once a day, inspect threshold-exceeding items in the widget directly below the welcome message. If alerts are missing, review [System Monitor](26-system-monitor.md) alert settings.
-2. **Shortcut entries reduce friction** — Use **Admin Settings** for permission grants and **AI Model Management** for LLM registration.
+2. **Shortcut entries reduce friction** — Use the **Admin Settings** button to enter all admin screens (permission grants, LLM registration, etc.) in one step.
 3. **Catch high-impact issues quickly** — Scan the right panel's **Latest Updates** (all-user notices) and **Recent Service Requests TOP 3** to surface user-impacting issues.
 4. **Share a recommended widget layout** — When onboarding a new admin, recommend: in their account, **Reset** → arrange the recommended widget configuration → screenshot it into operations docs (widget settings are per-user; forced sync is not supported).
 
@@ -64,7 +66,7 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 
 1. **Daily approval-queue triage** — Review new items in the main-screen **Agent Approval Queue** daily. Detailed review and approval happens in [AI Governance - Risk Review](29-governance-dashboard.md#ai-위험도-평가-및-심사).
 2. **Verify policy reflection immediately after changes** — After editing a risk-grade or forbidden-word policy, confirm the dashboard **Risk Policy** / **Forbidden-Word Policy** widgets update instantly. If they do not, suspect a cache or permission-sync issue.
-3. **Shortcut entries** — Use the **AI Governance** button to jump directly into policy editing.
+3. **Shortcut entries** — Click **Admin Settings** and pick **AI Governance** from the left sidebar to edit policies.
 
 ## Common Operational Issues
 

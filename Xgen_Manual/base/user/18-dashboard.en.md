@@ -12,16 +12,14 @@ The dashboard has three parts: the **welcome message** at the top, the **left wi
 
 ### Welcome Message and Quick Navigation
 
-The card opens with "Welcome, OOO! Which Agent would you like to start today's tasks with?" Of the four quick-jump buttons below, only the ones your permission covers are active.
+The card opens with "Welcome, OOO! Which Agent would you like to start today's tasks with?" Two quick-jump buttons appear to its right, and only the ones your permission covers are active.
 
 | Button | Target | Standard User | Agent Developer |
 |---|---|---|---|
 | Agent Workspace | `/main?view=agentflows` | Enabled (enters Chat) | Enabled (enters Build) |
-| AI Model Management | `/admin?view=admin-ml-model-control` | Disabled | Disabled |
-| AI Governance | `/admin?view=admin-gov-risk-management` | Disabled | Disabled |
-| Admin Settings | `/admin?view=admin-role-management` | Disabled | Disabled |
+| Admin Settings | `/admin` | Disabled | Disabled |
 
-> For the admin-side button states (all four active), see the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
+> To see the **Admin Settings** button active, refer to the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
 ### Right Fixed Panel
 

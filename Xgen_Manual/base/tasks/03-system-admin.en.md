@@ -5,7 +5,7 @@
 ## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
 - Procedure: [Dashboard · System Administrator view](../admin/30-dashboard.md#system-administrator-view)
-- System Administrators see the "System Operations & Deployment Dashboard" greeting, **all 4 quick-action buttons enabled**, and **system health / operations metrics** widgets.
+- System Administrators see the "System Operations & Deployment Dashboard" greeting, the **Admin Settings** quick-action button enabled, and **system health / operations metrics** widgets.
 
 ## I just received a fresh deployment, what should I check first?
 - [Admin Console Overview - First-Time Checklist](../admin/20-admin-overview.md#첫-사용-시-점검-체크리스트)
