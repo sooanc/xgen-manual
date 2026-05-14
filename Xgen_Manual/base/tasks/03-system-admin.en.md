@@ -2,6 +2,11 @@
 
 > Operators of solution infrastructure, users, authentication, and LLM connections. They use most of Admin Settings.
 
+## See the main screen tailored to my role right after login
+- Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
+- Procedure: [Dashboard · System Administrator view](../admin/30-dashboard.md#system-administrator-view)
+- System Administrators see the "System Operations & Deployment Dashboard" greeting, **all 4 quick-action buttons enabled**, and **system health / operations metrics** widgets.
+
 ## I just received a fresh deployment, what should I check first?
 - [Admin Console Overview - First-Time Checklist](../admin/20-admin-overview.md#첫-사용-시-점검-체크리스트)
 - Essentials: enable superuser → register LLM provider → connect embedding/vector DB → define roles

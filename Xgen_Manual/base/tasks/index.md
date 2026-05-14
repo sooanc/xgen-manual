@@ -10,10 +10,10 @@
 
 | 역할 | 주요 관심사 | 바로가기 |
 |---|---|---|
-| 일반 사용자 | Agent 채팅·기술지원·대시보드 | [→ 일반 사용자](01-standard-user.md) |
-| Agent 개발자 | Agent 설계·배포·승인 | [→ Agent 개발자](02-agent-developer.md) |
-| 시스템 관리자 | 사용자·권한·LLM·시스템 운영 | [→ 시스템 관리자](03-system-admin.md) |
-| 거버넌스 담당자 | 승인·통제 정책·감사 | [→ 거버넌스 담당자](04-governance-officer.md) |
+| 일반 사용자 | Agent 채팅·기술지원·역할 대시보드 | [→ 일반 사용자](01-standard-user.md) |
+| Agent 개발자 | Agent 설계·배포·승인·역할 대시보드 | [→ Agent 개발자](02-agent-developer.md) |
+| 시스템 관리자 | 사용자·권한·LLM·시스템 운영·역할 대시보드 | [→ 시스템 관리자](03-system-admin.md) |
+| 거버넌스 담당자 | 승인·통제 정책·감사·역할 대시보드 | [→ 거버넌스 담당자](04-governance-officer.md) |
 
 ## 못 찾으셨나요?
 

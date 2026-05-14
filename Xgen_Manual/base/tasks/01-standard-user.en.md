@@ -1,15 +1,15 @@
 # Standard User
 
-> Users who **consume** the agents the organization has already deployed, via chat. Available menus are limited to **Agent Chat / Technical Support / Dashboard**. Anything else (Agent Creation, Tool Integration, Knowledge Management) requires Agent Developer privileges.
+> Users who **consume** the agents the organization has already deployed, via chat. Available menus are **Agent Chat / Technical Support / Dashboard**. Anything else (Agent Creation, Tool Integration, Knowledge Management) requires Agent Developer privileges.
 
 ## I want to chat with an agent
 - Start: left sidebar **Agent Chat → New Chat**
 - Procedure: [Chat](../user/14-chat.md)
 
-## Open the main screen after login (Dashboard)
+## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
-- Procedure: [Dashboard](../user/18-dashboard.md)
-- Scope: the main screen shown to every account with standard-user permission. Aggregates notices, FAQ, and other base-tier content. Governance and system-operations widgets render for users who hold the corresponding permission.
+- Procedure: [Dashboard · Standard User view](../user/18-dashboard.md#standard-user-view)
+- Standard users see a consumption-focused main screen with widgets like Top-3 frequent agents, popular templates, notices, and FAQs.
 
 ## I want to find notices, FAQ, or submit an inquiry
 - Start: left sidebar **Technical Support**

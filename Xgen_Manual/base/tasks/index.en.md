@@ -10,10 +10,10 @@ Pick your role from the left sidebar or the table below.
 
 | Role | Concerns | Jump |
 |---|---|---|
-| Standard User | Chat with agents, tech support, dashboard | [→ Standard User](01-standard-user.md) |
-| Agent Developer | Design, deploy, get approval | [→ Agent Developer](02-agent-developer.md) |
-| System Administrator | Users, permissions, LLM, infrastructure | [→ System Administrator](03-system-admin.md) |
-| Governance Officer | Approval, control policy, audit | [→ Governance Officer](04-governance-officer.md) |
+| Standard User | Chat with agents, tech support, role dashboard | [→ Standard User](01-standard-user.md) |
+| Agent Developer | Design, deploy, get approval, role dashboard | [→ Agent Developer](02-agent-developer.md) |
+| System Administrator | Users, permissions, LLM, infrastructure, role dashboard | [→ System Administrator](03-system-admin.md) |
+| Governance Officer | Approval, control policy, audit, role dashboard | [→ Governance Officer](04-governance-officer.md) |
 
 ## Didn't Find It?
 

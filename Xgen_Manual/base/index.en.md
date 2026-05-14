@@ -6,18 +6,18 @@
 
 This manual is the user and administrator guide for the {{product.name}} solution. You can navigate it in two ways.
 
-## 👉 Quick Start — [Task Guide](tasks/index.md)
+## Quick Start — [Task Guide](tasks/index.md)
 
 Find the right chapter by your **role and what you want to do** — no need to memorize menus. Pick one of these four roles:
 
-- Standard User — chat with agents, technical support, personal dashboard
+- Standard User — chat with agents, technical support
 - Agent Developer — design, deploy, get approval
 - System Administrator — users, permissions, LLM, infrastructure
 - Governance Officer — approval, control policy, audit
 
 → [Open the Task Guide](tasks/index.md)
 
-## 📚 Menu Reference
+## Menu Reference
 
 Use this when you already know which menu you're after and want full detail.
 

@@ -2,6 +2,11 @@
 
 > Users responsible for **risk, control, and audit** of AI usage. Usually a different role from the system administrator.
 
+## See the main screen tailored to my role right after login
+- Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
+- Procedure: [Dashboard · Governance Officer view](../admin/30-dashboard.md#governance-officer-view)
+- Governance Officers (with `admin.governance:*`) see governance-only widgets — **Risk-Level Policy status**, **Banned-Term Policy status**, and the **agent approval queue** — on the main screen.
+
 ## Review and approve pending agents
 - Start: Admin Settings → AI Governance → Risk Review → Agent Approval
 - Procedure: [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
@@ -30,6 +35,6 @@
 - Start: Admin Settings → AI Governance → Inspection
 - Procedure: [AI Governance - Inspection](../admin/29-governance-dashboard.md#ai-점검-이력-및-계획)
 
-## Show me the governance overview dashboard
+## Show me the governance overview
 - Start: Admin Settings → AI Governance (default landing)
 - Procedure: [AI Governance](../admin/29-governance-dashboard.md)

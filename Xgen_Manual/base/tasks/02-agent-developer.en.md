@@ -33,5 +33,10 @@
 - Procedure: [Create an Agentflow - Add Nodes](../user/12-agentflow-create.md#노드-추가)
 
 ## I want to see call statistics and failure rate for my deployed agents
-- Start: header **Dashboard** or sidebar **Agent Operations**
+- Start: left sidebar **Agent Operations**
 - Procedure: [Agentflow Operations](../user/13-agentflow-operations.md)
+
+## See the main screen tailored to my role right after login
+- Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
+- Procedure: [Dashboard · Agent Developer view](../user/18-dashboard.md#agent-developer-view)
+- Agent Developers see all Standard-User widgets plus build/deploy widgets such as **operations metrics for my agents** and **approval queue status**.

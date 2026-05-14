@@ -2,26 +2,26 @@
 
 The first screen shown immediately after login. The URL path is `{{product.domain}}/dashboard`. It collects quick-jump shortcuts to frequently used screens and widgets summarizing your activity.
 
-## Layout
+> One URL, but **the widgets and quick-action buttons differ depending on the role of the logged-in account.** Standard Users and Agent Developers see different layouts, and the System Administrator / Governance Officer variants are covered separately in the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
-The dashboard has three parts: the **greeting card** at the top, the **left widget grid**, and the **right fixed support panel**.
+## Layout (Shared Skeleton)
+
+The dashboard has three parts: the **greeting card** at the top, the **left widget grid**, and the **right fixed support panel**. The skeleton is the same for every role; only the widgets and buttons inside change based on permissions.
 
 ![Dashboard overview — greeting card, left widget grid, and right fixed panel in one view](images/dashboard-overview.png)
 
-> The governance widgets (Risk Policy, Forbidden-Word Policy) shown above only appear for accounts with admin permissions. End users see only personal-activity widgets like "Top 3 Frequent Agents" and "Popular Agent Templates".
-
 ### Greeting Card and Quick Navigation
 
-The card opens with "Welcome, OOO! Which Agent would you like to start today's tasks with?" Of the four quick-jump buttons below, only **Agent Workspace** (`/main?view=agentflows`) is meaningful for end users. The other three (AI Model Management, AI Governance, Admin Settings) require admin permissions.
+The card opens with "Welcome, OOO! Which Agent would you like to start today's tasks with?" Of the four quick-jump buttons below, only the ones your permission covers are active.
 
-### Left Widget Grid
+| Button | Target | Standard User | Agent Developer |
+|---|---|---|---|
+| Agent Workspace | `/main?view=agentflows` | Enabled (enters Chat) | Enabled (enters Build) |
+| AI Model Management | `/admin?view=admin-ml-model-control` | Disabled | Disabled |
+| AI Governance | `/admin?view=admin-gov-risk-management` | Disabled | Disabled |
+| Admin Settings | `/admin?view=admin-role-management` | Disabled | Disabled |
 
-The following widgets surface based on your permissions and usage history.
-
-| Widget | Contents |
-|---|---|
-| Top 3 Frequent Agents | Top 3 agents you call most often |
-| Popular Agent Templates | Templates with the most views / clones |
+> For the admin-side button states (all four active), see the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
 ### Right Fixed Panel
 
@@ -35,6 +35,30 @@ Always shown in the same position regardless of widget grid customization.
 | My Inquiries | Your 3 most recent 1:1 inquiries | `/main?view=support-qna` |
 
 Use the **More >** link in each panel header to navigate to the full list.
+
+## Standard User View
+
+The main screen for users who **consume** the agents the organization has already deployed, via chat. Widgets focus on **frequently used agents and popular templates** so you can jump straight to a familiar agent.
+
+| Widget | Contents |
+|---|---|
+| Top 3 Frequent Agents | Top 3 agents you call most often |
+| Popular Agent Templates | Templates with the most views / clones |
+
+If the widgets look empty they will fill in as your activity accumulates. "Top 3 Frequent Agents" requires that you have already called some agents.
+
+## Agent Developer View
+
+The main screen for users who **build and deploy** agents themselves. On top of the Standard User widgets, it adds widgets so you can see **operations metrics for the agents you own** and **approval queue status** at a glance.
+
+| Widget | Contents |
+|---|---|
+| Top 3 Frequent Agents | (Shared) Agents you call most often |
+| Popular Agent Templates | (Shared) Templates with the most views / clones |
+| My Agent Operations Metrics | Call volume and failure-rate summary for agents you own |
+| Pending Approval Agents | Your agents currently awaiting governance approval due to risk threshold |
+
+The operations and approval widgets do not appear when you own no agents. Right after your first deployment, if a widget is empty, use it as a shortcut into [Agentflow Operations](13-agentflow-operations.md).
 
 ## Customizing Widgets
 
@@ -60,8 +84,12 @@ A full-page scroll of the dashboard:
 ## Common Issues
 
 - **My widgets are empty** — they fill in over time as your activity accumulates. "Top 3 Frequent Agents" only appears after you call some agents.
-- **My layout differs from a colleague's** — widget visibility, order, and hidden state are saved per user, so this is expected.
+- **My layout differs from a colleague's** — widget visibility, order, and hidden state are saved per user. The base widget *list* itself also differs between Standard Users and Agent Developers.
 - **Last login time is missing** — the **Last login** indicator left of your username should show your previous session. If it is missing or doesn't match your memory, contact an administrator immediately (potential security incident).
+
+## Related Chapters
+
+- [Dashboard (Admin View)](../admin/30-dashboard.md) — additional widgets and operational usage for System Administrators and Governance Officers.
 
 ## Inquiries
 
