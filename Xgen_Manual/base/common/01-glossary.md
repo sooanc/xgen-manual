@@ -8,7 +8,7 @@
 |---|---|---|
 | Xgen | Xgen | 자연어 기반 AI 업무 자동화 솔루션의 제품명 |
 | Agent 작업실 | Agent Workspace | 에이전트와 에이전트플로우를 만들고 운영하는 사용자 작업 공간 |
-| 관리 설정 | Admin Settings | 시스템 관리자만 접근 가능한 설정 영역 |
+| 관리 설정 | Admin Center | SuperUser 권한을 가진 사용자만 접근 가능한 공간 |
 | 대시보드 | Dashboard | 현황·통계를 한눈에 보는 시작 화면 |
 
 ## 핵심 객체

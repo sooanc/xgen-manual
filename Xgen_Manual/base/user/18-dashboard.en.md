@@ -17,9 +17,9 @@ The card opens with "Welcome, OOO! Which Agent would you like to start today's t
 | Button | Target | Standard User | Agent Developer |
 |---|---|---|---|
 | Agent Workspace | `/main?view=agentflows` | Enabled (enters Chat) | Enabled (enters Build) |
-| Admin Settings | `/admin` | Disabled | Disabled |
+| Admin Center | `/admin` | Disabled | Disabled |
 
-> To see the **Admin Settings** button active, refer to the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
+> To see the **Admin Center** button active, refer to the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
 ### Right Fixed Panel
 

@@ -29,7 +29,7 @@
 - Procedure: [Auth Profile](../user/17-auth-profile.md)
 
 ## My agent is pending governance approval
-- Start: Admin Settings → AI Governance → Agent Approval
+- Start: Admin Center → AI Governance → Agent Approval
 - Procedure: [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
 - Note: if you don't have approval rights yourself, ask the governance officer to review
 

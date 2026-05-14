@@ -4,13 +4,13 @@ This chapter covers what a system administrator needs to know upon first logging
 
 ## Access
 
-The admin console is not reached via a direct URL. Click the **Admin Settings** button — one of the two mode-switch buttons (**Agent Workspace** / **Admin Settings**) at the top-left of the solution — to enter the admin area.
+The admin console is not reached via a direct URL. Click the **Admin Center** button — one of the two mode-switch buttons (**Agent Workspace** / **Admin Center**) at the top-left of the solution — to enter the admin area.
 
 1. Log in with an account that has administrator privileges
-2. From the top-left mode-switch buttons (**Agent Workspace** / **Admin Settings**), click **Admin Settings**
+2. From the top-left mode-switch buttons (**Agent Workspace** / **Admin Center**), click **Admin Center**
 3. You land on the **Admin Control Center** overview, which presents the responsibilities, primary menus, and operations guide in three steps (STEP 1–3)
 
-![Admin Settings entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (Governance Officer / System Administrator split), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, AI Governance, etc. — 9 cards), with the 11-section admin sidebar on the left](images/admin-entry.png)
+![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (Governance Officer / System Administrator split), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, AI Governance, etc. — 9 cards), with the 11-section admin sidebar on the left](images/admin-entry.png)
 
 The main column is organized into three steps:
 

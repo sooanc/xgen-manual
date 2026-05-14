@@ -1,13 +1,13 @@
 # Data Management
 
-This chapter covers **direct database access, batch operations, and data audit** for the solution's operational database. The **Admin Settings → Data Management** sidebar group has 4 menus covered here.
+This chapter covers **direct database access, batch operations, and data audit** for the solution's operational database. The **Admin Center → Data Management** sidebar group has 4 menus covered here.
 
 !!! warning "Separate read vs. write privileges"
     The Data Management screens reach into the live operational database (PostgreSQL). Misuse can cause data loss. Grant general admins **read-only** access and reserve write access for a dedicated DB operator.
 
 ## Accessing the Screen
 
-Expand **Admin Settings → Data Management** in the left sidebar to reveal 4 submenus.
+Expand **Admin Center → Data Management** in the left sidebar to reveal 4 submenus.
 
 ![Databases — header shows DB status (connected) · DB name (postgresql) · version · table count (131). Left list of all tables, right pane with SQL query input and results panel.](images/admin-database.png)
 

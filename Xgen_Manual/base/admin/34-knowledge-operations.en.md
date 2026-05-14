@@ -1,12 +1,12 @@
 # Knowledge Operations
 
-This chapter covers organization-wide **TTL and retention policies** for knowledge collections. The single menu **Admin Settings → Knowledge Operations → Collection Management** is in scope.
+This chapter covers organization-wide **TTL and retention policies** for knowledge collections. The single menu **Admin Center → Knowledge Operations → Collection Management** is in scope.
 
 > For *creating* collections, uploading documents, and running embeddings, see the user-side [Knowledge Management](../user/15-knowledge.md) chapter. This chapter is the admin lens for fleet-wide **lifecycle policy**.
 
 ## Accessing the Screen
 
-Select **Admin Settings → Knowledge Operations → Collection Management** in the left sidebar.
+Select **Admin Center → Knowledge Operations → Collection Management** in the left sidebar.
 
 ![Collection Management — TTL policy inputs (max TTL / default TTL / trash grace period) at the top, full collection table below (name / owner / status / expiry / scheduled permanent deletion)](images/admin-knowledge-collection.png)
 

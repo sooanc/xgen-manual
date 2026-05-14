@@ -23,7 +23,7 @@ Use this when you already know which menu you're after and want full detail.
 
 - [**Common**](common/) — solution overview, terminology, shared content
 - [**User**](user/) — screens used by end users and developers (Agent Workspace)
-- [**Admin**](admin/) — screens used by system administrators and governance officers (Admin Settings)
+- [**Admin**](admin/) — screens used by system administrators and governance officers (Admin Center)
 
 ## Build Source
 

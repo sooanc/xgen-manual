@@ -1,12 +1,12 @@
 # Agent Operations
 
-This chapter covers the **administrative oversight** of all agents in the organization. The **Admin Settings → Agent Operations** sidebar group exposes 9 menus covered here.
+This chapter covers the **administrative oversight** of all agents in the organization. The **Admin Center → Agent Operations** sidebar group exposes 9 menus covered here.
 
 > For the *builder* perspective on creating and running agents, see the user-side [Creating an Agent](../user/12-agentflow-create.md) and [Agent Operations](../user/13-agentflow-operations.md) chapters. This chapter is the **admin-side** view of the organization's entire agent fleet.
 
 ## Accessing the Screen
 
-Expand **Admin Settings → Agent Operations** in the left sidebar to reveal 9 submenus.
+Expand **Admin Center → Agent Operations** in the left sidebar to reveal 9 submenus.
 
 ![Agent Management — card grid of all agentflows registered in the organization, filtered by status / owner. The left sidebar shows the Agent Operations group with its 9 menus expanded.](images/admin-agent-management.png)
 

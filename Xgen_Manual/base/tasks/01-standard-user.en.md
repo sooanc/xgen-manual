@@ -9,7 +9,7 @@
 ## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
 - Procedure: [Dashboard · Standard User view](../user/18-dashboard.md#standard-user-view)
-- Standard users see a consumption-focused main screen with widgets like Top-3 frequent agents, popular templates, notices, and FAQs.
+- Standard users see a usage-focused main screen with widgets like Top-3 frequent agents, popular templates, notices, and FAQs.
 
 ## I want to find notices, FAQ, or submit an inquiry
 - Start: left sidebar **Technical Support**

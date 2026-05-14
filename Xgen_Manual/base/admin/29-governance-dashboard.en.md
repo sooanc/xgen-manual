@@ -1,10 +1,10 @@
 # AI Governance
 
-This chapter covers the **Admin Settings → AI Governance** menu and how to operate each screen. It is the area where the organization manages **risk assessment, inspection, audit, and control policies** for AI usage.
+This chapter covers the **Admin Center → AI Governance** menu and how to operate each screen. It is the area where the organization manages **risk assessment, inspection, audit, and control policies** for AI usage.
 
 ## Accessing the Screen
 
-Enter **Admin Settings** from the top-left mode switch, then expand the **AI Governance** section in the left sidebar. The page opens with the governance monitoring dashboard.
+Enter **Admin Center** from the top-left mode switch, then expand the **AI Governance** section in the left sidebar. The page opens with the governance monitoring dashboard.
 
 ![AI Governance Monitoring — combined dashboard organized as a widget grid](images/admin-gov-monitoring.png)
 

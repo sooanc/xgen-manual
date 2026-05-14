@@ -8,7 +8,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 |---|---|---|
 | Xgen | Xgen | Product name — natural-language AI work-automation solution |
 | Agent Workspace | Agent 작업실 | User workspace for creating and operating agents and agentflows |
-| Admin Settings | 관리 설정 | Settings area accessible only to system administrators |
+| Admin Center | 관리 설정 | Space accessible only to users with SuperUser permission |
 | Dashboard | 대시보드 | Landing screen showing status and statistics at a glance |
 
 ## Core Objects

@@ -20,6 +20,6 @@ Pick your role from the left sidebar or the table below.
 If your task isn't listed under one of the four roles, walk the menu structure directly.
 
 - [User Manual](../user/) — what end users and developers see
-- [Admin Manual](../admin/) — every Admin Settings menu
+- [Admin Manual](../admin/) — every Admin Center menu
 - [Glossary](../common/01-glossary.md) — terminology used throughout the manual
 - Still missing — contact {{vars.support_email}}
