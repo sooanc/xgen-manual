@@ -6,11 +6,11 @@ The first screen shown immediately after login. The URL path is `{{product.domai
 
 ## Layout (Shared Skeleton)
 
-The dashboard has three parts: the **greeting card** at the top, the **left widget grid**, and the **right fixed support panel**. The skeleton is the same for every role; only the widgets and buttons inside change based on permissions.
+The dashboard has three parts: the **welcome message** at the top, the **left widget grid**, and the **right fixed support panel**. The skeleton is the same for every role; only the widgets and buttons inside change based on permissions.
 
-![Dashboard overview — greeting card, left widget grid, and right fixed panel in one view](images/dashboard-overview.png)
+![Dashboard overview — welcome message, left widget grid, and right fixed panel in one view](images/dashboard-overview.png)
 
-### Greeting Card and Quick Navigation
+### Welcome Message and Quick Navigation
 
 The card opens with "Welcome, OOO! Which Agent would you like to start today's tasks with?" Of the four quick-jump buttons below, only the ones your permission covers are active.
 

@@ -25,7 +25,7 @@ The four items in the right fixed panel are the same as the user view, but **Rec
 
 The main screen for operators of solution infrastructure, users, authentication, and LLM connections.
 
-### Greeting Card Subtitle
+### Welcome Message Subtitle
 
 For system administrators (`system_admin` role), the greeting subtitle reads **"System Operations & Deployment Dashboard"** with the helper text "Continuously monitors AI platform health and operational status, supporting reliable service delivery."
 
@@ -41,7 +41,7 @@ For system administrators (`system_admin` role), the greeting subtitle reads **"
 
 ### Operational Usage
 
-1. **Daily system health check** — Once a day, inspect threshold-exceeding items in the widget directly below the greeting card. If alerts are missing, review [System Monitor](26-system-monitor.md) alert settings.
+1. **Daily system health check** — Once a day, inspect threshold-exceeding items in the widget directly below the welcome message. If alerts are missing, review [System Monitor](26-system-monitor.md) alert settings.
 2. **Shortcut entries reduce friction** — Use **Admin Settings** for permission grants and **AI Model Management** for LLM registration.
 3. **Catch high-impact issues quickly** — Scan the right panel's **Latest Updates** (all-user notices) and **Recent Service Requests TOP 3** to surface user-impacting issues.
 4. **Share a recommended widget layout** — When onboarding a new admin, recommend: in their account, **Reset** → arrange the recommended widget configuration → screenshot it into operations docs (widget settings are per-user; forced sync is not supported).
