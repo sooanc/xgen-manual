@@ -8,9 +8,19 @@ The admin console is not reached via a direct URL. Click the **Admin Settings** 
 
 1. Log in with an account that has administrator privileges
 2. From the top-left mode-switch buttons (**Agent Workspace** / **Admin Settings**), click **Admin Settings**
-3. You land on **Environment → All Settings**, the default entry point of the admin console
+3. You land on the **Admin Control Center** overview, which presents the responsibilities, primary menus, and operations guide in three steps (STEP 1–3)
 
-![Admin Settings entry — clicking "Admin Settings" in the top-left mode-switch buttons opens Environment → All Settings](images/admin-entry.png)
+![Admin Settings entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (Governance Officer / System Administrator split), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, AI Governance, etc. — 9 cards), with the 11-section admin sidebar on the left](images/admin-entry.png)
+
+The main column is organized into three steps:
+
+| Step | Content |
+|---|---|
+| STEP 1 — Understanding Admin Areas | Explains the split between "Governance Officer" and "System Administrator" responsibilities. AI Governance is governed by a separate permission system and is intentionally decoupled from general system administration. |
+| STEP 2 — Pick a Main Menu | Exposes the 9 admin areas (Users / Access Control, Agent Operations, AI Governance, Environment, System Status, Data Management, MCP Management, Service Operations, Knowledge Operations) as cards. Clicking a card opens that area's default screen. |
+| STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, system-security review, and AI governance policy operation. |
+
+See the [Admin Console Layout](#admin-console-layout) table below for the full menu breakdown.
 
 !!! note "Administrator Privileges Required"
     All features in the admin console are available only to accounts with **Administrator** or **Superuser** privileges. Standard users do not see the menu at all.
