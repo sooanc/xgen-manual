@@ -43,7 +43,9 @@ On top of the Standard User / Agent Developer widgets, **operations and deployme
 
 > Operations widgets require System Administrator permissions (`admin.system:*` family). When someone reports "I can't see the widget," check permission grants first.
 
-![/dashboard as seen by the System Administrator account — "System Operations & Deployment Dashboard" subtitle with operations widgets (Agent Deployment/Approval Status, Recent User Feedback, Shared Assets) added to the common widgets](images/dashboard-system-admin.png)
+> The image below is a **full-page scroll** of `/dashboard` viewed by the System Administrator account. Operations widgets extend well past one viewport — so this is captured with the page fully scrolled. For just the top of the page, refer to `dashboard-system-admin.png`.
+
+![/dashboard (full scroll) as seen by the System Administrator account — "System Operations & Deployment Dashboard" subtitle with operations widgets (Agent Deployment/Approval Status, Recent User Feedback, Shared Assets, Total User Status, MCP Station, Cost Status) added to the common widgets](images/dashboard-system-admin-full.png)
 
 ### Operational Usage
 
@@ -58,17 +60,21 @@ The main screen for users responsible for **risk, control, and audit** of AI usa
 
 ### Governance-Only Widgets (requires `admin.governance:*`)
 
-On top of the System Administrator operations widgets, the following governance-policy widgets are added.
+On top of the System Administrator operations widgets, the following governance-policy and evaluation widgets appear toward the bottom of the page.
 
 | Widget | Contents |
 |---|---|
-| Risk Policy | Active status · grade ranges (critical/high/medium/low) · evaluation category and check-item counts |
-| Forbidden-Word Policy | Total / enabled / disabled rule counts · top 5 rules |
-| Agent Approval Queue | Agents waiting on governance review for exceeding the risk threshold |
+| PII Policy Status | Total / Active / Inactive counts of registered PII policies, plus top policy names (e.g., 39 / 1 / 38) |
+| Forbidden-Word Policy | Total / Active / Inactive counts of registered forbidden-word entries |
+| Risk Level | Whether the risk-level policy is active and the grade ranges (critical/high/medium/low) |
+| Risk Evaluation Status | Number of top-level principles and evaluation items (e.g., 4 principles / 16 items) |
+| Response Quality Score | Distribution of response-quality scores for deployed agents |
 
 These widgets only appear in the widget grid for accounts with `admin.governance:*`. Without the permission they are not even listed.
 
-![/dashboard as seen by the Governance Officer account — same "System Operations & Deployment Dashboard" subtitle with Risk Policy / Forbidden-Word Policy / Approval Queue widgets alongside the operations widgets](images/dashboard-governance.png)
+> The image below is a **full-page scroll** of `/dashboard` viewed by the Governance Officer account. The widgets do not fit in one viewport — so this is captured with the page fully scrolled. For just the top of the page, refer to `dashboard-governance.png`.
+
+![/dashboard (full scroll) as seen by the Governance Officer account — common and operations widgets at the top, governance-only widgets (PII Policy Status, Forbidden-Word Policy, Risk Level, Risk Evaluation Status, Response Quality Score) at the bottom](images/dashboard-governance-full.png)
 
 ### Operational Usage
 
