@@ -11,6 +11,11 @@
 5. **Deploy** — push to production → [Agent Operations](../user/13-agentflow-operations.md)
 6. **Approval queue** (when over the risk threshold) — wait for governance approval → [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
 
+## See the main screen tailored to my role right after login
+- Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
+- Procedure: [Dashboard · Agent Developer view](../user/18-dashboard.md#agent-developer-view)
+- Agent Developers see all Standard-User widgets plus build/deploy widgets such as **operations metrics for my agents** and **approval queue status**.
+
 ## I want the agent to consult internal documents (RAG)
 - Start: left sidebar **Knowledge → Collection**
 - Procedure: [Knowledge Management](../user/15-knowledge.md)
@@ -35,8 +40,3 @@
 ## I want to see call statistics and failure rate for my deployed agents
 - Start: left sidebar **Agent Operations**
 - Procedure: [Agent Operations](../user/13-agentflow-operations.md)
-
-## See the main screen tailored to my role right after login
-- Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
-- Procedure: [Dashboard · Agent Developer view](../user/18-dashboard.md#agent-developer-view)
-- Agent Developers see all Standard-User widgets plus build/deploy widgets such as **operations metrics for my agents** and **approval queue status**.
