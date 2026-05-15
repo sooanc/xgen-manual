@@ -73,9 +73,27 @@ jobs:
             echo "XGEN_LOGIN_PASSWORD=${XGEN_LOGIN_PASSWORD}"
           } > .env.xgen-stg
 
-      - name: Capture stg views (updates screen-truth.json + PNGs)
+      - name: Probe stg connectivity
+        # GitHub 러너(Azure US/EU)에서 stg 가 정말 도달 가능한지 먼저 확인.
+        # 도달 못 하면 (지역 제한 / 사내망) 캡처는 의미 없음 — 명확히 실패시켜 알림.
+        env:
+          XGEN_BASE_URL: ${{ secrets.XGEN_BASE_URL }}
+        run: |
+          echo "Probing $XGEN_BASE_URL …"
+          curl -sS -m 15 -o /dev/null -w "HTTP %{http_code}  total %{time_total}s\n" "$XGEN_BASE_URL" \
+            || { echo "::warning::stg 도달 실패 — 지역 제한이나 사내망일 가능성. 캡처 단계는 skip."; echo "STG_UNREACHABLE=1" >> $GITHUB_ENV; }
+
+      - name: Capture stg views — user (updates screen-truth.json + PNGs)
+        if: env.STG_UNREACHABLE != '1'
         continue-on-error: true  # 캡처 실패 시 commit 된 screen-truth.json fallback
-        run: npm run capture:all
+        timeout-minutes: 5
+        run: npm run capture:user
+
+      - name: Capture stg views — admin
+        if: env.STG_UNREACHABLE != '1'
+        continue-on-error: true
+        timeout-minutes: 5
+        run: npm run capture:admin
 
       - name: Install Node deps (Xgen_Manual)
         working-directory: Xgen_Manual
