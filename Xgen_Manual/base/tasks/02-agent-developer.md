@@ -8,8 +8,9 @@
 2. **노드 구성** — Start Node 부터 캔버스에 노드 추가·연결 → [에이전트 만들기](../user/12-agentflow-create.md)
 3. **외부 도구 연결** — API Tool / MCP 노드 등록 → [API 도구](../user/12-agentflow-create.md#노드-추가)
 4. **품질 평가** — 테스트 데이터로 응답 품질 확인 → [에이전트 운영](../user/13-agentflow-operations.md#에이전트-품질-분석)
-5. **배포** — 운영 환경에 배포 → [에이전트 운영](../user/13-agentflow-operations.md)
-6. **승인 대기** (위험도 임계치 초과 시) — 거버넌스 담당자 승인 후 노출 → [AI 거버넌스 - 위험도 평가 및 심사](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
+5. **배포 요청 보내기** — Agent 목록 → 카드 더보기 메뉴 → **배포 정보** → 모달의 **배포 토글 ON** → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment)
+6. **시스템 관리자 배포 승인 대기** — 시스템 관리자가 Agent 관리 화면에서 승인하면 카드 배지가 *배포됨* 으로 갱신 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
+7. **거버넌스 담당자 거버넌스 승인 대기** — 거버넌스 담당자가 AI 거버넌스 → 에이전트플로우 승인 화면에서 위험·PII·정책을 검토해 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
 
 ## 로그인 직후 내 역할에 맞는 메인 화면을 보고 싶다
 - 시작 위치: 로그인 직후 자동 진입 (또는 좌상단 **XGEN** 로고)
@@ -28,10 +29,21 @@
 - 시작 위치: 좌측 사이드바 **도구 연동 → 인증 프로필**
 - 절차: [인증 프로필](../user/17-auth-profile.md)
 
-## 내 Agent가 거버넌스 승인 대기 중이다
-- 시작 위치: 관리 설정 → AI 거버넌스 → 에이전트 승인
-- 절차: [AI 거버넌스 - 위험도 평가 및 심사](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
-- 참고: 본인이 승인 권한이 없다면 거버넌스 담당자에게 검토 요청
+## 내 Agent에 배포 요청을 보내고 싶다
+- 시작 위치: Agent 작업실 → **Agent 제작 → Agent 목록** → 본인 카드의 **⋯** 메뉴 → **배포 정보**
+- 절차: [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment)
+- 핵심: DeploymentModal 의 **배포 토글 ON** 한 번으로 시스템 관리자 큐에 등록. 공유 배포 시 *Agent 개발 기획서* 선택 필수.
+
+## 배포 요청 후 진행 상태를 확인하고 싶다
+- 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) 위젯 (Agent 개발자 뷰)
+- 절차: 위젯의 5개 카운터로 *배포 승인 대기 / 배포 승인 거절 / 거버넌스 승인 대기 / 거버넌스 승인 거절 / 배포·거버넌스 승인완료* 추적
+- 상세 흐름: [이중 승인 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
+- 참고: 시스템 관리자(1단계) + 거버넌스 담당자(2단계) 모두 통과해야 사용자에게 노출. 한쪽만 통과한 상태는 미노출.
+
+## 내 Agent가 거버넌스에서 반려되었다
+- 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) → 위젯의 *거버넌스 승인 거절* 카운터 클릭, 또는 카드의 **배포 정보** 재진입
+- 절차: 반려 사유(`governance_review_comment`)를 확인 → 에이전트 수정 → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment) 의 0단계부터 재요청
+- 거버넌스 담당자 측 검토 기준: [AI 거버넌스 · 에이전트 승인](../admin/29-governance-dashboard.md#agent-approval)
 
 ## 외부 API/MCP 서버를 도구로 등록하고 싶다
 - 시작 위치: 좌측 사이드바 **도구 연동 → API Tool**

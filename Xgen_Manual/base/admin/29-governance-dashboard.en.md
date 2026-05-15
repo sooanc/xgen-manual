@@ -59,12 +59,52 @@ This menu is the **second of two approval stages** required before an agentflow 
 
 #### Approval workflow
 
-1. **Entry into the queue** — Once the System Administrator approves the deployment, the agent shows up in the *Pending / Approved / Rejected* stat cards and table at the top of this screen. Items pushed in by a risk-threshold breach in Risk Review also join the same queue.
-2. **Open the detail** — Click a row to inspect node layout, author, inputs/outputs, parameters, and category.
-3. **Approve / Reject** — Use the action buttons on the right and fill in a comment. Approving writes `is_governance_accepted: true`; rejecting writes `is_governance_accepted: false` along with `governance_reviewed_by` and `governance_review_comment`.
-4. **Outcome propagation** — Approved agents flip to servable immediately and become visible in user search/execution. Rejected agents return to the author with the comment and must re-enter the pipeline from stage 1 after fixes.
+The procedure below moves through *sidebar entry → queue overview → row inspection → decision + comment* — all inside this one screen (`gov-agentflow-approval`).
 
-Every approve/reject action is recorded in the [audit log](27-audit-log.md); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
+1. **Open the screen** — In **Admin Center**, expand **AI Governance → Agentflow Approval** in the left sidebar. The header is followed by a **search field** and **four stat cards**.
+
+2. **Read the queue** — Click any of the four stat cards to filter the table to that status.
+
+    | Stat card | Variant | Meaning |
+    |---|---|---|
+    | All status | info | Total items currently in the queue |
+    | Pending | warning | `is_governance_accepted` not set — **items to handle on this screen** |
+    | Approved | success | `is_governance_accepted: true` — agent is live |
+    | Rejected | error | A reviewer is recorded but `is_governance_accepted: false` — returned to author |
+
+    The queue contains only agents the System Administrator has approved at stage 1 (plus items force-routed in by a risk-threshold breach from Risk Review). Anything rejected at stage 1 never reaches this screen, so reviewers can focus on **risk category, PII impact, and policy compliance**.
+
+3. **Read the table columns** — Headers sort on click.
+
+    | Column | Sortable | Description |
+    |---|---|---|
+    | Agentflow | ✓ | Name. Row click = detail modal |
+    | Creator | ✓ | Author ID / display name |
+    | Department | — | Author's department |
+    | Governance status | ✓ | Pending / Approved / Rejected badge |
+    | Reviewer | — | The Governance Officer who processed the row (`-` while pending) |
+    | Last modified | ✓ | Request or processing timestamp |
+    | Actions | — | **View detail** / **Approve** / **Reject** — the latter two appear only on pending rows |
+
+4. **Inspect the detail modal** — Clicking a row opens the *Agentflow Detail* modal. Verify the following in one place:
+
+    - **Basic info**: name, creator (`<name> (<dept>)`), version `v<n>`, node/edge counts (`<n> nodes / <m> edges`)
+    - **Governance status badge** and reviewer (for already-processed rows)
+    - **Review comment** (for already-processed rows)
+    - **Node summary table**: `nodeName / Function ID / category / parameter count / I/O` — clicking a row expands the node detail panel (parameter dict and input list)
+
+    For nodes that could expose PII (outbound calls, mail senders, etc.), expand the parameter list and confirm the use is intentional.
+
+5. **Decide — Approve or Reject** — The footer buttons in the detail modal, or the right-side buttons on the row, open the *comment modal*.
+
+    | Button | Comment required? | Backend call | Result |
+    |---|---|---|---|
+    | **Approve** | Optional (rationale or notes) | `POST /api/admin/governance/agentflow-approval/agentflows/<id>/review` with `{ is_governance_accepted: true, comment }` | Records `is_governance_accepted: true`, `governance_reviewed_by`, `governance_review_comment`. The agent goes live immediately |
+    | **Reject** | **Required** (rejection reason) | Same endpoint, `{ is_governance_accepted: false, comment }` | Records `is_governance_accepted: false`. The author reads the comment, fixes the agent, and resubmits from stage 0 |
+
+    When the *Submitting…* state clears, the stat cards and table refresh. If the same agent reappears as *Pending*, the author has resubmitted after a fix — repeat the workflow.
+
+Every approve/reject action is recorded in the [audit log](27-audit-log.md) and in [AI Audit & Tracking](#audit--tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
 
 ## Inspection
 

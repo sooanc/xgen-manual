@@ -26,33 +26,55 @@ Each execution includes:
 
 When problems occur, expand the logs to find which node got stuck and what input it received.
 
-## Deployment
+## Deployment { #deployment }
 
-After validation, deploy so other users or external systems can invoke the agentflow.
+This section walks through the **full path from request to live service**. The Agent Developer's own action ends with **submitting a deployment request**; the agent reaches end users only after two managerial approvals pass.
 
-1. Click the **Deploy** button on the canvas or the agentflow list
-2. Choose a deployment mode
+### Submit a deployment request — Agent Developer step { #request-deployment }
 
-| Mode | Description |
-|---|---|
-| Webpage | Chat interface accessible via browser |
-| API | REST API endpoint |
-| cURL | Auto-generated cURL command for invocation |
-| Embed | Code snippet for embedding into external pages (popup or full-page) |
+Open the **Deploy Info** modal from your agent's card action menu and flip the *Deploy* toggle on — that single action registers the request with the system.
 
-3. Configure authentication and access control (Public / Intranet only / Specific users)
-4. Click **Deploy**
+1. In the left sidebar, go to **Agent Creation → Agent List** (`main-agentflow-management`).
+2. On your own agent's card, expand the **⋯** (More) menu on the right and pick **Deploy Info**. If you are still editing on the canvas, save first, then come back through this path (the modal warns: *"Save the agentflow before deploying."*).
+3. The **Deploy Settings** modal opens. The four tabs at the top (**Webpage / API / cURL / Embed**) determine how the agent will be exposed.
+
+    | Mode | Description |
+    |---|---|
+    | Webpage | Chat interface accessible via browser |
+    | API | REST API endpoint |
+    | cURL | Auto-generated cURL command |
+    | Embed | Snippet for embedding into external pages (popup or full-page) |
+
+4. Flip the **Deploy toggle** (*Private ↔ Deploying*) at the top of the modal to ON. This toggle is the **single trigger that submits the deployment request**. For shared deployments you must select an **Agent Development Plan** before turning the toggle on — otherwise the modal returns the error *"Shared deployment requires an Agent Development Plan."*
+5. As soon as the toggle is on, the card badge changes to **Deployment Pending** (`inquire_deploy: true`) — your request is now in the System Administrator's queue. There is nothing more to do on your side unless you choose to cancel by toggling it back off.
 
 !!! note "Deployment-settings modal screenshot pending"
-    A screenshot of the deployment modal (mode selection and embed code) will be added in a future manual update.
+    A screenshot of the modal showing the Deploy toggle, mode tabs (Webpage/API/cURL/Embed), and the Agent Development Plan picker will be added in a future manual update.
 
-!!! info "A deploy request requires two approvals before the agent is served"
-    Clicking **Deploy** as an Agent Developer registers a **deployment request**. The agent reaches end users only after **both** of the following approvals pass.
+### What happens next — System Administrator + Governance Officer dual approval { #dual-approval-flow }
 
-    1. **System Administrator — Deployment approval**: the administrator inspects node layout, author, and operational fitness, then approves (see [Admin Manual · Agent Management — Deployment Approval](../admin/32-agent-operations.md#agent-mgmt-deploy-approval)).
-    2. **Governance Officer — Governance approval**: the governance reviewer inspects risk category, PII impact, and policy compliance, then approves (see [Admin Manual · Agent Approval](../admin/29-governance-dashboard.md#agent-approval)).
+Flipping the Deploy toggle does **not** immediately publish the agent. It goes live only after the following two stages both pass.
 
-    The agent is visible in user search/execution only after both stages pass. Progress is visible on the [Dashboard · Agent deployment/approval status](18-dashboard.md) widget, which tracks *Deployment pending / Governance pending / Both approvals completed*.
+| Stage | Reviewer | Where | Result |
+|---|---|---|---|
+| 0. Deploy request | **You (Agent Developer)** | Agent List → card dropdown → Deploy Info → Deploy toggle ON | Card badge *"Deployment Pending"* (`inquire_deploy: true`) |
+| 1. Deployment approval | **System Administrator** | Admin Center → Agent Operations → Agent Management | Card badge *"Deployed"* (`is_accepted: true`, `is_deployed: true`) — full procedure in [Admin Manual · Agent Management — Deployment Approval](../admin/32-agent-operations.md#agent-mgmt-deploy-approval) |
+| 2. Governance approval | **Governance Officer** | Admin Center → AI Governance → Agentflow Approval | `is_governance_accepted: true` — full procedure in [Admin Manual · Agent Approval](../admin/29-governance-dashboard.md#agent-approval) |
+| ✅ Servable | — | Visible to end users only after stages 1 and 2 both pass | — |
+
+Track progress on the [Dashboard · Agent deployment/approval status](18-dashboard.md) widget — the five counters map directly onto the stages above.
+
+| Counter | What it means for your agent |
+|---|---|
+| Deployment pending | Awaiting System Administrator review |
+| Deployment rejected | System Administrator rejected — card reverts to *"Not deployed"*; check the reason and resubmit after fixing |
+| Governance pending | Cleared stage 1; awaiting Governance Officer review |
+| Governance rejected | Governance Officer rejected — read the comment (`governance_review_comment`) and resubmit from stage 0 |
+| Both approvals completed | Both passed; the agent is live for end users |
+
+!!! warning "How to read rejection reasons"
+    - **System Administrator rejection**: rejection notes are typically delivered out-of-band (chat, email). Confirm your team's operational channel in advance.
+    - **Governance rejection**: re-open the **Deploy Info** modal, or — with the appropriate permission — read the *review comment* (`governance_review_comment`) directly on the governance review screen.
 
 ## Deployment Status
 

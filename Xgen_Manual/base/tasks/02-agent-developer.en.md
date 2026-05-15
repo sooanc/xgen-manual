@@ -8,8 +8,9 @@
 2. **Compose nodes** — add and connect nodes on the canvas starting from the Start Node → [Create an Agentflow](../user/12-agentflow-create.md)
 3. **Connect external tools** — register API Tools / MCP nodes → [Add Nodes](../user/12-agentflow-create.md#노드-추가)
 4. **Quality evaluation** — verify response quality with test data → [Agent Operations - Quality](../user/13-agentflow-operations.md#에이전트-품질-분석)
-5. **Deploy** — push to production → [Agent Operations](../user/13-agentflow-operations.md)
-6. **Approval queue** (when over the risk threshold) — wait for governance approval → [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
+5. **Submit deployment request** — Agent List → card More menu → **Deploy Info** → flip the **Deploy toggle ON** → [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
+6. **Wait for System Administrator deployment approval** — once the administrator approves on Agent Management, the card badge becomes *Deployed* → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow)
+7. **Wait for Governance Officer governance approval** — the agent becomes visible to end users only after the governance reviewer approves it on AI Governance → Agentflow Approval (risk, PII, policy) → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow)
 
 ## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
@@ -28,10 +29,21 @@
 - Start: left sidebar **Tool Integration → Auth Profile**
 - Procedure: [Auth Profile](../user/17-auth-profile.md)
 
-## My agent is pending governance approval
-- Start: Admin Center → AI Governance → Agent Approval
-- Procedure: [AI Governance - Risk Review](../admin/29-governance-dashboard.md#ai-위험도-평가-및-심사)
-- Note: if you don't have approval rights yourself, ask the governance officer to review
+## I want to submit a deployment request for my agent
+- Start: Agent Workspace → **Agent Creation → Agent List** → **⋯** menu on your card → **Deploy Info**
+- Procedure: [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
+- Key: flipping the **Deploy toggle ON** in DeploymentModal is the single action that queues the request with the System Administrator. Shared deployments require selecting an *Agent Development Plan* first.
+
+## I want to track the status of my deployment request
+- Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) widget (Agent Developer view)
+- Procedure: read the five counters — *Deployment pending / Deployment rejected / Governance pending / Governance rejected / Both approvals completed*
+- Full flow: [Dual-approval flow](../user/13-agentflow-operations.md#dual-approval-flow)
+- Note: the agent reaches end users only after the System Administrator (stage 1) **and** the Governance Officer (stage 2) both approve. Single-stage approval keeps it hidden.
+
+## My agent was rejected by governance
+- Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) → click the *Governance rejected* counter, or re-open **Deploy Info** on the card
+- Procedure: read the rejection reason (`governance_review_comment`) → fix the agent → resubmit from stage 0 via [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
+- Governance reviewer's criteria: [AI Governance · Agent Approval](../admin/29-governance-dashboard.md#agent-approval)
 
 ## I want to register an external API / MCP server as a tool
 - Start: left sidebar **Tool Integration → API Tool**

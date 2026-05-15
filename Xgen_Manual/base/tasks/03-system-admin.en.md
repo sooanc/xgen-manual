@@ -32,6 +32,17 @@
 - Procedure: [System Monitor](../admin/26-system-monitor.md)
 - Recommended: configure alert thresholds
 
+## Approve or reject deployment requests for agents built by Agent Developers (stage 1)
+- Start: Admin Center → **Agent Operations → Agent Management**
+- Procedure: [Agent Management — Deployment Approval (System Administrator, first approval)](../admin/32-agent-operations.md#agent-mgmt-deploy-approval)
+- Key: on cards carrying the **Deployment pending** badge (`inquire_deploy: true`), open the **⋯** menu and choose **Approve** or **Reject**. Approving forwards the agent to the governance queue automatically — end-user visibility still requires governance approval.
+- Widget: keep an eye on the *Deployment pending* counter in the dashboard *Agent deployment/approval status* widget.
+
+## An already-deployed agent is misbehaving and needs an immediate cutoff
+- Start: Admin Center → Agent Operations → Agent Management → **Settings** icon on the affected card
+- Procedure: flip **Approval Status** to *Disabled* in the agentflow settings modal
+- Effect: execution stops immediately (kill switch). Combine with the **Deploy** toggle (public/private) in the same modal to stage a partial rollback. Full details in [Agent Operations](../admin/32-agent-operations.md).
+
 ## Register and operate MCP servers
 - Start: Admin Center → MCP Management → MCP Library
 - Procedure: [MCP Library](../admin/28-mcp-market.md)

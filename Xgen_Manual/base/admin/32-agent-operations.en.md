@@ -44,10 +44,32 @@ This screen is the System Administrator's surface for the **first** of two appro
 
 #### Approving a deployment request
 
-1. **Detect the request** — The card's deploy badge switches to *"Deployment pending"* (`inquire_deploy: true`), and an **Approve / Reject** entry appears in the card action menu.
-2. **Open the card → inspect** — Review the node layout, author, department, and last-modified date.
-3. **Approve** — Sets `enable_deploy: true, is_accepted: true`. A toast confirms "Deployment approved" and the card badge becomes *"Deployed"*. The agent is **not yet visible to end users** — it now waits for the governance approval.
-4. **Reject** — Closes the request (`inquire_deploy: false`) and reverts the badge to *"Not deployed"*. Communicate the rejection reason to the author through a separate channel.
+The procedure below moves you from *entering the card grid* → *identifying the pending card* → *handling the dropdown action* — all in this one screen.
+
+1. **Enter the screen** — Switch to **Admin Center** mode via the top-left mode switch, then choose **Agent Operations → Agent Management** (view ID `admin-agentflow-management`) in the left sidebar. A card grid loads with **All / Active / Inactive** filter tabs and a search field at the top.
+
+2. **Spot pending cards** — Look for cards carrying the **Deployment pending** (warning-tone) badge. Each card shows the author (`username`), department, last-modified date, and node count in its metadata. Narrow by typing an author name in the search box.
+
+    | Badge color | Meaning |
+    |---|---|
+    | Gray (`secondary`) — Personal | Solo work — not a deploy request |
+    | Yellow (`warning`) — **Deployment pending** | `inquire_deploy: true`. **Items to handle on this screen** |
+    | Green (`success`) — Deployed | Already passed deployment approval; advancing through or past governance |
+    | Gray — Not deployed | Never requested, or reverted after rejection |
+
+3. **Inspect the detail** — Click a card to drop into the agent's detail view. Review the node layout, execution logs, and test outcomes. If you need more context before deciding, request it from the author. Use the **← Back** button at the top-left to return to the grid.
+
+4. **Run the dropdown action** — Expand the **⋯** (More) menu on the right of the pending card. Two actions appear *only* while `inquire_deploy === true`:
+
+    | Action | Backend call | Result |
+    |---|---|---|
+    | **Approve** | `updateAgentflowAdmin({ enable_deploy: true, inquire_deploy: false, is_accepted })` | Toast *"`<name>` deployment approved."* → card badge updates to *Deployed*. Automatically forwarded to the governance queue |
+    | **Reject** | `updateAgentflowAdmin({ enable_deploy: false, inquire_deploy: false, is_accepted })` | Toast *"`<name>` deployment rejected."* → card badge reverts to *Not deployed*. Convey the reason to the author through a separate channel |
+
+5. **Verify the outcome** — The grid refreshes automatically after the action and the badge updates accordingly. If the same card reappears as *Deployment pending*, the author has resubmitted after a fix — repeat from step 2.
+
+!!! warning "Approval here ≠ user visibility yet"
+    **Approve** on this screen does **not** publish the agent to end users — it must still pass [AI Governance → Agentflow Approval](29-governance-dashboard.md#agent-approval). When you brief the author, say "deployment approved, governance review pending" so the two stages are not confused.
 
 #### Kill switch while in service — Approval-status toggle
 
