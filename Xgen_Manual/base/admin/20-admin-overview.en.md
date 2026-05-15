@@ -34,9 +34,9 @@ See the [Admin Console Layout](#admin-console-layout) table below for the full m
 
     The AI Governance menu is provided only to those with internal control and audit responsibility, and is operated separately from system administration privileges. This separation lets the platform run reliably under enterprise requirements for internal control, audit response, and access governance.
 
-## Permission Tiers
+## Permission Tiers { #permission-tiers }
 
-The solution uses a **two-tier permission model** decided by a single `is_superuser` flag.
+The solution uses a **two-tier permission model** decided by a single `is_superuser` flag. For the full *Tier / Role / Permission* three-layer picture, see [Role / Permission Management · Permission Model](22-role-permission.md#permission-model).
 
 | Tier | Korean | `is_superuser` | What they can do |
 |---|---|---|---|

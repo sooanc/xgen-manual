@@ -74,8 +74,14 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 | Role | 역할 | A bundle of permissions (e.g., "System Administrator", "Governance Officer", "Operator", "Analyst") |
 | Permission | 권한 | An access grant for a specific feature or resource |
 
-!!! note "Permission tier (two levels) vs Role (many)"
-    The solution's **permission tier** is decided by the single `is_superuser` flag — two levels, Standard User and SuperUser. The **System Administrator / Governance Officer** split inside SuperUser is operated as *roles*, not as a separate permission tier; both roles sit on top of the same SuperUser tier.
+!!! note "Tier (two levels) vs Role (many) vs Permission (ABAC keys)"
+    The permission system is split into **three independent layers**:
+
+    - **Tier**: decided by the single `is_superuser` flag — two levels, Standard User and SuperUser.
+    - **Role**: free-form labels defined by your organization — System Administrator, Governance Officer, Analyst, etc. Within the same SuperUser tier, roles control which sidebar menus you see.
+    - **Permission**: ABAC keys such as `admin.user:read`. They are bundled into roles or granted directly to a user, gating sections / tabs / buttons.
+
+    The full picture and the order in which gates evaluate is documented in [Role / Permission Management · Permission Model](../admin/22-role-permission.md#permission-model).
 
 ## Governance and Security
 

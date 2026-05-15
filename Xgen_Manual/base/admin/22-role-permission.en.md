@@ -1,15 +1,57 @@
 # Role / Permission Management
 
-Beyond the two system permission tiers (Standard User / SuperUser), this chapter covers defining and assigning **roles** that match organizational job functions.
+This chapter covers the **overall structure of the permission model** and the procedures for defining and assigning **roles** that match organizational job functions.
 
-## Permission Tier vs. Role
+## Permission Model — Three Independent Layers { #permission-model }
 
-| Distinction | Meaning | Example |
-|---|---|---|
-| Permission Tier | System-level privilege (decided by the single `is_superuser` flag) | Standard User / SuperUser |
-| Role | Additional permission bundle scoped to organizational duties | System Administrator / Governance Officer / Analyst / Operator / Compliance Officer |
+XGEN's permission model is split into three layers — *Tier / Role / Permission* — that operate **independently**. People often lump them together as "permissions," but they differ in meaning, scope, and how they are managed.
 
-Permission tiers are fixed at two levels in the system. Roles are defined and operated freely by the organization, and even within the same SuperUser tier the sidebar menu scope varies by the role assigned.
+```
+┌──────────────────────────────────────────────────────────────────┐
+│ 1. Tier            ← Can this user enter "Admin Center" mode?    │
+│    Standard User / SuperUser    Fixed at two levels by the system │
+└──────────────────────────────────────────────────────────────────┘
+                              ↓ Meaningful only on top of SuperUser
+┌──────────────────────────────────────────────────────────────────┐
+│ 2. Role            ← Among SuperUsers, which admin menus do you  │
+│    System Administrator,        see? Defined freely by the org   │
+│    Governance Officer,                                            │
+│    Analyst, Operator, …                                           │
+└──────────────────────────────────────────────────────────────────┘
+                              ↓ Can also be granted to a Standard User
+┌──────────────────────────────────────────────────────────────────┐
+│ 3. Permission      ← Section / tab / button-level fine-grained   │
+│    admin.user:read,             gates. ABAC keys, bundled into a  │
+│    main.agentflow:manage, …     role or granted directly to a user│
+└──────────────────────────────────────────────────────────────────┘
+```
+
+### Side-by-side comparison
+
+| Layer | Defined by | Shape of the value | Examples | Where it bites |
+|---|---|---|---|---|
+| **Tier** | System (fixed 2 levels) | Single boolean flag (`is_superuser`) | Standard User / SuperUser | Visibility of the top-left **Admin Center** mode switch |
+| **Role** | Your organization | Multi-label array | System Administrator, Governance Officer, Analyst, Operator, Compliance Officer, … | Menu scope inside a SuperUser's admin sidebar |
+| **Permission** | Catalog (fixed) → mapped to a role or to an individual user | ABAC key array | `admin.user:read`, `main.agentflow:manage`, `admin.governance-pii:*` | Section / tab / button-level gates inside a screen |
+
+### Boundaries that get confused
+
+- **There is no intermediate "Administrator" tier.** Anyone who can open the top-left *Admin Center* mode has `is_superuser: true` — a **SuperUser**. Within that one tier, *System Administrator* / *Governance Officer* etc. are **roles** that split responsibilities. The full tier definition is in [Permission Tiers — Two-Level Model](20-admin-overview.md#permission-tiers); the two-role menu split is described in the *SuperUser Privileges Required* admonition at the top of [Admin Console Overview](20-admin-overview.md).
+- **The "initial (root) SuperUser" is not a separate tier either.** It is just the very first SuperUser, created via the bootstrap path (`/admin/create-superuser`) while no SuperUser exists. From that point on, any additional SuperUser created through the user-management modal (with *User Type = Superuser*) has the identical data and flags. See [Admin Console Overview · Initial (root) SuperUser](20-admin-overview.md#permission-tiers).
+- **"Agent Developer" is not a tier — it's a role/permission bundle.** Agent Developers stay at the Standard User tier (`is_superuser: false`); on top of that they are granted a role that bundles permissions like `main.agentflow:*` / `main.tool:*` / `main.knowledge:*`, which is what unlocks the Agent Creation / Tool / Knowledge sections in Agent Workspace. The flow is summarized in [Agent Workspace Overview · User Types](../user/10-getting-started.md#user-types).
+
+### How the permission check actually runs
+
+When the UI decides whether to show a menu or a button, the solution **always evaluates the layers in the same order**:
+
+1. **If `is_superuser === true`, pass immediately.** SuperUsers are granted access to every admin area by tier alone.
+2. Otherwise, look at the user's **permission array (`permissions`)** and try to match the required ABAC key. Wildcards such as `*:*` and `admin.user:*` participate in the match.
+3. If nothing matches, the menu or button is **hidden silently** — it is not left in place as a click-able item that errors out later.
+
+The same gate logic applies at *Admin Center access* ([Admin Console Overview](20-admin-overview.md)), the *AI Governance menu* ([AI Governance](29-governance-dashboard.md)), AI model management, and every other domain entry point. In other words, even within the SuperUser tier the *visible screens vary* depending on which role / permissions are bundled.
+
+!!! info "Where to change which layer?"
+    Switching a user between Standard User ↔ SuperUser is done from the **User Type** select (`Standard` ↔ `Superuser`) in the user-edit modal under [User Management](21-user-management.md). **Role assignment** happens in this chapter; **individual ABAC permission grants** happen either in the *Direct Permissions* section of the user-edit modal, or via the *role → permission* mapping in this chapter.
 
 ## Role List
 

@@ -34,7 +34,7 @@ The screen is composed of the following areas.
 
     Some menus may be hidden depending on your permission tier.
 
-## User Types in Agent Workspace
+## User Types in Agent Workspace { #user-types }
 
 The menu scope shown in the Agent Workspace sidebar varies by user type.
 
@@ -71,7 +71,7 @@ The Dashboard is not a separate sidebar item: you reach it automatically after l
 A short checklist to run through the first time you use the solution. Each item links to the relevant chapter for the full procedure.
 
 - [ ] **Verify login** — confirm you can sign in with the employee ID (or email) issued by your organization. If not, request account activation from a system administrator.
-- [ ] **Check your assigned permissions** — by looking at which sections appear in the sidebar, determine whether you are a Standard User or an Agent Developer (see the [User Types in Agent Workspace](#user-types-in-agent-workspace) table).
+- [ ] **Check your assigned permissions** — by looking at which sections appear in the sidebar, determine whether you are a Standard User or an Agent Developer (see the [User Types in Agent Workspace](#user-types) table).
 - [ ] **Inspect the dashboard** — on the [Dashboard](18-dashboard.md) shown right after login, check that the widgets matching your role (frequently used agents, shared agents, my agents, etc.) appear.
 - [ ] **Review announcements and FAQ** — open [Technical Support](19-tech-support.md) from the bottom of the left sidebar to check the latest announcements and frequently asked questions.
 - [ ] **Try your first chat** — in the Agent Chat area, try your [first conversation](14-chat.md) with an agent the company has deployed.
