@@ -16,6 +16,11 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 const ENV_FILE = path.join(REPO_ROOT, '.env.xgen-stg');
 const OUT_DIR = path.join(REPO_ROOT, 'Xgen_Manual', 'base', 'admin', 'images');
 
+// screen-truth.json: 캡처가 stg 에서 확인한 view 가용 여부 캐시. compose.mjs 가 .md
+// frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외. 사용자/관리자
+// 캡처 양쪽이 같은 파일에 머지 기록.
+const SCREEN_TRUTH_FILE = path.join(REPO_ROOT, 'Xgen_Manual', 'screen-truth.json');
+
 const env = {};
 fs.readFileSync(ENV_FILE, 'utf8').split(/\r?\n/).forEach((l) => {
   const t = l.trim();
@@ -147,6 +152,17 @@ const log = (...a) => console.log('[admin-capture]', ...a);
   // 8971/41107: hydration placeholder, 36798: "Page not found"
   const PLACEHOLDER_SIZES = new Set([8971, 41107, 36798]);
 
+  // 기존 screen-truth.json 로드 (캡처 실패 시 fallback 으로 사용)
+  let truth = { capturedAt: null, baseUrl: BASE, views: {} };
+  if (fs.existsSync(SCREEN_TRUTH_FILE)) {
+    try {
+      const parsed = JSON.parse(fs.readFileSync(SCREEN_TRUTH_FILE, 'utf8'));
+      truth = { ...truth, ...parsed, views: parsed.views || {} };
+    } catch (e) {
+      log(`warning: screen-truth.json parse failed, starting fresh: ${e.message}`);
+    }
+  }
+
   for (const shot of SHOTS) {
     const dest = path.join(OUT_DIR, shot.file);
     const target = shot.path ? `${BASE}${shot.path}` : `${BASE}/admin?view=${shot.view}`;
@@ -185,10 +201,25 @@ const log = (...a) => console.log('[admin-capture]', ...a);
         log(`   attempt ${attempt} error: ${e.message.slice(0, 100).replace(/\s+/g, ' ')}`);
       }
     }
-    if (lastNotFound || PLACEHOLDER_SIZES.has(lastSize)) {
-      log(`   final: BAD CAPTURE (${lastSize} bytes, notFound=${lastNotFound}) — view '${shot.view ?? shot.path}' likely invalid`);
+    const truthKey = shot.view ?? shot.path;
+    const ok = !lastNotFound && !PLACEHOLDER_SIZES.has(lastSize);
+    truth.views[truthKey] = {
+      ok,
+      lastSize,
+      notFound: lastNotFound,
+      capturedAt: new Date().toISOString(),
+      source: 'admin',
+    };
+    if (!ok) {
+      log(`   final: BAD CAPTURE (${lastSize} bytes, notFound=${lastNotFound}) — view '${truthKey}' likely invalid`);
     }
   }
+
+  // screen-truth.json 갱신 (이번 run 의 키만 덮어쓰고 나머지는 보존)
+  truth.capturedAt = new Date().toISOString();
+  truth.baseUrl = BASE;
+  fs.writeFileSync(SCREEN_TRUTH_FILE, JSON.stringify(truth, null, 2), 'utf8');
+  log(`screen-truth.json updated: ${SCREEN_TRUTH_FILE}`);
 
   await browser.close();
   log('done. files in:', OUT_DIR);

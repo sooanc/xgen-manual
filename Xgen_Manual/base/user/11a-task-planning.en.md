@@ -1,3 +1,6 @@
+---
+require_view: main-planning
+---
 # Task Planning
 
 This chapter covers the screen where users record **idea-stage proposals** for new agents — "we should automate this task" before building anything. The **Analytics / Planning → Task Planning** menu in the left sidebar is in scope.
