@@ -11,7 +11,7 @@ customer:
 
 product:
   name: "Xgen"
-  version: "2.3.0 (STG)"
+  version: "stage / 2.3.0"
   domain: "stg-xgen.x2bee.com"
 
 manual:
