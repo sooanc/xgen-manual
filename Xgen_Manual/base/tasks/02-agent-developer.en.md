@@ -17,7 +17,7 @@
 - Procedure: [Dashboard · Agent Developer view](../user/18-dashboard.md#agent-developer-view)
 - Agent Developers see all Standard-User widgets plus build/deploy widgets such as **operations metrics for my agents** and **approval queue status**.
 
-## I want the agent to consult internal documents (RAG)
+## I want the agent to consult internal documents and data (RAG)
 - Start: left sidebar **Knowledge → Collection**
 - Procedure: [Knowledge Management](../user/15-knowledge.md)
 
