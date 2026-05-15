@@ -22,10 +22,10 @@ The main column is organized into three steps:
 
 See the [Admin Console Layout](#admin-console-layout) table below for the full menu breakdown.
 
-!!! note "Administrator Privileges Required"
-    Admin Center is the **administrator-only area** that integrates user permissions, agent operations, AI governance, system environment, and data/knowledge assets. It is accessible only to accounts with **Administrator** or **Superuser** privileges; standard users do not see the **Admin Center** mode-switch button at the top-left at all.
+!!! note "SuperUser Privileges Required"
+    Admin Center is the **SuperUser-only area** that integrates user permissions, agent operations, AI governance, system environment, and data/knowledge assets. It is accessible only to accounts with **SuperUser** privileges (`is_superuser: true`); Standard Users do not see the **Admin Center** mode-switch button at the top-left at all.
 
-    Administrator privileges are further split into two roles. Even at the same "Administrator" tier, the menu scope shown in the sidebar varies depending on which role is assigned.
+    SuperUser is further split into two **roles** on top of the same permission tier. Even within the same SuperUser tier, the sidebar menu scope varies depending on which role is assigned.
 
     | Role | Access Scope |
     |---|---|
@@ -36,15 +36,21 @@ See the [Admin Console Layout](#admin-console-layout) table below for the full m
 
 ## Permission Tiers
 
-The solution uses a three-tier permission model.
+The solution uses a **two-tier permission model** decided by a single `is_superuser` flag.
 
-| Tier | Korean | What they can do |
-|---|---|---|
-| Standard User | 일반 사용자 | Use Agent Workspace. Edit and share own items |
-| Administrator | 관리자 | Manage users/roles, configure system, monitor operations |
-| Superuser | 최고 관리자 | Everything plus permission delegation and system reset |
+| Tier | Korean | `is_superuser` | What they can do |
+|---|---|---|---|
+| Standard User | 일반 사용자 | `false` | Use Agent Workspace. Edit and share own items |
+| SuperUser | 슈퍼유저 | `true` | Manage users/roles, configure system, run AI governance, monitor operations, delegate permissions, reset the system |
 
-New administrators are granted the **Administrator** tier by default. We recommend keeping at least one **Superuser** for the system, ideally on a separate account isolated from daily operations.
+New users are created as **Standard User** by default. Granting SuperUser privilege is allowed only to an existing SuperUser. Keep at least one SuperUser for the system, ideally on a separate account isolated from daily operations.
+
+!!! info "Initial (root) SuperUser — created once during initial installation"
+    Right after the solution is first installed, no SuperUser exists yet. While that is the case, a one-time **initial SuperUser creation screen** at `/admin/create-superuser` is reachable without authentication, where you can register the very first SuperUser. This first account is commonly referred to as the **initial (root) SuperUser**.
+
+    - Once the first SuperUser is created, the same screen automatically redirects to `/login` and is never reachable again.
+    - Subsequent SuperUsers are added through the [User Management](21-user-management.md) flow described in this chapter.
+    - The word "root" is just a context label meaning *"created via the bootstrap path"*; the data model and permission flag are identical to any other SuperUser (`is_superuser: true`). Do not confuse this with an OS-level root account.
 
 ## Admin Console Layout
 
@@ -95,7 +101,7 @@ The Admin sidebar has 9 groups and 28 menus in total (some may be hidden dependi
 
 Items the operations team should verify immediately after deployment. Detailed steps for each item are in their respective chapters.
 
-- [ ] **Activate the Superuser account** — Confirm the initial superuser account created at install time can log in
+- [ ] **Register the initial (root) SuperUser** — Right after installation, open `/admin/create-superuser` and register the first SuperUser; confirm that account can log in. The screen is reachable only once, so store the password through a safe out-of-band channel
 - [ ] **Connect an LLM provider** — Choose a provider matching company policy (OpenAI / Anthropic / on-premise vLLM, etc.) and register the API key or endpoint
 - [ ] **Connect an embedding model + vector DB** — Required for knowledge search to work
 - [ ] **Review PII policy** — Confirm the items targeted for automatic masking. Financial-sector deployments should add custom regex patterns

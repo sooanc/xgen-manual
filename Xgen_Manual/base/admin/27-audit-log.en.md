@@ -81,7 +81,7 @@ Recommended monthly review items.
 
 - **SIEM integration** — Forward high-risk events (privilege escalation, mass deletion) to the security team's SIEM for real-time alerts.
 - **Periodic backup** — Quarterly full backup of audit logs to external storage. Recoverable in case of system failure.
-- **Restrict access** — Grant audit log read/export only to **Superuser** or **Compliance Officer** roles.
+- **Restrict access** — Grant audit log read/export only to **SuperUser** accounts or the **Compliance Officer** role.
 
 ## Contact
 

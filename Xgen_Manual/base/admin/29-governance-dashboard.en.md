@@ -44,17 +44,27 @@ Each category carries a **weight**, contributing to the overall risk score.
     - Policy Violation: 6
     - Abnormal Access: 5
 
-### Agent Approval
+### Agent Approval { #agent-approval }
 
-Agents whose risk score exceeds the threshold are routed automatically into the **Agent Approval** queue and may not be deployed/operated without explicit governance approval.
+This menu is the **second of two approval stages** required before an agentflow can be served to end users. The **first stage — deployment approval — is performed by the System Administrator** on [Agent Operations → Agent Management](32-agent-operations.md#agent-mgmt-deploy-approval); only agents that pass that stage reach this queue.
 
-Approval workflow:
+!!! info "Where Governance Approval sits — stage 2 of dual approval"
+    | Stage | Reviewer | Screen | Effect on data |
+    |---|---|---|---|
+    | 1. Deployment approval | System Administrator | [Agent Management](32-agent-operations.md#agent-mgmt-deploy-approval) | `is_accepted: true`, `is_deployed: true` |
+    | **2. Governance approval *(this screen)*** | **Governance Officer** | AI Governance → Agentflow Approval | `is_governance_accepted: true` |
+    | ✅ Servable | — | Visible to end users only after both stages pass | — |
 
-1. Risk Review detects threshold breach → adds to queue
-2. Governance reviewer is notified
-3. Reviewer inspects node configuration, permission scope, and PII impact
-4. **Approve / Hold / Reject** — Hold and Reject require a reason
-5. Only approved agents appear in production
+    Agents rejected at stage 1 never appear in this queue. Because governance reviewers only see agents the System Administrator has already cleared for operational fitness, their review can focus on **risk category, PII impact, and policy compliance**.
+
+#### Approval workflow
+
+1. **Entry into the queue** — Once the System Administrator approves the deployment, the agent shows up in the *Pending / Approved / Rejected* stat cards and table at the top of this screen. Items pushed in by a risk-threshold breach in Risk Review also join the same queue.
+2. **Open the detail** — Click a row to inspect node layout, author, inputs/outputs, parameters, and category.
+3. **Approve / Reject** — Use the action buttons on the right and fill in a comment. Approving writes `is_governance_accepted: true`; rejecting writes `is_governance_accepted: false` along with `governance_reviewed_by` and `governance_review_comment`.
+4. **Outcome propagation** — Approved agents flip to servable immediately and become visible in user search/execution. Rejected agents return to the author with the comment and must re-enter the pipeline from stage 1 after fixes.
+
+Every approve/reject action is recorded in the [audit log](27-audit-log.md); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
 
 ## Inspection
 

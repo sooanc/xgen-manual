@@ -16,7 +16,7 @@ The following information is shown for each user.
 | Name | Display name |
 | Email | Address for notifications and password reset |
 | Role | Assigned role (may be empty) |
-| Permission Tier | Standard User / Administrator / Superuser |
+| Permission Tier | Standard User / SuperUser (SuperUser accounts carry an additional badge in the list) |
 | Status | Active / Inactive / Pending Approval |
 | Last Login | Most recent access time |
 
@@ -30,18 +30,18 @@ Use the search box at the top to find users by name or email, and filter by stat
     - Name
     - Email
     - Initial password (recommend the user change it after first login)
-    - Permission tier (default: Standard User)
+    - User type — `Standard` (default) or `Superuser`
 3. Click **Save**
 
 !!! note "Add-user modal screenshot pending"
-    A screenshot of the modal opened by "+ Add User" (username, email, permission tier fields) will be added in a future manual update.
+    A screenshot of the modal opened by "+ Add User" (username, email, user-type fields) will be added in a future manual update.
 
-!!! note "Administrator Privileges Required"
-    Adding users and changing permission tiers requires **Administrator** or higher privileges. Granting **Superuser** can be done only by another Superuser.
+!!! note "SuperUser Privileges Required"
+    Adding users and changing permission tiers can be done only by a **SuperUser**. Standard Users do not see this screen at all.
 
 ## Approving Pending Users
 
-In environments where self-signup is enabled, new applicants enter the **Pending Approval** state. Administrator review and approval is required before they can log in.
+In environments where self-signup is enabled, new applicants enter the **Pending Approval** state. A SuperUser must review and approve each applicant before they can log in.
 
 1. Check applicants in the **Pending Approval** area at the top of the user list
 2. Review applicant info (name, email, organization)
@@ -73,13 +73,14 @@ Inactive users cannot log in, but their agentflows, collections, and chat histor
 
 ## Permission Tier Changes
 
+Permission tier is decided by a single `is_superuser` flag — two tiers in total. Toggle it through the **User Type** select in the user-edit modal (`Standard` ↔ `Superuser`).
+
 | Direction | Required Privilege |
 |---|---|
-| Standard User → Administrator | Administrator or Superuser |
-| Administrator → Superuser | Superuser only |
-| Any tier → Standard User (downgrade) | Administrator or higher |
+| Standard User → SuperUser (promote) | SuperUser |
+| SuperUser → Standard User (demote) | SuperUser |
 
-All permission tier changes are recorded in the audit log.
+All permission tier changes are recorded in the audit log. If you are the last remaining SuperUser, demoting yourself will leave the system with no one able to access the Admin Center — confirm at least one other SuperUser exists before demoting.
 
 ## Operational Recommendations
 

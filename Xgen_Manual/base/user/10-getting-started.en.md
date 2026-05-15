@@ -34,17 +34,17 @@ The screen is composed of the following areas.
 
     Some menus may be hidden depending on your permission tier.
 
-## Permission Tiers
+## User Types in Agent Workspace
 
-The solution uses a three-tier permission model, and the menu scope shown in the Agent Workspace sidebar varies by tier.
+The menu scope shown in the Agent Workspace sidebar varies by user type.
 
 | Tier | Korean | What you can do in Agent Workspace |
 |---|---|---|
 | Standard User | 일반 사용자 | Use the **Agent Chat / Technical Support / Dashboard** areas. Chat with agents the company has deployed; view announcements/FAQ; submit 1:1 inquiries |
-| Agent Developer | Agent 개발자 | All of the above plus **Agent Creation / Tool Integration / Knowledge Management / Analysis & Planning** areas. Design, deploy, and operate your own agents |
-| Administrator / Superuser | 관리자 / 최고 관리자 | All of the above plus access to **Admin Center** at the top-left. Admin features are covered in the [Admin Manual](../admin/20-admin-overview.md) |
+| Agent Developer | Agent 개발자 | All of the above plus **Agent Creation / Tool Integration / Knowledge Management / Analysis & Planning** areas. Design, deploy, and operate your own agents (permission tier stays Standard User — granted as a separate role) |
+| SuperUser | 슈퍼유저 | All of the above plus access to **Admin Center** at the top-left. Admin features are covered in the [Admin Manual](../admin/20-admin-overview.md) |
 
-To upgrade from Standard User to Agent Developer, request the role from a system administrator. Per-role entry points and workflows are summarized in the [Task Guide](../tasks/index.md).
+The solution uses a **two-tier permission model** decided by a single `is_superuser` flag — Standard User and SuperUser. The "Agent Developer" category is not a separate permission tier; it is a role granted on top of Standard User. To upgrade from Standard User to Agent Developer, request the role from a SuperUser. Per-role entry points and workflows are summarized in the [Task Guide](../tasks/index.md).
 
 ## Agent Workspace Layout
 
@@ -71,7 +71,7 @@ The Dashboard is not a separate sidebar item: you reach it automatically after l
 A short checklist to run through the first time you use the solution. Each item links to the relevant chapter for the full procedure.
 
 - [ ] **Verify login** — confirm you can sign in with the employee ID (or email) issued by your organization. If not, request account activation from a system administrator.
-- [ ] **Check your assigned permissions** — by looking at which sections appear in the sidebar, determine whether you are a Standard User or an Agent Developer (see the [Permission Tiers](#permission-tiers) table).
+- [ ] **Check your assigned permissions** — by looking at which sections appear in the sidebar, determine whether you are a Standard User or an Agent Developer (see the [User Types in Agent Workspace](#user-types-in-agent-workspace) table).
 - [ ] **Inspect the dashboard** — on the [Dashboard](18-dashboard.md) shown right after login, check that the widgets matching your role (frequently used agents, shared agents, my agents, etc.) appear.
 - [ ] **Review announcements and FAQ** — open [Technical Support](19-tech-support.md) from the bottom of the left sidebar to check the latest announcements and frequently asked questions.
 - [ ] **Try your first chat** — in the Agent Chat area, try your [first conversation](14-chat.md) with an agent the company has deployed.

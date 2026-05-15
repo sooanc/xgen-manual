@@ -1,15 +1,15 @@
 # Role / Permission Management
 
-Beyond the system permission tiers (Standard / Administrator / Superuser), this chapter covers defining and assigning **roles** that match organizational job functions.
+Beyond the two system permission tiers (Standard User / SuperUser), this chapter covers defining and assigning **roles** that match organizational job functions.
 
 ## Permission Tier vs. Role
 
 | Distinction | Meaning | Example |
 |---|---|---|
-| Permission Tier | System-level privilege | Standard User / Administrator / Superuser |
-| Role | Additional permission bundle scoped to organizational duties | Analyst / Operator / Compliance Officer |
+| Permission Tier | System-level privilege (decided by the single `is_superuser` flag) | Standard User / SuperUser |
+| Role | Additional permission bundle scoped to organizational duties | System Administrator / Governance Officer / Analyst / Operator / Compliance Officer |
 
-Permission tiers are fixed three levels in the system. Roles are defined and operated freely by the organization.
+Permission tiers are fixed at two levels in the system. Roles are defined and operated freely by the organization, and even within the same SuperUser tier the sidebar menu scope varies by the role assigned.
 
 ## Role List
 

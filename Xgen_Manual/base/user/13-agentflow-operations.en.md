@@ -46,6 +46,14 @@ After validation, deploy so other users or external systems can invoke the agent
 !!! note "Deployment-settings modal screenshot pending"
     A screenshot of the deployment modal (mode selection and embed code) will be added in a future manual update.
 
+!!! info "A deploy request requires two approvals before the agent is served"
+    Clicking **Deploy** as an Agent Developer registers a **deployment request**. The agent reaches end users only after **both** of the following approvals pass.
+
+    1. **System Administrator — Deployment approval**: the administrator inspects node layout, author, and operational fitness, then approves (see [Admin Manual · Agent Management — Deployment Approval](../admin/32-agent-operations.md#agent-mgmt-deploy-approval)).
+    2. **Governance Officer — Governance approval**: the governance reviewer inspects risk category, PII impact, and policy compliance, then approves (see [Admin Manual · Agent Approval](../admin/29-governance-dashboard.md#agent-approval)).
+
+    The agent is visible in user search/execution only after both stages pass. Progress is visible on the [Dashboard · Agent deployment/approval status](18-dashboard.md) widget, which tracks *Deployment pending / Governance pending / Both approvals completed*.
+
 ## Deployment Status
 
 | Status | Korean | Meaning |
