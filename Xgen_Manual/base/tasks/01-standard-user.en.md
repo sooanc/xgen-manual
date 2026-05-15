@@ -16,7 +16,7 @@
 - Procedure: [Technical Support](../user/19-tech-support.md)
 
 ## This is my first time, where do I start?
-- [Getting Started](../user/10-getting-started.md) → [Login](../user/11-login.md)
+- [Agent Workspace Overview](../user/10-getting-started.md) → [Login](../user/11-login.md)
 
 ---
 
