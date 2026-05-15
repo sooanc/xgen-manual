@@ -1,6 +1,140 @@
 {
-  "capturedAt": null,
-  "baseUrl": null,
-  "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작.",
-  "views": {}
+  "capturedAt": "2026-05-15T06:29:55.823Z",
+  "baseUrl": "https://stg-xgen.x2bee.com",
+  "views": {
+    "/dashboard": {
+      "ok": true,
+      "lastSize": 407202,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:28:18.251Z",
+      "source": "user"
+    },
+    "/main": {
+      "ok": true,
+      "lastSize": 239636,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:28:26.926Z",
+      "source": "user"
+    },
+    "main-planning": {
+      "ok": false,
+      "lastSize": 36383,
+      "notFound": true,
+      "capturedAt": "2026-05-15T06:28:45.769Z",
+      "source": "user"
+    },
+    "canvas-intro": {
+      "ok": true,
+      "lastSize": 239637,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:28:50.161Z",
+      "source": "user"
+    },
+    "/canvas": {
+      "ok": true,
+      "lastSize": 54861,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:28:55.473Z",
+      "source": "user"
+    },
+    "agentflow-scheduler": {
+      "ok": true,
+      "lastSize": 63022,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:28:59.910Z",
+      "source": "user"
+    },
+    "agentflow-tester": {
+      "ok": true,
+      "lastSize": 72344,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:04.145Z",
+      "source": "user"
+    },
+    "new-chat": {
+      "ok": true,
+      "lastSize": 67913,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:08.436Z",
+      "source": "user"
+    },
+    "current-chat": {
+      "ok": true,
+      "lastSize": 43213,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:12.702Z",
+      "source": "user"
+    },
+    "chat-history": {
+      "ok": true,
+      "lastSize": 55965,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:17.061Z",
+      "source": "user"
+    },
+    "knowledge-collection": {
+      "ok": true,
+      "lastSize": 59618,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:21.383Z",
+      "source": "user"
+    },
+    "knowledge-storage": {
+      "ok": true,
+      "lastSize": 73317,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:25.738Z",
+      "source": "user"
+    },
+    "knowledge-database": {
+      "ok": true,
+      "lastSize": 56234,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:29.990Z",
+      "source": "user"
+    },
+    "prompt-storage": {
+      "ok": true,
+      "lastSize": 125663,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:34.349Z",
+      "source": "user"
+    },
+    "auth-profile": {
+      "ok": true,
+      "lastSize": 64584,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:38.676Z",
+      "source": "user"
+    },
+    "tool-storage": {
+      "ok": true,
+      "lastSize": 63247,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:42.958Z",
+      "source": "user"
+    },
+    "support-notices": {
+      "ok": true,
+      "lastSize": 70281,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:47.255Z",
+      "source": "user"
+    },
+    "support-faq": {
+      "ok": true,
+      "lastSize": 63741,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:51.530Z",
+      "source": "user"
+    },
+    "support-qna": {
+      "ok": true,
+      "lastSize": 71001,
+      "notFound": false,
+      "capturedAt": "2026-05-15T06:29:55.823Z",
+      "source": "user"
+    }
+  },
+  "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작."
 }
