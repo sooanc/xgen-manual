@@ -1,13 +1,18 @@
 name: Deploy to GitHub Pages
 
 # main 브랜치 push 시:
-#   1. Xgen_Manual/base/ + customers/ 를 컴포즈
-#   2. MkDocs로 HTML 빌드 → Xgen_Manual/dist/site/
-#   3. 표준 매뉴얼(xgen-standard)을 public/ 으로 복사 후 Pages artifact 업로드
-#   4. GitHub Pages 배포
+#   1. Playwright 로 stg 캡처 → PNG 갱신 + screen-truth.json 머지 (require_view 동기화)
+#   2. Xgen_Manual/base/ + customers/ 를 컴포즈
+#   3. MkDocs로 HTML 빌드 → Xgen_Manual/dist/site/
+#   4. 표준 매뉴얼(xgen-standard)을 public/ 으로 복사 후 Pages artifact 업로드
+#   5. GitHub Pages 배포
 #
-# 캡처는 CI에서 안 돈다 — stg 자격증명을 CI에 두지 않기 위함.
-# 로컬에서 npm run capture:all 로 PNG 갱신 후 커밋.
+# stg 자격증명은 GitHub Actions Secrets 에 등록:
+#   - XGEN_BASE_URL       (예: https://stg-xgen.x2bee.com/)
+#   - XGEN_LOGIN_EMAIL    (캡처용 계정 — 가급적 슈퍼유저)
+#   - XGEN_LOGIN_PASSWORD
+# Secrets 누락/캡처 실패 시 continue-on-error 로 빌드는 계속 진행되며,
+# 기존 commit 된 screen-truth.json (safe default = views: {}) 가 fallback.
 
 on:
   push:
@@ -50,7 +55,29 @@ jobs:
             mkdocs-static-i18n \
             pymdown-extensions
 
-      - name: Install Node deps
+      - name: Install root Node deps (Playwright)
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Write .env.xgen-stg from secrets
+        env:
+          XGEN_BASE_URL: ${{ secrets.XGEN_BASE_URL }}
+          XGEN_LOGIN_EMAIL: ${{ secrets.XGEN_LOGIN_EMAIL }}
+          XGEN_LOGIN_PASSWORD: ${{ secrets.XGEN_LOGIN_PASSWORD }}
+        run: |
+          {
+            echo "XGEN_BASE_URL=${XGEN_BASE_URL}"
+            echo "XGEN_LOGIN_EMAIL=${XGEN_LOGIN_EMAIL}"
+            echo "XGEN_LOGIN_PASSWORD=${XGEN_LOGIN_PASSWORD}"
+          } > .env.xgen-stg
+
+      - name: Capture stg views (updates screen-truth.json + PNGs)
+        continue-on-error: true  # 캡처 실패 시 commit 된 screen-truth.json fallback
+        run: npm run capture:all
+
+      - name: Install Node deps (Xgen_Manual)
         working-directory: Xgen_Manual
         run: npm ci
 
