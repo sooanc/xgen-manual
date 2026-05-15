@@ -563,3 +563,19 @@ html[lang="en"] .md-source-file__fact:nth-of-type(2)::after {
     box-sizing: border-box;
   }
 }
+
+/* ----------------------------------------------------------------------------
+ * 체크리스트 (task-list) — 아이콘 색상
+ *
+ * Material 기본:
+ *   - 체크 안된 항목(- [ ]): var(--md-default-fg-color--lightest) — 아주 옅은 회색
+ *     → 흰 배경에서 거의 보이지 않음 (가시성 ↓)
+ *   - 체크된 항목(- [x]): #00e676 진한 그린 → 안내 영역에서 너무 튐
+ *
+ * 두 상태 모두 라이트블루(#42a5f5)로 통일.
+ * '첫 사용 시 점검 체크리스트' 같은 안내 영역에서 가독성·일관성 확보.
+ * -------------------------------------------------------------------------- */
+.md-typeset .task-list-indicator::before,
+.md-typeset [type=checkbox]:checked + .task-list-indicator::before {
+  background-color: #42a5f5 !important;
+}
