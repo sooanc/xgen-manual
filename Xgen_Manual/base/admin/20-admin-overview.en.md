@@ -23,7 +23,16 @@ The main column is organized into three steps:
 See the [Admin Console Layout](#admin-console-layout) table below for the full menu breakdown.
 
 !!! note "Administrator Privileges Required"
-    All features in the admin console are available only to accounts with **Administrator** or **Superuser** privileges. Standard users do not see the menu at all.
+    Admin Center is the **administrator-only area** that integrates user permissions, agent operations, AI governance, system environment, and data/knowledge assets. It is accessible only to accounts with **Administrator** or **Superuser** privileges; standard users do not see the **Admin Center** mode-switch button at the top-left at all.
+
+    Administrator privileges are further split into two roles. Even at the same "Administrator" tier, the menu scope shown in the sidebar varies depending on which role is assigned.
+
+    | Role | Access Scope |
+    |---|---|
+    | **Governance Officer** | Can view the AI Governance menu along with system operations status and management metrics. Granted only to those with internal control / audit responsibility. |
+    | **System Administrator** | Has access to operations, environment, and data administration menus, but cannot access the AI Governance menu. |
+
+    The AI Governance menu is provided only to those with internal control and audit responsibility, and is operated separately from system administration privileges. This separation lets the platform run reliably under enterprise requirements for internal control, audit response, and access governance.
 
 ## Permission Tiers
 
@@ -39,19 +48,45 @@ New administrators are granted the **Administrator** tier by default. We recomme
 
 ## Admin Console Layout
 
-The Admin sidebar is organized into the following 9 sections (some may be hidden depending on permissions).
+The Admin sidebar has 9 groups and 28 menus in total (some may be hidden depending on permissions). The mapping from each menu to its manual chapter is below.
 
-| Section | Korean | Main Menus | Manual Chapter |
-|---|---|---|---|
-| Users / Access Control | 사용자 / 접근제어 | User Management, Role / Permission Management | [User Management](21-user-management.md), [Role / Permission](22-role-permission.md) |
-| Agent Operations | Agent 운영 | Agent Management, Chat Monitoring, User Tokens, Node Management, Prompt Templates, User Feedback, Response Quality Evaluation, Agent Retention Analysis, Task Planning | [Agent Operations](32-agent-operations.md) |
-| AI Governance | AI 거버넌스 | AI Risk Assessment, Inspection History, Service Change History, **Control Policy Management** | [PII Policy](25-pii-policy.md), [AI Governance](29-governance-dashboard.md) |
-| Environment | 환경 설정 | General, **LLM**, Infrastructure, **Search / Embedding**, Audio, **Guardrail**, Sidebar | [LLM Settings](23-llm-settings.md), [Embedding Settings](24-embedding-settings.md), [Guardrail Model Setup](25b-guardrail-model.md) |
-| System Status | 시스템 상태 | **System Monitoring**, System Inspection, Log Viewer | [System Monitor](26-system-monitor.md), [Audit Log](27-audit-log.md) |
-| Data Management | 데이터 관리 | Database, DB Connection, Batch Jobs, **Data Audit Log** | [Data Management](33-data-management.md) |
-| MCP Management | MCP 관리 | **MCP Library**, MCP Operations & Monitoring | [MCP Library](28-mcp-market.md) |
-| Service Operations | 서비스 운영 | Announcements, FAQ, 1:1 Admin Inquiry | [Tech Support Handling](31-tech-support-handling.md) |
-| Knowledge Operations | 지식 운영 | Collection Management | [Knowledge Operations](34-knowledge-operations.md) |
+| Group | Menu | Manual Chapter |
+|---|---|---|
+| Users / Access Control | User Management | [User Management](21-user-management.md) |
+| Users / Access Control | Role / Permission | [Role / Permission](22-role-permission.md) |
+| Agent Operations | Agent Management | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
+| Agent Operations | User Tokens | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | Node Management | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | Prompt Templates | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | User Feedback | [Agent Operations · User Feedback](32-agent-operations.md#user-feedback) |
+| Agent Operations | Response Quality Evaluation | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | Agent Retention Analysis | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) |
+| AI Governance | AI Risk Assessment | [AI Governance · Risk Review](29-governance-dashboard.md#risk-review) |
+| AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
+| AI Governance | Service Change History | [AI Governance · Audit & Tracking](29-governance-dashboard.md#audit-tracking) |
+| AI Governance | Control Policy Management | [PII Policy](25-pii-policy.md), [AI Governance · Control Policy](29-governance-dashboard.md#control-policy) |
+| Environment | General | (not covered) |
+| Environment | LLM | [LLM Settings](23-llm-settings.md) |
+| Environment | Infrastructure | (not covered) |
+| Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |
+| Environment | Audio | (not covered) |
+| Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) |
+| Environment | Sidebar | (not covered) |
+| System Status | System Monitoring | [System Monitor](26-system-monitor.md) |
+| System Status | System Inspection | (not covered) |
+| System Status | Log Viewer | (not covered) |
+| Data Management | Database | [Data Management · Database](33-data-management.md#database) |
+| Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md#db-connection) |
+| Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md#batch-jobs) |
+| Data Management | Data Audit Log | [Data Management · Data Audit Log](33-data-management.md#data-audit-log), [Audit Log](27-audit-log.md) |
+| MCP Management | MCP Library | [MCP Library](28-mcp-market.md) |
+| MCP Management | MCP Operations & Monitoring | (not covered) |
+| Service Operations | Announcement Board | [Tech Support Handling · Notice Board](31-tech-support-handling.md#notice-board-authoring) |
+| Service Operations | FAQ | [Tech Support Handling · FAQ](31-tech-support-handling.md#faq-authoring) |
+| Service Operations | 1:1 Admin Inquiry | [Tech Support Handling · 1:1 Admin Inquiry](31-tech-support-handling.md#1-1-admin-inquiry-handling) |
+| Knowledge Operations | Collection Management | [Knowledge Operations](34-knowledge-operations.md) |
 
 !!! info "Menu Naming"
     Menu names on screen may vary slightly between solution versions and user permissions. This manual is based on {{product.name}} {{product.version}}; **bolded** menus are those this manual covers.

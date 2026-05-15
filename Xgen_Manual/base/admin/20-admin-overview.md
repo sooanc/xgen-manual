@@ -23,7 +23,16 @@
 세부 메뉴 분류는 아래 [관리자 콘솔 구성](#관리자-콘솔-구성) 표를 참고하세요.
 
 !!! note "관리자 권한 필요"
-    관리자 콘솔의 모든 기능은 **관리자(Administrator)** 또는 **최고 관리자(Superuser)** 권한이 있는 계정에서만 사용 가능합니다. 일반 사용자에게는 메뉴 자체가 노출되지 않습니다.
+    관리 설정은 사용자 권한, Agent 운영, AI 거버넌스, 시스템 환경, 데이터·지식 자산을 통합 관리하는 **관리자 전용 영역**입니다. **관리자(Administrator)** 또는 **최고 관리자(Superuser)** 권한이 있는 계정에서만 접근할 수 있으며, 일반 사용자에게는 좌상단 **관리 설정** 모드 전환 버튼 자체가 노출되지 않습니다.
+
+    관리자 권한은 다시 두 역할로 분리되어 운영되며, 같은 "관리자" 등급이라도 부여된 역할에 따라 사이드바에 노출되는 메뉴 범위가 달라집니다.
+
+    | 역할 | 접근 범위 |
+    |---|---|
+    | **거버넌스 담당자** | AI 거버넌스 메뉴를 포함해 시스템 운영 현황과 관리 지표를 함께 확인할 수 있습니다. 내부 통제·감사 책임이 있는 권한자에게만 부여됩니다. |
+    | **시스템 관리자** | 운영·환경·데이터 중심의 관리 기능에 접근할 수 있으나 AI 거버넌스 메뉴는 접근할 수 없습니다. |
+
+    AI 거버넌스 메뉴는 내부 통제와 감사 책임이 있는 권한자에게만 제공되며, 시스템 관리 권한과 분리되어 운영됩니다. 이는 기업의 내부 통제·감사 대응·접근 제어 기준에 맞춰 플랫폼을 안정적으로 운영하기 위함입니다.
 
 ## 권한 등급
 
@@ -39,19 +48,45 @@
 
 ## 관리자 콘솔 구성
 
-관리 설정 사이드바는 다음 9개 섹션으로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음).
+관리 설정 사이드바는 9개 그룹·28개 메뉴로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음). 각 메뉴별로 본 매뉴얼이 다루는 챕터를 아래와 같이 매핑합니다.
 
-| 섹션 | 영문 | 주요 메뉴 | 본 매뉴얼 챕터 |
-|---|---|---|---|
-| 사용자 / 접근제어 | Users / Access Control | 사용자 관리, 역할/권한 관리 | [사용자 관리](21-user-management.md), [역할/권한 관리](22-role-permission.md) |
-| Agent 운영 | Agent Operations | Agent 관리, 채팅 모니터링, 사용자 토큰, 노드 관리, 프롬프트 템플릿, 사용자 피드백, 응답 품질 평가, Agent 리텐션 분석, 업무기획 | [Agent 운영](32-agent-operations.md) |
-| AI 거버넌스 | AI Governance | AI 위험도 평가, 점검 이력 관리, AI 서비스 변경 이력, **통제 정책 관리** | [PII 보호 정책](25-pii-policy.md), [AI 거버넌스](29-governance-dashboard.md) |
-| 환경 설정 | Environment | 전체 설정, **LLM**, 인프라, **검색 / 임베딩**, 오디오, **가드레일**, 사이드바 | [LLM 설정](23-llm-settings.md), [임베딩·벡터 검색 설정](24-embedding-settings.md), [가드레일 모델 설정](25b-guardrail-model.md) |
-| 시스템 상태 | System Status | **시스템 모니터링**, 시스템 조회, 로그 조회 | [시스템 모니터](26-system-monitor.md), [감사 로그](27-audit-log.md) |
-| 데이터 관리 | Data Management | 데이터베이스, DB 연결, 배치 작업, **데이터 감사 로그** | [데이터 관리](33-data-management.md) |
-| MCP 관리 | MCP Management | **MCP 라이브러리**, MCP 운영/모니터링 | [MCP 라이브러리](28-mcp-market.md) |
-| 서비스 운영 | Service Operations | 공지 게시판, 자주 묻는 질문, 1:1 관리자 문의 | [기술지원 응대](31-tech-support-handling.md) |
-| 지식 운영 | Knowledge Operations | 컬렉션 관리 | [지식 운영](34-knowledge-operations.md) |
+| 그룹 | 메뉴 | 본 매뉴얼 챕터 |
+|---|---|---|
+| 사용자 / 접근제어 | 사용자 관리 | [사용자 관리](21-user-management.md) |
+| 사용자 / 접근제어 | 역할/권한 관리 | [역할/권한 관리](22-role-permission.md) |
+| Agent 운영 | Agent 관리 | [Agent 운영](32-agent-operations.md) |
+| Agent 운영 | 채팅 모니터링 | [Agent 운영 · 채팅 모니터링](32-agent-operations.md#채팅-모니터링) |
+| Agent 운영 | 사용자 토큰 | [Agent 운영](32-agent-operations.md) |
+| Agent 운영 | 노드 관리 | [Agent 운영](32-agent-operations.md) |
+| Agent 운영 | 프롬프트 템플릿 | [Agent 운영](32-agent-operations.md) |
+| Agent 운영 | 사용자 피드백 | [Agent 운영 · 사용자 피드백](32-agent-operations.md#사용자-피드백) |
+| Agent 운영 | 응답 품질 평가 | [Agent 운영](32-agent-operations.md) |
+| Agent 운영 | Agent 리텐션 분석 | [Agent 운영](32-agent-operations.md) |
+| Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#업무기획) |
+| AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#ai-위험도-평가-및-심사) |
+| AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#ai-점검-이력-및-계획) |
+| AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · 감사·추적 관리](29-governance-dashboard.md#ai-감사추적-관리) |
+| AI 거버넌스 | 통제 정책 관리 | [PII 보호 정책](25-pii-policy.md), [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#ai-통제-정책-관리) |
+| 환경 설정 | 전체 설정 | (별도 챕터 미수록) |
+| 환경 설정 | LLM | [LLM 설정](23-llm-settings.md) |
+| 환경 설정 | 인프라 | (별도 챕터 미수록) |
+| 환경 설정 | 검색 / 임베딩 | [임베딩·벡터 검색 설정](24-embedding-settings.md) |
+| 환경 설정 | 오디오 | (별도 챕터 미수록) |
+| 환경 설정 | 가드레일 | [가드레일 모델 설정](25b-guardrail-model.md) |
+| 환경 설정 | 사이드바 | (별도 챕터 미수록) |
+| 시스템 상태 | 시스템 모니터링 | [시스템 모니터](26-system-monitor.md) |
+| 시스템 상태 | 시스템 조회 | (별도 챕터 미수록) |
+| 시스템 상태 | 로그 조회 | (별도 챕터 미수록) |
+| 데이터 관리 | 데이터베이스 | [데이터 관리 · 데이터베이스](33-data-management.md#데이터베이스) |
+| 데이터 관리 | DB 연결 | [데이터 관리 · DB 연결](33-data-management.md#db-연결) |
+| 데이터 관리 | 배치 작업 | [데이터 관리 · 배치 작업](33-data-management.md#배치-작업) |
+| 데이터 관리 | 데이터 감사 로그 | [데이터 관리 · 데이터 감사 로그](33-data-management.md#데이터-감사-로그), [감사 로그](27-audit-log.md) |
+| MCP 관리 | MCP 라이브러리 | [MCP 라이브러리](28-mcp-market.md) |
+| MCP 관리 | MCP 운영/모니터링 | (별도 챕터 미수록) |
+| 서비스 운영 | 공지 게시판 | [기술지원 응대 · 공지 게시판](31-tech-support-handling.md#공지-게시판-게시) |
+| 서비스 운영 | 자주 묻는 질문 | [기술지원 응대 · 자주묻는 질문](31-tech-support-handling.md#자주묻는-질문-게시) |
+| 서비스 운영 | 1:1 관리자 문의 | [기술지원 응대 · 1:1 관리자 문의](31-tech-support-handling.md#1-1-관리자-문의-응대) |
+| 지식 운영 | 컬렉션 관리 | [지식 운영](34-knowledge-operations.md) |
 
 !!! info "메뉴 명칭 안내"
     화면상의 메뉴 이름은 솔루션 버전과 사용자 권한에 따라 일부 다를 수 있습니다. 본 매뉴얼은 {{product.name}} {{product.version}} 기준이며, 표에 굵게 표시된 메뉴가 본 매뉴얼이 다루는 핵심 항목입니다.
