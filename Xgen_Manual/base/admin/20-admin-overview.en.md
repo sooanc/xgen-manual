@@ -74,13 +74,13 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
 | AI Governance | Service Change History | [AI Governance · Audit & Tracking](29-governance-dashboard.md#audit-tracking) |
 | AI Governance | Control Policy Management | [AI Governance · Control Policy](29-governance-dashboard.md#control-policy), [PII Policy](25-pii-policy.md) |
-| Environment | General | [Admin Console Overview · Environment Overview](#env-overview) |
+| Environment | General | [General · Environment Overview](#env-overview) |
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |
-| Environment | Infrastructure | [Admin Console Overview · Environment Overview](#env-overview) |
+| Environment | Infrastructure | [Infrastructure · Environment Overview](#env-overview) |
 | Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |
-| Environment | Audio | [Admin Console Overview · Environment Overview](#env-overview) |
+| Environment | Audio | [Audio · Environment Overview](#env-overview) |
 | Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) |
-| Environment | Sidebar | [Admin Console Overview · Environment Overview](#env-overview) |
+| Environment | Sidebar | [Sidebar · Environment Overview](#env-overview) |
 | System Status | System Monitoring | [System Monitor · System Monitoring](26-system-monitor.md) |
 | System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query-log) |
 | System Status | Log Viewer | [System Monitor · Log Viewer](26-system-monitor.md#system-query-log) |
@@ -101,12 +101,26 @@ Four Environment menus — **General / Infrastructure / Audio / Sidebar** — do
 
 | Menu | Where to enter | Screen role |
 |---|---|---|
-| General | Admin → Environment → General | Unified, advanced view that lets you read/edit *every* environment setting (LLM, embedding, etc.) from a single screen. Day-to-day operations should use the individual *LLM / Search / Embedding* menus instead. |
+| General | Admin → Environment → General (`admin?view=admin-system-config`) | A unified, advanced view that lets you read/edit *every* system configuration value from a single screen. Day-to-day operations should rely on the individual menus (*LLM / Search / Embedding / Guardrail*); this screen is the *key-value precision-edit* entry point. (See *General screen in detail* below.) |
 | Infrastructure | Admin → Environment → Infrastructure | API server, Agent engine, model-serving *endpoints* and infrastructure parameters. Typically configured once at install time. |
 | Audio | Admin → Environment → Audio | STT/TTS voice-model integration. Only meaningful when voice features are enabled. |
 | Sidebar | Admin → Environment → Sidebar | Toggle visibility of individual sidebar menus per organization, used to hide selected menus from users. |
 
 Dedicated chapters are planned as follow-up work; until then, use the entry paths above to inspect or change these settings directly on stg.
+
+#### General screen in detail
+
+The *General* screen (`admin?view=admin-system-config`) exposes **every environment variable** the solution uses on a single page. The page header reads *"General — Inspect and edit every system configuration value."* The body has three areas:
+
+1. **Three top stat cards** — total settings / *configured* (different from default) / still on default. Example: *Total 184 / Configured 57 / Default 127* (numbers vary by environment).
+2. **Category tabs** — left to right *All / Node / Workflow / Application / Vector DB / OpenAI / Gemini / Anthropic / …* each showing its count. Categories may grow with the environment; the tab strip is horizontally scrollable.
+3. **Setting cards** — within each category, keys are listed as cards. Each card shows:
+    - **Key + dotted path** — e.g., `IS_AVAILABLE_TTS` with `tts.is_available_tts`
+    - **Current value** / **Default** side by side. Cards carry a *Default* badge when the two match, or a *Configured* badge when they differ.
+    - **Type badge** — `Bool` / `Json` / `Str` / `Int`, etc.
+
+!!! warning "Verify impact before editing"
+    *General* exposes keys that directly affect LLM / Embedding / TTS / Node / Workflow behavior. The same keys are editable from individual menus (*LLM / Search·Embedding / Guardrail*), so keep a consistent record of *which screen* a change was made from. Invalid values affect in-flight chats and executions immediately — review with the [audit log](27-audit-log.md) before changes.
 
 !!! info "Menu Naming"
     Menu names on screen may vary slightly between solution versions and user permissions. This manual is based on {{product.name}} {{product.version}}; **bolded** menus are those this manual covers.
