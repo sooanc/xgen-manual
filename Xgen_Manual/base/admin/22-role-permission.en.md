@@ -55,16 +55,25 @@ Each role has the following attributes.
 
 ## Creating a Role
 
-1. Click the **+ Add Role** button at the top right of the role list
-2. Enter:
-    - Role name (English, unique)
-    - Display name (localized)
-    - Description (optional)
-3. Check the desired permissions in the **Permissions** section
-4. **Save**
+Creating a role is a **two-step** process — first register the role's name, then grant permissions via the *Permissions* button on that role's row.
 
-!!! note "Add-role screen screenshot pending"
-    A screenshot of the permissions-checklist screen opened by "+ Add Role" will be added in a future manual update.
+### Step 1 — Register the role
+
+1. Click the **Create Role** button at the top right of the role list. (Earlier versions of this manual referred to *"+ Add Role"*; the current stg label is **Create Role**.)
+2. Fill in the modal:
+    - **Role Name (English)** — e.g., `content-manager` (must be unique)
+    - **Display Name** — e.g., `Content Manager`
+    - **Description** — optional
+3. Once the required fields are filled, the **Create** button at the bottom right is enabled — clicking it registers the role with zero permissions.
+
+![Create-Role modal — Role Name (English) / Display Name / Description fields with Cancel and Create buttons](images/admin-role-create.png)
+
+### Step 2 — Grant permissions
+
+To grant permissions to the newly created role, click the **Permissions** button on that role's row in the table. A permission checklist organized by category (admin / main scope) opens — check the desired permissions and save.
+
+!!! note "Permission-checklist screenshot pending"
+    A screenshot of the *permission-category checklist* opened by the **Permissions** button on a role row will be added in a future manual update.
 
 ## Permission Hierarchy (Supervisor / Target)
 
