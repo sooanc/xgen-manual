@@ -38,10 +38,10 @@ See the [Admin Console Layout](#admin-console-layout) table below for the full m
 
 The solution uses a **two-tier permission model** decided by a single `is_superuser` flag. For the full *Tier / Role / Permission* three-layer picture, see [Role / Permission Management · Permission Model](22-role-permission.md#permission-model).
 
-| Tier | Korean | `is_superuser` | What they can do |
-|---|---|---|---|
-| Standard User | 일반 사용자 | `false` | Use Agent Workspace. Edit and share own items |
-| SuperUser | 슈퍼유저 | `true` | Manage users/roles, configure system, run AI governance, monitor operations, delegate permissions, reset the system |
+| Tier | Korean | What they can do |
+|---|---|---|
+| Standard User | 일반 사용자 | Use Agent Workspace. Edit and share own items |
+| SuperUser | 슈퍼유저 | Manage users/roles, configure system, run AI governance, monitor operations, delegate permissions, reset the system |
 
 New users are created as **Standard User** by default. Granting SuperUser privilege is allowed only to an existing SuperUser. Keep at least one SuperUser for the system, ideally on a separate account isolated from daily operations.
 
