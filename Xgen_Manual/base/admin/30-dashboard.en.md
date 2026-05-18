@@ -23,7 +23,10 @@ Both System Administrators and Governance Officers see the welcome subtitle **"S
 
 ### Right-Panel Interpretation Differs
 
-The four items in the right fixed panel are the same as the user view, but **Recent Service Requests TOP 3** and **My Inquiries (1:1 Admin)** are interpreted as "items to handle" for admins.
+The right fixed panel contains the same **three items** as the user view (Latest Updates / FAQ / **Admin Inquiries**). For administrators, however, the **Admin Inquiries** panel is read as a *queue of incoming items to handle* rather than a view of one's own inquiry history — it surfaces the 1:1 inquiries the admin must respond to. The panel layout itself matches the user-side description in [User Manual · Right Fixed Panel](../user/18-dashboard.md#right-panel), where the three labels and data sources are documented.
+
+!!! note "Difference from earlier specs"
+    Earlier specs and prior versions of this manual mentioned a *"Recent Service Requests TOP 3"* panel for admins, but it is not exposed on the current stg live build for either user or admin accounts. The queue of items to handle is consolidated into the single *Admin Inquiries* panel.
 
 ## System Administrator View
 
@@ -51,7 +54,7 @@ On top of the Standard User / Agent Developer widgets, **operations and deployme
 
 1. **Daily system health check** — Once a day, inspect threshold-exceeding items in the widget directly below the welcome message. If alerts are missing, review [System Monitor](26-system-monitor.md) alert settings.
 2. **Shortcut entries reduce friction** — Use the **Admin Center** button to enter all admin screens (permission grants, LLM registration, etc.) in one step.
-3. **Catch high-impact issues quickly** — Scan the right panel's **Latest Updates** (all-user notices) and **Recent Service Requests TOP 3** to surface user-impacting issues.
+3. **Catch high-impact issues quickly** — Scan the right panel's **Latest Updates** (all-user notices) and the count of new items in the **Admin Inquiries** panel to surface user-impacting issues.
 4. **Share a recommended widget layout** — When onboarding a new admin, recommend: in their account, **Reset** → arrange the recommended widget configuration → screenshot it into operations docs (widget settings are per-user; forced sync is not supported).
 
 ## Governance Officer View
@@ -89,7 +92,7 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 | Governance widgets are not visible | Confirm the account has `admin.governance:*` |
 | **Risk Policy** widget shows "Inactive" | The policy itself is disabled. Use **AI Governance** to enable it |
 | **Forbidden-Word Policy** widget shows 0 rules | New environment with no rules registered. Adding rules reflects automatically |
-| Right-panel **Recent Service Requests** is empty | No user-side requests, or the admin lacks permissions for the relevant categories |
+| Right-panel **Admin Inquiries** is empty | No new 1:1 inquiries from users (empty-state message: *"No inquiries to the administrator yet."*) |
 | New admin sees a different widget layout | Widget settings are per-user. Guide them to **Reset** to start from default |
 
 ## Related Chapters

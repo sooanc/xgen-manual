@@ -21,18 +21,20 @@ The card opens with "Welcome, OOO! Which Agent would you like to start today's t
 
 > To see the **Admin Center** button active, refer to the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
-### Right Fixed Panel
+### Right Fixed Panel { #right-panel }
 
-Always shown in the same position regardless of widget grid customization.
+Always shown in the same position regardless of widget grid customization. The panel contains **three items**; labels below match the stg live screen.
 
-| Panel | Source | More link |
-|---|---|---|
-| Latest Updates | 3 most recent notices | `/main?view=support-notices` |
-| FAQ | Top 3 by views | `/main?view=support-faq` |
-| Recent Service Requests TOP 3 | 3 most recent service requests | `/main?view=support-qna&intent=service-request` |
-| My Inquiries | Your 3 most recent 1:1 inquiries | `/main?view=support-qna` |
+| # | Panel label | Source | More link |
+|---|---|---|---|
+| 1 | Latest Updates | 3 most recent notices | `/main?view=support-notices` |
+| 2 | FAQ | Top 3 by views | `/main?view=support-faq` |
+| 3 | **Admin Inquiries** | Your 1:1 admin inquiries (empty state: *"No inquiries to the administrator yet."*) | `/main?view=support-qna` |
 
 Use the **More >** link in each panel header to navigate to the full list.
+
+!!! note "Difference from earlier specs"
+    Some earlier specs or previous versions of this manual referred to a *"Recent Service Requests TOP 3"* panel here, but it is not exposed on the current stg live build. The right panel only contains the three items above.
 
 ## Standard User View
 
