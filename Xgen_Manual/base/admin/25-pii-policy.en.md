@@ -71,8 +71,10 @@ Add policies for organization-specific PII (e.g., Korean national ID, employee I
 3. Test in the **Test** area with sample text → confirm the regex matches only the intended portion
 4. **Save**
 
-!!! note "Add-policy modal screenshot pending"
-    A screenshot of the regex-input and test modal opened by "PII 생성 (Create PII)" will be added in a future manual update.
+![PII creation modal — Policy Name / Description / Regex / Masking / Regex Test area with a *Regex Generator* button](images/admin-pii-create-modal.png)
+
+!!! info "Built-in regex generator and regex tester"
+    The modal includes a **Regex Generator** button and a **Regex Test** area, so you can write and validate patterns without an external tool. Type a sample such as *"My email is test@example.com"* into the *Regex Test* textarea to see matches instantly.
 
 !!! info "Regex Tips"
     - Overly broad patterns produce false positives. Prefer `010-?\d{4}-?\d{4}` over `\d{10}`.

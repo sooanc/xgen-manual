@@ -64,7 +64,8 @@ For regulatory reporting and external audits, the log can be exported to file.
     - JSON: for machine processing
 3. Store the downloaded file with **encryption** (may contain PII)
 
-!!! note "Export-options modal screenshot pending"
+!!! info "The *Export* button is not present on the current stg build"
+    The *Export* button at the top right mentioned in earlier versions of this manual is not exposed on the current stg Audit Log screen (`admin?view=admin-audit-logs`). For regulatory reporting needs, contact operations for a separate data-extraction process (API / SQL / script). Once the UI is added, we will refresh this section with format / scope selection modal screenshots.
     A screenshot of the format / range selection modal opened by "Export" will be added in a future manual update.
 
 ## Periodic Review Checklist
