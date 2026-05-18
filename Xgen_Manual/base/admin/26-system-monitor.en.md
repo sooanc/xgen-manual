@@ -65,6 +65,19 @@ The **Resource History** tab shows time-series charts for past trends.
 
 When investigating spikes, cross-reference the audit log around the same time to infer causes.
 
+## System Inspection & Log Viewer { #system-query-log }
+
+The **System Status** group has two more menus alongside *System Monitoring* — **System Inspection** and **Log Viewer**. They are covered briefly here because both screens are *read-only inspection* with little user action.
+
+| Menu | Where to enter | Purpose |
+|---|---|---|
+| **System Inspection** | Admin → System Status → System Inspection | Shows the *health/ping result* of connected components (API server, Agent engine, model serving) on one screen. First stop when an outage is suspected. |
+| **Log Viewer** | Admin → System Status → Log Viewer | Search, filter, and download backend server logs (stdout / error). **For user actions or policy changes, refer to the [Audit Log](27-audit-log.md) chapter** — this screen contains *system-component logs*, not user-activity logs. |
+
+!!! info "vs. Audit Log"
+    - **Log Viewer**: *technical logs* from backend components (stack traces, error messages). Used by operations to chase incidents.
+    - **Audit Log**: a permanent record of *who did what when* (*user activity*). Used for regulatory and internal-audit response — see the [Audit Log](27-audit-log.md) chapter.
+
 ## Operational Recommendations
 
 - **Weekly review** — Inspect the 30-day chart on **Resource History** weekly. Disks fill gradually, so weekly checks are essential.

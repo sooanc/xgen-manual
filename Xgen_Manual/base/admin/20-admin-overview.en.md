@@ -54,45 +54,59 @@ New users are created as **Standard User** by default. Granting SuperUser privil
 
 ## Admin Console Layout
 
-The Admin sidebar has 9 groups and 28 menus in total (some may be hidden depending on permissions). The mapping from each menu to its manual chapter is below.
+The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden depending on permissions). Menu labels match the stg live screen. The mapping from each menu to its manual chapter is below.
 
 | Group | Menu | Manual Chapter |
 |---|---|---|
 | Users / Access Control | User Management | [User Management](21-user-management.md) |
 | Users / Access Control | Role / Permission | [Role / Permission](22-role-permission.md) |
-| Agent Operations | Agent Management | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
+| Users / Access Control | Login Management | [User Management · Login Management](21-user-management.md) (sessions & login history) |
+| Agent Operations | Agent Management | [Agent Operations · Agent Management (Deployment Approval)](32-agent-operations.md#agent-mgmt-deploy-approval) |
+| Agent Operations | Chat Monitoring | [Agent Operations](32-agent-operations.md) |
 | Agent Operations | User Tokens | [Agent Operations](32-agent-operations.md) |
 | Agent Operations | Node Management | [Agent Operations](32-agent-operations.md) |
 | Agent Operations | Prompt Templates | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | User Feedback | [Agent Operations · User Feedback](32-agent-operations.md#user-feedback) |
+| Agent Operations | User Feedback | [Agent Operations](32-agent-operations.md) |
 | Agent Operations | Response Quality Evaluation | [Agent Operations](32-agent-operations.md) |
 | Agent Operations | Agent Retention Analysis | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) |
+| Agent Operations | Task Planning | [Agent Operations](32-agent-operations.md) |
 | AI Governance | AI Risk Assessment | [AI Governance · Risk Review](29-governance-dashboard.md#risk-review) |
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
 | AI Governance | Service Change History | [AI Governance · Audit & Tracking](29-governance-dashboard.md#audit-tracking) |
 | AI Governance | Control Policy Management | [PII Policy](25-pii-policy.md), [AI Governance · Control Policy](29-governance-dashboard.md#control-policy) |
-| Environment | General | (not covered) |
+| Environment | General | [Environment Overview](#env-overview) (in-chapter appendix) |
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |
-| Environment | Infrastructure | (not covered) |
+| Environment | Infrastructure | [Environment Overview](#env-overview) (in-chapter appendix) |
 | Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |
-| Environment | Audio | (not covered) |
+| Environment | Audio | [Environment Overview](#env-overview) (in-chapter appendix) |
 | Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) |
-| Environment | Sidebar | (not covered) |
+| Environment | Sidebar | [Environment Overview](#env-overview) (in-chapter appendix) |
 | System Status | System Monitoring | [System Monitor](26-system-monitor.md) |
-| System Status | System Inspection | (not covered) |
-| System Status | Log Viewer | (not covered) |
-| Data Management | Database | [Data Management · Database](33-data-management.md#database) |
-| Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md#db-connection) |
-| Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md#batch-jobs) |
-| Data Management | Data Audit Log | [Data Management · Data Audit Log](33-data-management.md#data-audit-log), [Audit Log](27-audit-log.md) |
+| System Status | System Inspection | [System Monitor · System Inspection & Log Viewer](26-system-monitor.md#system-query-log) |
+| System Status | Log Viewer | [System Monitor · System Inspection & Log Viewer](26-system-monitor.md#system-query-log) |
+| Data Management | Database | [Data Management](33-data-management.md) |
+| Data Management | DB Connection | [Data Management](33-data-management.md) |
+| Data Management | Batch Jobs | [Data Management](33-data-management.md) |
+| Data Management | Data Audit Log | [Audit Log](27-audit-log.md) |
 | MCP Management | MCP Library | [MCP Library](28-mcp-market.md) |
-| MCP Management | MCP Operations & Monitoring | (not covered) |
-| Service Operations | Announcement Board | [Tech Support Handling · Notice Board](31-tech-support-handling.md#notice-board-authoring) |
-| Service Operations | FAQ | [Tech Support Handling · FAQ](31-tech-support-handling.md#faq-authoring) |
-| Service Operations | 1:1 Admin Inquiry | [Tech Support Handling · 1:1 Admin Inquiry](31-tech-support-handling.md#1-1-admin-inquiry-handling) |
+| MCP Management | MCP Operations & Monitoring | [MCP Library · MCP Operations / Monitoring](28-mcp-market.md#mcp-station) |
+| Service Operations | Announcement Board | [Tech Support Handling](31-tech-support-handling.md) |
+| Service Operations | FAQ | [Tech Support Handling](31-tech-support-handling.md) |
+| Service Operations | 1:1 Admin Inquiry | [Tech Support Handling](31-tech-support-handling.md) |
 | Knowledge Operations | Collection Management | [Knowledge Operations](34-knowledge-operations.md) |
+
+### Environment Overview — Menus Without a Dedicated Chapter { #env-overview }
+
+Four Environment menus — **General / Infrastructure / Audio / Sidebar** — do not have a dedicated chapter in this manual. Each screen is *one-time installation- or tenant-level setup*, so the quickest path is to operate them directly on stg.
+
+| Menu | Where to enter | Screen role |
+|---|---|---|
+| General | Admin → Environment → General | Unified, advanced view that lets you read/edit *every* environment setting (LLM, embedding, etc.) from a single screen. Day-to-day operations should use the individual *LLM / Search / Embedding* menus instead. |
+| Infrastructure | Admin → Environment → Infrastructure | API server, Agent engine, model-serving *endpoints* and infrastructure parameters. Typically configured once at install time. |
+| Audio | Admin → Environment → Audio | STT/TTS voice-model integration. Only meaningful when voice features are enabled. |
+| Sidebar | Admin → Environment → Sidebar | Toggle visibility of individual sidebar menus per organization, used to hide selected menus from users. |
+
+Dedicated chapters are planned as follow-up work; until then, use the entry paths above to inspect or change these settings directly on stg.
 
 !!! info "Menu Naming"
     Menu names on screen may vary slightly between solution versions and user permissions. This manual is based on {{product.name}} {{product.version}}; **bolded** menus are those this manual covers.

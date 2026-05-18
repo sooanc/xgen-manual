@@ -74,15 +74,28 @@ Registering an MCP server does not automatically grant all users access.
 
 4. **Save**
 
-## Session Management
+## MCP Operations & Monitoring (Station) { #mcp-station }
+
+The second menu in **MCP Management** — **MCP Operations & Monitoring** (view ID `admin-mcp-station`) — is where you manage the *runtime state* and *session lifecycle* of registered MCP servers on a single screen. If *MCP Library* is the *catalog / registration* surface, this screen is the *operations* entry point.
+
+| Area | What you see |
+|---|---|
+| Per-server status | Connected / Disconnected / Errored + last-call timestamp |
+| Active sessions | Open sessions per user (account, start time, last activity) |
+| Call statistics | Calls per time bucket, error rate, average response time |
+| Controls | Terminate individual sessions / **Terminate All** / **Restart** server |
+
+Where to enter: Admin → MCP Management → **MCP Operations & Monitoring**.
+
+![MCP Operations & Monitoring — per-server session list, call statistics, and terminate controls](images/admin-mcp-station.png)
+
+### Session Management
 
 MCP servers usually run with per-user sessions. Abnormal sessions accumulate and consume resources, so clean them up periodically.
 
-1. The **MCP Operations & Monitoring** menu, or MCP server detail → **Sessions** tab
-2. Inspect the list for abnormal entries (errored, long idle)
-3. Click individual **Terminate** or use **Terminate All** at the top right
-
-![MCP Operations & Monitoring — per-server session list, call statistics, and terminate controls](images/admin-mcp-station.png)
+1. Open **MCP Operations & Monitoring** or the MCP server detail → **Sessions** tab.
+2. Inspect the list for abnormal entries (errored, long idle).
+3. Click individual **Terminate** or use **Terminate All** at the top right.
 
 ## Disabling / Restarting Servers
 
