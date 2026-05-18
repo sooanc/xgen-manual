@@ -90,9 +90,7 @@ Beyond uploaded files, collection sources can also include **File Storage** (sys
 
 ![DB Connection — register connection details for external databases](images/database.png)
 
-For DB integrations, table- and column-level documentation (descriptions, sample values, policies) is managed in a separate screen.
-
-![DB Documentation — per-table / per-column descriptions and example values](images/database-documentation.png)
+For DB integrations, table- and column-level documentation (descriptions, sample values, policies) is managed in a separate screen. The *DB Documentation* view is only reachable once at least one DB connection has been registered; stg currently has no connections registered, so the screenshot will be added in a future manual update from an environment with data.
 
 ## Operational Recommendations
 
