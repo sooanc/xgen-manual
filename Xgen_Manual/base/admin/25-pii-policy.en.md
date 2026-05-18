@@ -106,7 +106,7 @@ Define the **evaluation principles and weights** used to score deployed agents a
 | Body | One card per top-level principle (Legality, Reliability, …). Each card supports adding evaluation items, adjusting max score, mitigation threshold, and remaining score. |
 | Item operations | Drag-handle on the left to reorder; **항목 추가 (Add Item)** to register a new evaluation item |
 
-After saving, new agents are auto-scored in [AI Governance — Risk Review](29-governance-dashboard.md#ai-위험도-평가-및-심사) and routed to the approval queue based on the resulting risk level.
+After saving, new agents are auto-scored in [AI Governance — Risk Review](29-governance-dashboard.md#risk-review) and routed to the approval queue based on the resulting risk level.
 
 ## Policy Application Scope
 

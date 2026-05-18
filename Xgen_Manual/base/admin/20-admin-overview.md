@@ -69,10 +69,10 @@
 | Agent 운영 | 응답 품질 평가 | [Agent 운영](32-agent-operations.md) |
 | Agent 운영 | Agent 리텐션 분석 | [Agent 운영](32-agent-operations.md) |
 | Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#업무기획) |
-| AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#ai-위험도-평가-및-심사) |
-| AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#ai-점검-이력-및-계획) |
-| AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · 감사·추적 관리](29-governance-dashboard.md#ai-감사추적-관리) |
-| AI 거버넌스 | 통제 정책 관리 | [PII 보호 정책](25-pii-policy.md), [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#ai-통제-정책-관리) |
+| AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#risk-review) |
+| AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#inspection) |
+| AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · 감사·추적 관리](29-governance-dashboard.md#audit-tracking) |
+| AI 거버넌스 | 통제 정책 관리 | [PII 보호 정책](25-pii-policy.md), [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#control-policy) |
 | 환경 설정 | 전체 설정 | (별도 챕터 미수록) |
 | 환경 설정 | LLM | [LLM 설정](23-llm-settings.md) |
 | 환경 설정 | 인프라 | (별도 챕터 미수록) |

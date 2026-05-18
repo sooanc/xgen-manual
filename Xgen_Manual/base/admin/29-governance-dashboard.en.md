@@ -10,16 +10,21 @@ Enter **Admin Center** from the top-left mode switch, then expand the **AI Gover
 
 ## Sidebar Layout
 
-The AI Governance menu has **four areas**.
+The left sidebar's **AI Governance** accordion contains **four items in a flat list**. The order and labels visible to a SuperUser with the right permissions are:
 
-| Area | Korean | Main Menus | Section |
-|---|---|---|---|
-| Risk Review | AI 위험도 평가 및 심사 | Risk Assessment, Agent Approval | [Risk Review](#risk-review) |
-| Inspection | AI 점검 이력 및 계획 | Inspection Monitoring, Plan, Overdue, History | [Inspection](#inspection) |
-| Service / Operation History | AI 감사·추적 관리 | Service Change History, Operation History | [Audit & Tracking](#audit--tracking) |
-| Control Policy | AI 통제 정책 관리 | PII Policy, Forbidden Words, Risk Policy | [Control Policy](#control-policy) |
+| # | Sidebar label | Page header (on entry) | Section in this chapter | In-page structure |
+|---|---|---|---|---|
+| 1 | **AI Risk Assessment** | AI Risk Assessment | [Risk Review](#risk-review) | Risk-category widget grid → items over the threshold open the *Agent Approval* view inside |
+| 2 | **Inspection History** | AI Inspection History & Plan | [Inspection](#inspection) | Four tabs — Inspection History / Inspection Plan / Overdue / Inspection Register |
+| 3 | **AI Service Change History** | (service / operation change history list) | [Audit & Tracking](#audit-tracking) | Single screen with filters and search |
+| 4 | **Control Policy Management** | (3-tab policy management) | [Control Policy](#control-policy) | Three tabs — PII Protection / Forbidden Words / Risk Levels |
 
-## Risk Review
+!!! info "Sidebar labels may differ from page headers"
+    Clicking *Inspection History* in the sidebar opens a page whose header reads **AI Inspection History & Plan**. This chapter locates each menu by its **sidebar label**, and uses the page header only as a confirmation cue after entry.
+
+    Internally the four items belong to backend permission categories (`gov-risk-review` / `gov-inspection` / `gov-service-history` / `gov-control-policy`), but **those category names are not shown as sidebar group labels** — all four sit flat inside a single *AI Governance* accordion.
+
+## Risk Review { #risk-review }
 
 Computes **per-category risk scores** for deployed agents; agents that exceed a threshold are routed to governance reviewers for explicit approval.
 
@@ -104,9 +109,9 @@ The procedure below moves through *sidebar entry → queue overview → row insp
 
     When the *Submitting…* state clears, the stat cards and table refresh. If the same agent reappears as *Pending*, the author has resubmitted after a fix — repeat the workflow.
 
-Every approve/reject action is recorded in the [audit log](27-audit-log.md) and in [AI Audit & Tracking](#audit--tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
+Every approve/reject action is recorded in the [audit log](27-audit-log.md) and in [AI Audit & Tracking](#audit-tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
 
-## Inspection
+## Inspection { #inspection }
 
 Manages the **inspection schedule and history** for AI systems across the organization.
 
@@ -119,7 +124,7 @@ Manages the **inspection schedule and history** for AI systems across the organi
 
 Inspection items are linked to risk-review results; completing an inspection re-computes the affected risk scores.
 
-## Audit & Tracking
+## Audit & Tracking { #audit-tracking }
 
 Records governance-policy changes and user operational actions.
 
@@ -133,7 +138,7 @@ Records governance-policy changes and user operational actions.
 !!! note "vs. system audit log"
     Solution-wide audit (logins, system-setting changes) lives in the separate [Audit Log](27-audit-log.md) chapter. **AI Governance audit** is scoped to governance policy and approval-workflow events.
 
-## Control Policy
+## Control Policy { #control-policy }
 
 Registers and manages the organization's **AI usage control policies**.
 

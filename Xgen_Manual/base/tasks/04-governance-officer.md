@@ -23,7 +23,7 @@
 
 ## 위험도 평가 카테고리·가중치를 조정하려면
 - 시작 위치: 관리 설정 → AI 거버넌스 → AI 통제 정책 관리
-- 절차: [AI 거버넌스 - 통제 정책 관리](../admin/29-governance-dashboard.md#ai-통제-정책-관리)
+- 절차: [AI 거버넌스 - 통제 정책 관리](../admin/29-governance-dashboard.md#control-policy)
 - 권장: 분기 1회 재조정
 
 ## PII 마스킹 규칙을 추가하거나 조정하려면
@@ -37,12 +37,12 @@
 
 ## 거버넌스 정책·승인 변경 이력을 추적하려면
 - 시작 위치: 관리 설정 → AI 거버넌스 → AI 감사·추적 관리
-- 절차: [AI 거버넌스 - 감사·추적 관리](../admin/29-governance-dashboard.md#ai-감사추적-관리)
+- 절차: [AI 거버넌스 - 감사·추적 관리](../admin/29-governance-dashboard.md#audit-tracking)
 - 거버넌스 한정 감사 (일반 시스템 로그와 분리)
 
 ## 정기 점검 일정을 등록·관리하려면
 - 시작 위치: 관리 설정 → AI 거버넌스 → AI 점검 이력 및 계획
-- 절차: [AI 거버넌스 - 점검 이력 및 계획](../admin/29-governance-dashboard.md#ai-점검-이력-및-계획)
+- 절차: [AI 거버넌스 - 점검 이력 및 계획](../admin/29-governance-dashboard.md#inspection)
 
 ## 거버넌스 종합 모니터링이 궁금하다
 - 시작 위치: 관리 설정 → AI 거버넌스 (기본 진입 화면)

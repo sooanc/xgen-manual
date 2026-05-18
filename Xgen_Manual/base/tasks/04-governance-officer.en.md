@@ -23,7 +23,7 @@
 
 ## Tune risk-category weights
 - Start: Admin Center → AI Governance → Control Policy
-- Procedure: [AI Governance - Control Policy](../admin/29-governance-dashboard.md#ai-통제-정책-관리)
+- Procedure: [AI Governance - Control Policy](../admin/29-governance-dashboard.md#control-policy)
 - Recommended: re-tune quarterly
 
 ## Add or adjust PII masking rules
@@ -37,12 +37,12 @@
 
 ## Trace governance policy / approval changes
 - Start: Admin Center → AI Governance → Audit & Tracking
-- Procedure: [AI Governance - Audit & Tracking](../admin/29-governance-dashboard.md#ai-감사추적-관리)
+- Procedure: [AI Governance - Audit & Tracking](../admin/29-governance-dashboard.md#audit-tracking)
 - Scoped to governance events (separate from the general system audit log)
 
 ## Register and manage scheduled inspections
 - Start: Admin Center → AI Governance → Inspection
-- Procedure: [AI Governance - Inspection](../admin/29-governance-dashboard.md#ai-점검-이력-및-계획)
+- Procedure: [AI Governance - Inspection](../admin/29-governance-dashboard.md#inspection)
 
 ## Show me the governance overview
 - Start: Admin Center → AI Governance (default landing)

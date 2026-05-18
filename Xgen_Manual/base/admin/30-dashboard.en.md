@@ -78,7 +78,7 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 
 ### Operational Usage
 
-1. **Daily approval-queue triage** — Review new items in the main-screen **Agent Approval Queue** daily. Detailed review and approval happens in [AI Governance - Risk Review](29-governance-dashboard.md#ai-위험도-평가-및-심사).
+1. **Daily approval-queue triage** — Review new items in the main-screen **Agent Approval Queue** daily. Detailed review and approval happens in [AI Governance - Risk Review](29-governance-dashboard.md#risk-review).
 2. **Verify policy reflection immediately after changes** — After editing a risk-grade or forbidden-word policy, confirm the dashboard **Risk Policy** / **Forbidden-Word Policy** widgets update instantly. If they do not, suspect a cache or permission-sync issue.
 3. **Shortcut entries** — Click **Admin Center** and pick **AI Governance** from the left sidebar to edit policies.
 
