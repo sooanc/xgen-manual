@@ -58,42 +58,42 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 
 | Group | Menu | Manual Chapter |
 |---|---|---|
-| Users / Access Control | User Management | [User Management](21-user-management.md) |
-| Users / Access Control | Role / Permission | [Role / Permission](22-role-permission.md) |
-| Users / Access Control | Login Management | [User Management · Login Management](21-user-management.md) (sessions & login history) |
+| Users / Access Control | User Management | [User Management · User List & Approval](21-user-management.md#user-list) |
+| Users / Access Control | Role / Permission | [Role / Permission · Permission Model / Roles](22-role-permission.md#permission-model) |
+| Users / Access Control | Login Management | [User Management · Login Management](21-user-management.md) |
 | Agent Operations | Agent Management | [Agent Operations · Agent Management (Deployment Approval)](32-agent-operations.md#agent-mgmt-deploy-approval) |
-| Agent Operations | Chat Monitoring | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | User Tokens | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Node Management | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Prompt Templates | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | User Feedback | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Response Quality Evaluation | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Agent Retention Analysis | [Agent Operations](32-agent-operations.md) |
-| Agent Operations | Task Planning | [Agent Operations](32-agent-operations.md) |
+| Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
+| Agent Operations | User Tokens | [Agent Operations · User Tokens](32-agent-operations.md) |
+| Agent Operations | Node Management | [Agent Operations · Node Management](32-agent-operations.md) |
+| Agent Operations | Prompt Templates | [Agent Operations · Prompt Templates](32-agent-operations.md) |
+| Agent Operations | User Feedback | [Agent Operations · User Feedback](32-agent-operations.md#user-feedback) |
+| Agent Operations | Response Quality Evaluation | [Agent Operations · Response Quality Evaluation](32-agent-operations.md) |
+| Agent Operations | Agent Retention Analysis | [Agent Operations · Retention Analysis](32-agent-operations.md) |
+| Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) |
 | AI Governance | AI Risk Assessment | [AI Governance · Risk Review](29-governance-dashboard.md#risk-review) |
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
 | AI Governance | Service Change History | [AI Governance · Audit & Tracking](29-governance-dashboard.md#audit-tracking) |
-| AI Governance | Control Policy Management | [PII Policy](25-pii-policy.md), [AI Governance · Control Policy](29-governance-dashboard.md#control-policy) |
-| Environment | General | [Environment Overview](#env-overview) (in-chapter appendix) |
+| AI Governance | Control Policy Management | [AI Governance · Control Policy](29-governance-dashboard.md#control-policy), [PII Policy](25-pii-policy.md) |
+| Environment | General | [Admin Console Overview · Environment Overview](#env-overview) |
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |
-| Environment | Infrastructure | [Environment Overview](#env-overview) (in-chapter appendix) |
+| Environment | Infrastructure | [Admin Console Overview · Environment Overview](#env-overview) |
 | Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |
-| Environment | Audio | [Environment Overview](#env-overview) (in-chapter appendix) |
+| Environment | Audio | [Admin Console Overview · Environment Overview](#env-overview) |
 | Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) |
-| Environment | Sidebar | [Environment Overview](#env-overview) (in-chapter appendix) |
-| System Status | System Monitoring | [System Monitor](26-system-monitor.md) |
-| System Status | System Inspection | [System Monitor · System Inspection & Log Viewer](26-system-monitor.md#system-query-log) |
-| System Status | Log Viewer | [System Monitor · System Inspection & Log Viewer](26-system-monitor.md#system-query-log) |
-| Data Management | Database | [Data Management](33-data-management.md) |
-| Data Management | DB Connection | [Data Management](33-data-management.md) |
-| Data Management | Batch Jobs | [Data Management](33-data-management.md) |
-| Data Management | Data Audit Log | [Audit Log](27-audit-log.md) |
-| MCP Management | MCP Library | [MCP Library](28-mcp-market.md) |
+| Environment | Sidebar | [Admin Console Overview · Environment Overview](#env-overview) |
+| System Status | System Monitoring | [System Monitor · System Monitoring](26-system-monitor.md) |
+| System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query-log) |
+| System Status | Log Viewer | [System Monitor · Log Viewer](26-system-monitor.md#system-query-log) |
+| Data Management | Database | [Data Management · Database](33-data-management.md) |
+| Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md) |
+| Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md) |
+| Data Management | Data Audit Log | [Audit Log · Data Audit Log](27-audit-log.md) |
+| MCP Management | MCP Library | [MCP Library · MCP Library](28-mcp-market.md) |
 | MCP Management | MCP Operations & Monitoring | [MCP Library · MCP Operations / Monitoring](28-mcp-market.md#mcp-station) |
-| Service Operations | Announcement Board | [Tech Support Handling](31-tech-support-handling.md) |
-| Service Operations | FAQ | [Tech Support Handling](31-tech-support-handling.md) |
-| Service Operations | 1:1 Admin Inquiry | [Tech Support Handling](31-tech-support-handling.md) |
-| Knowledge Operations | Collection Management | [Knowledge Operations](34-knowledge-operations.md) |
+| Service Operations | Announcement Board | [Tech Support Handling · Announcement Board](31-tech-support-handling.md) |
+| Service Operations | FAQ | [Tech Support Handling · FAQ](31-tech-support-handling.md) |
+| Service Operations | 1:1 Admin Inquiry | [Tech Support Handling · 1:1 Admin Inquiry](31-tech-support-handling.md) |
+| Knowledge Operations | Collection Management | [Knowledge Operations · Collection Management](34-knowledge-operations.md) |
 
 ### Environment Overview — Menus Without a Dedicated Chapter { #env-overview }
 

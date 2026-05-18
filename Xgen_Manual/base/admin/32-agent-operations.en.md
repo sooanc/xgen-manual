@@ -85,17 +85,17 @@ Open the card's **Settings** modal to reveal the **Approval Status** toggle. Swi
 | Deployed | `is_deployed: true` | Deployment approval passed. Awaits governance approval before becoming visible to end users |
 | Not deployed | `is_deployed: false && !inquire_deploy` | Never requested, or reverted after rejection |
 
-### User Feedback
+### User Feedback { #user-feedback }
 
 ![User Feedback — summary cards (total feedback / average stars / good-answer rate) and a table of per-agent ratings and issue categories with CSV export.](images/admin-feedback-monitoring.png)
 
 Top summary cards: total feedback count, average star rating, good-answer rate (no-issue ratio), hallucination count, policy violation count, data error count, response failure count. Use the CSV export from this screen as the source for governance reports.
 
-### Chat Monitoring
+### Chat Monitoring { #chat-monitoring }
 
 A per-conversation trace view showing which nodes an agent traversed and the result of each tool call. The first stop when investigating or reproducing a response-quality issue.
 
-### Task Planning
+### Task Planning { #task-planning }
 
 Register and rank candidate new agents the organization wants to build. Collects user requests, planner suggestions, and operational data in one place.
 
