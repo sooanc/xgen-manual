@@ -6,7 +6,7 @@
 
 | 용어 | 영문 | 정의 |
 |---|---|---|
-| Xgen | Xgen | 자연어 기반 AI 업무 자동화 솔루션의 제품명 |
+| Xgen | Xgen | 자연어 기반 업무 자동화와 다양한 시스템 연계를 통해 기업의 AI 실행 체계를 효율적으로 확장할 수 있는 Agentic AI Platform의 제품명 |
 | Agent 작업실 | Agent Workspace | 에이전트와 에이전트플로우를 만들고 운영하는 사용자 작업 공간 |
 | 관리 설정 | Admin Center | **SuperUser** 권한을 가진 사용자만 접근 가능한 관리자 영역 |
 | 대시보드 | Dashboard | 현황·통계를 한눈에 보는 시작 화면 |

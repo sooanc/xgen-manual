@@ -6,7 +6,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 
 | Term | Korean | Definition |
 |---|---|---|
-| Xgen | Xgen | Product name — natural-language AI work-automation solution |
+| Xgen | Xgen | Product name — an Agentic AI Platform that scales an enterprise's AI execution capability through natural-language task automation and integration with diverse systems |
 | Agent Workspace | Agent 작업실 | User workspace for creating and operating agents and agentflows |
 | Admin Center | 관리 설정 | Administrative area accessible only to users with **SuperUser** permission |
 | Dashboard | 대시보드 | Landing screen showing status and statistics at a glance |
