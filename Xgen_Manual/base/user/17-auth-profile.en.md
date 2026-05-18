@@ -38,8 +38,10 @@ Each profile has the following:
 3. Click **Test Profile** → verify a real call succeeds
 4. **Save**
 
-!!! note "New-profile modal screenshot pending"
-    A screenshot of the per-type credentials modal opened by "+ New Authentication Profile" will be added in a future manual update.
+![New profile — the type selector and credential-entry view that opens when you click *New Profile*](images/auth-profile-create.png)
+
+!!! info "Button label"
+    The actual stg button label is **"새 프로필" / "New Profile"** (earlier versions of this manual referenced *"+ New Authentication Profile"*).
 
 ## Profile Types
 

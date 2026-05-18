@@ -51,8 +51,8 @@ Newly created agents and agentflows will use the default provider. Individual it
 | Top P | Top P | Nucleus sampling — diversity control | 0.9–1.0 |
 | Stream | 스트리밍 | Stream response in real time | true (better UX) |
 
-!!! note "Model-parameter sliders screenshot pending"
-    A screenshot of the per-model Temperature / Max Tokens / Top P sliders will be added in a future manual update.
+!!! info "Where these parameters surface today"
+    The per-model *Temperature / Max Tokens / Top P sliders* mentioned in earlier versions of this manual are not exposed on the current stg LLM settings (`admin?view=admin-setting-llm`) provider-detail page. Apply the recommended values above via the *Advanced Options* of the LLM node in your agentflow or at call time. The sliders screenshot will be added once the UI is in place.
 
 ## Operational Impact of Changes
 

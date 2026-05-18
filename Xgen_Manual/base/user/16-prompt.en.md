@@ -36,8 +36,10 @@ Tabs:
     - **Tags** (optional): for classification
 3. **Save**
 
-!!! note "Prompt editor screenshot pending"
-    A screenshot of the editor opened by "+ New Prompt" (name / type / content / variables / tags) will be added in a future manual update.
+![Prompt editor — the editing view opened by *New Prompt* (name / type / content / variables / tags)](images/prompt-editor.png)
+
+!!! info "Button label"
+    The actual stg button label is **"새 프롬프트" / "New Prompt"** (without the `+` prefix that earlier versions of this manual mentioned).
 
 ### Example with Variables
 

@@ -51,8 +51,8 @@ The default supported engine is **Qdrant**.
     - API key (if authentication is enabled)
 3. **Test Connection** → **Save**
 
-!!! note "Qdrant connection-settings screenshot pending"
-    A screenshot of the connection-settings panel on the Vector Database tab (host / port / API key) will be added in a future manual update.
+!!! info "The vector DB tab is read-only today"
+    The vector-database tab (`admin?view=admin-setting-embed` → *Vector Database*) currently exposes only a *Test Connection* button and a display of the active engine; the host / port / API key input panel is not surfaced in the UI. Vector DB connection (Qdrant, etc.) is configured once via infrastructure-side environment variables / config files. The input-panel screenshot will be added once the UI is exposed.
 
 !!! note "Disk Monitoring"
     The vector database consumes disk quickly as collections grow. Periodically check disk usage in **System Monitor** and configure threshold alerts.

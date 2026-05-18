@@ -14,9 +14,12 @@ An agentflow is a visual workflow connecting multiple **nodes** that defines an 
 
 See [Glossary](../common/01-glossary.md) for full terminology.
 
-## Entering Agent Workspace
+## Entering Agent Workspace { #agent-작업실-진입 }
 
-Select **Agent Creation → Agent Design** in the left sidebar.
+!!! note "Agent-build permission required"
+    The steps in this section assume the **Agent Developer** role (or equivalent `main.agentflow:*` permission) is assigned to your account. Standard User accounts do not see the **Agent Creation** sidebar section, and navigating to `/main?view=canvas-intro` via the [Dashboard · Agent Workspace quick-jump](18-dashboard.md) renders the intro page with an empty body.
+
+Select **Agent Creation → Agent Design** in the left sidebar. From the canvas intro screen you can pick **Start from blank canvas / Start with chat / Continue** as the entry mode.
 
 ![Agent Workspace — list of registered agentflows with the create button](images/agentflow-list.png)
 
@@ -48,8 +51,8 @@ To add:
 2. **Drag and drop** a node card onto the canvas
 3. The node is placed on the canvas
 
-!!! note "Node-palette drag screenshot pending"
-    A screenshot of dragging a node card from the left palette will be added in a future manual update. The node palette is visible on the left side of the canvas editor image above.
+!!! info "Drag-in-progress screenshot deferred"
+    A still screenshot of the *moment of dragging* a node card from the left palette doesn't capture the motion well, so it is deferred. You can locate the node palette on the left side of the canvas editor image above.
 
 ## Connecting Nodes
 
@@ -70,8 +73,8 @@ Clicking a node opens the detail panel on the right. Configure:
 | Tool (tool node) | The external API or MCP tool to invoke |
 | Variables | Variable names passed between nodes |
 
-!!! note "Node detail panel screenshot pending"
-    A screenshot of the per-node detail panel (right side, opens on click) will be added in a future manual update.
+!!! info "Detail-panel screenshot deferred"
+    The per-node detail panel that opens on click has different fields per node type (LLM / Tool / Search / Branch, etc.). One or two representative examples will be added in a future manual update.
 
 External APIs and MCP tools referenced by Tool nodes are registered and managed on a separate screen.
 

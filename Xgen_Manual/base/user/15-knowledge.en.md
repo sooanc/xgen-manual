@@ -37,8 +37,10 @@ Select **Knowledge Management → Knowledge Collections** in the left sidebar.
     - **Expiration date** (optional): auto-delete date. Leave empty for permanent retention
 3. **Create**
 
-!!! note "Collection-create modal screenshot pending"
-    A screenshot of the "+ New Collection" modal (name / description / encryption / expiration fields) will be added in a future manual update.
+![New collection modal — name / description / encryption / expiration fields](images/knowledge-collection-create.png)
+
+!!! info "Button label"
+    The actual stg button label is **"새 컬렉션 생성" / "Create New Collection"**.
 
 ## Document Upload
 

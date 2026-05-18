@@ -48,7 +48,7 @@ Open the **Deploy Info** modal from your agent's card action menu and flip the *
 4. Flip the **Deploy toggle** (*Private ↔ Deploying*) at the top of the modal to ON. This toggle is the **single trigger that submits the deployment request**. For shared deployments you must select an **Agent Development Plan** before turning the toggle on — otherwise the modal returns the error *"Shared deployment requires an Agent Development Plan."*
 5. As soon as the toggle is on, the card badge changes to **Deployment Pending** (`inquire_deploy: true`) — your request is now in the System Administrator's queue. There is nothing more to do on your side unless you choose to cancel by toggling it back off.
 
-!!! note "Deployment-settings modal screenshot pending"
+!!! info "Modal screenshot deferred"
     A screenshot of the modal showing the Deploy toggle, mode tabs (Webpage/API/cURL/Embed), and the Agent Development Plan picker will be added in a future manual update.
 
 ### What happens next — System Administrator + Governance Officer dual approval { #dual-approval-flow }
@@ -110,7 +110,7 @@ Each save automatically creates a version. To roll back:
 2. Click **Restore This Version** on the desired version
 3. Confirm in the dialog → **Restore**
 
-!!! note "Version-history modal screenshot pending"
+!!! info "Version-history modal screenshot deferred"
     A screenshot of the version history modal with the "Restore this version" buttons will be added in a future manual update.
 
 !!! warning "Restore Creates a New Version"

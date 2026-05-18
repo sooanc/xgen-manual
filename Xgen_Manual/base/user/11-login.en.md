@@ -37,10 +37,10 @@ In environments with self-signup enabled, signup requests enter the **Pending Ap
 
 ## Logout
 
-Click the user icon at the top right → select **Log Out**.
+Click the dedicated **Logout** icon (door-arrow) in the top-right header — it sits next to the user icon, so a single click signs you out.
 
-!!! note "User-menu screenshot pending"
-    A screenshot of the user-icon dropdown (profile, logout, etc.) at the top-right will be added in the next manual update.
+!!! info "What clicking the user avatar does"
+    Clicking the avatar (the initial-letter circle) at the top right does **not** open a dropdown menu — it navigates directly to **MyPage (`/mypage`)**. Profile and password changes happen inside MyPage, and logout is available as a separate **Logout** icon in the header for a one-click sign-out.
 
 !!! note "Caution on Shared PCs"
     After using the solution on a shared PC or meeting-room PC, be sure to log out and close the browser. Confirm that password autosave is disabled.
