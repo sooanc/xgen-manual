@@ -10,9 +10,9 @@ The `/dashboard` screen you land on after login is shared by all users, but acco
 
 The two quick-jump buttons at the top-right of the dashboard — **Agent Workspace** and **Admin Center** — are simplified to those two only, and the **Admin Center** button is enabled for any admin account.
 
-| Button | Destination | Standard User / Agent Developer | Admin |
+| Button | Where it goes | Standard User / Agent Developer | Admin |
 |---|---|---|---|
-| Agent Workspace | `/main?view=agentflows` | Enabled | Enabled |
+| Agent Workspace | `/main` → auto-redirects to `?view=canvas-intro` (Agent design intro) | Standard Users may see the body as empty (permission gating — see the *Standard User warning* in [User Manual · Quick-jump](../user/18-dashboard.md)). Agent Developers see the full intro. | Full intro rendered (Agent-build permission included) |
 | Admin Center | `/admin` | Disabled | **Enabled** (entry to all admin screens: users, roles, LLM, governance, etc.) |
 
 > After entering `/admin`, use the left sidebar to navigate to AI Model Management, AI Governance, Users / Access Control, Environment, and other detailed areas.

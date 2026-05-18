@@ -14,10 +14,20 @@ The dashboard has three parts: the **welcome message** at the top, the **left wi
 
 The card opens with "Welcome, OOO! Which Agent would you like to start today's tasks with?" Two quick-jump buttons appear to its right, and only the ones your permission covers are active.
 
-| Button | Target | Standard User | Agent Developer |
+| Button | Where it goes | Standard User | Agent Developer |
 |---|---|---|---|
-| Agent Workspace | `/main?view=agentflows` | Enabled (enters Chat) | Enabled (enters Build) |
+| Agent Workspace | `/main` → auto-redirects to `?view=canvas-intro` (Agent design intro) | Enabled — but **the page body is empty without Agent-build permission** (see note below) | Enabled — intro content (Start with chat / Start from blank canvas / Continue + Canvas & live-chat sections) is rendered normally |
 | Admin Center | `/admin` | Disabled | Disabled |
+
+!!! warning "Standard Users see only a partial Agent Workspace landing"
+    The **Agent Workspace** button looks enabled, but clicking it navigates to `/main?view=canvas-intro` (Agent design intro). **Standard Users without Agent-build permissions see only the page header ("Agent 설계")** while the body remains empty — this *looks like a Page not found, but it is the intro page rendering its permission-gated body as blank*.
+
+    To chat with an agent as a Standard User, take one of the following paths instead:
+
+    - On this dashboard, use the **Run** buttons inside the *Popular Agent Templates*, *Shared Agents*, or *Frequently Used Agents TOP 3* widgets.
+    - Or switch to **Agent Workspace** mode at the top-left and then choose **Agent Chat → Start Chat** in the left sidebar (see [Using Chat](14-chat.md)).
+
+    The behavior of the *Agent Workspace* button pointing to the intro page is the solution's default entry. Once Agent-build permissions are granted, the intro content renders normally.
 
 > To see the **Admin Center** button active, refer to the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
