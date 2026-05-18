@@ -39,9 +39,8 @@ After saving, a row is added to the table with an Analysis ID and becomes search
 ## Recommended Flow
 
 1. **Write the proposal first** — Putting the idea in writing before opening the canvas speeds up node design.
-2. **Tag related agents** — If a similar agent already exists, link it under **Linked agent** to avoid duplicate work.
-3. **Pick the right impact scope** — "Org-wide" raises governance-review priority. For personal experiments, use "Self".
-4. **Approved proposal → canvas** — Once the proposal is reviewed, switch to [Creating an Agent](12-agentflow-create.md) to assemble nodes on the canvas.
+2. **Tag related agents** — If a similar agent already exists, link it under **Linked agent** to avoid duplicate work or to reference it.
+3. **Pick the right impact scope** — "Org-wide" raises governance-review priority. For personal use, keep it on "Self".
 
 ## Common Issues
 
