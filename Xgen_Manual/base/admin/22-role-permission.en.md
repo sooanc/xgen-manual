@@ -4,35 +4,19 @@ This chapter covers the **overall structure of the permission model** and the pr
 
 ## Permission Model — Three Independent Layers { #permission-model }
 
-XGEN's permission model is split into three layers — *Tier / Role / Permission* — that operate **independently**. People often lump them together as "permissions," but they differ in meaning, scope, and how they are managed.
+XGEN's permission model is split into three layers — *Tier / Role / Permission* — that operate **independently**. People often lump them together as "permissions," but they differ in meaning, scope, and how they are managed. The single matrix below captures everything.
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│ 1. Tier            ← Can this user enter "Admin Center" mode?    │
-│    Standard User / SuperUser    Fixed at two levels by the system │
-└──────────────────────────────────────────────────────────────────┘
-                              ↓ Meaningful only on top of SuperUser
-┌──────────────────────────────────────────────────────────────────┐
-│ 2. Role            ← Among SuperUsers, which admin menus do you  │
-│    System Administrator,        see? Defined freely by the org   │
-│    Governance Officer,                                            │
-│    Analyst, Operator, …                                           │
-└──────────────────────────────────────────────────────────────────┘
-                              ↓ Can also be granted to a Standard User
-┌──────────────────────────────────────────────────────────────────┐
-│ 3. Permission      ← Section / tab / button-level fine-grained   │
-│    admin.user:read,             gates. ABAC keys, bundled into a  │
-│    main.agentflow:manage, …     role or granted directly to a user│
-└──────────────────────────────────────────────────────────────────┘
-```
+| # | Layer | Question it answers | Shape of the value | Defined by | Examples | Where it bites |
+|---|---|---|---|---|---|---|
+| **1** | **Tier** | Can this user enter the top-left **Admin Center** mode? | Single boolean flag (`is_superuser`) | System (fixed 2 levels) | Standard User / SuperUser | Visibility of the top-left **Admin Center** mode switch |
+| **2** | **Role** | Among SuperUsers, which admin menus does this user see? | Multi-label array | Your organization | System Administrator, Governance Officer, Analyst, Operator, Compliance Officer, … | Menu scope inside a SuperUser's admin sidebar |
+| **3** | **Permission** | Can this user use each screen / section / tab / button? | ABAC key array | Permission catalog (fixed) → mapped to a role or to an individual user | `admin.user:read`, `main.agentflow:manage`, `admin.governance-pii:*` | Section / tab / button-level gates inside a screen |
 
-### Side-by-side comparison
+**How the layers depend on each other**
 
-| Layer | Defined by | Shape of the value | Examples | Where it bites |
-|---|---|---|---|---|
-| **Tier** | System (fixed 2 levels) | Single boolean flag (`is_superuser`) | Standard User / SuperUser | Visibility of the top-left **Admin Center** mode switch |
-| **Role** | Your organization | Multi-label array | System Administrator, Governance Officer, Analyst, Operator, Compliance Officer, … | Menu scope inside a SuperUser's admin sidebar |
-| **Permission** | Catalog (fixed) → mapped to a role or to an individual user | ABAC key array | `admin.user:read`, `main.agentflow:manage`, `admin.governance-pii:*` | Section / tab / button-level gates inside a screen |
+- **2 → 1**: A *role* only has meaning on top of the SuperUser tier. Granting a *System Administrator* role to a Standard User has no effect — they cannot enter Admin Center mode at all.
+- **3 → 1**: *Permissions* can be granted to a Standard User. For example, an *Agent Developer* is a Standard User who has `main.agentflow:*` / `main.tool:*` / `main.knowledge:*` permissions on top.
+- **3 → 2**: *Permissions* are bundled into roles, or granted directly to individual users. The recommended pattern is to bundle by role first, then reinforce only edge cases with direct grants.
 
 ### Boundaries that get confused
 
