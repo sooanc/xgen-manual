@@ -1,52 +1,64 @@
 # User Management
 
-This chapter covers procedures for adding, approving, modifying, and deactivating system user accounts.
+This chapter covers procedures for **approving, modifying, and deactivating** system user accounts. **New users are added through the user-side self-signup flow → Pending-Approval queue → SuperUser approval.** *The "+ Add User" button (admin directly creating an account) is not exposed on the current stg build.*
 
-## User List
+## User List { #user-list }
 
 Select **Admin → Users / Access Control → User Management** in the left sidebar.
 
-![User management list — search box, status filter, add button, and per-user columns](images/admin-users.png)
+![User Management screen — top *Total Users / Pending Approval* stats, the *Pending Approval Users* queue, and the full user table with search and pagination, all on one screen](images/admin-users.png)
 
-The following information is shown for each user.
+The screen has four areas:
+
+| Area | Contents |
+|---|---|
+| Top stats | **Total Users** count and **Pending Approval** count |
+| Search box | Filter users by email, username, or display name |
+| Pending Approval Users queue | New applicants from self-signup — handle each row with the **Activate / Delete** buttons |
+| Full user table | Every account — each row has **Edit / Delete** action buttons |
+
+Columns in the full user table (headers are clickable to toggle sort):
 
 | Column | Description |
 |---|---|
-| Username | Login ID |
-| Name | Display name |
+| ID | Internal system identifier |
+| Username | Login ID (the English ID or display name the user entered during signup) |
 | Email | Address for notifications and password reset |
-| Role | Assigned role (may be empty) |
-| Permission Tier | Standard User / SuperUser (SuperUser accounts carry an additional badge in the list) |
-| Status | Active / Inactive / Pending Approval |
+| Status | Active / Inactive / Pending |
+| Permission (Role) | `superuser` / `standard` tier badge plus assigned role labels (e.g., *System Administrator(DJ)*, *Agent Developer(DJ)*) |
 | Last Login | Most recent access time |
+| Last Login IP | Source IP |
+| Registered | Signup or creation time |
+| Actions | **Edit / Delete** buttons |
 
-Use the search box at the top to find users by name or email, and filter by status to view only "Pending Approval" entries.
+## Adding a New User — Self-Signup + SuperUser Approval { #user-add }
 
-## Add User
+New users **sign up themselves on the public signup page**, after which their account enters the *Pending Approval Users* queue. A SuperUser must hit *Activate* on that row before the user can log in.
 
-1. Click the **+ Add User** button at the top right of the user list
-2. Enter the following:
-    - Username (English, must be unique)
-    - Name
-    - Email
-    - Initial password (recommend the user change it after first login)
-    - User type — `Standard` (default) or `Superuser`
-3. Click **Save**
+### Step 1 — Self-signup (user-side action)
 
-!!! note "Add-user modal screenshot pending"
-    A screenshot of the modal opened by "+ Add User" (username, email, user-type fields) will be added in a future manual update.
+The user takes the following path on their own:
 
-!!! note "SuperUser Privileges Required"
-    Adding users and changing permission tiers can be done only by a **SuperUser**. Standard Users do not see this screen at all.
+1. On the login page (`https://<domain>/login`), click the **Sign up** link at the bottom.
+2. On the signup page (`/signup`), fill in email, password, display name, etc.
+3. Click **Sign up** — the account is created in *Pending* state; the user cannot log in yet.
 
-## Approving Pending Users
+### Step 2 — SuperUser approval (admin-side action)
 
-In environments where self-signup is enabled, new applicants enter the **Pending Approval** state. A SuperUser must review and approve each applicant before they can log in.
+A SuperUser reviews and activates pending applicants from the *Pending Approval Users* area in User Management.
 
-1. Check applicants in the **Pending Approval** area at the top of the user list
-2. Review applicant info (name, email, organization)
-3. Click **Approve** → converts to active user
-4. Click **Delete** to reject
+1. Open **Admin → Users / Access Control → User Management**.
+2. Check the **Pending Approval** counter at the top of the screen (in the screenshot example, `1` pending).
+3. Inspect the *Pending Approval Users* table — ID / Username / Email / Status (Pending) / Registered date.
+4. After reviewing the applicant's info, use the row's action buttons:
+    - **Activate** → status flips to *Active*; the user can log in immediately.
+    - **Delete** → the signup is rejected and the account is removed. The user must sign up again to retry.
+
+!!! note "SuperUser privileges required"
+    Approving / rejecting pending accounts, changing permission tiers, and resetting passwords all require **SuperUser** privileges. Standard Users do not see this screen at all.
+
+!!! info "No direct admin-side user creation on stg today"
+    The *"+ Add User"* button mentioned in earlier versions of this manual is not exposed on the current stg build. New users *must* go through self-signup; the SuperUser takes over from the *Activate* step (permission tier, role assignment, etc.). For bulk onboarding (e.g., a new-hire group), contact operations for a separate API or script.
 
 ## Password Reset
 
