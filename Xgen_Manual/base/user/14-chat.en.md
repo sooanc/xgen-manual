@@ -2,7 +2,7 @@
 
 This chapter covers the chat interface for conversing with agents.
 
-## Starting Chat
+## Starting Chat { #new-chat }
 
 Select **Agent Chat** in the left sidebar.
 
@@ -41,13 +41,13 @@ When the agent invokes an external tool or database, the call's arguments and re
 !!! info "Why Tool Calls Are Visible"
     Showing tool calls lets users verify what data the AI used and how. Inspect this area when a response seems suspicious.
 
-## Chat History
+## Chat History { #chat-history }
 
 The **Chat History** menu in the left sidebar lets you browse past sessions in chronological order. Clicking a session restores that conversation in full.
 
 ![Chat History — list of past sessions, sorted chronologically](images/chat-history.png)
 
-## Current Chat / New Chat
+## Current Chat / New Chat { #current-chat }
 
 | Menu | Behavior |
 |---|---|

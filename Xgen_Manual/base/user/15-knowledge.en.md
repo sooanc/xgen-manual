@@ -15,7 +15,7 @@ A **collection** is a knowledge storage unit grouping related documents. The ret
 
 See the [Glossary](../common/01-glossary.md) for full terminology.
 
-## Collection List
+## Collection List { #knowledge-collection }
 
 Select **Knowledge Management → Knowledge Collections** in the left sidebar.
 
@@ -62,7 +62,7 @@ Select **Knowledge Management → Knowledge Collections** in the left sidebar.
 !!! info "Processing Time After Upload"
     Large documents take time to embed. Track progress in the **Upload History** tab. You can continue other work during processing.
 
-## Upload History
+## Upload History { #upload-history }
 
 Check status and results of uploaded documents.
 
@@ -82,7 +82,7 @@ Grant other users access:
 3. Choose permission (Read / Read·Write)
 4. **Save**
 
-## File Storage and DB Integration
+## File Storage and DB Integration { #storage-database }
 
 Beyond uploaded files, collection sources can also include **File Storage** (system file resources) and **DB Integration** (tables / views from external databases).
 

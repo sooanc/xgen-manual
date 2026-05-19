@@ -50,14 +50,27 @@ The solution uses a **two-tier permission model** decided by a single `is_superu
 
 The left sidebar of user mode (Agent Workspace) is organized into 6 sections (some may be hidden depending on your permissions). Each menu maps to the corresponding chapter in this manual as follows.
 
-| Section | Main Menus | Permission | Manual Chapter |
+| Section | Menu | Permission | Manual Chapter |
 |---|---|---|---|
 | Analysis / Planning | Task Planning | Agent Developer | [Task Planning](11a-task-planning.md) |
-| Agent Chat | Start Chat, Current Chat, Chat History | Standard User | [Using Chat](14-chat.md) |
-| Agent Creation | Agent Creation Intro, Agent Design, Agent List, Agent Operation, Agent Quality Evaluation, Agent Prompts | Agent Developer | [Creating an Agent](12-agentflow-create.md), [Agent Operations](13-agentflow-operations.md), [Prompt Management](16-prompt.md) |
-| Tool Integration | API Tools, Authentication Profiles | Agent Developer | [API Tools](17a-api-tools.md), [Authentication Profile](17-auth-profile.md) |
-| Knowledge Management | Knowledge Collections, File Storage, DB Integration, Upload History | Agent Developer | [Knowledge Management](15-knowledge.md) |
-| Technical Support (pinned bottom) | Announcements, FAQ, 1:1 Admin Inquiry | Standard User | [Technical Support](19-tech-support.md) |
+| Agent Chat | Start Chat | Standard User | [Using Chat · Starting Chat](14-chat.md#new-chat) |
+| Agent Chat | Current Chat | Standard User | [Using Chat · Current Chat](14-chat.md#current-chat) |
+| Agent Chat | Chat History | Standard User | [Using Chat · Chat History](14-chat.md#chat-history) |
+| Agent Creation | Agent Creation Intro | Agent Developer | [Creating an Agent](12-agentflow-create.md) |
+| Agent Creation | Agent Design | Agent Developer | [Creating an Agent · Entering Agent Workspace](12-agentflow-create.md#agent-작업실-진입) |
+| Agent Creation | Agent List | Agent Developer | [Agent Operations](13-agentflow-operations.md) |
+| Agent Creation | Agent Operation | Agent Developer | [Agent Operations · Scheduled Automatic Runs](13-agentflow-operations.md#scheduler) |
+| Agent Creation | Agent Quality Evaluation | Agent Developer | [Agent Operations · Execution and Debugging](13-agentflow-operations.md#testing) |
+| Agent Creation | Agent Prompts | Agent Developer | [Prompt Management](16-prompt.md) |
+| Tool Integration | API Tools | Agent Developer | [API Tools](17a-api-tools.md) |
+| Tool Integration | Authentication Profile | Agent Developer | [Authentication Profile](17-auth-profile.md) |
+| Knowledge Management | Knowledge Collections | Agent Developer | [Knowledge Management · Collection List](15-knowledge.md#knowledge-collection) |
+| Knowledge Management | File Storage | Agent Developer | [Knowledge Management · File Storage and DB Integration](15-knowledge.md#storage-database) |
+| Knowledge Management | DB Integration | Agent Developer | [Knowledge Management · File Storage and DB Integration](15-knowledge.md#storage-database) |
+| Knowledge Management | Upload History | Agent Developer | [Knowledge Management · Upload History](15-knowledge.md#upload-history) |
+| Technical Support (pinned bottom) | Announcements | Standard User | [Technical Support · Notice Board](19-tech-support.md#notices) |
+| Technical Support (pinned bottom) | FAQ | Standard User | [Technical Support · FAQ](19-tech-support.md#faq) |
+| Technical Support (pinned bottom) | 1:1 Admin Inquiry | Standard User | [Technical Support · 1:1 Admin Inquiry](19-tech-support.md#qna) |
 
 ![Left sidebar — six sections expanded: Agent Creation, Tool Integration, Knowledge Management, Technical Support, etc.](images/main-sidebar.png)
 

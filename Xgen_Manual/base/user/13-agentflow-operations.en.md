@@ -2,7 +2,7 @@
 
 This chapter covers executing, deploying, sharing, and version-managing your agentflows.
 
-## Execution and Debugging
+## Execution and Debugging { #testing }
 
 ### Running Immediately from the Canvas
 
@@ -116,7 +116,7 @@ Each save automatically creates a version. To roll back:
 !!! warning "Restore Creates a New Version"
     Restoring does not overwrite — it creates a **new version** containing the content of the chosen one. Previous versions are preserved.
 
-## Scheduled Automatic Runs
+## Scheduled Automatic Runs { #scheduler }
 
 For agentflows that should run on a schedule:
 

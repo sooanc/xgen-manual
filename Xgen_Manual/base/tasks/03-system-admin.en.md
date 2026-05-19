@@ -47,6 +47,6 @@
 - Start: Admin Center → MCP Management → MCP Library
 - Procedure: [MCP Library](../admin/28-mcp-market.md)
 
-## A user posted on the support board / FAQ / 1:1 inquiry — how do I respond?
+## A user posted on the admin inquiry board / 1:1 inquiry — how do I respond?
 - Start: Admin Center → Service Operations
 - Procedure: [Tech Support Handling](../admin/31-tech-support-handling.md)

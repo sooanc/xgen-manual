@@ -8,7 +8,7 @@ The collapsible **? Technical Support** button at the bottom of the left sidebar
 
 All items require `main.support:read`, which is granted to end users by default.
 
-## Notice Board
+## Notice Board { #notices }
 
 System notices page. Path: `/main?view=support-notices`. Header reads "Notice Board — Browse notices and information needed to use the GenAI platform."
 
@@ -27,7 +27,7 @@ System notices page. Path: `/main?view=support-notices`. Header reads "Notice Bo
 4. Click a row to open the notice detail
 5. The dashboard **Latest Updates** panel surfaces the 3 most recent notices — make a habit of scanning it before starting work
 
-## FAQ
+## FAQ { #faq }
 
 Frequently asked questions and answers. Path: `/main?view=support-faq`. Header reads "FAQ — Browse FAQs needed to use the GenAI platform."
 
@@ -45,7 +45,7 @@ Frequently asked questions and answers. Path: `/main?view=support-faq`. Header r
 3. Narrow by the **End users** or **Agent developers** tab that matches your role and scan top items for common issues
 4. Click a question row to expand the answer; follow the screen steps exactly to verify the symptom is gone
 
-## 1:1 Admin Inquiry
+## 1:1 Admin Inquiry { #qna }
 
 Direct inquiry to administrators with reply. Path: `/main?view=support-qna`. Header reads "My 1:1 Inquiries — Review your inquiry history and admin replies, and submit new inquiries."
 

@@ -8,7 +8,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 |---|---|---|
 | Xgen | Xgen | Product name — an Agentic AI Platform that scales an enterprise's AI execution capability through natural-language task automation and integration with diverse systems |
 | Agent Workspace | Agent 작업실 | User workspace for creating and operating agents and agentflows |
-| Admin Center | 관리 설정 | Administrative area accessible only to users with **SuperUser** permission |
+| Admin Center | 관리 설정 | Administrative area accessible to users with **SuperUser** permission — or to non-SuperUsers granted specific menu-level permissions on the Admin Center pages |
 | Dashboard | 대시보드 | Landing screen showing status and statistics at a glance |
 
 ## Core Objects
@@ -18,7 +18,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 | Agent | 에이전트 | An AI work unit defined to automate a specific task |
 | Agentflow | 에이전트플로우 | A defined AI workflow connecting multiple nodes — the unit of operational deployment |
 | Node | 노드 | A single work unit within an agentflow (LLM call, tool execution, branching, etc.) |
-| Canvas | 캔버스 | The area for visually editing an agentflow |
+| Canvas | 캔버스 | The area for drag-and-drop and visual editing of an agentflow |
 | Tool | 도구 | An external function or API the agent can invoke |
 | MCP | Model Context Protocol | The standard protocol connecting AI models with external tools |
 | Prompt | 프롬프트 | An instruction passed to an AI model (System / User prompts) |
@@ -27,7 +27,6 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 !!! note "Agent vs Agentflow"
     - **Agent**: A single AI work unit performing one task
     - **Agentflow**: A workflow weaving multiple agents and nodes — the deployment unit
-    - The legacy term "Workflow" is no longer used.
 
 ## Knowledge Management
 
@@ -68,7 +67,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 
 | Term | Korean | Definition |
 |---|---|---|
-| Standard User | 일반 사용자 | Base user tier (`is_superuser: false`) — uses Agent Workspace for daily work. The top-left **Admin Center** mode-switch is not visible to this tier |
+| Standard User | 일반 사용자 | Base user tier (`is_superuser: false`) — uses Agent Workspace for daily work. The top-left **Admin Center** mode-switch becomes accessible when specific menu-level permissions are granted |
 | SuperUser | 슈퍼유저 | Administrative tier (`is_superuser: true`) — accesses the top-left **Admin Center** mode and performs all administrative tasks (user/role management, system settings, AI governance) |
 | Initial (root) SuperUser | 초기(루트) 슈퍼유저 | The very first SuperUser, created without authentication on the `/admin/create-superuser` screen when no SuperUser exists yet (right after initial installation). The data model and flag are identical to any other SuperUser; "root" is a *context label* meaning "created via the bootstrap path" — not a separate permission tier. Once the first SuperUser exists, that screen automatically redirects to `/login` and is no longer reachable |
 | Role | 역할 | A bundle of permissions (e.g., "System Administrator", "Governance Officer", "Operator", "Analyst") |
