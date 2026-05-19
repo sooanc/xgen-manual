@@ -37,9 +37,9 @@ The same gate logic applies at *Admin Center access* ([Admin Console Overview](2
 !!! info "Where to change which layer?"
     Switching a user between Standard User ↔ SuperUser is done from the **User Type** select (`Standard` ↔ `Superuser`) in the user-edit modal under [User Management](21-user-management.md). **Role assignment** happens in this chapter; **individual ABAC permission grants** happen either in the *Direct Permissions* section of the user-edit modal, or via the *role → permission* mapping in this chapter.
 
-### Four ways permissions can reach a user { #grant-paths }
+### Four scopes a user's permissions can apply through { #grant-paths }
 
-In practice, when a SuperUser decides *how* to grant access to a user, they pick one (or a combination) of four paths. Since the *composition is automatic*, the admin just needs to choose *where* to grant from.
+An administrator (SuperUser) can grant permissions to a user through the four paths below (multi-select and combinations are allowed). Permission composition is handled automatically by the system, so the administrator only needs to choose *where* to grant from.
 
 | # | How permissions are granted | Where to do it | Typical use |
 |---|---|---|---|
@@ -48,12 +48,31 @@ In practice, when a SuperUser decides *how* to grant access to a user, they pick
 | 3 | **Role-to-role inheritance (Supervision)** | This chapter → *Permission Hierarchy* tab → add a relation | "Team Lead ← Team Member" so the lead inherits all member permissions |
 | 4 | **Direct grant to an individual user** | [User Management](21-user-management.md) → user edit → *Direct Permissions* | Temporarily granting or denying a single permission to one user |
 
-!!! note "The system composes the final permission set automatically"
-    Whichever of the four paths you use, the user's effective permission set is composed by the system as follows:
+!!! note "How the system computes the final permission set"
+    A user's effective permission set is computed automatically by the system using the criteria below.
 
-    **① Tier short-circuit** — if SuperUser, pass everything → otherwise **② Union of role permissions ∪ ③ Supervision-inherited permissions ∪ ④ Direct grants − ④ Direct denies**.
+    **Evaluation order**
 
-    So combining *role assignment* with *user-specific grant/deny* is fine; *deny always wins over grant*.
+    1. **SuperUser check** — if the user is a SuperUser, every permission is granted immediately.
+    2. **Role-based permissions** — the union of permissions from every role assigned to the user is applied.
+    3. **Supervision-inherited permissions** — permissions inherited through the organizational or supervision hierarchy are added on top.
+    4. **Per-user permissions** — permissions directly granted (Grant) or blocked (Deny) on the individual user are applied last.
+
+    **Final formula**
+
+    The final permission set is composed as:
+
+    > Role permissions ∪ Inherited permissions ∪ Individual Grant − Individual Deny
+
+    ※ Deny takes precedence over Grant.
+
+    **Usage example**
+
+    - Provide baseline access through a role,
+    - Grant a specific user one extra capability on top, or
+    - Block one specific capability for a specific user
+
+    — combine the three for flexible permission control.
 
 ## Role List { #role-list }
 
