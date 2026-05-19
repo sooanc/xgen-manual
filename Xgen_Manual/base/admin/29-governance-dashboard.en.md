@@ -136,7 +136,14 @@ Records governance-policy changes and user operational actions.
 | Operation History | Per-user / per-policy / per-agent action tracking (actor, approver, target, time) |
 
 !!! note "vs. system audit log"
-    Solution-wide audit (logins, system-setting changes) lives in the separate [Audit Log](27-audit-log.md) chapter. **AI Governance audit** is scoped to governance policy and approval-workflow events.
+    The solution exposes *two distinct audit surfaces*. They differ by the **unit being tracked**.
+
+    | View | Tracked unit | What it records | Location |
+    |---|---|---|---|
+    | **System Audit Log** | System / user | Login success/failure, password & session events, user / role / permission changes, system-setting changes (LLM, embedding, policy), content operations, system start/stop, backups | [Audit Log](27-audit-log.md) (Security & Audit group) |
+    | **AI Service Change History** | Agent | The [Per-Agent detail — 6 tabs](#audit-tracking-detail) above — *Execution / Data Access / Agent Change / Policy Change / Deployment Approval / Governance Approval* | This screen (AI Governance group) |
+
+    Rule of thumb: if the question is **"who did what when"** at the user/system level, use the System Audit Log. If it is **"how has this agent evolved"** at the agent level, use this screen.
 
 ### Per-Agent detail — 6 tabs { #audit-tracking-detail }
 
