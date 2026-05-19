@@ -16,7 +16,7 @@ The left sidebar's **AI Governance** accordion contains **four items in a flat l
 |---|---|---|---|---|
 | 1 | **AI Risk Assessment** | AI Risk Assessment | [Risk Review](#risk-review) | Risk-category widget grid → items over the threshold open the *Agent Approval* view inside |
 | 2 | **Inspection History** | AI Inspection History & Plan | [Inspection](#inspection) | Four tabs — Inspection History / Inspection Plan / Overdue / Inspection Register |
-| 3 | **AI Service Change History** | (service / operation change history list) | [Audit & Tracking](#audit-tracking) | Single screen with filters and search |
+| 3 | **AI Service Change History** | (service / operation change history list) | [AI Service Change History](#audit-tracking) | Click an Agent name to open the detail view → **6 sub-tabs**: Execution Detail History / Data Access Info / Agent Change History / Policy Change History / Deployment Approval History / Governance Approval History |
 | 4 | **Control Policy Management** | (3-tab policy management) | [Control Policy](#control-policy) | Three tabs — PII Protection / Forbidden Words / Risk Levels |
 
 !!! info "Sidebar labels may differ from page headers"
@@ -109,7 +109,7 @@ The procedure below moves through *sidebar entry → queue overview → row insp
 
     When the *Submitting…* state clears, the stat cards and table refresh. If the same agent reappears as *Pending*, the author has resubmitted after a fix — repeat the workflow.
 
-Every approve/reject action is recorded in the [audit log](27-audit-log.md) and in [AI Audit & Tracking](#audit-tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
+Every approve/reject action is recorded in the [audit log](27-audit-log.md) and in [AI Service Change History](#audit-tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
 
 ## Inspection { #inspection }
 
@@ -124,7 +124,7 @@ Manages the **inspection schedule and history** for AI systems across the organi
 
 Inspection items are linked to risk-review results; completing an inspection re-computes the affected risk scores.
 
-## Audit & Tracking { #audit-tracking }
+## AI Service Change History { #audit-tracking }
 
 Records governance-policy changes and user operational actions.
 
@@ -137,6 +137,31 @@ Records governance-policy changes and user operational actions.
 
 !!! note "vs. system audit log"
     Solution-wide audit (logins, system-setting changes) lives in the separate [Audit Log](27-audit-log.md) chapter. **AI Governance audit** is scoped to governance policy and approval-workflow events.
+
+### Per-Agent detail — 6 tabs { #audit-tracking-detail }
+
+Clicking an **Agent name** in the list opens that agent's detail view. The detail screen shows an attachment panel at the top followed by **6 tabs**. Every tab shares the same top stat cards, filters, date-range search, and CSV export controls.
+
+| # | Tab | Stat cards | Table columns | Filters |
+|---|---|---|---|---|
+| 1 | **Execution Detail History** | Total / Success / Failure | Execution ID · Timestamp · Version · Type · Executor · Duration · Status · Input · Output | Type · Status · Period |
+| 2 | **Data Access Info** | Total accesses / Agent developer / Model developer | Access timestamp · Target DB / Collection · RBAC type · User · Department · Action | RBAC · Action · Period |
+| 3 | **Agent Change History** | Total changes / Approved / Pending / Rejected | Change timestamp · Activity · Before · After · Changer · Department · Approval status | Approval status · Period |
+| 4 | **Policy Change History** | Total changes / Auto-approved / Changer | Change timestamp · Policy type · Policy name · Version · Change type · Changer · Approval | Change type · Changer · Approval · Period |
+| 5 | **Deployment Approval History** | Approved / Pending / Rejected | Execution ID · Timestamp · Version · Executor · Department · Approval status | Approval status · Period |
+| 6 | **Governance Approval History** | Approved / On hold / Rejected | Execution ID · Timestamp · Version · Executor · Department · Governance reviewer · Approval status | Approval status · Period |
+
+How to enter:
+
+1. Click **AI Governance → AI Service Change History** in the left sidebar to open the list
+2. Click the **Agent name** of a row to drill into the detail view
+3. Choose one of the 6 tabs at the top to focus on a specific change category
+4. Use the **CSV** button at the top right to export the current tab (use this as the source for compliance reports)
+
+!!! info "Recommended use per tab"
+    - **Deployment / Governance Approval History** — Audit the dual-approval workflow step by step. Primary evidence for finance / internal-audit responses.
+    - **Policy / Agent Change History** — Trace responsibility for risk-policy or control-policy edits. The changer and approval status are recorded together so incident root causes can be narrowed quickly.
+    - **Data Access Info** — Use the RBAC-type breakdown to spot over-provisioned permissions.
 
 ## Control Policy { #control-policy }
 

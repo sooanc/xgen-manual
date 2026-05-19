@@ -72,7 +72,7 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) |
 | AI Governance | AI Risk Assessment | [AI Governance · Risk Review](29-governance-dashboard.md#risk-review) |
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
-| AI Governance | Service Change History | [AI Governance · Audit & Tracking](29-governance-dashboard.md#audit-tracking) |
+| AI Governance | Service Change History | [AI Governance · AI Service Change History](29-governance-dashboard.md#audit-tracking) |
 | AI Governance | Control Policy Management | [AI Governance · Control Policy](29-governance-dashboard.md#control-policy), [PII Policy](25-pii-policy.md) |
 | Environment | General | [General · Environment Overview](#env-overview) |
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |

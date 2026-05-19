@@ -72,7 +72,7 @@
 | Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#task-planning) |
 | AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#risk-review) |
 | AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#inspection) |
-| AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · 감사·추적 관리](29-governance-dashboard.md#audit-tracking) |
+| AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · AI 서비스 변경 이력](29-governance-dashboard.md#audit-tracking) |
 | AI 거버넌스 | 통제 정책 관리 | [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#control-policy), [PII 보호 정책](25-pii-policy.md) |
 | 환경 설정 | 전체 설정 | [전체설정 · 환경 설정 개요](#env-overview) |
 | 환경 설정 | LLM | [LLM 설정](23-llm-settings.md) |
