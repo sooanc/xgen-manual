@@ -52,9 +52,9 @@
 - 에이전트플로우 (Agentflow) 설계
 - 관리자 대시보드를 통한 운영 모니터링
 
-## {{customer.name}} 전용 커스터마이징
+## 커스터마이징
 
-{{customer.name}} 환경을 위해 추가 개발·조정된 기능은 [{{customer.name}} 커스터마이징 가이드](02-customizations.md) 챕터에서 정리합니다.
+고객사 환경을 위해 추가 개발·조정된 기능은 [커스터마이징 가이드](02-customizations.md) 챕터에서 정리합니다.
 
 ## 시스템 요구사항
 
