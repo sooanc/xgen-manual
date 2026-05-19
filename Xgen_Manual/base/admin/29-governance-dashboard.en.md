@@ -147,7 +147,7 @@ Records governance-policy changes and user operational actions.
 
 ### Per-Agent detail — 6 tabs { #audit-tracking-detail }
 
-Clicking an **Agent name** in the list opens that agent's detail view. The detail screen shows an attachment panel at the top followed by **6 tabs**. Every tab shares the same top stat cards, filters, date-range search, and CSV export controls.
+Clicking an **Agent name** in the list opens the agent's detail view. The screen shows an attachment panel and **6 tabs** at the top. On every tab you can review the stat cards and use filters, date-range search, and CSV export.
 
 | # | Tab | Stat cards | Table columns | Filters |
 |---|---|---|---|---|
@@ -166,8 +166,8 @@ How to enter:
 4. Use the **CSV** button at the top right to export the current tab (use this as the source for compliance reports)
 
 !!! info "Recommended use per tab"
-    - **Deployment / Governance Approval History** — Audit the dual-approval workflow step by step. Primary evidence for finance / internal-audit responses.
-    - **Policy / Agent Change History** — Trace responsibility for risk-policy or control-policy edits. The changer and approval status are recorded together so incident root causes can be narrowed quickly.
+    - **Deployment Approval / Governance Approval History** — Review the dual-approval workflow step by step. Use these tabs as primary evidence for finance and internal-audit responses.
+    - **Policy Change / Agent Change History** — Trace responsibility for risk-policy and control-policy edits. The changer and approval status are recorded together, so incident root causes can be narrowed quickly.
     - **Data Access Info** — Use the RBAC-type breakdown to spot over-provisioned permissions.
 
 ## Control Policy { #control-policy }
