@@ -190,7 +190,7 @@ XGEN 의 권한 등급은 **`is_superuser` 플래그 하나로 결정되는 2단
 ## 3. 마스킹 (Customer Confidentiality)
 
 - 모든 고객사명·ID는 빌드 시점에 자동 마스킹됨 ([build/lib/mask.mjs](build/lib/mask.mjs)).
-- 단어별 첫 글자 + `OOO` 치환 (예: `제주은행` → `제OOO`, `jeju-bank` → `jOOO-bOOO`).
+- 단어별 첫 글자 + `OOO` 치환 (예: `샘플은행` → `샘OOO`, `sample-co` → `sOOO-cOOO`).
 - 표준 매뉴얼(xgen-standard)은 마스킹 제외.
 - 매뉴얼 본문에서 고객사를 지칭할 때는 `{{customer.name}}` 매크로 사용 → 빌드 시 자동 마스킹됨.
 - **하드코딩된 고객사 실명을 본문에 넣지 마세요** — 마스킹을 우회하게 됨.

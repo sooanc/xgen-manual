@@ -3,7 +3,7 @@
 // Usage:
 //   node build/deploy.mjs --target staging                        # 빌드 + 스테이징 패키지 생성
 //   node build/deploy.mjs --target production                     # 빌드 + 운영 패키지 생성
-//   node build/deploy.mjs --target production --customers jeju-bank,acme
+//   node build/deploy.mjs --target production --customers customer-a,customer-b
 //   node build/deploy.mjs --target production --skip-build        # 기존 dist 사용
 //   node build/deploy.mjs --target production --dry-run           # 실행 안 하고 계획만 출력
 //

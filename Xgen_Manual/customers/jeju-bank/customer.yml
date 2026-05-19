@@ -1,15 +1,19 @@
-# 제주은행 고객사 설정.
+# 금융권 고객사 (식별자 마스킹 적용) 설정.
 # 매뉴얼 본문은 manual/ 디렉토리에서 자유롭게 관리됩니다.
+#
+# 본 yaml 의 디스플레이 필드(name / domain / pdf.header) 는 GitHub 공개 노출을
+# 피하기 위해 마스킹 또는 일반 placeholder 로 두었습니다. id / base_url / 디렉토리명
+# 같은 구조 식별자는 빌드·URL 영향이 커 별도 결정 대상.
 
 customer:
   id: jeju-bank
-  name: "제주은행"
+  name: "제OOO"
   industry: financial
 
 product:
   name: "Xgen"
   version: "2.3.0"
-  domain: "xgen.jejubank.co.kr"
+  domain: "xgen.example.com"
 
 manual:
   version: "2.3.0-rev1"
@@ -25,4 +29,4 @@ outputs:
   docx: {}
   pdf:
     page_size: A4
-    header: "제주은행 전용 - 대외비"
+    header: "고객사 전용 - 대외비"

@@ -105,10 +105,10 @@ node build/new-customer.mjs --id acme-bank --name "ACME은행" --industry financ
 
 ```powershell
 # 단일 고객사 — HTML만
-node build/build.mjs --customer jeju-bank --formats html
+node build/build.mjs --customer <customer-id> --formats html
 
 # 단일 고객사 — HTML + DOCX
-node build/build.mjs --customer jeju-bank --formats html,docx
+node build/build.mjs --customer <customer-id> --formats html,docx
 
 # 전 고객사 HTML 일괄 빌드 (배포용)
 node build/build.mjs --customer all --formats html
@@ -149,10 +149,10 @@ node build/deploy.mjs --target production
 
 ```powershell
 # 어느 파일이 다른지 확인 (Git Bash 등)
-diff -r base customers/jeju-bank/manual
+diff -r base customers/<customer-id>/manual
 
 # 특정 파일을 base에서 가져오기
-copy base\common\00-overview.md customers\jeju-bank\manual\common\00-overview.md
+copy base\common\00-overview.md customers\<customer-id>\manual\common\00-overview.md
 ```
 
 추후 `node build/sync-from-base.mjs --customer <id>` 도구를 추가할 예정 (자동 diff + 선택적 적용).
