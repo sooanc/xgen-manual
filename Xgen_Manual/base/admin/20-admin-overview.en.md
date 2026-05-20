@@ -36,7 +36,7 @@ See the [Admin Console Layout](#admin-console-layout) table below for the full m
 
 ## Permission Tiers { #permission-tiers }
 
-The solution uses a **two-tier permission model** decided by a single `is_superuser` flag. For the full *Tier / Role / Permission* three-layer picture, see [Role / Permission Management · Permission Model](22-role-permission.md#permission-model).
+The solution uses a **two-tier permission model** decided by a single `is_superuser` flag. Role definition / assignment and ABAC permission grants are covered in the [Role / Permission Management](22-role-permission.md#permission-model) chapter.
 
 | Tier | Korean | What they can do |
 |---|---|---|

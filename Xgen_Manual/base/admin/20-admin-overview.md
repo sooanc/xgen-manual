@@ -36,7 +36,7 @@
 
 ## 권한 등급 { #permission-tiers }
 
-본 솔루션은 `is_superuser` 플래그 하나로 결정되는 **2단계 권한 모델**을 사용합니다. *등급(Tier) / 역할(Role) / 권한(Permission)* 3 레이어 전체 구조는 [역할/권한 관리 · 권한 모델](22-role-permission.md#permission-model) 에서 한눈에 확인할 수 있습니다.
+본 솔루션은 `is_superuser` 플래그 하나로 결정되는 **2단계 권한 모델**을 사용합니다. 역할(Role) 정의·할당과 ABAC 권한(Permission) 부여 절차는 [역할/권한 관리](22-role-permission.md#permission-model) 챕터에서 다룹니다.
 
 | 등급 | 영문 | 가능한 작업 |
 |---|---|---|
