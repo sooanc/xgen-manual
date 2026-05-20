@@ -17,7 +17,7 @@ Expand **Admin Center → Agent Operations** in the left sidebar to reveal 9 sub
 | **Agent Management** | `admin-agentflow-management` | Organization-wide agentflow card grid; filter by status / owner; search |
 | **Chat Monitoring** | `admin-chat-monitoring` | Live and historical chat-session tracing — response and tool-call traces |
 | **User Tokens** | `admin-user-token-dashboard` | Token-consumption dashboard by user / period, cost analysis |
-| **Node Management** | `admin-node-management` | Manage reusable nodes available across agentflows |
+| **Node Management** | `admin-node-management` | Manage reusable nodes available across agentflows — see [Node List](32a-node-list.md) |
 | **Prompt Templates** | `admin-prompt-store` | Organization-shared prompt templates and their version history |
 | **User Feedback** | `admin-feedback-monitoring` | User-submitted star ratings / issue categories / comments (hallucination, policy violation, data error, response failure) |
 | **Response Quality Evaluation** | `admin-agentflow-tester` | Auto-score agent responses against a test dataset |

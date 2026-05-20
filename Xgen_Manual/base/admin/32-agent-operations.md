@@ -17,7 +17,7 @@
 | **Agent 관리** | `admin-agentflow-management` | 조직 전체 에이전트플로우 카드 목록. 상태/소유자별 필터, 검색 |
 | **채팅 모니터링** | `admin-chat-monitoring` | 실시간/이력 채팅 세션 추적, 응답·도구 호출 트레이스 확인 |
 | **사용자 토큰** | `admin-user-token-dashboard` | 사용자·기간별 토큰 소비량 대시보드, 비용 분석 |
-| **노드 관리** | `admin-node-management` | 에이전트플로우에서 재사용되는 노드 라이브러리 관리 |
+| **노드 관리** | `admin-node-management` | 에이전트플로우에서 재사용되는 노드 라이브러리 관리 — 상세는 [노드 목록](32a-node-list.md) |
 | **프롬프트 템플릿** | `admin-prompt-store` | 조직 공유 프롬프트 템플릿 등록·버전 관리 |
 | **사용자 피드백** | `admin-feedback-monitoring` | 사용자가 남긴 응답 별점·문제 유형·코멘트 모음 (환각·규정 위반·데이터 오류·응답 실패 분류) |
 | **응답 품질 평가** | `admin-agentflow-tester` | 테스트 데이터셋 기준 에이전트 응답 품질 자동 평가 |

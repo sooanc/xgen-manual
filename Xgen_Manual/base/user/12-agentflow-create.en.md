@@ -45,6 +45,8 @@ The left sidebar of the canvas lists node types by category.
 | Branching | Conditional, loop |
 | I/O | Receive input, return output |
 
+> The full node catalog (categories, tags, detailed specs) is documented in [Admin Center · Node List](../admin/32a-node-list.md). The same chapter covers the admin screen for registering and managing nodes.
+
 To add:
 
 1. Expand a node category in the sidebar
