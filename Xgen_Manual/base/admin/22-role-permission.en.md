@@ -120,9 +120,6 @@ Example: if a "Team Lead" role supervises a "Team Member" role, the lead receive
 
 Users assigned to the supervisor role hold the inherited permissions immediately — no re-login required (the sidebar refreshes on the next navigation).
 
-!!! warning "Cycles are blocked"
-    Given `A ← B ← C`, registering `C ← A` (a cycle) is blocked by the system. Only directed *supervisor ← target* graphs are allowed.
-
 ## Assigning Roles to Users { #user-assignment }
 
 **Option A — From the role screen (one role → many users)**
