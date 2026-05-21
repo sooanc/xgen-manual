@@ -92,7 +92,7 @@ A short checklist to run through the first time you use the solution. Each item 
 
 General principles to follow when working in Agent Workspace.
 
-1. **Shared Agents** — agents the company has deployed have passed governance review. If an answer is inaccurate or needs further verification, leave feedback via the star icon at the bottom of the response.
+1. **Shared Agents** — deployed agents may be reviewed and managed according to operational policy. If an answer is inaccurate or needs further verification, leave feedback via the star icon at the bottom of the response.
 2. **Protect your work** — chat content, Prompts, and knowledge assets are tied to your account and managed together with your account activity history. For security, do not share your account or password with others.
 3. **Be careful with sensitive data** — before entering personal information (resident registration numbers, account numbers, etc.) or confidential company data in chat, be sure to review your internal information-protection policy. PII auto-masking may apply, but responsibility for whether to enter sensitive data and for policy compliance rests with the user.
 4. **Report issues via 1:1 inquiry** — when problems such as screen errors, feature restrictions, or data anomalies occur, file a [1:1 Admin Inquiry](19-tech-support.md). The system administrator reviews submitted reports and responds in order.
