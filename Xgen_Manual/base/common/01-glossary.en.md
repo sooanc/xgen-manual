@@ -69,7 +69,6 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 |---|---|---|
 | Standard User | 일반 사용자 | Base user tier — uses Agent Workspace for daily work. The top-left **Admin Center** mode-switch becomes accessible when specific menu-level permissions are granted |
 | SuperUser | 슈퍼유저 | Administrative tier — accesses the top-left **Admin Center** mode and performs all administrative tasks (user/role management, system settings, AI governance) |
-| Initial (root) SuperUser | 초기(루트) 슈퍼유저 | The very first SuperUser, created without authentication on the `/admin/create-superuser` screen when no SuperUser exists yet (right after initial installation). The data model and flag are identical to any other SuperUser; "root" is a *context label* meaning "created via the bootstrap path" — not a separate permission tier. Once the first SuperUser exists, that screen automatically redirects to `/login` and is no longer reachable |
 | Role | 역할 | A bundle of permissions (e.g., "System Administrator", "Governance Officer", "Operator", "Analyst") |
 | Permission | 권한 | An access grant for a specific feature or resource |
 
