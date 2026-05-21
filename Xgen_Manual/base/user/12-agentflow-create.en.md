@@ -98,7 +98,7 @@ If creating a complex flow from scratch is hard, ask AI to draft it.
 
 ## Auto Layout
 
-If the canvas becomes cluttered, click **Auto Layout** at the top to neatly arrange the nodes.
+When nodes become densely arranged, use the **Auto Layout** feature at the bottom right of the canvas to tidy the structure.
 
 ## Saving
 
