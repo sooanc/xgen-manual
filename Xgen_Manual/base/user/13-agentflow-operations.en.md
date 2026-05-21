@@ -6,11 +6,11 @@ This chapter covers executing, deploying, sharing, and version-managing your age
 
 ### Running Immediately from the Canvas
 
-1. Click **Run** at the top of the canvas
+1. Click **Run** at the bottom-left of the canvas
 2. Provide test input in the input modal
-3. Execution results and logs appear in the right or bottom panel
+3. Execution results and logs appear in the bottom panel of the canvas
 
-![Agent Quality Analysis — debugging panel showing node execution order, tool calls, and citations](images/tester.png)
+![Agent run — click Run at the bottom-left of the canvas; results and logs appear in the bottom panel](gif/20 canvas agent running.gif)
 
 ### Reading Execution Results
 
