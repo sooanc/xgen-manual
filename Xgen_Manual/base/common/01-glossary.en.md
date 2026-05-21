@@ -76,7 +76,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 !!! note "Tier (two levels) vs Role (many) vs Permission (ABAC keys)"
     The permission system is split into **three independent layers**:
 
-    - **Tier**: decided by the single `is_superuser` flag — two levels, Standard User and SuperUser.
+    - **Tier**: two levels — Standard User and SuperUser.
     - **Role**: free-form labels defined by your organization — System Administrator, Governance Officer, Analyst, etc. Within the same SuperUser tier, roles control which sidebar menus you see.
     - **Permission**: ABAC keys such as `admin.user:read`. They are bundled into roles or granted directly to a user, gating sections / tabs / buttons.
 

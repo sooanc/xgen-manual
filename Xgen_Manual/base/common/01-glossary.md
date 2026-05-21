@@ -76,7 +76,7 @@
 !!! note "권한 등급(2단계) vs 역할(여러 개) vs 권한(ABAC 키)"
     솔루션의 권한 체계는 **3 레이어** 로 분리됩니다.
 
-    - **권한 등급(Tier)**: `is_superuser` 플래그 하나로 결정되는 2단계 — Standard User / SuperUser.
+    - **권한 등급(Tier)**: 2단계 — Standard User / SuperUser.
     - **역할(Role)**: 시스템 관리자, 거버넌스 담당자, 분석가 등 조직이 자유롭게 정의하는 라벨. 동일 SuperUser 등급 위에서도 역할에 따라 사이드바 메뉴 범위가 갈립니다.
     - **권한(Permission)**: `admin.user:read` 같은 ABAC 키. 역할에 묶이거나 사용자에게 직접 부여돼 화면·버튼 단위로 세밀하게 게이팅합니다.
 
