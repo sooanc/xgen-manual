@@ -134,6 +134,13 @@ textarea {
   letter-spacing: -0.005em;
 }
 
+/* H3 안 인라인 코드 — 카테고리 식별자 등은 한글 라벨 대비 40% 크기로 축소 */
+.md-typeset h3 code {
+  font-size: 40%;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
 .md-typeset h4 {
   font-size: 14px;
   font-weight: 600;
