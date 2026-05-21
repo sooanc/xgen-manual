@@ -287,6 +287,18 @@ textarea {
   font-size: 14px;
 }
 
+/* ===== 본문 이미지 ===== */
+/* mkdocs-material / glightbox 기본 이미지 보더(검정 테두리) 제거.
+ * 라이트박스 wrapper 와 anchor 도 함께 정리. */
+.md-typeset img,
+.md-typeset a img,
+.md-typeset .glightbox img,
+.md-typeset .glightbox {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* ===== 표 ===== */
 .md-typeset table:not([class]) {
   border: 1px solid var(--xm-border);
