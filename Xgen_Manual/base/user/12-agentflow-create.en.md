@@ -35,7 +35,7 @@ Select **Agent Creation → Agent Design** in the left sidebar. From the canvas 
 
 ## Adding Nodes
 
-The left sidebar of the canvas lists node types by category.
+Clicking the **Node Search** button at the bottom right of the canvas opens the list of available nodes, grouped by category.
 
 | Category | Example Nodes |
 |---|---|
