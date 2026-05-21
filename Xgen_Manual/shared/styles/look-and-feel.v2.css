@@ -171,7 +171,7 @@
 /* 메뉴 아이템 — 폰트 크기 키우고 행간 여유 */
 .md-sidebar--primary .md-nav__link {
   color: var(--xm-text-secondary);
-  font-size: 0.82rem;
+  font-size: 0.875rem;   /* 14px */
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
@@ -203,11 +203,13 @@
   color: var(--xm-text-secondary) !important;
 }
 
-/* 활성 항목만 인디고 강조 (호버보다 우선) */
+/* 활성 항목만 인디고 강조 (호버보다 우선)
+ * 홈 같은 leaf 아이템(`<a class="md-nav__link--active">`) 도 다른 섹션 아이템과
+ * 동일한 인디고 배경을 갖도록 background 에 !important 부여. */
 .md-sidebar--primary .md-nav__link--active,
 .md-sidebar--primary .md-nav__link--active:hover,
 .md-sidebar--primary .md-nav__item--active > .md-nav__link {
-  background: var(--xm-accent-bg);
+  background: var(--xm-accent-bg) !important;
   color: var(--xm-accent) !important;
   font-weight: 600;
 }
@@ -223,7 +225,7 @@
 
 .md-sidebar--secondary .md-nav__link {
   color: var(--xm-text-secondary);
-  font-size: 0.72rem;
+  font-size: 0.875rem;   /* 14px */
   line-height: 1.5;
   padding: 0.35rem 0.7rem;
   border-radius: 6px;
@@ -246,6 +248,11 @@
   font-weight: 600;
   border-left: none !important;
   padding-left: 0.7rem !important;
+}
+
+/* ===== 상단 탭(GNB 아래) — 좌·우 사이드바와 동일한 14px 적용 ===== */
+.md-tabs__link {
+  font-size: 0.875rem;   /* 14px */
 }
 
 /* ===== 표 ===== */
