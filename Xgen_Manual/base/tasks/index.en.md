@@ -8,7 +8,7 @@ This page helps you navigate the manual by **what you want to do**, not by menu 
 
 Pick your role from the left sidebar or the table below.
 
-| Role | Concerns | Jump |
+| Role Type | Concerns | Jump |
 |---|---|---|
 | Standard User | Chat with agents, tech support, role dashboard | [→ Standard User](01-standard-user.md) |
 | Agent Developer | Design, deploy, get approval, role dashboard | [→ Agent Developer](02-agent-developer.md) |

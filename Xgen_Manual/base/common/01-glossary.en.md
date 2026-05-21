@@ -67,7 +67,7 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 
 | Term | Korean | Definition |
 |---|---|---|
-| Standard User | 일반 사용자 | Base user tier — uses Agent Workspace for daily work. The top-left **Admin Center** mode-switch becomes accessible when specific menu-level permissions are granted |
+| Standard User | 일반 사용자 | Base user permission tier — encompasses two Agent Workspace user types (**Standard User** / **Agent Developer**). Standard Users use Agent Chat / Technical Support / Dashboard, while Agent Developers receive additional menu permissions for Agent Creation / Tool Integration / Knowledge Management. The top-left **Admin Center** mode-switch becomes accessible when specific menu-level permissions are granted |
 | SuperUser | 슈퍼유저 | Administrative tier — accesses the top-left **Admin Center** mode and performs all administrative tasks (user/role management, system settings, AI governance) |
 | Role | 역할 | A bundle of permissions (e.g., "System Administrator", "Governance Officer", "Operator", "Analyst") |
 | Permission | 권한 | An access grant for a specific feature or resource |

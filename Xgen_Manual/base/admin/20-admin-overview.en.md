@@ -40,7 +40,7 @@ The solution uses a **two-tier permission model**. Role definition / assignment 
 
 | Tier | Korean | What they can do |
 |---|---|---|
-| Standard User | 일반 사용자 | Use Agent Workspace. Edit and share own items |
+| Standard User | 일반 사용자 | Encompasses two Agent Workspace user types (**Standard User** / **Agent Developer**). Standard Users use Chat / Technical Support / Dashboard only; Agent Developers receive additional menu permissions for Agent Creation / Tool Integration / Knowledge Management |
 | SuperUser | 슈퍼유저 | Manage users/roles, configure system, run AI governance, monitor operations, delegate permissions, reset the system |
 
 New users are created as **Standard User** by default. Granting SuperUser privilege is allowed only to an existing SuperUser. Keep at least one SuperUser for the system, ideally on a separate account isolated from daily operations.
