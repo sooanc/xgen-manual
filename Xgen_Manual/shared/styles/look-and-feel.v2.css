@@ -288,15 +288,22 @@ textarea {
 }
 
 /* ===== 본문 이미지 ===== */
-/* mkdocs-material / glightbox 기본 이미지 보더(검정 테두리) 제거.
- * 라이트박스 wrapper 와 anchor 도 함께 정리. */
+/* mkdocs-material / glightbox 기본 이미지 보더(검정 테두리) 전면 제거.
+ * 라이트박스 wrapper / anchor / admonition 안의 이미지 모두 cover. */
 .md-typeset img,
+.md-typeset a,
 .md-typeset a img,
-.md-typeset .glightbox img,
-.md-typeset .glightbox {
-  border: none !important;
+.md-typeset a.glightbox,
+.md-typeset a.glightbox img,
+.md-typeset p > a.glightbox,
+.md-typeset .admonition a.glightbox,
+.md-typeset .admonition img {
+  border: 0 !important;
+  border-style: none !important;
   outline: none !important;
   box-shadow: none !important;
+  background: transparent !important;
+  text-decoration: none !important;
 }
 
 /* ===== 표 ===== */
