@@ -77,8 +77,12 @@ Clicking a node opens the detail panel on the right. Configure:
 | Tool (tool node) | The external API or MCP tool to invoke |
 | Variables | Variable names passed between nodes |
 
-!!! info "Detail-panel screenshot deferred"
-    The per-node detail panel that opens on click has different fields per node type (LLM / Tool / Search / Branch, etc.). One or two representative examples will be added in a future manual update.
+!!! info "Node detail panel"
+    Clicking an individual node opens a detail panel on the right. Field composition differs per node type (LLM / Tool / Search / Branch, etc.). Representative examples:
+
+    ![Node detail panel — example 1](images/canvas-node1.png)
+
+    ![Node detail panel — example 2](images/canvas-node2.png)
 
 External APIs and MCP tools referenced by Tool nodes are registered and managed on a separate screen.
 
