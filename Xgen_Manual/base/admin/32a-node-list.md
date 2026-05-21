@@ -21,7 +21,7 @@
 
 > 환경별로 배포된 Agent 가 *에이전트* 그룹 하위에 추가될 수 있어, 실제 노출 항목은 환경에 따라 다소 다릅니다. 본 챕터는 stg 표준 환경 기준입니다.
 
-### 모델 컨텍스트 프로토콜(MCP) (`mcp`) — 20개
+### 모델 컨텍스트 프로토콜 (`mcp`) — 20개
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
@@ -77,7 +77,7 @@
 | 내 파일 조회·수정 권한 부여 | `file_system/filesystem_storage` | AI 에게 파일 시스템 접근 권한 부여. 지정된 저장 영역에서 파일 탐색·읽기·생성·수정 |
 | 문서 양식 편집기 | `file_system/document_adapter` | DOCX·PPTX·HWPX 양식 문서 편집. 9개 도구 (inspect_document / get_cell / get_shapes / render_template …) |
 
-### 기억 (Memory) (`memory`) — 1개
+### 기억 (`memory`) — 1개
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
