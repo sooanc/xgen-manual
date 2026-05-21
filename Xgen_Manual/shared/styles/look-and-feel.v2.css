@@ -9,7 +9,31 @@
  *   - 사이드바·TOC 활성 항목 = 인디고 라이트 배경 + 인디고 텍스트 (pill 형태)
  *   - 헤딩 = 모던 타이포그래피 (큰 글자, 좁은 자간, 하단 보더 제거)
  *   - 표·코드·admonition·blockquote = 둥근 모서리 + 부드러운 톤
+ *   - 폰트: Pretendard Variable (XGEN 솔루션과 동일)
  */
+
+/* XGEN 솔루션과 동일한 Pretendard Variable 폰트 로드 (jsDelivr CDN) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
+
+/* 전역 폰트 패밀리 — Material 기본(Noto Sans KR) 대신 Pretendard 사용 */
+:root,
+body,
+.md-typeset,
+.md-tabs,
+.md-tabs__link,
+.md-nav,
+.md-nav__title,
+.md-nav__link,
+.md-header,
+.md-footer,
+input,
+button,
+select,
+textarea {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    'system-ui', Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', sans-serif !important;
+}
 
 :root {
   --xm-accent: #4f46e5;
