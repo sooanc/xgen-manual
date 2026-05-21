@@ -29,7 +29,7 @@ Select **Agent Creation → Agent Design** in the left sidebar. From the canvas 
 2. Enter:
     - **Name**: an identifiable name (Korean or English)
     - **Description** (optional): one-line summary of what it does
-3. Create → an empty canvas opens with the **Start Node** automatically placed
+3. Create — an empty canvas opens; clicking **Start Agent** automatically places the **XGEN Agent** node.
 
 ![Canvas editor — visual workspace where nodes are added and connected, starting from the Start Node](images/canvas-editor.png)
 
