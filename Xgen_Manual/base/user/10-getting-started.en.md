@@ -15,7 +15,7 @@ Agent Workspace is the default work area you land in immediately after login. At
 2. Log in with the employee ID (or email) and password issued by your organization — see [Login](11-login.md) for procedure details
 3. After login you land on the [Dashboard](18-dashboard.md) automatically; the top-left **Agent Workspace** mode is selected
 
-![Main screen — top header, left sidebar, and content area](images/main-overview.png)
+![Dashboard — top header, left sidebar, and content area](images/dashboard-overview.png)
 
 The screen is composed of the following areas.
 
