@@ -16,7 +16,7 @@
 - 절차: [기술지원](../user/19-tech-support.md)
 
 ## 솔루션 화면이 처음이다, 어디부터 봐야 하나
-- [Agent 작업실 개요](../user/10-getting-started.md) → [로그인](../user/11-login.md)
+- [Agent 작업실 개요](../user/11-getting-started.md) → [로그인](../user/10-login.md)
 
 ---
 

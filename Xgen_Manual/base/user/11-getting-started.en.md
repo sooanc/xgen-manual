@@ -12,7 +12,7 @@ Agent Workspace is the default work area you land in immediately after login. At
     https://{{product.domain}}
     ```
 
-2. Log in with your organization email and password — see [Login](11-login.md) for procedure details
+2. Log in with your organization email and password — see [Login](10-login.md) for procedure details
 3. After login you land on the [Dashboard](18-dashboard.md) automatically; the top-left **Agent Workspace** mode is selected
 
 ![Dashboard — top header, left sidebar, and content area](images/dashboard-overview.png)
