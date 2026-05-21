@@ -45,13 +45,6 @@ The solution uses a **two-tier permission model** decided by a single `is_superu
 
 New users are created as **Standard User** by default. Granting SuperUser privilege is allowed only to an existing SuperUser. Keep at least one SuperUser for the system, ideally on a separate account isolated from daily operations.
 
-!!! info "Initial (root) SuperUser — created once during initial installation"
-    Right after the solution is first installed, no SuperUser exists yet. While that is the case, a one-time **initial SuperUser creation screen** at `/admin/create-superuser` is reachable without authentication, where you can register the very first SuperUser. This first account is commonly referred to as the **initial (root) SuperUser**.
-
-    - Once the first SuperUser is created, the same screen automatically redirects to `/login` and is never reachable again.
-    - Subsequent SuperUsers are added through the [User Management](21-user-management.md) flow described in this chapter.
-    - The word "root" is just a context label meaning *"created via the bootstrap path"*; the data model and permission flag are identical to any other SuperUser (`is_superuser: true`). Do not confuse this with an OS-level root account.
-
 ## Admin Console Layout
 
 The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden depending on permissions). Menu labels match the stg live screen. The mapping from each menu to its manual chapter is below.
