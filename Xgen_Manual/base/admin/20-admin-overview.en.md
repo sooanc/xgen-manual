@@ -120,24 +120,102 @@ The *General* screen (`admin?view=admin-system-config`) exposes **every environm
 
 ## First-Run Checklist
 
-Items the operations team should verify immediately after deployment. Detailed steps for each item are in their respective chapters.
+Items the operations team should verify first after deploying the solution to a new environment. Detailed configuration steps for each item are in the related chapters.
 
-- [ ] **Register the initial (root) SuperUser** — Right after installation, open `/admin/create-superuser` and register the first SuperUser; confirm that account can log in. The screen is reachable only once, so store the password through a safe out-of-band channel
-- [ ] **Connect an LLM provider** — Choose a provider matching company policy (OpenAI / Anthropic / on-premise vLLM, etc.) and register the API key or endpoint
-- [ ] **Connect an embedding model + vector DB** — Required for knowledge search to work
-- [ ] **Review PII policy** — Confirm the items targeted for automatic masking. Financial-sector deployments should add custom regex patterns
-- [ ] **Define roles** — Define organization-specific roles (e.g., "Analyst", "Operator") and assign them to users
-- [ ] **Set system monitor thresholds** — Configure CPU/memory/disk thresholds that trigger alerts
-- [ ] **Audit log retention policy** — Confirm the retention window meets relevant regulations (typically 5+ years for finance)
+### Connect an LLM provider
+
+Choose an LLM provider matching your operational policy and register its connection details.
+
+Examples:
+
+- OpenAI
+- Anthropic
+- On-premise vLLM
+- Other on-premise inference servers
+
+Confirm that the required API key, endpoint, and model information are registered correctly.
+
+### Connect an embedding model and vector DB
+
+The Knowledge Retrieval (RAG) feature requires both an embedding model and a vector DB connection.
+
+Examples:
+
+- Register the embedding model
+- Configure vector DB connection details
+- Verify index creation
+
+A pre-check for connection errors is recommended.
+
+### Review PII policy
+
+Review the personal-information / sensitive-information protection policy.
+
+- Confirm the items targeted for automatic masking
+- Review the sensitive-information detection policy
+- Confirm any organization-specific additional policy
+
+For finance-sector or high-security environments, registering additional regex-based detection rules is recommended.
+
+### Define roles and assign user permissions
+
+Define roles aligned with your operational policy and assign permissions to users.
+
+Examples:
+
+- Standard User
+- Analyst
+- Operator
+- Agent Developer
+- Administrator
+
+Grant only the permissions actually required, following the least-privilege principle.
+
+### Set system monitoring thresholds
+
+Configure thresholds for system health monitoring.
+
+Examples:
+
+- CPU utilization
+- Memory utilization
+- Disk usage
+- GPU utilization
+
+Verify that alerts are dispatched correctly when thresholds are exceeded.
+
+### Confirm audit log retention policy
+
+Confirm that the retention period for audit logs and execution history meets internal policy and relevant regulations.
+
+Examples:
+
+- User activity logs
+- Execution history
+- Administrator change history
+- Security audit logs
+
+※ Finance-sector environments typically apply long-term retention policies (e.g., 5 years or more).
 
 ## Operating Principles
 
-General principles to follow when working in the admin console.
+Baseline operational principles to follow when using the admin console.
 
-1. **Check impact before changes** — System configuration changes affect all users immediately. LLM and embedding setting changes in particular can affect ongoing chats and executions.
-2. **Audit awareness** — All administrator actions are recorded in the audit log. Periodic review is recommended.
-3. **Least privilege** — Grant users only the minimum permissions needed for their work. Revoke temporary privilege escalations after the task.
-4. **Backup first** — Export the current state before bulk changes to collections or prompts.
+### Verify impact scope before any change
+
+System configuration changes can immediately affect the entire user environment. In particular, changes to LLM, embedding model, or vector DB settings may impact ongoing chats, Agent execution results, and Knowledge Retrieval quality, so review before applying.
+
+### Operate from the audit log
+
+All administrator actions are recorded in the audit log. Periodically review the history of key actions — configuration changes, permission updates, deployment approvals, etc.
+
+### Apply least-privilege
+
+Grant users only the minimum permissions required for their work. When temporary privilege elevation is required, revoke it immediately after the task is completed.
+
+### Back up before bulk changes
+
+Before bulk-changing collections, prompts, policies, or system settings, back up the current state using the Export feature. Maintain a recoverable state whenever you modify the production environment.
 
 ## Contact
 
