@@ -45,7 +45,7 @@ Clicking the **Node Search** button at the bottom right of the canvas opens the 
 | Branching | Conditional, loop |
 | I/O | Receive input, return output |
 
-> The full node catalog (categories, tags, detailed specs) is documented in [Admin Center · Node List](../admin/32a-node-list.md). The same chapter covers the admin screen for registering and managing nodes.
+> The full node catalog (categories, tags, detailed specs, etc.) is available in the [Admin Center > Node List](../admin/32a-node-list.md) chapter. Node registration and management features are also provided in the same chapter.
 
 To add:
 
