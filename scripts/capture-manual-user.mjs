@@ -47,7 +47,9 @@ const SHOTS_LOGGED_IN = [
   // 10-getting-started.md — 첫 메인 화면 (사이드바 hydration 끝난 /main)
   { path: '/main', file: 'main-overview.png', label: 'Main (sidebar + content)' },
   { path: '/main', file: 'main-sidebar.png', label: 'Main sidebar view' },
-  { view: 'main-planning', file: 'main-planning.png', label: 'Work Planning home' },
+  // main-planning view 는 현재 stg 미배포 — capture 시 'Page not found' placeholder 가
+  // 저장되어 매뉴얼 본문이 깨지므로 SHOT 에서 제외. 11a-task-planning.md 챕터는
+  // require_view: main-planning 으로 nav 자동 제외 중이라 영향 없음.
 
   // 12-agentflow-create.md
   { view: 'canvas-intro', file: 'agentflow-list.png', label: 'Agent 작업실 진입 (Canvas Intro)' },
