@@ -192,10 +192,11 @@ textarea {
   margin: 0.05rem 0;
 }
 
-/* 메뉴 아이템 — 폰트 크기 키우고 행간 여유 */
+/* 메뉴 아이템 — 폰트 크기 키우고 행간 여유
+ * (mkdocs-material 의 html font-size 125% 영향을 피하기 위해 rem 대신 px 절대값 사용) */
 .md-sidebar--primary .md-nav__link {
   color: var(--xm-text-secondary);
-  font-size: 0.875rem;   /* 14px */
+  font-size: 14px;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
@@ -249,7 +250,7 @@ textarea {
 
 .md-sidebar--secondary .md-nav__link {
   color: var(--xm-text-secondary);
-  font-size: 0.875rem;   /* 14px */
+  font-size: 14px;
   line-height: 1.5;
   padding: 0.35rem 0.7rem;
   border-radius: 6px;
@@ -276,7 +277,7 @@ textarea {
 
 /* ===== 상단 탭(GNB 아래) — 좌·우 사이드바와 동일한 14px 적용 ===== */
 .md-tabs__link {
-  font-size: 0.875rem;   /* 14px */
+  font-size: 14px;
 }
 
 /* ===== 표 ===== */
