@@ -43,7 +43,7 @@ The menu scope shown in the Agent Workspace sidebar varies by user type.
 | Standard User | 일반 사용자 | Use the **Agent Chat / Technical Support / Dashboard** areas. Chat with agents the company has deployed; view announcements/FAQ; submit 1:1 inquiries |
 | Agent Developer | Agent 개발자 | All of the above plus **Agent Creation / Tool Integration / Knowledge Management / Analysis & Planning** areas. Design, deploy, and operate your own agents (permission tier stays Standard User — granted as a separate role) |
 
-The solution uses a **two-tier permission model** decided by a single `is_superuser` flag — Standard User and SuperUser. The "Agent Developer" category is not a separate permission tier; it is a role granted on top of Standard User. To upgrade from Standard User to Agent Developer, request the role from a SuperUser. Per-role entry points and workflows are summarized in the [Task Guide](../tasks/index.md).
+The solution uses a **two-tier permission model** — Standard User and SuperUser. The "Agent Developer" category is operated as additional menu permissions granted on top of Standard User. To upgrade from Standard User to Agent Developer, request the permissions from a SuperUser. Per-role entry points and workflows are summarized in the [Task Guide](../tasks/index.md).
 
 ## Agent Workspace Layout
 
