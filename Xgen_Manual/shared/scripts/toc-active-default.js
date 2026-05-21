@@ -49,16 +49,18 @@
         link.__tocActiveBound = true;
         link.addEventListener('click', function () {
           setOnlyActive(link);
-          // 부드러운 스크롤 + Material scrollspy 의 후속 업데이트를 짧은 시간 무시
+          // 부드러운 스크롤 + Material scrollspy 의 후속 업데이트를 짧은 시간 무시.
+          // Material 은 클릭한 링크에서 active 를 제거하기도 하지만, 클릭한 링크는
+          // 유지한 채 인접 헤딩(N-1)에 active 를 "추가" 하기도 한다 → 두 항목이 동시에
+          // 활성화돼 보이는 버그가 된다. 따라서 lock window 안에서는 조건 없이
+          // setOnlyActive 를 반복 호출해 단 하나의 활성 상태만 강제한다.
           var until = Date.now() + LOCK_MS;
           var iv = setInterval(function () {
             if (Date.now() > until) {
               clearInterval(iv);
               return;
             }
-            if (!link.classList.contains('md-nav__link--active')) {
-              setOnlyActive(link);
-            }
+            setOnlyActive(link);
           }, 40);
         });
       })(links[i]);
