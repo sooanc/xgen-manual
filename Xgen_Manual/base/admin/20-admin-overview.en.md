@@ -23,7 +23,7 @@ The main column is organized into three steps:
 See the [Admin Console Layout](#admin-console-layout) table below for the full menu breakdown.
 
 !!! note "SuperUser Privileges Required"
-    Admin Center is the **SuperUser-only area** that integrates user permissions, agent operations, AI governance, system environment, and data/knowledge assets. It is accessible only to accounts with **SuperUser** privileges (`is_superuser: true`); Standard Users do not see the **Admin Center** mode-switch button at the top-left at all.
+    Admin Center is the **SuperUser-only area** that integrates user permissions, agent operations, AI governance, system environment, and data/knowledge assets.
 
     SuperUser is further split into two **roles** on top of the same permission tier. Even within the same SuperUser tier, the sidebar menu scope varies depending on which role is assigned.
 
@@ -36,7 +36,7 @@ See the [Admin Console Layout](#admin-console-layout) table below for the full m
 
 ## Permission Tiers { #permission-tiers }
 
-The solution uses a **two-tier permission model** decided by a single `is_superuser` flag. Role definition / assignment and ABAC permission grants are covered in the [Role / Permission Management](22-role-permission.md#permission-model) chapter.
+The solution uses a **two-tier permission model**. Role definition / assignment and ABAC permission grants are covered in the [Role / Permission Management](22-role-permission.md#permission-model) chapter.
 
 | Tier | Korean | What they can do |
 |---|---|---|

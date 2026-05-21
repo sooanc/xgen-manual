@@ -85,7 +85,7 @@ Inactive users cannot log in, but their agentflows, collections, and chat histor
 
 ## Permission Tier Changes
 
-Permission tier is decided by a single `is_superuser` flag — two tiers in total. Toggle it through the **User Type** select in the user-edit modal (`Standard` ↔ `Superuser`).
+There are two permission tiers. Toggle them through the **User Type** select in the user-edit modal (`Standard` ↔ `Superuser`).
 
 | Direction | Required Privilege |
 |---|---|

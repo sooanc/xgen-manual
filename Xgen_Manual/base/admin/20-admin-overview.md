@@ -23,7 +23,7 @@
 세부 메뉴 분류는 아래 [관리자 콘솔 구성](#관리자-콘솔-구성) 표를 참고하세요.
 
 !!! note "SuperUser 권한 필요"
-    관리 설정은 사용자 권한, Agent 운영, AI 거버넌스, 시스템 환경, 데이터·지식 자산을 통합 관리하는 **SuperUser 전용 영역**입니다. **SuperUser** 권한(`is_superuser: true`)이 있는 계정에서만 접근할 수 있으며, 일반 사용자(Standard User)에게는 좌상단 **관리 설정** 모드 전환 버튼 자체가 노출되지 않습니다.
+    관리 설정은 사용자 권한, Agent 운영, AI 거버넌스, 시스템 환경, 데이터·지식 자산을 통합 관리하는 **SuperUser 전용 영역**입니다.
 
     SuperUser 는 동일 권한 등급 위에서 다시 두 **역할(Role)** 로 분리되어 운영되며, 같은 SuperUser 라도 부여된 역할에 따라 사이드바에 노출되는 메뉴 범위가 달라집니다.
 
@@ -36,7 +36,7 @@
 
 ## 권한 등급 { #permission-tiers }
 
-본 솔루션은 `is_superuser` 플래그 하나로 결정되는 **2단계 권한 모델**을 사용합니다. 역할(Role) 정의·할당과 ABAC 권한(Permission) 부여 절차는 [역할/권한 관리](22-role-permission.md#permission-model) 챕터에서 다룹니다.
+본 솔루션은 **2단계 권한 모델**을 사용합니다. 역할(Role) 정의·할당과 ABAC 권한(Permission) 부여 절차는 [역할/권한 관리](22-role-permission.md#permission-model) 챕터에서 다룹니다.
 
 | 등급 | 영문 | 가능한 작업 |
 |---|---|---|
