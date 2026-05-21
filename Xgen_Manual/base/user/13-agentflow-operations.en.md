@@ -28,7 +28,7 @@ When problems occur, expand the logs to find which node got stuck and what input
 
 ## Deployment { #deployment }
 
-This section walks through the **full path from request to live service**. The Agent Developer's own action ends with **submitting a deployment request**; the agent reaches end users only after two managerial approvals pass.
+This chapter describes the **full deployment path** an agent takes before reaching end users. The Agent Developer's own action ends with **submitting a deployment request**; the agent is then deployed to production after the administrator approval process required by operational policy.
 
 ### Submit a deployment request — Agent Developer step { #request-deployment }
 
