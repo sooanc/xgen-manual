@@ -6,7 +6,7 @@ This chapter covers logging into the {{product.name}} solution and resolving com
 
 1. Open {{product.domain}} in a browser
 2. The login screen appears automatically
-3. Enter your employee ID (or email) and password
+3. Enter your organization email and password
 4. Click **Log In**
 
 ![Login screen — email / password fields and the Log In button](images/login.png)
