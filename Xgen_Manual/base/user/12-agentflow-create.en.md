@@ -4,7 +4,7 @@ This chapter covers building an **Agentflow** — the core deliverable of the so
 
 ## What Is an Agentflow
 
-An agentflow is a visual workflow connecting multiple **nodes** that defines an AI task. Start node → intermediate steps (LLM calls, tool execution, branching) → response are all represented in one diagram.
+An agentflow is an AI workflow composed by visually connecting multiple **nodes**. The entire execution path — from the start node, through intermediate steps (LLM calls, tool execution, conditional branching, etc.), to the final response — is represented in a single diagram.
 
 | Term | Description |
 |---|---|
