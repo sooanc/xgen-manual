@@ -21,7 +21,7 @@
 
 > 환경별로 배포된 Agent 가 *에이전트* 그룹 하위에 추가될 수 있어, 실제 노출 항목은 환경에 따라 다소 다릅니다. 본 챕터는 stg 표준 환경 기준입니다.
 
-### 모델 컨텍스트 프로토콜 (`mcp`) — 20개
+### 모델 컨텍스트 프로토콜 (`mcp`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
@@ -46,7 +46,7 @@
 | 웹 브라우저 자동 조작 | `mcp/WebAutomationMCP` | Playwright 브라우저 제어로 웹 작업 자동화. 엑셀 데이터 → 웹 폼 자동 입력, 저장 전 확인 |
 | DB 조회하기 | `mcp/DatabaseReader` | 사전 설정 DB 연결에 SQL 쿼리 직접 실행. PostgreSQL·Oracle·Informix 지원 |
 
-### 에이전트 (`agents`) — 3개
+### 에이전트 (`agents`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
@@ -54,14 +54,14 @@
 | 에이전트 Xgen | `agents/xgen` | 워크플로우의 핵심 AI 두뇌. 도구 자동 선택·사용. OpenAI·Anthropic·Google·AWS 모델 |
 | 에이전트 Harness | `agents/run_harness` | 저장된 하네스 워크플로우를 한 단계 에이전트로 실행 (system_prompt·도구·전략·RAG·DB·MCP) |
 
-### API 로더 (`api_loader`) — 2개
+### API 로더 (`api_loader`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
 | API 직접 등록하기 | `api_loader/APICallingTool` | 커스텀 REST API 도구를 만들어 Agent 에 연결. 응답 데이터에서 필요한 부분만 추출하는 필터링 |
 | 등록된 API 불러오기 | `api_loader/APIToolLoader` | 관리자 등록 API 도구를 드롭다운에서 선택해 즉시 사용 |
 
-### 문서 로더 (`document_loaders`) — 3개
+### 문서 로더 (`document_loaders`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
@@ -69,7 +69,7 @@
 | 온톨로지 검색 | `document_loaders/OntologySearch` | 미리 빌드된 지식그래프에서 SPARQL + SCS 컨텍스트로 관련 트리플·소스 청크 검색 |
 | 정보 검색 노드 (260517) | `document_loaders/VectorDBContextV2` | 정보 검색 노드 재설계 버전(2026-05-17). 꼭 필요한 옵션만 노출, 세부 튜닝값은 best-practice 기본값 |
 
-### 파일 시스템 (`file_system`) — 3개
+### 파일 시스템 (`file_system`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
@@ -77,19 +77,19 @@
 | 내 파일 조회·수정 권한 부여 | `file_system/filesystem_storage` | AI 에게 파일 시스템 접근 권한 부여. 지정된 저장 영역에서 파일 탐색·읽기·생성·수정 |
 | 문서 양식 편집기 | `file_system/document_adapter` | DOCX·PPTX·HWPX 양식 문서 편집. 9개 도구 (inspect_document / get_cell / get_shapes / render_template …) |
 
-### 기억 (`memory`) — 1개
+### 기억 (`memory`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
 | 멀티턴 DB | `memory/db_memory_v3` | 가장 지능적인 대화 메모리. 신뢰도 낮은 응답 자동 필터링, 시간 경과 가중치 감쇠(Decay), 관련 과거 대화 스마트 선별 |
 
-### 라우터 (`router`) — 1개
+### 라우터 (`router`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
 | 조건 분기 | `router/Router` | 키 값에 따라 데이터를 서로 다른 경로로 분기. 키 값별 출력 핸들이 동적으로 생성 |
 
-### 도구 (`tools`) — 14개
+### 도구 (`tools`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
@@ -108,13 +108,13 @@
 | 워크벤치 프롬프트 | `tools/workbench_prompt` | Workbench Prompt Studio 의 중앙 관리·버전관리 프롬프트를 워크플로우로 끌어오기 (dev·stg·prd) |
 | 다른 워크플로우 연결하기 | `tools/workflow_tool` | 저장된 다른 워크플로우를 도구로 사용. Agent 가 하위 워크플로우 호출 — 모듈형 설계 |
 
-### 시작 노드 (`startnode`) — 1개
+### 시작 노드 (`startnode`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|
 | 사용자 질문 입력 | `input_string` | 사용자 텍스트 입력 받기 또는 고정 텍스트 설정. 워크플로우 시작점 |
 
-### 종료 노드 (`endnode`) — 3개
+### 종료 노드 (`endnode`)
 
 | 노드 이름 | ID | 설명 |
 |---|---|---|

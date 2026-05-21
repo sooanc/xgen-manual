@@ -17,7 +17,7 @@ See [Glossary](../common/01-glossary.md) for full terminology.
 ## Entering Agent Workspace { #agent-작업실-진입 }
 
 !!! note "Agent-build permission required"
-    The steps in this section assume the **Agent Developer** role (or equivalent `main.agentflow:*` permission) is assigned to your account. Standard User accounts do not see the **Agent Creation** sidebar section, and navigating to `/main?view=canvas-intro` via the [Dashboard · Agent Workspace quick-jump](18-dashboard.md) renders the intro page with an empty body.
+    The steps in this section assume the **Agent Developer** role (or an equivalent permission) is assigned to your account. Standard User accounts do not see the **Agent Creation** sidebar section, and navigating from the [Dashboard · Agent Workspace quick-jump](18-dashboard.md) renders the intro page with an empty body.
 
 Select **Agent Creation → Agent Design** in the left sidebar. From the canvas intro screen you can pick **Start from blank canvas / Start with chat / Continue** as the entry mode.
 
