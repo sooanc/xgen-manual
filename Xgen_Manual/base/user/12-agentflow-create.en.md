@@ -53,8 +53,10 @@ To add:
 2. **Drag and drop** a node card onto the canvas
 3. The node is placed on the canvas
 
-!!! info "Drag-in-progress screenshot deferred"
-    A still screenshot of the *moment of dragging* a node card from the left palette doesn't capture the motion well, so it is deferred. You can locate the node palette on the left side of the canvas editor image above.
+!!! info "Drag motion"
+    Drag a node card from the left palette and drop it onto the canvas.
+
+    ![Node drag-and-drop motion](gif/10 canvas dragdrop.gif)
 
 ## Connecting Nodes
 
