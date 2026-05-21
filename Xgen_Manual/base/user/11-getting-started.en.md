@@ -92,7 +92,7 @@ A short checklist to run through the first time you use the solution. Each item 
 
 General principles to follow when working in Agent Workspace.
 
-1. **Trust deployed agents** — agents the company has deployed have passed governance review. If an answer looks off, don't change the agent directly; report it via [1:1 Admin Inquiry](19-tech-support.md).
+1. **Trust deployed agents** — agents the company has deployed have passed governance review. If an answer is inaccurate or needs further verification, leave feedback via the star icon at the bottom of the response.
 2. **Protect your work** — chats, prompts, and knowledge assets are tied to your account. Do not share your account or password.
 3. **Be careful with sensitive data** — before entering personal information (resident IDs, account numbers, etc.) or confidential company data in chat, review your internal information-protection policy. PII auto-masking is applied, but policy review is the user's responsibility.
 4. **Report issues via 1:1 inquiry** — screen errors, feature restrictions, and data anomalies should be filed via [1:1 Admin Inquiry](19-tech-support.md) so the system administrator can respond.
