@@ -100,9 +100,9 @@ textarea {
   margin: 0.7em 0;
 }
 
-/* ===== 헤딩 ===== */
+/* ===== 헤딩 ===== (사이드바/탭 14px 베이스에 맞춘 px 절대값) */
 .md-typeset h1 {
-  font-size: 1.5rem;       /* 30px */
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--xm-text-strong);
@@ -114,7 +114,7 @@ textarea {
 }
 
 .md-typeset h2 {
-  font-size: 1.15rem;      /* 23px */
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--xm-text-strong);
@@ -126,7 +126,7 @@ textarea {
 }
 
 .md-typeset h3 {
-  font-size: 0.95rem;      /* 19px */
+  font-size: 16px;
   font-weight: 600;
   color: var(--xm-text-strong);
   margin-top: 1.4rem;
@@ -135,7 +135,7 @@ textarea {
 }
 
 .md-typeset h4 {
-  font-size: 0.82rem;      /* 16.4px */
+  font-size: 14px;
   font-weight: 600;
   color: var(--xm-text-strong);
   margin-top: 1.1rem;
@@ -243,7 +243,7 @@ textarea {
 .md-sidebar--secondary .md-nav__title {
   color: var(--xm-text-strong);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 14px;
   text-transform: none;
   letter-spacing: normal;
 }

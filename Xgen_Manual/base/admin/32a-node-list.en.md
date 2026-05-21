@@ -21,8 +21,7 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 
 > Environment-specific agents may appear under the *Agent* group, so the exact list can vary slightly by environment. The catalog below reflects the stg standard environment.
 
-### MCP (`mcp`) — 20 nodes
-
+### MCP (`mcp`) — 20
 | Node | ID | Description |
 |---|---|---|
 | MCP Tool Loader | `mcp/MCPLoader` | Connect to any MCP (Model Context Protocol) server and load all its tools at once. Pick an active MCP session |
@@ -46,51 +45,46 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 | Web Automation (Playwright) | `mcp/WebAutomationMCP` | Web-task automation via Playwright browser control. Excel-to-form auto-input with pre-save confirmation |
 | Database Reader | `mcp/DatabaseReader` | Run fixed SQL queries against a pre-configured DB connection. PostgreSQL, Oracle, Informix |
 
-### Agent (`agents`) — 3 nodes
-
+### Agent (`agents`) — 3
 | Node | ID | Description |
 |---|---|---|
 | Agent Planflow | `agents/planflow` | Deterministic Plan-and-Execute agent. Intent parsing → graph-based plan → sequential execution → natural-language response |
 | Agent Xgen | `agents/xgen` | The core AI brain of a workflow. Auto tool selection. OpenAI, Anthropic, Google, AWS models |
 | Agent Harness | `agents/run_harness` | Run a saved Harness workflow as a single agent step (system_prompt, tools, strategies, RAG, DB, MCP) |
 
-### API Loader (`api_loader`) — 2 nodes
-
+### API Loader (`api_loader`) — 2
 | Node | ID | Description |
 |---|---|---|
 | API Calling Tool | `api_loader/APICallingTool` | Build a custom REST API tool and connect it to the Agent. Response-data filtering supported |
 | API Tool Loader | `api_loader/APIToolLoader` | Load admin-registered API tools from a dropdown instantly |
 
-### Document Loader (`document_loaders`) — 3 nodes
-
+### Document Loader (`document_loaders`) — 3
 | Node | ID | Description |
 |---|---|---|
 | Search Context | `document_loaders/VectorDBContext` | Unified document search. Select search mode to configure vector-DB retrieval. Connect to Agent RAG Context |
 | Ontology Search | `document_loaders/OntologySearch` | Graph-based ontology search using SPARQL + SCS context. Returns relevant triples and source chunks |
 | Search Context (260517) | `document_loaders/VectorDBContextV2` | Search Context redesign (2026-05-17). Only essential options exposed, advanced tuning uses best-practice defaults |
 
-### File System (`file_system`) — 3 nodes
-
+### File System (`file_system`) — 3
 | Node | ID | Description |
 |---|---|---|
 | Table Data MCP | `file_system/table_data_mcp` | Give AI the ability to work with tabular data (Excel, CSV). Natural-language read, analyze, transform |
 | FileSystem Storage | `file_system/filesystem_storage` | Give AI access to a file system. Browse, read, create, modify files in a designated storage area |
 | Document Adapter | `file_system/document_adapter` | Edit form documents (DOCX/PPTX/HWPX). 9 tools (inspect_document / get_cell / get_shapes / render_template …) |
 
-### Memory (`memory`) — 1 node
+### Memory (`memory`) — 1
 
 | Node | ID | Description |
 |---|---|---|
 | DB Memory (Smart) | `memory/db_memory_v3` | The smartest conversation memory. Filters unreliable AI responses, time-based decay, smart selection of related past chats |
 
-### Router (`router`) — 1 node
+### Router (`router`) — 1
 
 | Node | ID | Description |
 |---|---|---|
 | Router | `router/Router` | Branch data into different paths by key value. Output handles dynamically generated per key value |
 
-### Tool (`tools`) — 14 nodes
-
+### Tool (`tools`) — 14
 | Node | ID | Description |
 |---|---|---|
 | A2UI v0.9 Tools | `tools/a2ui_v0_9` | A2UI v0.9 UI-spec authoring tools. Catalog browse, component inspect, spec validation → safe UI JSON |
@@ -108,14 +102,13 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 | Workbench Prompt | `tools/workbench_prompt` | Pull centrally-managed, versioned prompts from Workbench Prompt Studio (dev/stg/prd stages) |
 | Workflow Tool | `tools/workflow_tool` | Use another saved workflow as a tool. Agent can call sub-workflows — modular workflow design |
 
-### Start Node (`startnode`) — 1 node
+### Start Node (`startnode`) — 1
 
 | Node | ID | Description |
 |---|---|---|
 | Input String | `input_string` | Receive user text input or set a fixed text value. Starting point for text-input workflows |
 
-### End Node (`endnode`) — 3 nodes
-
+### End Node (`endnode`) — 3
 | Node | ID | Description |
 |---|---|---|
 | Print Agent Output | `tools/print_agent_output` | Display Agent output in the workflow UI. Connect to Agent output to surface responses |
@@ -143,8 +136,7 @@ Typing in the top search box returns partial-match results instantly:
 - **Category** — e.g., `Agent`, `Tool`
 - **Function** — e.g., `search`, `invoke`
 - **Node name** — e.g., `Document Loader`
-- **Tag** — labels attached to nodes
-
+- **Tag** — labels attached to
 ## Operational Recommendations
 
 - **Consistent category naming** — When adding custom nodes, reuse existing categories. Split into a new category only after enough nodes accumulate.
