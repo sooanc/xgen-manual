@@ -71,7 +71,7 @@ The left sidebar of user mode (Agent Workspace) is organized into 6 sections (so
 | Technical Support (pinned bottom) | FAQ | Standard User | [Technical Support · FAQ](19-tech-support.md#faq) |
 | Technical Support (pinned bottom) | 1:1 Admin Inquiry | Standard User | [Technical Support · 1:1 Admin Inquiry](19-tech-support.md#qna) |
 
-![Left sidebar — six sections expanded: Agent Creation, Tool Integration, Knowledge Management, Technical Support, etc.](images/main-sidebar.png)
+![Agent Workspace intro screen — left sidebar (Agent Chat, Technical Support) with STEP 1 *Understanding work areas* + STEP 2 *Pick a main menu* cards on the right](images/main-sidebar.png)
 
 !!! info "About menu names"
     Menu names on the screen may differ slightly depending on the solution version and your permissions. This manual is based on {{product.name}} {{product.version}}. If a menu is not visible, your assigned permission may not enable it — contact your system administrator.
