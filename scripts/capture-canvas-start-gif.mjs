@@ -31,7 +31,7 @@ const FFMPEG = process.env.FFMPEG || 'C:/ffmpeg/bin/ffmpeg';
 const VIEWPORT = { width: 1280, height: 720 };
 const FPS = 15;
 const SCALE_WIDTH = 960; // GIF 폭 (높이 비례)
-const PRE_CLICK_HOLD_MS = 1200;
+const PRE_CLICK_HOLD_MS = 900;   // 시작 상태 짧게 보여주기 (커서 이동 단계가 별도 lead-in 역할)
 const POST_CLICK_HOLD_MS = 1800;
 // 녹화는 컨텍스트 생성 시점부터 시작되므로 /canvas 로드·hydration 까지 모두 잡힌다.
 // "에이전트 시작" 버튼이 보이는 순간 - lead-in 만큼 앞부분을 잘라낸다.
@@ -94,6 +94,62 @@ const log = (...a) => console.log('[gif]', ...a);
     storageState,
     recordVideo: { dir: TMP_DIR, size: VIEWPORT },
   });
+
+  // Playwright 비디오는 OS 커서를 그리지 않는다.
+  // 모든 페이지가 열리는 시점에 가상 커서(SVG arrow) 를 주입해 mousemove/click 을
+  // 따라다니게 하면, page.mouse.move()/click() 으로 발생하는 이벤트가 GIF 에 보인다.
+  // 클릭 순간 짧은 ripple 로 시청자가 클릭 위치를 인지하기 쉽게 한다.
+  await recCtx.addInitScript(() => {
+    if (window.__virtualCursorInstalled) return;
+    window.__virtualCursorInstalled = true;
+    const SVG = `<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 2 L3 17 L7.5 13 L10 19 L13 18 L10.5 12 L17 12 Z"
+        fill="black" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>`;
+    const cursor = document.createElement('div');
+    cursor.id = '__virtualCursor';
+    Object.assign(cursor.style, {
+      position: 'fixed', left: '0px', top: '0px', width: '22px', height: '22px',
+      pointerEvents: 'none', zIndex: '2147483647',
+      transform: 'translate(-2px, -2px)', willChange: 'left, top',
+    });
+    cursor.innerHTML = SVG;
+
+    const ripple = document.createElement('div');
+    Object.assign(ripple.style, {
+      position: 'fixed', left: '0px', top: '0px', width: '28px', height: '28px',
+      borderRadius: '50%', border: '2px solid rgba(80, 120, 255, 0.9)',
+      transform: 'translate(-14px, -14px) scale(0.3)', opacity: '0',
+      pointerEvents: 'none', zIndex: '2147483646',
+      transition: 'opacity 0.35s ease-out, transform 0.45s ease-out',
+    });
+
+    const install = () => {
+      if (!document.body) return;
+      if (!document.getElementById('__virtualCursor')) document.body.appendChild(cursor);
+      if (!ripple.isConnected) document.body.appendChild(ripple);
+    };
+    install();
+    document.addEventListener('DOMContentLoaded', install);
+
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    }, true);
+    window.addEventListener('mousedown', (e) => {
+      ripple.style.left = e.clientX + 'px';
+      ripple.style.top = e.clientY + 'px';
+      ripple.style.transition = 'none';
+      ripple.style.opacity = '0.9';
+      ripple.style.transform = 'translate(-14px, -14px) scale(0.3)';
+      // force reflow
+      void ripple.offsetWidth;
+      ripple.style.transition = 'opacity 0.45s ease-out, transform 0.55s ease-out';
+      ripple.style.opacity = '0';
+      ripple.style.transform = 'translate(-14px, -14px) scale(1.8)';
+    }, true);
+  });
+
   const page = await recCtx.newPage();
   const ctxStart = Date.now();           // 녹화 t=0 기준
   await page.goto(`${BASE}/canvas`, { waitUntil: 'networkidle', timeout: 45_000 });
@@ -104,10 +160,21 @@ const log = (...a) => console.log('[gif]', ...a);
   const tEmptyReady = Date.now() - ctxStart;
   log(`  empty-state start button visible at t=${tEmptyReady}ms`);
 
+  // 시작 시 가상 커서를 좌측 안쪽에 배치 (이후 버튼으로 부드럽게 이동시키기 위함).
+  await page.mouse.move(140, 360);
+
   // ── 4. 시작 상태를 잠시 보여주기 ──
   await page.waitForTimeout(PRE_CLICK_HOLD_MS);
 
-  // ── 5. 클릭 → XGEN Agent 노드 등장 대기 ──
+  // ── 5. 버튼까지 부드럽게 이동 → 클릭 → XGEN Agent 노드 등장 대기 ──
+  const btnBox = await startBtn.boundingBox();
+  if (btnBox) {
+    const tx = btnBox.x + btnBox.width / 2;
+    const ty = btnBox.y + btnBox.height / 2;
+    log(`  animating cursor to (${tx.toFixed(0)}, ${ty.toFixed(0)})`);
+    await page.mouse.move(tx, ty, { steps: 25 });   // 25 step ≈ ~400ms smooth glide
+    await page.waitForTimeout(150);
+  }
   log('  clicking start agent');
   await startBtn.click();
   // 노드 추가 확인: empty state 가 사라지면 노드가 들어온 것.
