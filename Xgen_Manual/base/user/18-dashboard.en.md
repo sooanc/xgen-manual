@@ -90,7 +90,6 @@ A full-page scroll of the dashboard:
 
 - **My widgets are empty** — they fill in over time as your activity accumulates. "Top 3 Frequent Agents" only appears after you call some agents.
 - **My layout differs from a colleague's** — widget visibility, order, and hidden state are saved per user. The base widget *list* itself also differs between Standard Users and Agent Developers — both share the "Agent 활용 Dashboard" subtitle, but Agent Developers see additional widgets for the assets they own.
-- **Last login time is missing** — the **Last login** indicator left of your username should show your previous session. If it is missing or doesn't match your memory, contact an administrator immediately (potential security incident).
 
 ## Related Chapters
 
