@@ -82,9 +82,21 @@ Clicking a node opens the detail panel on the right. Configure:
 
     ![Node detail panel — field layouts vary by node type (two examples cycled)](images/canvas-node.gif)
 
-External APIs and MCP tools referenced by Tool nodes are registered and managed on a separate screen.
+External APIs and MCP tools referenced by Tool nodes are registered and managed on a separate screen, under **Agent Workspace → Tool Integration** in the left sidebar.
 
 ![API Tools — manage external APIs and MCP tools called by Tool nodes](images/tools.png)
+
+### Tool Integration · API Tools
+
+Register tools from **Agent Workspace → Tool Integration → API Tools**. Click **+ New Tool** at the top right of the list to open the registration form; switch between *Easy Mode* and *Developer Mode* to define your API endpoint.
+
+![API Tools — clicking "New Tool" on the list opens the registration form](images/tool-new.gif)
+
+### Tool Integration · Auth Profiles
+
+Credentials used by API tools to call external systems (Bearer Token, OAuth, etc.) are managed separately under **Agent Workspace → Tool Integration → Auth Profiles**. Click **+ New Profile** at the top right of the list to open the *Create Auth Profile* form, where you fill in basic info (Service ID, Name, Auth Type, TTL) plus Auth API and Extract/Inject Rules tabs.
+
+![Auth Profiles — clicking "New Profile" on the list opens the create form](images/auth-profile-new.gif)
 
 ## Tutorials
 
