@@ -68,10 +68,10 @@ Quickly start from a vetted prompt in the library:
 
 ## Writing Tips
 
-- **Be specific and explicit** — "Within 3 sentences, easy for a user to understand" beats "Answer well"
-- **Specify output format** — JSON, table, numbered list — name the format you want
-- **State prohibited behavior** — "Do not guess; if you don't know, say you don't know"
-- **Include examples** — One or two model responses help significantly
+- **Write clearly and concretely** — Instead of abstract directions like "Answer well", pair them with concrete conditions such as "Explain in three sentences or fewer, in a way that's easy for a user to understand."
+- **Specify the output format** — Naming the desired response shape (JSON, table, numbered list, etc.) yields more consistent results.
+- **State the constraints, too** — To reduce speculative answers or unnecessary output, pair the request with prohibited conditions. Example: "Do not guess; if you're unsure, reply that the answer needs to be verified."
+- **Include examples** — Providing one or two examples close to the desired answer shape improves response quality and consistency.
 
 ## Operational Recommendations
 
