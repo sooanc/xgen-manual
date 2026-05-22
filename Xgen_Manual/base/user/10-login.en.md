@@ -55,8 +55,8 @@ Click the dedicated **Logout** icon (door-arrow) in the top-right header — it 
 
 | Symptom | Check |
 |---|---|
-| ID/password mismatch | Case sensitivity and IME mode. Account locks for 30 minutes after 5 failures |
-| Password expired | Required to change every 90 days (or per company policy). Follow the prompt |
+| ID/password mismatch | Check case sensitivity and IME mode. Repeated failures may lock the account per your company's security policy |
+| Password expired | Periodic password changes are required per your company's security policy. Follow the prompt |
 | Screen freezes | Clear browser cache and retry |
 | SSO auto-login fails | Verify intranet session is alive. Re-authenticate to intranet and retry |
 | "Pending Approval" message | Awaiting administrator approval. If unchanged after 1 business day, contact support |
