@@ -81,4 +81,4 @@ Quickly start from a vetted prompt in the library:
 
 ## Contact
 
-For prompt-related questions, please contact **XGen Administrator**({{vars.support_email}}).
+For prompt-related questions, please contact the Xgen Solution Administrator.

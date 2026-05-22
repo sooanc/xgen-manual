@@ -62,4 +62,4 @@ require_view: main-planning
 
 ## 문의
 
-Agent 기획 화면 관련 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.
+Agent 기획 화면 관련 문의는 Xgen 솔루션 관리자에게 문의해 주세요.

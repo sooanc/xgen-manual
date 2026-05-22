@@ -62,4 +62,4 @@ For existing OpenAPI / Postman specifications, bulk-register tools via **Import 
 
 ## Contact
 
-For questions on the API Tools screen, please contact **XGen Administrator**({{vars.support_email}}).
+For questions on the API Tools screen, please contact the Xgen Solution Administrator.

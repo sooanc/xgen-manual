@@ -73,4 +73,4 @@ Check the audit log for impact scope before changes, and prefer low-traffic hour
 
 ## Contact
 
-For questions about LLM settings, please contact **XGen Administrator**({{vars.support_email}}).
+For questions about LLM settings, please contact the Xgen Solution Administrator.

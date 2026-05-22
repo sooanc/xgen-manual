@@ -117,4 +117,4 @@ Table- and column-level documentation (descriptions, sample values, policies) is
 
 ## Contact
 
-For knowledge management questions, please contact **XGen Administrator**({{vars.support_email}}).
+For knowledge management questions, please contact the Xgen Solution Administrator.

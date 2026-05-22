@@ -146,4 +146,4 @@ Each policy can be configured per processing area.
 
 ## Contact
 
-For questions about PII policy, please contact **XGen Administrator**({{vars.support_email}}).
+For questions about PII policy, please contact the Xgen Solution Administrator.

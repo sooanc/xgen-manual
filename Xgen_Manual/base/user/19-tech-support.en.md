@@ -85,4 +85,4 @@ A quick check of the following can avoid delays caused by simple environmental i
 
 ## Inquiries
 
-For questions about the Technical Support menu itself, email **XGen Administrator**(<{{vars.support_email}}>).
+For questions about the Technical Support menu itself, email the Xgen Solution Administrator.

@@ -77,4 +77,4 @@ Top-right menu (⋯) → **Export** options:
 
 ## Contact
 
-For chat-related questions, please contact **XGen Administrator**({{vars.support_email}}).
+For chat-related questions, please contact the Xgen Solution Administrator.

@@ -118,4 +118,4 @@ Register and rank candidate new agents the organization wants to build. Collects
 
 ## Contact
 
-For questions on Agent Operations screens, please contact **XGen Administrator**({{vars.support_email}}).
+For questions on Agent Operations screens, please contact the Xgen Solution Administrator.

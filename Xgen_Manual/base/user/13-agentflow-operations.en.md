@@ -146,4 +146,4 @@ To pause: click **Pause** on the schedule card. To resume: click **Resume**.
 
 ## Contact
 
-For questions about agent operations, please contact **XGen Administrator**({{vars.support_email}}).
+For questions about agent operations, please contact the Xgen Solution Administrator.

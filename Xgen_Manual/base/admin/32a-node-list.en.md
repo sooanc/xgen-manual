@@ -151,4 +151,4 @@ Typing in the top search box returns partial-match results instantly:
 
 ## Contact
 
-For inquiries about the Node Management screen, contact **XGen Administrator**({{vars.support_email}}).
+For inquiries about the Node Management screen, contact the Xgen Solution Administrator.

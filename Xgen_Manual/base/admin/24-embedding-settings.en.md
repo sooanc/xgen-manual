@@ -68,4 +68,4 @@ The default supported engine is **Qdrant**.
 
 ## Contact
 
-For questions about embedding and vector search, please contact **XGen Administrator**({{vars.support_email}}).
+For questions about embedding and vector search, please contact the Xgen Solution Administrator.

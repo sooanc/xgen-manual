@@ -87,4 +87,4 @@ Saved presets show up in the **Criteria Preset** dropdown of the *Quality Evalua
 
 ## Contact
 
-For Agent Quality Evaluation questions, please contact **XGen Administrator**({{vars.support_email}}).
+For Agent Quality Evaluation questions, please contact the Xgen Solution Administrator.

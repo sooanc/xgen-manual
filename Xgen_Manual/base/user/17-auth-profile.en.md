@@ -91,4 +91,4 @@ The change immediately applies to every agentflow that references this profile.
 
 ## Contact
 
-For questions about authentication profiles, please contact **XGen Administrator**({{vars.support_email}}).
+For questions about authentication profiles, please contact the Xgen Solution Administrator.

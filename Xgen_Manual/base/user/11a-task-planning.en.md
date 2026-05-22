@@ -62,4 +62,4 @@ The new plan is authored as a stepped modal. The top of the modal shows 5 step i
 
 ## Contact
 
-For Agent Planning screen questions, please contact **XGen Administrator**({{vars.support_email}}).
+For Agent Planning screen questions, please contact the Xgen Solution Administrator.

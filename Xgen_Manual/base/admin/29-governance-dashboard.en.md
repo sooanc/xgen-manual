@@ -194,4 +194,4 @@ Active-policy counts and violation trends also appear as widgets on the main gov
 
 ## Contact
 
-For AI Governance questions, contact **XGen Administrator**({{vars.support_email}}).
+For AI Governance questions, contact the Xgen Solution Administrator.

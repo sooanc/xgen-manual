@@ -60,4 +60,4 @@ Audit log of data changes (INSERT / UPDATE / DELETE / DDL) on the operational DB
 
 ## Contact
 
-For questions on the Data Management screens, please contact **XGen Administrator**({{vars.support_email}}).
+For questions on the Data Management screens, please contact the Xgen Solution Administrator.

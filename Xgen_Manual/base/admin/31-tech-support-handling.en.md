@@ -99,4 +99,4 @@ To monitor operations quality, track these weekly/monthly:
 
 ## Inquiries
 
-For questions about the Technical Support handling policy itself, email **XGen Administrator**(<{{vars.support_email}}>).
+For questions about the Technical Support handling policy itself, email the Xgen Solution Administrator.

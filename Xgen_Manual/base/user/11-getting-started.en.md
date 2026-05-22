@@ -103,8 +103,8 @@ Try the following in order.
 1. Update your browser to the latest version (Chrome or Edge recommended)
 2. Clear browser cache/cookies and reconnect
 3. Try Incognito mode to check if the issue is environment-specific
-4. If problems persist, contact **XGen Administrator**({{vars.support_email}}) with a screenshot
+4. If problems persist, contact the Xgen Solution Administrator with a screenshot
 
 ## Contact
 
-For technical support, please contact **XGen Administrator**({{vars.support_email}}).
+For technical support, please contact the Xgen Solution Administrator.

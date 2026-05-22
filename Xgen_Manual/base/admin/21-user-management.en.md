@@ -102,4 +102,4 @@ All permission tier changes are recorded in the audit log. If you are the last r
 
 ## Contact
 
-For questions about user management, please contact **XGen Administrator**({{vars.support_email}}).
+For questions about user management, please contact the Xgen Solution Administrator.
