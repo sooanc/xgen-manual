@@ -99,9 +99,68 @@ const log = (...a) => console.log('[gif]', ...a);
   // 모든 페이지가 열리는 시점에 가상 커서(SVG arrow) 를 주입해 mousemove/click 을
   // 따라다니게 하면, page.mouse.move()/click() 으로 발생하는 이벤트가 GIF 에 보인다.
   // 클릭 순간 짧은 ripple 로 시청자가 클릭 위치를 인지하기 쉽게 한다.
+  //
+  // 추가로:
+  // - 브라우저 native `title` 툴팁 / 커스텀 UI 툴팁(.tippy, [role=tooltip] 등) 을
+  //   CSS 와 title 속성 제거로 모두 차단한다. GIF 해상도가 제한적인데 작은 말풍선이
+  //   뜨면 가독성이 더 떨어지고 지저분해 보이기 때문.
   await recCtx.addInitScript(() => {
     if (window.__virtualCursorInstalled) return;
     window.__virtualCursorInstalled = true;
+
+    // ── 툴팁 억제 (CSS) ──
+    const tipStyle = document.createElement('style');
+    tipStyle.id = '__gif-no-tooltip';
+    // role=tooltip 은 Radix 의 실제 tooltip content 에 붙는다.
+    // Radix popper 래퍼는 popover/dropdown 도 공유하므로 :has([role=tooltip]) 로
+    // 툴팁을 담은 래퍼만 정확히 가린다 (popover/dropdown 정상 동작 보존).
+    tipStyle.textContent = `
+      [role="tooltip"],
+      [data-radix-popper-content-wrapper]:has([role="tooltip"]),
+      .tippy-box, .tippy-popper, [data-tippy-root],
+      .tooltip, .ant-tooltip, .MuiTooltip-popper,
+      .react-tooltip, [data-tooltip] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    `;
+    const installTipStyle = () => {
+      if (!document.head) return;
+      if (!document.getElementById('__gif-no-tooltip')) document.head.appendChild(tipStyle);
+    };
+    installTipStyle();
+    document.addEventListener('DOMContentLoaded', installTipStyle);
+
+    // ── native title= 속성 strip (DOM 변동 대응) ──
+    const stripTitles = (root) => {
+      try {
+        (root || document).querySelectorAll('[title]').forEach((el) => {
+          el.setAttribute('data-gif-orig-title', el.getAttribute('title') || '');
+          el.removeAttribute('title');
+        });
+      } catch {}
+    };
+    const installObserver = () => {
+      stripTitles(document);
+      const mo = new MutationObserver((muts) => {
+        for (const m of muts) {
+          if (m.type === 'attributes' && m.attributeName === 'title' && m.target?.hasAttribute?.('title')) {
+            m.target.removeAttribute('title');
+          }
+          if (m.addedNodes?.length) {
+            m.addedNodes.forEach((n) => n.nodeType === 1 && stripTitles(n));
+          }
+        }
+      });
+      mo.observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['title'] });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', installObserver);
+    } else {
+      installObserver();
+    }
     const SVG = `<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
       <path d="M3 2 L3 17 L7.5 13 L10 19 L13 18 L10.5 12 L17 12 Z"
         fill="black" stroke="white" stroke-width="1.2" stroke-linejoin="round"/>
@@ -184,6 +243,10 @@ const log = (...a) => console.log('[gif]', ...a);
     { timeout: 15_000 },
   ).catch(() => log('  warning: 에이전트 시작 텍스트가 사라지지 않았음 — 그래도 진행'));
   log('  agent node appears to be added');
+
+  // 클릭 직후 커서가 새 노드 위에 머무르면 hover 로 노드 툴팁이 다시 떠오를 수
+  // 있다. 캔버스 상단의 비어있는 영역으로 살짝 이동시켜 hover 트리거를 끊는다.
+  await page.mouse.move(900, 120, { steps: 8 });
 
   // ── 6. 결과 hold ──
   await page.waitForTimeout(POST_CLICK_HOLD_MS);
