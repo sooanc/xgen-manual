@@ -109,6 +109,47 @@ const SHOTS = [
     file: 'plan-new.gif',
     account: 'admin',
   },
+  // Agent 품질 평가 — 품질평가 목록(history 탭) 우상단 '+ 새 테스트' 클릭 → 신규 테스트 실행 모달
+  {
+    id: 'quality-new-test',
+    url: '/main?view=agentflow-tester',
+    waitFor: 'button:has-text("새 테스트")',
+    button: { role: 'button', name: /새 테스트|New Test/ },
+    // 모달 헤더 / 입력 필드
+    resultWait: () => /새 테스트|테스트 이름|평가 대상 Agent|평가 척도|New Test|Test Name|Target Agent/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'quality-new-test.gif',
+    account: 'admin',
+  },
+  // Agent 품질 평가 — 품질평가 목록에서 'Harmbench' 클릭 (안전성 평가 트리거)
+  {
+    id: 'quality-harmbench',
+    url: '/main?view=agentflow-tester',
+    waitFor: 'button:has-text("새 테스트")',
+    button: { role: 'button', name: /Harmbench|HarmBench/i },
+    resultWait: () => /Harmbench|HarmBench|안전성|safety|평가 척도|preset|취약|harm/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'quality-harmbench.gif',
+    account: 'admin',
+  },
+  // Agent 품질 평가 — 척도 정의 탭에서 '+ 새 프리셋 생성' 클릭 → 프리셋 작성 모달
+  {
+    id: 'quality-new-preset',
+    url: '/main?view=agentflow-tester',
+    waitFor: 'button:has-text("새 테스트")',
+    setupClicks: [
+      {
+        // 1) 척도 정의 탭으로 전환
+        button: { role: 'tab', name: /척도 정의|Criteria/ },
+        postWaitMs: 700,
+      },
+    ],
+    button: { role: 'button', name: /새 프리셋 생성|New Preset|Create Preset/ },
+    resultWait: () => /새 프리셋 생성|프리셋 이름|척도|Criteria|Preset Name|Metric/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'quality-new-preset.gif',
+    account: 'admin',
+  },
 ];
 
 function loadEnv(file) {

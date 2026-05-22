@@ -55,7 +55,7 @@ The left sidebar of user mode (Agent Workspace) is organized into 5 sections (so
 | Agent Creation | Agent Design | Agent Developer | [Creating an Agent · Entering Agent Workspace](12-agentflow-create.md#agent-작업실-진입) |
 | Agent Creation | Agent List | Agent Developer | [Agent Operations](13-agentflow-operations.md) |
 | Agent Creation | Agent Operation | Agent Developer | [Agent Operations · Scheduled Automatic Runs](13-agentflow-operations.md#scheduler) |
-| Agent Creation | Agent Quality Evaluation | Agent Developer | [Agent Operations · Execution and Debugging](13-agentflow-operations.md#testing) |
+| Agent Creation | Agent Quality Evaluation | Agent Developer | [Agent Quality Evaluation](13a-agent-quality-evaluation.md) |
 | Agent Creation | Agent Prompts | Agent Developer | [Prompt Management](16-prompt.md) |
 | Tool Integration | API Tools | Agent Developer | [API Tools](17a-api-tools.md) |
 | Tool Integration | Authentication Profile | Agent Developer | [Authentication Profile](17-auth-profile.md) |
