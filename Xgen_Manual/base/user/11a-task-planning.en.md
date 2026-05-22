@@ -54,12 +54,6 @@ The new plan is authored as a stepped modal. The top of the modal shows 5 step i
 3. **Pick the right impact scope** — "Org-wide" raises governance-review priority. For personal use, keep it on "Self".
 4. **Save draft between steps** — If completing all 5 steps in one sitting feels heavy, use *Save Draft* and resume later.
 
-## Common Issues
-
-- **"목록 조회 실패: Bad Gateway"** — Transient backend error. Retry from the right; contact [Technical Support](19-tech-support.md) if it persists.
-- **New Plan button disabled** — Insufficient permission. Agent Developer privileges are required.
-- **Document ID is blank** — May not display momentarily after save; refresh and it should appear.
-
 ## Related Chapters
 
 - [Creating an Agent](12-agentflow-create.md) — Plan → canvas step (actual node assembly)
