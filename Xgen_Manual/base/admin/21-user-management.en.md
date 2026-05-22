@@ -31,34 +31,69 @@ Columns in the full user table (headers are clickable to toggle sort):
 | Registered | Signup or creation time |
 | Actions | **Edit / Delete** buttons |
 
-## Adding a New User — Self-Signup + SuperUser Approval { #user-add }
+## Methods for Adding New Users { #user-add }
 
-New users **sign up themselves on the public signup page**, after which their account enters the *Pending Approval Users* queue. A SuperUser must hit *Activate* on that row before the user can log in.
+New user accounts can be added in two ways depending on your organization's operational policy:
 
-### Step 1 — Self-signup (user-side action)
+- **Self-signup + administrator approval**
+- **Single Sign-On (SSO) integration with corporate identity**
 
-The user takes the following path on their own:
+This section describes the user registration and approval procedure for the *self-signup* configuration.
 
-1. On the login page (`https://<domain>/login`), click the **Sign up** link at the bottom.
-2. On the signup page (`/signup`), fill in email, password, display name, etc.
-3. Click **Sign up** — the account is created in *Pending* state; the user cannot log in yet.
+### Adding a New User — Self-Signup + Administrator Approval
 
-### Step 2 — SuperUser approval (admin-side action)
+The new user submits a signup application on the public signup page, after which the account enters the **Pending Approval** state. A SuperUser — or an administrator with user-management permission — must then approve the account before the user can log in.
 
-A SuperUser reviews and activates pending applicants from the *Pending Approval Users* area in User Management.
+#### Step 1 — User Signup
 
-1. Open **Admin → Users / Access Control → User Management**.
-2. Check the **Pending Approval** counter at the top of the screen (in the screenshot example, `1` pending).
-3. Inspect the *Pending Approval Users* table — ID / Username / Email / Status (Pending) / Registered date.
-4. After reviewing the applicant's info, use the row's action buttons:
-    - **Activate** → status flips to *Active*; the user can log in immediately.
-    - **Delete** → the signup is rejected and the account is removed. The user must sign up again to retry.
+The applicant signs up directly using the following steps.
+
+1. On the login page (`https://<domain>/login`), select the **Sign up** link at the bottom.
+2. On the signup page (`/signup`), fill in the following:
+    - Email
+    - Password
+    - Display name
+3. Submit the signup application.
+
+After signup the account stays in the *Pending Approval* state and cannot log in until an administrator approves it.
+
+#### Step 2 — Administrator Approval
+
+The SuperUser or an administrator with user-management permission reviews pending signups and activates accounts from the *User Management* screen.
+
+**Approval flow**
+
+1. Open **Admin Center → Users / Access Control → User Management**.
+2. Check the **Pending Approval** counter on the top statistic cards.
+3. In the *Pending Approval Users* list, review the applicant's details.
+
+    Visible fields:
+
+    - ID
+    - Username
+    - Email
+    - Status (Pending)
+    - Registered date
+
+4. After reviewing the applicant's information, take one of the following actions.
+
+    - **Activate**
+        - Click the **Activate** button
+        - Account status changes to *Active*
+        - The user can log in immediately
+    - **Delete**
+        - Click the **Delete** button
+        - The signup application is removed
+        - The user must re-submit the signup form to retry
+
+#### Notes
+
+- Whether self-signup is enabled depends on your organization's operational policy.
+- In SSO environments, users may be authenticated automatically via the corporate identity provider without a separate signup form.
+- Approval actions and account-state changes may be recorded in the Audit Log.
 
 !!! note "SuperUser privileges required"
-    Approving / rejecting pending accounts, changing permission tiers, and resetting passwords all require **SuperUser** privileges. Standard Users do not see this screen at all.
-
-!!! info "No direct admin-side user creation on stg today"
-    The *"+ Add User"* button mentioned in earlier versions of this manual is not exposed on the current stg build. New users *must* go through self-signup; the SuperUser takes over from the *Activate* step (permission tier, role assignment, etc.). For bulk onboarding (e.g., a new-hire group), contact operations for a separate API or script.
+    Approving / rejecting pending accounts, changing permission tiers, and resetting passwords all require **SuperUser** — or an equivalent user-management permission. Standard Users do not see this screen at all.
 
 ## Password Reset
 
