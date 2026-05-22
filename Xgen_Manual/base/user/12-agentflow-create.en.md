@@ -78,11 +78,9 @@ Clicking a node opens the detail panel on the right. Configure:
 | Variables | Variable names passed between nodes |
 
 !!! info "Node detail panel"
-    Clicking an individual node opens a detail panel on the right. Field composition differs per node type (LLM / Tool / Search / Branch, etc.). Representative examples:
+    Clicking an individual node opens a detail panel on the right. Field composition differs per node type (LLM / Tool / Search / Branch, etc.); two representative examples are cycled below.
 
-    ![Node detail panel — example 1](images/canvas-node1.png)
-
-    ![Node detail panel — example 2](images/canvas-node2.png)
+    ![Node detail panel — field layouts vary by node type (two examples cycled)](images/canvas-node.gif)
 
 External APIs and MCP tools referenced by Tool nodes are registered and managed on a separate screen.
 
