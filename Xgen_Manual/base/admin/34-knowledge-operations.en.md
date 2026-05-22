@@ -54,4 +54,4 @@ Toggling **Mark Permanent** removes the collection from TTL enforcement. Grant P
 
 ## Contact
 
-For questions on Knowledge Operations, please contact {{vars.support_email}}.
+For questions on Knowledge Operations, please contact **XGen Administrator**({{vars.support_email}}).

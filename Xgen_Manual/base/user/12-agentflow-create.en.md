@@ -151,4 +151,4 @@ For executing, deploying, and sharing the agent (agentflow) you've built, see [A
 
 ## Contact
 
-For questions about creating agentflows, please contact {{vars.support_email}}.
+For questions about creating agentflows, please contact **XGen Administrator**({{vars.support_email}}).

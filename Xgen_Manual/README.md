@@ -141,7 +141,7 @@ node build/deploy.mjs --target production
 
 ## 변수 치환
 
-`.md` 본문에서 `{{customer.name}}`, `{{product.version}}`, `{{vars.support_email}}` 등을 사용하면 빌드 시 `customer.yml` 값으로 치환됩니다. base 작성 시에도 동일하게 사용 가능 (각 고객사 빌드 시점에 그 고객사의 값으로 치환됨).
+`.md` 본문에서 `{{customer.name}}`, `{{product.version}}`, `**XGen 관리자**({{vars.support_email}})` 등을 사용하면 빌드 시 `customer.yml` 값으로 치환됩니다. base 작성 시에도 동일하게 사용 가능 (각 고객사 빌드 시점에 그 고객사의 값으로 치환됨).
 
 ## base 변경을 고객사로 가져오기 (수동)
 

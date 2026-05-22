@@ -118,4 +118,4 @@
 
 ## 문의
 
-Agent 운영 화면 관련 문의는 {{vars.support_email}} 로 연락해 주세요.
+Agent 운영 화면 관련 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.

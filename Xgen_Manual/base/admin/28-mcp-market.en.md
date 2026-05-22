@@ -118,4 +118,4 @@ MCP servers usually run with per-user sessions. Abnormal sessions accumulate and
 
 ## Contact
 
-For questions about the MCP Library, please contact {{vars.support_email}}.
+For questions about the MCP Library, please contact **XGen Administrator**({{vars.support_email}}).

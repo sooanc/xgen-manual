@@ -40,4 +40,4 @@
 
 ## 문의
 
-- 기술 지원: {{vars.support_email}}
+- 기술 지원: **XGen 관리자**({{vars.support_email}})

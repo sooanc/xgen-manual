@@ -100,4 +100,4 @@ For DB integrations, table- and column-level documentation (descriptions, sample
 
 ## Contact
 
-For knowledge management questions, please contact {{vars.support_email}}.
+For knowledge management questions, please contact **XGen Administrator**({{vars.support_email}}).

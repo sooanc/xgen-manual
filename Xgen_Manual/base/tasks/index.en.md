@@ -22,4 +22,4 @@ If your task isn't listed under one of the four roles, walk the menu structure d
 - [User Manual](../user/) — what end users and developers see
 - [Admin Manual](../admin/) — every Admin Center menu
 - [Glossary](../common/01-glossary.md) — terminology used throughout the manual
-- Still missing — contact {{vars.support_email}}
+- Still missing — contact **XGen Administrator**({{vars.support_email}})

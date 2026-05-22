@@ -104,4 +104,4 @@
 
 ## 문의
 
-본 챕터에 대한 문의는 {{vars.support_email}} 로 연락해 주세요.
+본 챕터에 대한 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.

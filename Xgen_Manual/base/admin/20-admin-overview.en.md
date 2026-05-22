@@ -219,4 +219,4 @@ Before bulk-changing collections, prompts, policies, or system settings, back up
 
 ## Contact
 
-For questions about administrator features, please contact {{vars.support_email}}.
+For questions about administrator features, please contact **XGen Administrator**({{vars.support_email}}).

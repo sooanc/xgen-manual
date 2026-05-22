@@ -56,4 +56,4 @@ After saving, a row is added to the table with an Analysis ID and becomes search
 
 ## Contact
 
-For questions on the Task Planning screen, please contact {{vars.support_email}}.
+For questions on the Task Planning screen, please contact **XGen Administrator**({{vars.support_email}}).

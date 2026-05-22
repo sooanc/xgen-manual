@@ -87,4 +87,4 @@ The **System Status** group has two more menus alongside *System Monitoring* —
 
 ## Contact
 
-For questions about System Monitor, please contact {{vars.support_email}}.
+For questions about System Monitor, please contact **XGen Administrator**({{vars.support_email}}).

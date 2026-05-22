@@ -103,4 +103,4 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 
 ## Inquiries
 
-For dashboard permission / widget visibility questions, email <{{vars.support_email}}>.
+For dashboard permission / widget visibility questions, email **XGen Administrator**(<{{vars.support_email}}>).

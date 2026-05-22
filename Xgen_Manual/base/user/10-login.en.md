@@ -29,7 +29,7 @@ For standard login environments:
 3. Click the link in the email → set a new password
 4. Log in with the new password
 
-If the email does not arrive or the flow does not work, contact {{vars.support_email}}.
+If the email does not arrive or the flow does not work, contact **XGen Administrator**({{vars.support_email}}).
 
 ## Pending Approval
 
@@ -63,4 +63,4 @@ Click the dedicated **Logout** icon (door-arrow) in the top-right header — it 
 
 ## Contact
 
-For login-related questions, please contact {{vars.support_email}}.
+For login-related questions, please contact **XGen Administrator**({{vars.support_email}}).

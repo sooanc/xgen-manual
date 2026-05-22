@@ -102,4 +102,4 @@ SuperUser 는 사용자 관리 화면의 *활성 대기 사용자* 영역에서 
 
 ## 문의
 
-사용자 관리 관련 문의는 {{vars.support_email}} 로 연락해 주세요.
+사용자 관리 관련 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.

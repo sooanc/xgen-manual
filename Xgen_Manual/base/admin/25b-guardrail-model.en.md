@@ -58,4 +58,4 @@ The default is **None**.
 
 ## Contact
 
-For guardrail-model questions, please contact {{vars.support_email}}.
+For guardrail-model questions, please contact **XGen Administrator**({{vars.support_email}}).

@@ -22,4 +22,4 @@
 - [사용자 매뉴얼](../user/) — 일반 사용자·개발자가 사용하는 화면
 - [관리자 매뉴얼](../admin/) — 관리 설정의 모든 메뉴
 - [용어 정의](../common/01-glossary.md) — 매뉴얼 전반에서 쓰는 용어
-- 그래도 안 보이면 — {{vars.support_email}}
+- 그래도 안 보이면 — **XGen 관리자**({{vars.support_email}})

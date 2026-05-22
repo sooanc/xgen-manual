@@ -111,4 +111,4 @@ A full-page scroll of the dashboard:
 
 ## Inquiries
 
-For dashboard-related questions, email <{{vars.support_email}}> or open a ticket via sidebar **Technical Support → 1:1 Admin Inquiry**.
+For dashboard-related questions, email **XGen Administrator**(<{{vars.support_email}}>) or open a ticket via sidebar **Technical Support → 1:1 Admin Inquiry**.

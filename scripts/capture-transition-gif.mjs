@@ -79,7 +79,6 @@ const env = loadEnv(ENV_FILE);
 const BASE = env.XGEN_BASE_URL.replace(/\/$/, '');
 const ACCOUNTS = {
   admin: { email: env.XGEN_LOGIN_EMAIL, pass: env.XGEN_LOGIN_PASSWORD },
-  solutionAdmin: { email: env.XGEN_SOLUTION_ADMIN_EMAIL, pass: env.XGEN_SOLUTION_ADMIN_PASSWORD },
 };
 
 fs.rmSync(TMP_DIR, { recursive: true, force: true });

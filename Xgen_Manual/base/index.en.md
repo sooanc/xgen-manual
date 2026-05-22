@@ -40,4 +40,4 @@ Screenshots and UI strings (menu names, buttons, placeholders) reflect the branc
 
 ## Contact
 
-- Technical support: {{vars.support_email}}
+- Technical support: **XGen Administrator**({{vars.support_email}})

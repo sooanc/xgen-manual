@@ -86,4 +86,4 @@ Recommended monthly review items.
 
 ## Contact
 
-For questions about the audit log, please contact {{vars.support_email}}.
+For questions about the audit log, please contact **XGen Administrator**({{vars.support_email}}).

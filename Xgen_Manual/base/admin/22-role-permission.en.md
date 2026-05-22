@@ -176,4 +176,4 @@ Users assigned to the supervisor role hold the inherited permissions immediately
 
 ## Contact
 
-For role / permission inquiries, contact {{vars.support_email}}.
+For role / permission inquiries, contact **XGen Administrator**({{vars.support_email}}).

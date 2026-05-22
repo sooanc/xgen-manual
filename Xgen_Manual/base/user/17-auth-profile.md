@@ -91,4 +91,4 @@
 
 ## 문의
 
-인증 프로필 관련 문의는 {{vars.support_email}} 로 연락해 주세요.
+인증 프로필 관련 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.

@@ -56,4 +56,4 @@ require_view: main-planning
 
 ## 문의
 
-업무기획 화면 관련 문의는 {{vars.support_email}} 로 연락해 주세요.
+업무기획 화면 관련 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.

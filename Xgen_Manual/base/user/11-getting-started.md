@@ -107,8 +107,8 @@ Agent 작업실 사용 시 준수해야 하는 기본 운영 원칙입니다.
 1. 브라우저를 최신 버전(Chrome 또는 Edge 권장)으로 업데이트
 2. 브라우저 캐시·쿠키 삭제 후 재접속
 3. 시크릿 창(Incognito) 모드로 접속해 본인 환경 문제인지 확인
-4. 그래도 안 되면 {{vars.support_email}} 로 화면 캡처와 함께 문의
+4. 그래도 안 되면 **XGen 관리자**({{vars.support_email}}) 로 화면 캡처와 함께 문의
 
 ## 문의
 
-기술 지원 문의는 {{vars.support_email}} 로 연락해 주세요.
+기술 지원 문의는 **XGen 관리자**({{vars.support_email}}) 로 연락해 주세요.
