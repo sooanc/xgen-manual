@@ -51,9 +51,6 @@ The left sidebar of user mode (Agent Workspace) is organized into 5 sections (so
 
 | Section | Menu | Permission | Manual Chapter |
 |---|---|---|---|
-| Agent Chat | Start Chat | Standard User | [Using Chat · Starting Chat](14-chat.md#new-chat) |
-| Agent Chat | Current Chat | Standard User | [Using Chat · Current Chat](14-chat.md#current-chat) |
-| Agent Chat | Chat History | Standard User | [Using Chat · Chat History](14-chat.md#chat-history) |
 | Agent Creation | Agent Planning | Agent Developer | [Agent Planning](11a-task-planning.md) |
 | Agent Creation | Agent Design | Agent Developer | [Creating an Agent · Entering Agent Workspace](12-agentflow-create.md#agent-작업실-진입) |
 | Agent Creation | Agent List | Agent Developer | [Agent Operations](13-agentflow-operations.md) |
@@ -66,6 +63,9 @@ The left sidebar of user mode (Agent Workspace) is organized into 5 sections (so
 | Knowledge Management | File Storage | Agent Developer | [Knowledge Management · File Storage and DB Integration](15-knowledge.md#storage-database) |
 | Knowledge Management | DB Integration | Agent Developer | [Knowledge Management · File Storage and DB Integration](15-knowledge.md#storage-database) |
 | Knowledge Management | Upload History | Agent Developer | [Knowledge Management · Upload History](15-knowledge.md#upload-history) |
+| Agent Chat | Start Chat | Standard User | [Using Chat · Starting Chat](14-chat.md#new-chat) |
+| Agent Chat | Current Chat | Standard User | [Using Chat · Current Chat](14-chat.md#current-chat) |
+| Agent Chat | Chat History | Standard User | [Using Chat · Chat History](14-chat.md#chat-history) |
 | Technical Support (pinned bottom) | Announcements | Standard User | [Technical Support · Notice Board](19-tech-support.md#notices) |
 | Technical Support (pinned bottom) | FAQ | Standard User | [Technical Support · FAQ](19-tech-support.md#faq) |
 | Technical Support (pinned bottom) | 1:1 Admin Inquiry | Standard User | [Technical Support · 1:1 Admin Inquiry](19-tech-support.md#qna) |
