@@ -31,7 +31,7 @@ Select **Agent Creation → Agent Design** in the left sidebar. From the canvas 
     - **Description** (optional): one-line summary of what it does
 3. Create — an empty canvas opens; clicking **Start Agent** automatically places the **XGEN Agent** node.
 
-![Canvas editor — visual workspace where nodes are added and connected, starting from the Start Node](images/canvas-editor.png)
+![Canvas editor — clicking "Start Agent" on the empty canvas auto-places the XGEN Agent node](images/canvas-editor.gif)
 
 ## Adding Nodes
 

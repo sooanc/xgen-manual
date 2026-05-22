@@ -53,7 +53,8 @@ const SHOTS_LOGGED_IN = [
 
   // 12-agentflow-create.md
   { view: 'canvas-intro', file: 'agentflow-list.png', label: 'Agent 작업실 진입 (Canvas Intro)' },
-  { path: '/canvas', file: 'canvas-editor.png', label: 'Canvas editor (agentflow build)', wait: 4000 },
+  // canvas-editor 는 정지 PNG 대신 GIF (빈 상태 → "에이전트 시작" → XGEN Agent 노드 전환) 로 대체됨.
+  // 갱신 시: node scripts/capture-canvas-start-gif.mjs
 
   // 13-agentflow-operations.md
   { view: 'agentflow-scheduler', file: 'scheduler.png', label: 'Agent scheduler' },
