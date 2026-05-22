@@ -88,13 +88,44 @@ External APIs and MCP tools referenced by Tool nodes are registered and managed 
 
 ![API Tools — manage external APIs and MCP tools called by Tool nodes](images/tools.png)
 
-## AI-Generated Agentflow
+## Tutorials
 
-If creating a complex flow from scratch is hard, ask AI to draft it.
+When you're new or want to pick up a new pattern quickly, click the **▶ Tutorial** button in the canvas header to open the *Select Tutorial* panel. The panel has two tabs.
 
-1. Click **Auto-Generate** at the top of the canvas
-2. Describe the desired flow in natural language (e.g., "a chatbot that searches internal policy documents")
-3. The AI proposes a node configuration → review and adjust
+### Basic Tutorials
+
+A set of scenarios pre-registered with the solution; they run without any setup. Examples shipped today:
+
+- Basic Chatbot — simplest chatbot configuration
+- Translation Bot — multilingual translation
+- Email Writer — email draft generation
+- Prompt Template — using prompt templates
+- Internal RAG QA — Q&A over internal documents
+- Multilingual Support — multilingual responses
+- Daily News Briefing Mailer — news summary mailer
+- News Analysis with Self-Eval — news analysis with self-evaluation
+
+Each card shows the step count and tags. You can run it two ways.
+
+| Button | Behavior |
+|---|---|
+| **▶** (virtual cursor) | A virtual cursor demonstrates the flow automatically — adding, connecting, and saving nodes step by step |
+| **📄** (step-by-step guide) | You operate the canvas yourself while step hints walk you through it |
+
+### Template Tutorials
+
+Only items you explicitly added from the **Agentflow Library (Store)** via *Register Virtual Tutorial* appear here. Bundling templates you reuse often as virtual tutorials lets you replay the build pattern step by step in your own workspace later.
+
+How to register:
+
+1. Open **Agent Workspace → Library** in the left sidebar
+2. On the card you want to turn into a virtual tutorial, click **Register Virtual Tutorial**
+3. Return to the canvas and verify it under **Tutorial → Template Tutorials**
+
+To remove it, use the **Unregister Virtual Tutorial** button on the same card.
+
+!!! note "Empty agentflows cannot be registered"
+    An agentflow with zero nodes has nothing to demonstrate and cannot be registered as a virtual tutorial.
 
 ## Auto Layout
 
