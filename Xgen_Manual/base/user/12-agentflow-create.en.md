@@ -84,8 +84,6 @@ Clicking a node opens the detail panel on the right. Configure:
 
 External APIs and MCP tools referenced by Tool nodes are registered and managed on a separate screen, under **Agent Workspace → Tool Integration** in the left sidebar.
 
-![API Tools — manage external APIs and MCP tools called by Tool nodes](images/tools.png)
-
 ### Tool Integration · API Tools
 
 Register tools from **Agent Workspace → Tool Integration → API Tools**. Click **+ New Tool** at the top right of the list to open the registration form; switch between *Easy Mode* and *Developer Mode* to define your API endpoint.
@@ -104,16 +102,18 @@ When you're new or want to pick up a new pattern quickly, click the **▶ Tutori
 
 ### Basic Tutorials
 
-A set of scenarios pre-registered with the solution; they run without any setup. Examples shipped today:
+A set of scenarios pre-registered with the solution; they run without any setup. The card titles are shown in Korean in the UI; here are their meanings:
 
-- Basic Chatbot — simplest chatbot configuration
-- Translation Bot — multilingual translation
-- Email Writer — email draft generation
-- Prompt Template — using prompt templates
-- Internal RAG QA — Q&A over internal documents
-- Multilingual Support — multilingual responses
-- Daily News Briefing Mailer — news summary mailer
-- News Analysis with Self-Eval — news analysis with self-evaluation
+- **기본 챗봇 만들기** (Basic Chatbot) — simplest chatbot configuration
+- **한영 번역 봇 만들기** (Translation Bot) — Korean ↔ English translation
+- **이메일 자동 작성기** (Email Writer) — email draft generation
+- **프롬프트 템플릿 활용** (Prompt Template) — using prompt template patterns
+- **사내 규정 QA 챗봇 (RAG)** (Internal RAG QA) — Q&A over internal documents
+- **다국어 응대 봇** (Multilingual Support) — auto-detect user language and respond
+- **일일 금융뉴스 브리핑 메일러** (Daily News Briefing Mailer) — news summary mailer
+- **경제뉴스 분석 + AI 자체 검증 (멀티에이전트)** (News Analysis with Self-Eval) — news analysis with built-in self-evaluation
+
+![Select Tutorial — Basic Tutorials tab shown when you click the ▶ icon at the top right of the canvas](images/tutorial-panel.gif)
 
 Each card shows the step count and tags. You can run it two ways.
 
@@ -124,7 +124,9 @@ Each card shows the step count and tags. You can run it two ways.
 
 ### Template Tutorials
 
-Only items you explicitly added from the **Agentflow Library (Store)** via *Register Virtual Tutorial* appear here. Bundling templates you reuse often as virtual tutorials lets you replay the build pattern step by step in your own workspace later.
+Only items you explicitly added from the **Agentflow Library** via *Register Virtual Tutorial* appear here. Bundling templates you reuse often as virtual tutorials lets you replay the build pattern step by step in your own workspace later.
+
+![Template Tutorials — view after switching to the *Template Tutorials* tab in the tutorial panel](images/tutorial-template-tab.gif)
 
 How to register:
 

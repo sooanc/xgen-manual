@@ -8,8 +8,6 @@ This chapter covers registering and managing **external API tools** that agents 
 
 Select **Tool Integration → API Tools** in the left sidebar.
 
-![API Tools — top tabs (보관함 / 라이브러리 / API 컬렉션), status filters (All / Active / Inactive / Archived), source filters (All / Personal / Shared), and a tool card (e.g., exchange rate Tool, GET, Active)](images/tools.png)
-
 ## Layout
 
 | Region | Content |

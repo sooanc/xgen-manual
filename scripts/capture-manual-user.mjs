@@ -76,8 +76,9 @@ const SHOTS_LOGGED_IN = [
   // 17-auth-profile.md
   { view: 'auth-profile', file: 'auth-profile.png', label: 'Auth profiles' },
 
-  // bonus — 노드 설정 시 도구 선택 UI (12-agentflow-create.md 보조)
-  { view: 'tool-storage', file: 'tools.png', label: 'API tools' },
+  // tools.png 는 사용자 요청으로 삭제됨 (2026-05-22). 12-agentflow-create 는
+  // tool-new.gif (capture-transition-gif.mjs) 가 대체, 17a-api-tools 는 본문
+  // 표/설명만으로 충분하다고 판단. 향후 재캡처 필요 시 복원.
 
   // 19-tech-support.md (이미 있지만 함께 갱신)
   { view: 'support-notices', file: 'support-notice.png', label: 'Notice Board' },

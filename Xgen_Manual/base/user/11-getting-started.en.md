@@ -22,7 +22,7 @@ The screen is composed of the following areas.
 | Area | Description |
 |---|---|
 | Top header | Logo, the 2 mode-switch buttons (**Agent Workspace** / **Admin Center**) at the top-left, search, notifications, user profile |
-| Left sidebar | Main feature menus for user mode (6 sections — see [Agent Workspace Layout](#agent-workspace-layout) below) |
+| Left sidebar | Main feature menus for user mode (5 sections — see [Agent Workspace Layout](#agent-workspace-layout) below) |
 | Content | Work area for the selected feature |
 | Right panel (when present) | Auxiliary area for help, chat, etc. |
 
@@ -47,11 +47,10 @@ The solution uses a **two-tier permission model** — Standard User and SuperUse
 
 ## Agent Workspace Layout
 
-The left sidebar of user mode (Agent Workspace) is organized into 6 sections (some may be hidden depending on your permissions). Each menu maps to the corresponding chapter in this manual as follows.
+The left sidebar of user mode (Agent Workspace) is organized into 5 sections (some may be hidden depending on your permissions). Each menu maps to the corresponding chapter in this manual as follows.
 
 | Section | Menu | Permission | Manual Chapter |
 |---|---|---|---|
-| Analysis / Planning | Task Planning | Agent Developer | [Task Planning](11a-task-planning.md) |
 | Agent Chat | Start Chat | Standard User | [Using Chat · Starting Chat](14-chat.md#new-chat) |
 | Agent Chat | Current Chat | Standard User | [Using Chat · Current Chat](14-chat.md#current-chat) |
 | Agent Chat | Chat History | Standard User | [Using Chat · Chat History](14-chat.md#chat-history) |

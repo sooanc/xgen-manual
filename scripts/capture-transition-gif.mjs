@@ -37,7 +37,10 @@ const TRIM_LEAD_IN_MS = 400;
 //                 → { role, name } 형태로 page.getByRole(role, { name }) 매핑
 //   resultWait: 클릭 결과가 나타났음을 확인할 텍스트/셀렉터 (waitForFunction 통과 시점)
 //   file      : 출력 GIF 파일명
-//   account   : 'admin' | 'solutionAdmin' — 어떤 자격증명으로 로그인할지
+//   account   : 'admin' — 어떤 자격증명으로 로그인할지
+//   setupClicks (옵션): 메인 클릭 전 사전에 눌러둘 버튼 배열. 각 항목은
+//     { button, postWaitMs?, waitForResult? } 형태. trim 의 시작점은 setupClicks 가 끝나고
+//     postWaitMs 까지 흐른 직후 (= "정돈된 출발 상태") 가 된다.
 const SHOTS = [
   {
     id: 'tool-new',
@@ -59,6 +62,39 @@ const SHOTS = [
     resultWait: () => /뒤로|인증 프로필 생성|서비스 ID|Back|Create profile|Service ID/i.test(document.body.innerText),
     resultWaitTimeoutMs: 5_000,
     file: 'auth-profile-new.gif',
+    account: 'admin',
+  },
+  // 캔버스 우상단 ▶ Tutorial 버튼 → 튜토리얼 선택 패널 (기본 튜토리얼 탭) 등장
+  // 헤더 버튼이 텍스트 없이 PlayIcon + title 만 갖고, INIT_SCRIPT 가 title 을 strip 하므로
+  // getByRole 로는 잡히지 않는다 → data-tutorial 속성 셀렉터로 직접 지정.
+  {
+    id: 'tutorial-panel',
+    url: '/canvas',
+    waitFor: 'button[data-tutorial="tutorial"]',
+    button: { selector: 'button[data-tutorial="tutorial"]' },
+    resultWait: () => /튜토리얼 선택|기본 튜토리얼|템플릿 튜토리얼|Select Tutorial|Basic Tutorial|Template Tutorial/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'tutorial-panel.gif',
+    account: 'admin',
+  },
+  // 튜토리얼 패널이 열린 상태에서 "템플릿 튜토리얼" 탭 클릭 → 사용자가 등록한 가상튜토리얼 목록 (없으면 안내 텍스트)
+  {
+    id: 'tutorial-template-tab',
+    url: '/canvas',
+    waitFor: 'button[data-tutorial="tutorial"]',
+    setupClicks: [
+      {
+        // 1) 패널 열기
+        button: { selector: 'button[data-tutorial="tutorial"]' },
+        postWaitMs: 700,
+      },
+    ],
+    button: { role: 'button', name: /^템플릿 튜토리얼$|^Template Tutorials?$/ },
+    // 탭 클릭 시 등록 안내 텍스트 또는 카드 목록 중 하나가 표시됨. 둘 다 fallback 으로 단순 timeout 만으로 진행 가능.
+    resultWait: () => /등록된 튜토리얼이 없습니다|No tutorials|이 없습니다/i.test(document.body.innerText)
+      || /가상튜토리얼/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 2_000,
+    file: 'tutorial-template-tab.gif',
     account: 'admin',
   },
 ];
@@ -227,14 +263,31 @@ async function captureShot(browser, shot, storageState) {
   }
   // 안정화 위해 살짝 더 기다림
   await page.waitForTimeout(500);
+
+  // 사전 클릭 단계 — trim 전(준비 단계) 에 실행. GIF 에는 나오지만 trim 시작점이
+  // 마지막 setupClick + postWait 이후로 잡혀 결과적으로 잘려나간다.
+  if (shot.setupClicks?.length) {
+    for (const sc of shot.setupClicks) {
+      const setupBtn = sc.button.selector
+        ? page.locator(sc.button.selector).first()
+        : page.getByRole(sc.button.role, { name: sc.button.name }).first();
+      await setupBtn.waitFor({ state: 'visible', timeout: 5_000 });
+      log(`  setup click: ${sc.button.selector ?? sc.button.name}`);
+      await setupBtn.click();
+      await page.waitForTimeout(sc.postWaitMs ?? 500);
+    }
+  }
+
   const tReady = Date.now() - ctxStart;
-  log(`  list ready at t=${tReady}ms`);
+  log(`  ready (after setup) at t=${tReady}ms`);
 
   // 가상 커서 시작 위치
   await page.mouse.move(140, 360);
   await page.waitForTimeout(PRE_CLICK_HOLD_MS);
 
-  const btn = page.getByRole(shot.button.role, { name: shot.button.name }).first();
+  const btn = shot.button.selector
+    ? page.locator(shot.button.selector).first()
+    : page.getByRole(shot.button.role, { name: shot.button.name }).first();
   await btn.waitFor({ state: 'visible', timeout: 5_000 });
   const box = await btn.boundingBox();
   if (box) {
