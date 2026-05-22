@@ -17,11 +17,11 @@
       "source": "user"
     },
     "main-planning": {
-      "ok": false,
-      "lastSize": 36383,
-      "notFound": true,
-      "capturedAt": "2026-05-15T06:28:45.769Z",
-      "source": "user"
+      "ok": true,
+      "lastSize": 0,
+      "notFound": false,
+      "capturedAt": "2026-05-22T00:00:00.000Z",
+      "source": "user-confirmed"
     },
     "canvas-intro": {
       "ok": true,

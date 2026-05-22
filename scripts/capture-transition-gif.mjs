@@ -97,6 +97,18 @@ const SHOTS = [
     file: 'tutorial-template-tab.gif',
     account: 'admin',
   },
+  // Agent 제작 → Agent 기획 화면에서 '+ 새 기획서 제작하기' 버튼 → 신규 기획서 작성 폼이 열림
+  {
+    id: 'plan-new',
+    url: '/main?view=main-planning',
+    waitFor: 'button:has-text("새 기획서 제작하기")',
+    button: { role: 'button', name: /새 기획서 제작하기|New Plan|Create Plan/ },
+    // 폼 화면: "새 기획서 작성" 헤더 + 입력 필드들
+    resultWait: () => /새 기획서 작성|기획서 제목|업무 분야|영향 범위|Create Plan|Plan Title/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'plan-new.gif',
+    account: 'admin',
+  },
 ];
 
 function loadEnv(file) {
