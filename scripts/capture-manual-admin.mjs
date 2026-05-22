@@ -40,7 +40,7 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 const SHOTS = [
   // 20-admin-overview.md
   { path: '/admin', file: 'admin-entry.png', label: 'Admin entry (default dashboard)' },
-  { path: '/admin', file: 'admin-sidebar.png', label: 'Admin sidebar' },
+  // admin-sidebar.png 는 현재 본문에서 미참조 — 제외
 
   // 21-user-management.md
   { view: 'admin-users', file: 'admin-users.png', label: 'User management' },
@@ -78,7 +78,7 @@ const SHOTS = [
   { view: 'gov-audit-tracking', file: 'admin-gov-audit-tracking.png', label: 'Service change history' },
 
   // 30-dashboard.md  (admin 로그인 상태로 본 /dashboard)
-  { path: '/dashboard', file: 'admin-dashboard-view.png', label: 'Admin /dashboard view' },
+  // admin-dashboard-view.png 는 본문 미참조 (dashboard-overview.png 가 양쪽 모드 모두 커버) — 제외
 
   // 31-tech-support-handling.md
   { view: 'admin-support-notice', file: 'admin-support-notice.png', label: 'Admin notice board' },
@@ -87,17 +87,15 @@ const SHOTS = [
 
   // 32-agent-operations.md
   { view: 'admin-agentflow-management', file: 'admin-agent-management.png', label: 'Agent management (admin view)' },
-  { view: 'admin-chat-monitoring', file: 'admin-chat-monitoring.png', label: 'Chat monitoring' },
+  // 아래 4개는 본문 미참조 (전용 챕터가 없음) — 제외
+  //   admin-chat-monitoring.png · admin-prompt-store.png · admin-agent-dev-plan.png
+  //   (admin-agent-dev-plan 은 stg 라이브에 main-planning view 자체가 없음)
   { view: 'admin-feedback-monitoring', file: 'admin-feedback-monitoring.png', label: 'User feedback' },
-  { view: 'admin-prompt-store', file: 'admin-prompt-store.png', label: 'Prompt templates (admin)' },
-  { view: 'admin-agent-dev-plan', file: 'admin-agent-dev-plan.png', label: 'Task planning' },
   // (admin-user-token-dashboard / admin-node-management / admin-agentflow-tester / admin-agent-retention 는 추후 추가)
 
   // 33-data-management.md
   { view: 'admin-database', file: 'admin-database.png', label: 'Database (SQL console)' },
-  { view: 'admin-db-connection', file: 'admin-db-connection.png', label: 'DB connection profiles' },
-  { view: 'admin-db-batch', file: 'admin-db-batch.png', label: 'Batch jobs' },
-  { view: 'admin-db-audit', file: 'admin-db-audit.png', label: 'Data audit log' },
+  // admin-db-connection / admin-db-batch / admin-db-audit 도 본문 미참조 — 제외
 
   // 34-knowledge-operations.md
   { view: 'admin-knowledge-collection', file: 'admin-knowledge-collection.png', label: 'Knowledge collection management (TTL)' },
@@ -139,7 +137,7 @@ const log = (...a) => console.log('[admin-capture]', ...a);
   await page.waitForSelector('aside button', { timeout: 20_000 }).catch(() => {});
   await page.waitForTimeout(2500);
 
-  // 모든 사이드바 섹션 펼치기 (admin-sidebar.png 캡처 전)
+  // 모든 사이드바 섹션 펼치기 (이후 각 view 캡처 시 사이드바 상태 일관성 유지)
   await page.evaluate(() => {
     document.querySelectorAll('aside [data-sidebar-trigger="true"]').forEach((el) => {
       const txt = (el.textContent || '').trim();

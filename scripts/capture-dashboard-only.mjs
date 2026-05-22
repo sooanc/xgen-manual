@@ -38,7 +38,7 @@ const ROLES = [
     password: env.XGEN_STANDARD_USER_PASSWORD,
     shots: [
       { dest: path.join(USER_OUT, 'dashboard-standard.png'), fullPage: false },
-      { dest: path.join(USER_OUT, 'dashboard-standard-full.png'), fullPage: true },
+      // dashboard-standard-full.png 는 본문 미참조 — 제외
     ],
   },
   {
@@ -47,7 +47,7 @@ const ROLES = [
     password: env.XGEN_AGENT_DEVELOPER_PASSWORD,
     shots: [
       { dest: path.join(USER_OUT, 'dashboard-developer.png'), fullPage: false },
-      { dest: path.join(USER_OUT, 'dashboard-developer-full.png'), fullPage: true },
+      // dashboard-developer-full.png 는 본문 미참조 — 제외
     ],
   },
   {
@@ -55,7 +55,7 @@ const ROLES = [
     email: env.XGEN_SYSTEM_ADMIN_EMAIL,
     password: env.XGEN_SYSTEM_ADMIN_PASSWORD,
     shots: [
-      { dest: path.join(ADMIN_OUT, 'dashboard-system-admin.png'), fullPage: false },
+      // dashboard-system-admin.png 는 본문 미참조 — 제외
       { dest: path.join(ADMIN_OUT, 'dashboard-system-admin-full.png'), fullPage: true },
     ],
   },
@@ -64,7 +64,7 @@ const ROLES = [
     email: env.XGEN_GOVERNANCE_OFFICER_EMAIL,
     password: env.XGEN_GOVERNANCE_OFFICER_PASSWORD,
     shots: [
-      { dest: path.join(ADMIN_OUT, 'dashboard-governance.png'), fullPage: false },
+      // dashboard-governance.png 는 본문 미참조 — 제외
       { dest: path.join(ADMIN_OUT, 'dashboard-governance-full.png'), fullPage: true },
     ],
   },

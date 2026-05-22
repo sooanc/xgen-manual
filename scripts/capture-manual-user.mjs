@@ -45,11 +45,9 @@ const SHOTS_LOGGED_IN = [
   { path: '/dashboard', file: 'dashboard-full.png', label: 'Dashboard (full scroll)', fullPage: true, wait: 2000 },
 
   // 10-getting-started.md — 첫 메인 화면 (사이드바 hydration 끝난 /main)
-  { path: '/main', file: 'main-overview.png', label: 'Main (sidebar + content)' },
+  // main-overview.png 는 현재 본문에서 미참조 (사이드바 중심 설명으로 충분) — 제외
   { path: '/main', file: 'main-sidebar.png', label: 'Main sidebar view' },
-  // main-planning view 는 현재 stg 미배포 — capture 시 'Page not found' placeholder 가
-  // 저장되어 매뉴얼 본문이 깨지므로 SHOT 에서 제외. 11a-task-planning.md 챕터는
-  // require_view: main-planning 으로 nav 자동 제외 중이라 영향 없음.
+  // 11a-task-planning 챕터는 stg 에 main-planning view 가 없어 통째로 제거됨 (2026-05-22).
 
   // 12-agentflow-create.md
   { view: 'canvas-intro', file: 'agentflow-list.png', label: 'Agent 작업실 진입 (Canvas Intro)' },
@@ -58,7 +56,7 @@ const SHOTS_LOGGED_IN = [
 
   // 13-agentflow-operations.md
   { view: 'agentflow-scheduler', file: 'scheduler.png', label: 'Agent scheduler' },
-  { view: 'agentflow-tester', file: 'tester.png', label: 'Agent quality analysis' },
+  // tester.png 는 현재 본문 미참조 (실행/디버깅 절은 다른 캡처로 커버) — 제외
 
   // 14-chat.md
   { view: 'new-chat', file: 'chat-new.png', label: 'New chat' },

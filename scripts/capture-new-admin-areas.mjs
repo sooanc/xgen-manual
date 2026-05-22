@@ -28,16 +28,13 @@ const log = (...a) => console.log('[capture]', ...a);
 const SHOTS = [
   // 32-agent-operations.md
   { view: 'admin-agentflow-management', file: 'admin-agent-management.png', label: 'Agent 관리' },
-  { view: 'admin-chat-monitoring', file: 'admin-chat-monitoring.png', label: '채팅 모니터링' },
   { view: 'admin-feedback-monitoring', file: 'admin-feedback-monitoring.png', label: '사용자 피드백' },
-  { view: 'admin-prompt-store', file: 'admin-prompt-store.png', label: '프롬프트 템플릿' },
-  { view: 'admin-agent-dev-plan', file: 'admin-agent-dev-plan.png', label: '업무기획' },
+  // 미사용으로 제외 (2026-05-22): admin-chat-monitoring, admin-prompt-store, admin-agent-dev-plan
+  //   본문 미참조 — 본문 추가 시 다시 enable
 
   // 33-data-management.md
   { view: 'admin-database', file: 'admin-database.png', label: '데이터베이스' },
-  { view: 'admin-db-connection', file: 'admin-db-connection.png', label: 'DB 연결' },
-  { view: 'admin-db-batch', file: 'admin-db-batch.png', label: '배치 작업' },
-  { view: 'admin-db-audit', file: 'admin-db-audit.png', label: '데이터 감사 로그' },
+  // 미사용으로 제외 (2026-05-22): admin-db-connection, admin-db-batch, admin-db-audit
 
   // 34-knowledge-operations.md
   { view: 'admin-knowledge-collection', file: 'admin-knowledge-collection.png', label: '컬렉션 관리' },

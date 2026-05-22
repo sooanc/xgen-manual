@@ -1,4 +1,4 @@
-// One-off: refresh admin-entry.png (and admin-sidebar.png) for 20-admin-overview.md
+// One-off: refresh admin-entry.png for 20-admin-overview.md
 //   node scripts/capture-admin-entry.mjs
 // 시스템 관리자 계정으로 /admin 진입 후 사이드바를 강제로 펼쳐 캡처.
 
@@ -98,7 +98,7 @@ const log = (...a) => console.log('[admin-entry-capture]', ...a);
 
   const shots = [
     { dest: path.join(OUT_DIR, 'admin-entry.png'), fullPage: false, label: 'admin entry (viewport)' },
-    { dest: path.join(OUT_DIR, 'admin-sidebar.png'), fullPage: true, label: 'admin sidebar (full)' },
+    // admin-sidebar.png 는 본문 미참조 — 제외 (2026-05-22)
   ];
 
   for (const shot of shots) {

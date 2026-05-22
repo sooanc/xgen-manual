@@ -46,7 +46,7 @@ On top of the Standard User / Agent Developer widgets, **operations and deployme
 
 > Operations widgets require System Administrator permissions (`admin.system:*` family). When someone reports "I can't see the widget," check permission grants first.
 
-> The image below is a **full-page scroll** of `/dashboard` viewed by the System Administrator account. Operations widgets extend well past one viewport — so this is captured with the page fully scrolled. For just the top of the page, refer to `dashboard-system-admin.png`.
+> The image below is a **full-page scroll** of `/dashboard` viewed by the System Administrator account. Operations widgets extend well past one viewport — so this is captured with the page fully scrolled.
 
 ![/dashboard (full scroll) as seen by the System Administrator account — "System Operations & Deployment Dashboard" subtitle with operations widgets (Agent Deployment/Approval Status, Recent User Feedback, Shared Assets, Total User Status, MCP Station, Cost Status) added to the common widgets](images/dashboard-system-admin-full.png)
 
@@ -75,7 +75,7 @@ On top of the System Administrator operations widgets, the following governance-
 
 These widgets only appear in the widget grid for accounts with `admin.governance:*`. Without the permission they are not even listed.
 
-> The image below is a **full-page scroll** of `/dashboard` viewed by the Governance Officer account. The widgets do not fit in one viewport — so this is captured with the page fully scrolled. For just the top of the page, refer to `dashboard-governance.png`.
+> The image below is a **full-page scroll** of `/dashboard` viewed by the Governance Officer account. The widgets do not fit in one viewport — so this is captured with the page fully scrolled.
 
 ![/dashboard (full scroll) as seen by the Governance Officer account — common and operations widgets at the top, governance-only widgets (PII Policy Status, Forbidden-Word Policy, Risk Level, Risk Evaluation Status, Response Quality Score) at the bottom](images/dashboard-governance-full.png)
 
