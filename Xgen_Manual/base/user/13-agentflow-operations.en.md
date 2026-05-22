@@ -26,7 +26,7 @@ Each execution includes:
 
 When problems occur, expand the logs to find which node got stuck and what input it received.
 
-## Deployment { #deployment }
+## Deployment (*to be updated after UI/UX revision) { #deployment }
 
 This chapter describes the **full deployment path** an agent takes before reaching end users. The Agent Developer's own action ends with **submitting a deployment request**; the agent is then deployed to production after the administrator approval process required by operational policy.
 

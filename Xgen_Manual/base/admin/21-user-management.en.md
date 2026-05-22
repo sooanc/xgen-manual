@@ -25,7 +25,7 @@ Columns in the full user table (headers are clickable to toggle sort):
 | Username | Login ID (the English ID or display name the user entered during signup) |
 | Email | Address for notifications and password reset |
 | Status | Active / Inactive / Pending |
-| Permission (Role) | `superuser` / `standard` tier badge plus assigned role labels (e.g., *System Administrator(DJ)*, *Agent Developer(DJ)*) |
+| Permission (Role) | `superuser` / `standard` tier classification plus assigned role labels (e.g., *System Administrator(DJ)*, *Agent Developer(DJ)*) |
 | Last Login | Most recent access time |
 | Last Login IP | Source IP |
 | Registered | Signup or creation time |
