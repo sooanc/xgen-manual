@@ -77,7 +77,8 @@ This glossary defines core terminology used throughout the manual. Feature-speci
 
     - **Tier**: two levels — Standard User and SuperUser.
     - **Role**: free-form labels defined by your organization — System Administrator, Governance Officer, Analyst, etc. Within the same SuperUser tier, roles control which sidebar menus you see.
-    - **Permission**: ABAC keys such as `admin.user:read`. They are bundled into roles or granted directly to a user, gating sections / tabs / buttons.
+    - **Permission**: **ABAC keys** such as `admin.user:read`. They are bundled into roles or granted directly to a user, gating sections / tabs / buttons.
+        - *ABAC* = **A**ttribute-**B**ased **A**ccess **C**ontrol. A model that decides access from the user's attributes (roles, permissions, etc.); here those attributes take the form of `resource:action` strings.
 
     The full picture and the order in which gates evaluate is documented in [Role / Permission Management · Permission Model](../admin/22-role-permission.md#permission-model).
 

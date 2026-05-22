@@ -77,7 +77,8 @@
 
     - **권한 등급(Tier)**: 2단계 — Standard User / SuperUser.
     - **역할(Role)**: 시스템 관리자, 거버넌스 담당자, 분석가 등 조직이 자유롭게 정의하는 라벨. 동일 SuperUser 등급 위에서도 역할에 따라 사이드바 메뉴 범위가 갈립니다.
-    - **권한(Permission)**: `admin.user:read` 같은 ABAC 키. 역할에 묶이거나 사용자에게 직접 부여돼 화면·버튼 단위로 세밀하게 게이팅합니다.
+    - **권한(Permission)**: `admin.user:read` 같은 **ABAC 키**. 역할에 묶이거나 사용자에게 직접 부여돼 화면·버튼 단위로 세밀하게 게이팅합니다.
+        - *ABAC* = **A**ttribute-**B**ased **A**ccess **C**ontrol (속성 기반 접근 제어). 사용자의 속성(역할·권한 등) 을 기준으로 접근을 판정하는 모델이며, 여기서는 `resource:action` 형식의 문자열이 그 속성이 됩니다.
 
     전체 구조와 게이트 동작 원리는 [역할/권한 관리 · 권한 모델](../admin/22-role-permission.md#permission-model) 에서 자세히 설명합니다.
 
