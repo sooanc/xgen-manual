@@ -19,16 +19,6 @@ The card opens with "Welcome, OOO! Which Agent would you like to start today's t
 | Agent Workspace | `/main` → auto-redirects to `?view=canvas-intro` (Agent design intro) | Enabled — but **the page body is empty without Agent-build permission** (see note below) | Enabled — intro content (Start with chat / Start from blank canvas / Continue + Canvas & live-chat sections) is rendered normally |
 | Admin Center | `/admin` | Disabled | Disabled |
 
-!!! warning "Standard Users see only a partial Agent Workspace landing"
-    The **Agent Workspace** button looks enabled, but clicking it navigates to `/main?view=canvas-intro` (Agent design intro). **Standard Users without Agent-build permissions see only the page header ("Agent 설계")** while the body remains empty — this *looks like a Page not found, but it is the intro page rendering its permission-gated body as blank*.
-
-    To chat with an agent as a Standard User, take one of the following paths instead:
-
-    - On this dashboard, use the **Run** buttons inside the *Popular Agent Templates*, *Shared Agents*, or *Frequently Used Agents TOP 3* widgets.
-    - Or switch to **Agent Workspace** mode at the top-left and then choose **Agent Chat → Start Chat** in the left sidebar (see [Using Chat](14-chat.md)).
-
-    The behavior of the *Agent Workspace* button pointing to the intro page is the solution's default entry. Once Agent-build permissions are granted, the intro content renders normally.
-
 > To see the **Admin Center** button active, refer to the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
 
 ### Right Fixed Panel { #right-panel }
@@ -42,9 +32,6 @@ Always shown in the same position regardless of widget grid customization. The p
 | 3 | **Admin Inquiries** | Your 1:1 admin inquiries (empty state: *"No inquiries to the administrator yet."*) | `/main?view=support-qna` |
 
 Use the **More >** link in each panel header to navigate to the full list.
-
-!!! note "Difference from earlier specs"
-    Some earlier specs or previous versions of this manual referred to a *"Recent Service Requests TOP 3"* panel here, but it is not exposed on the current stg live build. The right panel only contains the three items above.
 
 ## Standard User View
 

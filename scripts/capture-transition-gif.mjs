@@ -150,6 +150,28 @@ const SHOTS = [
     file: 'quality-new-preset.gif',
     account: 'admin',
   },
+  // 지식관리 → 파일 저장소 목록에서 '+ 새 저장소 생성' 클릭 → 신규 저장소 생성 모달
+  {
+    id: 'storage-new',
+    url: '/main?view=knowledge-storage',
+    waitFor: 'button:has-text("새 저장소 생성")',
+    button: { role: 'button', name: /새 저장소 생성|New Storage|Create Storage/ },
+    resultWait: () => /저장소 이름|저장소 유형|새 저장소|Storage Name|Storage Type|New Storage|Create Storage/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'storage-new.gif',
+    account: 'admin',
+  },
+  // 지식관리 → DB 연동 목록에서 '+ 새 연결' 클릭 → 신규 DB 연결 모달
+  {
+    id: 'database-new',
+    url: '/main?view=knowledge-database',
+    waitFor: 'button:has-text("새 연결")',
+    button: { role: 'button', name: /^새 연결$|New Connection|Create Connection/ },
+    resultWait: () => /새 연결|연결 이름|DB 종류|Connection Name|Host|Database/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 5_000,
+    file: 'database-new.gif',
+    account: 'admin',
+  },
 ];
 
 function loadEnv(file) {

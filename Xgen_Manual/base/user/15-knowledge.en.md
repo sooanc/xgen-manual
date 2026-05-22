@@ -82,15 +82,32 @@ Grant other users access:
 3. Choose permission (Read / Read·Write)
 4. **Save**
 
-## File Storage and DB Integration { #storage-database }
+## File Storage { #storage }
 
-Beyond uploaded files, collection sources can also include **File Storage** (system file resources) and **DB Integration** (tables / views from external databases).
+Besides uploaded files, **File Storage** (system file resources) can serve as a source for collections. From **Knowledge Management → File Storage** in the left sidebar, click **+ New Storage** at the top right to open the creation modal and enter the storage name, description, and encryption toggle.
 
-![File Storage — manage system-level file resources](images/storage.png)
+![File Storage — clicking "+ New Storage" on the list opens the creation modal](images/storage-new.gif)
 
-![DB Connection — register connection details for external databases](images/database.png)
+| Field | Description |
+|---|---|
+| Storage name | A one-liner identifiable to others |
+| Description | A paragraph about what this storage holds |
+| Encryption | Whether to protect the storage with a password |
 
-For DB integrations, table- and column-level documentation (descriptions, sample values, policies) is managed in a separate screen. The *DB Documentation* view is only reachable once at least one DB connection has been registered; stg currently has no connections registered, so the screenshot will be added in a future manual update from an environment with data.
+## DB Integration { #database }
+
+**DB Integration** (tables / views from external databases) is also available as a source. From **Knowledge Management → DB Integration** in the left sidebar, click **+ New Connection** at the top right to open the database connection registration modal.
+
+![DB Integration — clicking "+ New Connection" on the list opens the database connection registration modal](images/database-new.gif)
+
+| Field | Description |
+|---|---|
+| Connection name | A one-liner identifiable to others |
+| Description | A paragraph about which database this is and its purpose |
+| Custom password | An optional access password specific to this connection |
+| Database type | PostgreSQL, MySQL, etc. — pick from the dropdown |
+
+Table- and column-level documentation (descriptions, sample values, policies) is managed on a separate *DB Documentation* screen and is only reachable once at least one DB connection has been registered.
 
 ## Operational Recommendations
 

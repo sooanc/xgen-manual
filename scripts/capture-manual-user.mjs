@@ -65,8 +65,9 @@ const SHOTS_LOGGED_IN = [
 
   // 15-knowledge.md
   { view: 'knowledge-collection', file: 'collection-list.png', label: 'Knowledge collections' },
-  { view: 'knowledge-storage', file: 'storage.png', label: 'File storage' },
-  { view: 'knowledge-database', file: 'database.png', label: 'DB connection' },
+  // 파일 저장소 / DB 연동 정지 PNG 는 storage-new.gif / database-new.gif 로 대체됨 (2026-05-22).
+  // 갱신: node scripts/capture-transition-gif.mjs storage-new
+  //       node scripts/capture-transition-gif.mjs database-new
 
   // 16-prompt.md
   { view: 'prompt-storage', file: 'prompts.png', label: 'Prompts library' },
