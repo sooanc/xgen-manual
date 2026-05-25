@@ -110,23 +110,6 @@ Define the **evaluation principles and weights** used to score deployed agents a
 
 After saving, new agents are auto-scored in [AI Governance — Risk Review](29-governance-dashboard.md#risk-review) and routed to the approval queue based on the resulting risk level.
 
-## Policy Application Scope
-
-Each policy can be configured per processing area.
-
-| Area | Options |
-|---|---|
-| Document upload | Apply / Skip |
-| Chat input | Apply / Skip / Notify only |
-| AI response | Apply / Skip |
-| Audit log | Apply / Skip |
-
-!!! note "Policy scope settings screenshot pending"
-    A screenshot of the per-area scope toggles (document upload / chat input / AI response / audit log) will be added in a future manual update.
-
-!!! warning "Impact of Audit-Log Masking"
-    Applying PII masking to the audit log itself can hinder accurate user-activity tracking. Balance against regulatory requirements. Recommended default: do not mask audit logs and instead strictly limit who can read them.
-
 ## Recommendations for Financial Sector
 
 - **Add localized regexes** — Most of the 39 defaults are international (UK / CA / …). For Korean environments, recommend adding:

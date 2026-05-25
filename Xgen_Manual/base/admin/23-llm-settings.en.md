@@ -13,8 +13,10 @@ This chapter covers configuring the language model providers and parameters the 
 | vLLM | vLLM | Self-hosted | Models deployed on internal GPU servers |
 | SGLang | SGLang | Self-hosted | Models deployed on internal GPU servers |
 
-!!! info "Recommended for Financial Sector"
-    In segregated networks or data-egress-restricted environments, cloud providers may be unusable. Prioritize internal **vLLM** or **SGLang**.
+!!! info "Recommended for closed-network environments (e.g., financial sector)"
+    In segregated network environments or under data-egress-restricted policies, the use of external cloud-based LLMs may be restricted.
+
+    In such cases we recommend prioritizing on-premise inference infrastructure (vLLM, SGLang, and similar).
 
 ## Registering a Provider
 
@@ -50,9 +52,6 @@ Newly created agents and agentflows will use the default provider. Individual it
 | Max Tokens | Max Tokens | Maximum tokens per response | General chat: 1000–2000 |
 | Top P | Top P | Nucleus sampling — diversity control | 0.9–1.0 |
 | Stream | 스트리밍 | Stream response in real time | true (better UX) |
-
-!!! info "Where these parameters surface today"
-    The per-model *Temperature / Max Tokens / Top P sliders* mentioned in earlier versions of this manual are not exposed on the current stg LLM settings (`admin?view=admin-setting-llm`) provider-detail page. Apply the recommended values above via the *Advanced Options* of the LLM node in your agentflow or at call time. The sliders screenshot will be added once the UI is in place.
 
 ## Operational Impact of Changes
 

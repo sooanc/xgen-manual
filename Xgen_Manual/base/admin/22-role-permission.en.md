@@ -87,6 +87,8 @@ Each action button opens a dedicated modal.
 | **Edit** | Edit role name (English) / display name / description. Avoid renaming the role identifier after creation since it is a system key. |
 | **Delete** | Red button. Attempts immediate deletion; **blocked with a warning** if any user is still assigned to this role. |
 
+![Role table — clicking the *Permission count* column header toggles ascending / descending sort](images/admin-roles-table.gif)
+
 ## Creating a Role { #role-create }
 
 Role creation is a **two-step** process — register the role first, then click the *Permissions* button on the role row to grant the permission checklist.
@@ -123,7 +125,7 @@ After saving, the role list's *Permission count* column reflects the new total.
 
 Once a role has permissions, use the **Users** button on its row to bulk-assign users.
 
-![Assigned-users modal — currently-assigned users as chips at the top, lower available-users list with bulk + Add](images/admin-role-assigned-users.png)
+![Assigned-users modal — clicking the *Users* button on a role row opens the modal; currently-assigned users appear as chips at the top, and the lower available-users list supports bulk *+ Add*](images/admin-role-assigned-users.gif)
 
 Layout:
 
@@ -214,7 +216,7 @@ Users assigned to the supervisor role hold the inherited permissions immediately
 
 Click the row-end **Delete** button to remove that supervisor / target relation. The *supervisor and target roles themselves* are not deleted; only the inheritance link is broken. From that moment, supervisor users no longer inherit the target's permissions.
 
-## Inspect Permissions — Composed View for One User { #permission-inspect }
+## Inspect Permissions — View the Final Effective Permissions for a User { #permission-inspect }
 
 The **Inspect Permissions** button at the top right of either the *Role* or *Permission Hierarchy* tab shows the *final permissions a single user holds* after combining roles, supervision inheritance, and direct grants. It is essential when answering *"why isn't this menu visible?"* or *"are we accidentally exposing broad permissions?"*
 
@@ -233,15 +235,19 @@ Layout:
 
 **Option A — From the role screen (one role → many users)**
 
-1. Expand the **Assigned Users** section on the role detail screen
-2. Click **+ Add User** → search and select users
-3. **Save**
+1. Click the **Users** button on the target role row → the *Assigned Users* modal opens.
+2. Filter and select users in the lower *Available Users* list, then click **+ Add** — multi-select allowed.
+3. Changes apply instantly; *Close* the modal when done.
+
+![Option A — clicking the *Users* button on a role row opens the assigned-users modal and lets you bulk *+ Add* users](images/admin-role-assigned-users.gif)
 
 **Option B — From the user screen (one user → many roles)**
 
-1. Open the **Roles** section in the user-edit modal
-2. Select roles (multi-select allowed)
-3. **Save**
+1. [User Management](21-user-management.md) → open the user-edit modal → switch to the **Permissions** tab.
+2. Multi-select the desired roles in the *Roles* area.
+3. Click **Save**.
+
+![Option B — switching to the *Permissions* tab in the user edit modal opens a multi-select roles area](images/admin-user-roles-assign.gif)
 
 ## Revoking Permissions
 

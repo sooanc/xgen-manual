@@ -55,15 +55,6 @@ To expire all of a user's sessions immediately, click the **Force Logout** butto
 - **Pair password reset with force logout** — a password reset alone does not invalidate already-issued sessions. For security-incident response, *reset + force logout* together.
 - **Standardize leaver / transfer flow** — register the sequence *Force Logout → Deactivate → (if needed) Revoke Roles* as a standard procedure.
 
-## Common Issues
-
-| Symptom | Cause / what to check |
-|---|---|
-| "I forced logout but the user says they are still using the system" | Refresh the list to confirm the session is gone. If the user has *signed back in*, a new session is created — consider whether *Deactivate* is needed. |
-| "Active Sessions is far higher than Active Users" | Users closing tabs / devices without signing out accumulates ghost sessions. Also review the system-side session timeout in [Environment Settings](20-admin-overview.md#env-overview). |
-| "The SuperUser card jumped suddenly" | Check whether a new SuperUser was granted — review *User Type = Superuser* accounts' *Last Login* column in [User Management](21-user-management.md). |
-| "The Force Logout button is disabled" | The button is intentionally disabled on your own row. Use the top-right *Logout* button to end your own session. |
-
 ## Contact
 
 For session-management and force-logout questions, contact the Xgen Solution Administrator.

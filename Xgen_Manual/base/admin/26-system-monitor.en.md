@@ -1,6 +1,6 @@
 # System Monitor
 
-This chapter covers monitoring server resources (CPU, memory, disk, network) and configuring alert thresholds.
+This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server and configure thresholds. (Depending on the operational environment, a Grafana-based integrated monitoring view may also be available.)
 
 ## System Overview
 

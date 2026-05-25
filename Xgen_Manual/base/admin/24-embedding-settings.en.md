@@ -38,6 +38,8 @@ A reranker re-orders initial retrieval results (e.g., top 50) for higher accurac
 2. Enter model name, provider, identifier
 3. **Test Connection** → **Save**
 
+![Reranker tab — *Active Provider* card at the top with *Available Reranker Providers* (Sentence Transformers / vLLM Server) below, and configuration items (Reranker Model / Device) for the active provider](images/admin-embedding-reranker-tab.png)
+
 The reranker is optional. Whether to use it and the threshold are configured per-collection or per-agentflow.
 
 ## Connecting a Vector Database
@@ -51,8 +53,7 @@ The default supported engine is **Qdrant**.
     - API key (if authentication is enabled)
 3. **Test Connection** → **Save**
 
-!!! info "The vector DB tab is read-only today"
-    The vector-database tab (`admin?view=admin-setting-embed` → *Vector Database*) currently exposes only a *Test Connection* button and a display of the active engine; the host / port / API key input panel is not surfaced in the UI. Vector DB connection (Qdrant, etc.) is configured once via infrastructure-side environment variables / config files. The input-panel screenshot will be added once the UI is exposed.
+![Vector Database tab — *Active Provider* card at the top and Qdrant connection settings (vector dimension, host, port, API key, gRPC toggle)](images/admin-embedding-vectordb-tab.png)
 
 !!! note "Disk Monitoring"
     The vector database consumes disk quickly as collections grow. Periodically check disk usage in **System Monitor** and configure threshold alerts.
