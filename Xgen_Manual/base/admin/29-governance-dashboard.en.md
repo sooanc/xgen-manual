@@ -90,23 +90,79 @@ Only agents that have cleared the System Administrator's stage-1 deployment appr
     | Last modified | ✓ | Request or processing timestamp |
     | Actions | — | **View detail** / **Approve** / **Reject** — the latter two appear only on pending rows |
 
-4. **Inspect the detail modal** — Clicking a row opens the *Agentflow Detail* modal. Verify the following in one place:
+**4. Inspect the detail modal**
 
-    - **Basic info**: name, creator (`<name> (<dept>)`), version `v<n>`, node/edge counts (`<n> nodes / <m> edges`)
-    - **Governance status badge** and reviewer (for already-processed rows)
-    - **Review comment** (for already-processed rows)
-    - **Node summary table**: `nodeName / Function ID / category / parameter count / I/O` — clicking a row expands the node detail panel (parameter dict and input list)
+Selecting an item from the list opens the *Agent Flow Detail* modal, which gathers the information you need to review in one place.
 
-    For nodes that could expose PII (outbound calls, mail senders, etc.), expand the parameter list and confirm the use is intentional.
+**Basic info**
 
-5. **Decide — Approve or Reject** — The footer buttons in the detail modal, or the right-side buttons on the row, open the *comment modal*.
+Shows the basic information about the agent flow.
 
-    | Button | Comment required? | Backend call | Result |
-    |---|---|---|---|
-    | **Approve** | Optional (rationale or notes) | `POST /api/admin/governance/agentflow-approval/agentflows/<id>/review` with `{ is_governance_accepted: true, comment }` | Records `is_governance_accepted: true`, `governance_reviewed_by`, `governance_review_comment`. The agent goes live immediately |
-    | **Reject** | **Required** (rejection reason) | Same endpoint, `{ is_governance_accepted: false, comment }` | Records `is_governance_accepted: false`. The author reads the comment, fixes the agent, and resubmits from stage 0 |
+What you can verify:
 
-    When the *Submitting…* state clears, the stat cards and table refresh. If the same agent reappears as *Pending*, the author has resubmitted after a fix — repeat the workflow.
+- Agent name
+- Creator (name / department)
+- Version
+- Node and edge counts
+
+Examples:
+
+- `v2`
+- `14 Nodes / 21 Edges`
+
+**Governance review status**
+
+Shows the current governance status and review history.
+
+What you can verify:
+
+- Governance status badge
+- Reviewer
+- Processing state
+
+Already-approved or already-rejected items display this information as well.
+
+**Review comment**
+
+The comment recorded by the reviewer is shown here.
+
+!!! note "Shown only for already-processed items."
+
+**Node summary table**
+
+Summarizes the nodes that make up the agent flow.
+
+What you can verify:
+
+- Node name
+- Function ID
+- Category
+- Parameter count
+- Input / Output (I/O)
+
+Clicking a row expands the detail panel where you can inspect parameter values and input fields.
+
+**Review recommendations**
+
+We recommend prioritizing nodes that may handle personal information (PII) or transmit data outside the system.
+
+Examples:
+
+- External API calls
+- Email sending
+- External system integration
+- File upload
+
+Check whether node parameters and inputs could carry sensitive data and confirm that the configuration matches the intended use.
+
+**5. Decide — Approve or Reject**
+
+The footer buttons in the detail modal, or the right-side buttons on the row, open the *comment modal*.
+
+- **Approve** — Comment is optional. The agent goes live immediately.
+- **Reject** — Comment is **required**. The comment is delivered to the author, who must fix the agent and resubmit from stage 0.
+
+When the *Submitting…* state clears, the stat cards and table refresh automatically. If the same agent reappears as *Pending*, the author has resubmitted after a fix — repeat the workflow.
 
 Every approve/reject action is recorded in [AI Service Change History](#audit-tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
 
