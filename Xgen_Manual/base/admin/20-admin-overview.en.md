@@ -55,7 +55,7 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 |---|---|---|
 | Users / Access Control | User Management | [User Management · User List & Approval](21-user-management.md#user-list) |
 | Users / Access Control | Role / Permission | [Role / Permission · Permission Model / Roles](22-role-permission.md#permission-model) |
-| Users / Access Control | Login Management | [User Management · Login Management](21-user-management.md) |
+| Users / Access Control | Login Management | [Login Management](22b-login-management.md) |
 | Agent Operations | Agent Management | [Agent Operations · Agent Management (Deployment Approval)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
 | Agent Operations | User Tokens | [Agent Operations · User Tokens](32-agent-operations.md) |

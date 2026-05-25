@@ -55,7 +55,7 @@
 |---|---|---|
 | 사용자 / 접근제어 | 사용자 관리 | [사용자 관리 · 사용자 목록·승인](21-user-management.md#user-list) |
 | 사용자 / 접근제어 | 역할/권한 관리 | [역할/권한 관리 · 권한 모델 / 역할 정의](22-role-permission.md#permission-model) |
-| 사용자 / 접근제어 | 로그인 관리 | [사용자 관리 · 로그인 관리](21-user-management.md) |
+| 사용자 / 접근제어 | 로그인 관리 | [로그인 관리](22b-login-management.md) |
 | Agent 운영 | Agent 관리 | [Agent 운영 · Agent 관리(배포 승인)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent 운영 | 채팅 모니터링 | [Agent 운영 · 채팅 모니터링](32-agent-operations.md#chat-monitoring) |
 | Agent 운영 | 사용자 토큰 | [Agent 운영 · 사용자 토큰](32-agent-operations.md) |

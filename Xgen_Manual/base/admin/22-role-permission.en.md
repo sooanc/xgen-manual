@@ -49,33 +49,43 @@ An administrator (SuperUser) can grant permissions to a user through the three p
 | 2 | **Role-to-role inheritance (Supervision)** | This chapter → *Permission Hierarchy* tab → add a relation | "Team Lead ← Team Member" so the lead inherits all member permissions |
 | 3 | **Direct grant to an individual user** | [User Management](21-user-management.md) → user edit → *Direct Permissions* | Temporarily granting or denying a single permission to one user |
 
-## Role List { #role-list }
+## Role Tab { #role-list }
 
-Select **Admin Center → Users / Access Control → Role / Permission Management** in the left sidebar (view ID `admin-role-management`).
+Select **Admin Center → Users / Access Control → Role / Permission Management** in the left sidebar (view ID `admin-role-management`). The *Role* tab opens by default.
 
-![Role / Permission Management — registered roles and the number of users assigned to each](images/admin-roles.png)
+![Role / Permission Management — Role tab. Registered roles and the number of users assigned to each](images/admin-roles.png)
 
-### Screen at a glance
+### Top area — tabs, search, action buttons
 
-The page header has **2 tabs** + **2 action buttons** + **search**.
+| Area | Location | Behavior |
+|---|---|---|
+| Tab — **Role** | Top-left (current tab) | Lists registered roles |
+| Tab — **Permission Hierarchy** | Second tab | Manage supervisor / target relationships between roles — [Permission Hierarchy tab](#supervision) |
+| Search | Top-right input | `Search roles...` — filter by role name or display name instantly |
+| Button — **Inspect Permissions** | Top-right (white) | Pick one user and expand their *composed* permissions — [Inspect Permissions modal](#permission-inspect) |
+| Button — **Create Role** | Top-right (purple) | Open the create-role modal — [Creating a Role](#role-create) |
+| Button — **Refresh** | Top-right (gray) | Reload the list immediately |
 
-| Area | Content |
-|---|---|
-| Tab — *Role* | Role list / create / edit / grant permissions / assign users |
-| Tab — *Permission Hierarchy* | Set supervisor / target relationships between roles ([Permission Hierarchy](#supervision)) |
-| Button — *Inspect Permissions* | Look up a user's *composed* permissions — only visible to SuperUsers who hold the `admin.permission:*` permission |
-| Button — *Create Role* | Open the new-role modal ([Creating a Role](#role-create)) |
-| Search | Filter the list instantly by role name / display name |
+### Role table — columns and per-row action buttons
 
-### Columns in a role row
+Column headers with a ↓ icon are clickable to toggle the sort direction.
 
 | Column | Description |
 |---|---|
-| **Role name (English)** | System identifier — kebab-case recommended (e.g., `analyst`, `content-manager`) |
-| **Display name** | Korean or screen-facing name (e.g., "분석가", "콘텐츠 관리자") |
-| **Permission count** | Number of permissions bound to this role |
+| **Role name (English)** | System identifier — kebab-case recommended (e.g., `analyst`, `content-manager`). This becomes a DB key and is preserved permanently; avoid renaming after creation. |
+| **Display name** | Korean or screen-facing name (e.g., *분석가*, *콘텐츠 관리자*) |
+| **Permission count** | Number of permissions bound to this role — `0` means no permissions are bound yet |
 | **Description** | One-line description (`-` if empty) |
-| **Actions** | Four buttons per row — **Users** / **Permissions** / **Edit** / **Delete** |
+| **Actions** | Four buttons per row — **Users** / **Permissions** / **Edit** / **Delete** (see below) |
+
+Each action button opens a dedicated modal.
+
+| Button | What it opens |
+|---|---|
+| **Users** | The assigned-users modal — currently assigned users appear as chips at the top (click × to remove), and the lower list lets you filter and **+ Add** more users in bulk — [Assigned Users modal](#assigned-users) |
+| **Permissions** | The permission-checklist modal grouped under two scopes (ADMIN / MAIN) — [Permission Settings modal](#permission-modal) |
+| **Edit** | Edit role name (English) / display name / description. Avoid renaming the role identifier after creation since it is a system key. |
+| **Delete** | Red button. Attempts immediate deletion; **blocked with a warning** if any user is still assigned to this role. |
 
 ## Creating a Role { #role-create }
 
@@ -92,12 +102,37 @@ Role creation is a **two-step** process — register the role first, then click 
 
 ![Create-role modal — fields for English role name / display name / description with Cancel and Create buttons](images/admin-role-create.png)
 
-### Step 2 — Grant permissions
+### Step 2 — Grant permissions { #permission-modal }
 
-To grant permissions, click the **Permissions** button on the role row. A category-grouped permission checklist (admin / main scopes) expands; check the needed permissions and save.
+To grant permissions, click the **Permissions** button on the role row. The *Permission Settings* modal opens, showing two scopes (ADMIN / MAIN) with permissions grouped by category.
 
-!!! note "Permission checklist screenshot deferred"
-    A screenshot of the *permission category checklist* (shown when clicking the **Permissions** button on a role row) will be added in a later revision.
+![Permission Settings modal — checkbox tree under ADMIN / MAIN scopes with a search input and selected/total counters per scope](images/admin-role-permissions-modal.png)
+
+Layout:
+
+- **Header** — `Permission Settings: <display name>` so you can see which role you are editing.
+- **Search input** — instant keyword filter.
+- **Scope count badges** — e.g., `● ADMIN: 76/76`, `● MAIN: 33/33` (selected / total per scope) plus an overall sum (e.g., `Total 109/132`).
+- **Checkbox tree** — expand each scope with the `▶` chevron and check individual permissions, or check the category checkbox to toggle *select all / clear all* within that category.
+- **Selection footer** — bottom-left shows the live count (e.g., `109 selected`).
+- **Buttons** — bottom-right **Cancel** / **Save**. Permissions are only applied to the role when you click *Save*.
+
+After saving, the role list's *Permission count* column reflects the new total.
+
+### Assigning users — after granting permissions { #assigned-users }
+
+Once a role has permissions, use the **Users** button on its row to bulk-assign users.
+
+![Assigned-users modal — currently-assigned users as chips at the top, lower available-users list with bulk + Add](images/admin-role-assigned-users.png)
+
+Layout:
+
+- **Top — *Assigned Users***: users currently holding this role appear as chips. Click × on a chip to revoke immediately.
+- **Bottom — *Available Users***: filter via the search box, then click **+ Add** next to each user to move them up into the chip area. Multiple additions allowed.
+- **Save / Close** — changes apply instantly; *Close* dismisses the modal.
+
+!!! tip "When one user needs multiple roles"
+    *Role screen → Users button* is best for *many users ↔ one role* bulk assignments. For *one user ↔ many roles*, the **Roles** section in the [User Management](21-user-management.md) user-edit modal is faster (multi-select).
 
 ### Common scenarios { #scenarios }
 
@@ -119,7 +154,7 @@ To grant permissions, click the **Permissions** button on the role row. A catego
 - Do this in the user-edit modal in [User Management](21-user-management.md), under the *Direct Permissions* section — Grant or Deny
 - Creating a *role* for a temporary permission affects other users too; *Direct Permissions* is safer for a single-user scope
 
-## Permission Hierarchy (Supervisor / Target) { #supervision }
+## Permission Hierarchy Tab — Supervisor / Target { #supervision }
 
 In complex organizations you can define supervisor / target relationships between roles so that *a supervisor role inherits its target role's permissions automatically*.
 
@@ -128,13 +163,59 @@ In complex organizations you can define supervisor / target relationships betwee
 
 Example: if a "Team Lead" role supervises a "Team Member" role, the lead receives *team-member permissions + team-lead-specific permissions*. Any later change to team-member permissions propagates to the lead automatically.
 
-### Workflow
+### Screen layout
 
-1. Enter the *Permission Hierarchy* tab
-2. **+ Add Relation** (or *Bulk Create*) → pick 1 supervisor role + N target roles
-3. Fill in a description (optional) and **Save**
+Click the *Permission Hierarchy* tab at the top. Existing relations are listed as table rows.
+
+![Permission Hierarchy tab — table rows of supervisor → target with Add Hierarchy / Inspect Permissions / Refresh in the top right](images/admin-role-management-supervision-tab.png)
+
+| Area | Description |
+|---|---|
+| Top counters | Left side shows `Total N`, `Showing N`, `Page 1/N` — total relations and current page |
+| Search | `Search supervisor / target / description...` — filter rows instantly |
+| Button — **Inspect Permissions** | Same modal as on the Role tab — see [Inspect Permissions modal](#permission-inspect) |
+| Button — **Add Hierarchy** | Purple. Open the create-relation modal — *1 supervisor + N targets + optional description* |
+| Button — **Refresh** | Reload the list immediately |
+
+Table columns:
+
+| Column | Description |
+|---|---|
+| Checkbox | Multi-select — reserved for future bulk operations such as bulk delete |
+| **Supervisor** ↓ | The role with the larger permission set (English identifier) |
+| **Target** ↓ | The role that inherits its permissions (English identifier). If one supervisor has multiple targets, each pair appears as a separate row. |
+| **Description** | What the relation means (`-` if empty) |
+| **Actions** | Row-end **Delete** (red outline) — removes this supervisor / target relation immediately |
+
+### Workflow — adding a relation
+
+1. Click **Add Hierarchy** at the top right of the *Permission Hierarchy* tab.
+2. Fill in the modal:
+    - **Supervisor** — pick the larger-permission role (dropdown).
+    - **Target** — pick the role(s) being inherited (multi-select).
+    - **Description** — optional.
+3. Click **Save**. A new row appears in the list immediately.
 
 Users assigned to the supervisor role hold the inherited permissions immediately — no re-login required (the sidebar refreshes on the next navigation).
+
+### Workflow — removing a relation
+
+Click the row-end **Delete** button to remove that supervisor / target relation. The *supervisor and target roles themselves* are not deleted; only the inheritance link is broken. From that moment, supervisor users no longer inherit the target's permissions.
+
+## Inspect Permissions — Composed View for One User { #permission-inspect }
+
+The **Inspect Permissions** button at the top right of either the *Role* or *Permission Hierarchy* tab shows the *final permissions a single user holds* after combining roles, supervision inheritance, and direct grants. It is essential when answering *"why isn't this menu visible?"* or *"are we accidentally exposing broad permissions?"*
+
+![Inspect Permissions modal — user search input, matching user list, and an Inspect Permissions button to expand composed results](images/admin-role-permission-inspect.png)
+
+Layout:
+
+- **User search** — type part of an email, name, or username.
+- Pick a user from the matching list.
+- Click **Inspect Permissions** at the bottom to expand the composed permission view.
+
+!!! info "If the Inspect Permissions button is missing"
+    *Inspect Permissions* is exposed only to SuperUsers who hold `admin.permission:*`. Confirm whether this permission is in your role by clicking the **Permissions** button on your own row in the [role list](#role-list).
 
 ## Assigning Roles to Users { #user-assignment }
 
