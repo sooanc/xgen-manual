@@ -129,15 +129,35 @@ Select **Admin → System Status → Log Viewer** in the left sidebar. *Technica
 
 ### Per-tab usage guide
 
-| Tab | Routine check frequency | Primary use |
-|---|---|---|
-| **All** | At the start of analysis | View the time-line context as a whole — when you want to see logs around an *error* event. |
-| **Error** | At least once a day | Trace causes of new ERRORs as soon as they appear. Cross-reference with user reports. |
-| **Warn** | Weekly | Accumulating warnings can foreshadow incidents — review trends. |
-| **Info** | As needed | Trace a specific request's normal flow or confirm an expected call happened. |
-| **Debug** | Diagnostic mode only | Noisy in production; turn on only when reproducing a specific issue. |
+#### All
 
-![Log Viewer — *Error* tab filtering, showing only system errors with red badges](images/admin-backend-logs-error.png)
+All log levels shown in chronological order. Use this at the start of analysis to view the time-line context as a whole, or to see logs around an *error* event.
+
+![Log Viewer — *All* tab. Every log level in time order](images/admin-backend-logs-all.png)
+
+#### Error (ERROR)
+
+System errors and exceptions only. Check at least once a day; trace causes of new ERRORs as soon as they appear and cross-reference with user reports. Rows are tagged with a red `ERROR` badge.
+
+![Log Viewer — *Error* tab. Only system errors shown with red badges](images/admin-backend-logs-error.png)
+
+#### Warn (WARN)
+
+Potential risk signals (succeeded but with anomalies). Review weekly — accumulating warnings can foreshadow incidents, so watch for trends.
+
+![Log Viewer — *Warn* tab. Only potential-risk warnings shown with yellow badges](images/admin-backend-logs-warn.png)
+
+#### Info (INFO)
+
+Normal-flow informational logs (e.g., request handled). Use to trace a specific request's normal flow or confirm that an expected call happened.
+
+![Log Viewer — *Info* tab. Normal-flow informational logs shown with blue badges](images/admin-backend-logs-info.png)
+
+#### Debug (DEBUG)
+
+Detailed development / analysis logs. Noisy in production; enable only when reproducing a specific issue and return to normal level once diagnosis is done.
+
+![Log Viewer — *Debug* tab. Detailed development / diagnostic logs shown with gray badges](images/admin-backend-logs-debug.png)
 
 !!! info "vs. Audit Log"
     - **Log Viewer**: *technical logs* from backend components (stack traces, processing-result messages). Used by operations to chase incidents.

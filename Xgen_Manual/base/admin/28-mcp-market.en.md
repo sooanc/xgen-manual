@@ -35,10 +35,6 @@ Select **Admin → MCP Management → MCP Library** in the left sidebar.
 3. Click **Test Connection** → if the server responds, the **Features** list is auto-populated
 4. **Save**
 
-!!! info "The *+ Add MCP Server* button is not present on the current stg build"
-    The *"+ Add MCP Server"* button referenced in earlier versions of this manual is not exposed at the top right of the MCP Library screen (`admin?view=admin-mcp-market`) on the current stg live build. The screen only supports *browse-and-detail* — card click opens a detail page. New server registration happens through an out-of-band operations procedure (config file or infrastructure-side registration). A screenshot of the *Install* flow on the detail page will be added in a future manual update.
-    A screenshot of the server-configuration / environment-variables / features modal opened by "+ Add MCP Server" will be added in a future manual update.
-
 !!! warning "Environment Variable Security"
     Environment variables passed to the MCP server may include sensitive data such as API keys. The solution stores these encrypted, but be wary of plaintext exposure in screenshots, exports, and similar leaks.
 
@@ -88,7 +84,7 @@ The second menu in **MCP Management** — **MCP Operations & Monitoring** (view 
 
 Where to enter: Admin → MCP Management → **MCP Operations & Monitoring**.
 
-![MCP Operations & Monitoring — per-server session list, call statistics, and terminate controls](images/admin-mcp-station.png)
+![MCP Operations & Monitoring — clicking the top-right *+ New Session* button on the session list opens the new-session registration view](images/admin-mcp-station.gif)
 
 ### Session Management
 

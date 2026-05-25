@@ -10,7 +10,7 @@ Enter **Admin Center** from the top-left mode switch, then expand the **AI Gover
 
 ## Sidebar Layout
 
-The left sidebar's **AI Governance** accordion contains **four items in a flat list**. The order and labels visible to a SuperUser with the right permissions are:
+The left sidebar's **AI Governance** area presents four management menus organized as an accordion. The menus are visible only to SuperUser accounts with the appropriate permissions; the display order and labels are as follows.
 
 | # | Sidebar label | Page header (on entry) | Section in this chapter | In-page structure |
 |---|---|---|---|---|
@@ -29,18 +29,6 @@ The left sidebar's **AI Governance** accordion contains **four items in a flat l
 Computes **per-category risk scores** for deployed agents; agents that exceed a threshold are routed to governance reviewers for explicit approval.
 
 ![AI Risk Assessment — risk-category widget grid and trend charts](images/admin-gov-risk.png)
-
-### Evaluation Categories
-
-| Category | Description |
-|---|---|
-| PII Exposure | Failed or bypassed personal-information masking |
-| Data Exfiltration | Bulk download or outbound email of sensitive data |
-| Privilege Misuse | Abnormal privilege escalation |
-| Abnormal Access | Off-hours or foreign-IP access |
-| Policy Violation | Use of forbidden words or blocked tools |
-
-Each category carries a **weight**, contributing to the overall risk score.
 
 !!! info "Suggested Weights (Financial Sector Example)"
     - PII Exposure: 10 (highest priority)

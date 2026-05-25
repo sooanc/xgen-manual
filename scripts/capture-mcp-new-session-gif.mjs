@@ -1,13 +1,10 @@
-// capture-force-logout-gif.mjs
+// capture-mcp-new-session-gif.mjs
 //
-// 관리자 > 로그인 관리(admin?view=admin-active-sessions) 목록에서
-// 한 사용자 행의 '강제 로그아웃' 버튼을 클릭하는 흐름을 GIF 로.
+// 관리자 > MCP 관리 > MCP 운영/모니터링 (admin?view=admin-mcp-station) 화면에서
+// 우상단 '+ 새 세션' 버튼을 클릭하면 나오는 신규 세션 등록 화면까지의 흐름을 GIF 로.
+// 마우스 커서가 명시적으로 보이도록 충분한 step·hold 사용.
 //
-// 주의: 강제 로그아웃은 실제로 세션을 종료시키므로, '본인 외 사용자' 의 첫 번째
-// 활성 강제 로그아웃 버튼을 후보로 잡되, 실서비스 영향을 최소화하기 위해
-// "확인" 단계가 있으면 거기서 멈추도록 한다 (있다면 *취소* 가 자동 클릭).
-//
-// 출력: Xgen_Manual/base/admin/images/admin-force-logout.gif
+// 출력: Xgen_Manual/base/admin/images/admin-mcp-station.gif
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -19,17 +16,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
 const ENV_FILE = path.join(REPO_ROOT, '.env.xgen-stg');
 const OUT_DIR = path.join(REPO_ROOT, 'Xgen_Manual', 'base', 'admin', 'images');
-const TMP_DIR = path.join(REPO_ROOT, '.tmp-force-logout-gif');
+const TMP_DIR = path.join(REPO_ROOT, '.tmp-mcp-new-session-gif');
 const FFMPEG = process.env.FFMPEG || 'C:/ffmpeg/bin/ffmpeg';
 
 const VIEWPORT = { width: 1280, height: 720 };
 const FPS = 15;
 const SCALE_WIDTH = 960;
-const PRE_CLICK_HOLD_MS = 700;
-const MODAL_VISIBLE_HOLD_MS = 2000;
-const POST_CANCEL_HOLD_MS = 1000;
+const PRE_CLICK_HOLD_MS = 800;
+const POST_CLICK_HOLD_MS = 2200;
 const TRIM_LEAD_IN_MS = 200;
-const OUT_FILE = 'admin-force-logout.gif';
+const OUT_FILE = 'admin-mcp-station.gif';
 
 function loadEnv(file) {
   const env = {};
@@ -120,78 +116,65 @@ async function loginAndGetStorage(browser) {
 }
 
 async function captureShot(browser, storageState) {
-  log(`shot force-logout — ${OUT_FILE}`);
+  log(`shot mcp-new-session — ${OUT_FILE}`);
   const recCtx = await browser.newContext({ viewport: VIEWPORT, locale: 'ko-KR', storageState, recordVideo: { dir: TMP_DIR, size: VIEWPORT } });
   await recCtx.addInitScript(INIT_SCRIPT);
   const page = await recCtx.newPage();
   const ctxStart = Date.now();
 
-  await page.goto(`${BASE}/admin?view=admin-active-sessions`, { waitUntil: 'networkidle', timeout: 45_000 });
-  await page.waitForFunction(() => /로그인 관리/.test(document.body.innerText), null, { timeout: 30_000 });
+  await page.goto(`${BASE}/admin?view=admin-mcp-station`, { waitUntil: 'networkidle', timeout: 45_000 });
+  await page.waitForFunction(() => /MCP 운영|MCP 모니터링|MCP Station/i.test(document.body.innerText), null, { timeout: 30_000 })
+    .catch(() => log('  warning: header text not detected'));
   await page.waitForTimeout(1200);
 
-  // 강제 로그아웃 후보: 현재 로그인 중인 admin(=시스템관리자) 본인이 아닌 행
-  // 본인 행은 버튼이 비활성/없을 가능성이 큼. 활성된 첫 강제 로그아웃 버튼을 선택.
-  const targetBtn = await page.evaluate(() => {
-    const btns = Array.from(document.querySelectorAll('button')).filter(b => /강제 로그아웃/.test(b.textContent || ''));
+  // '+ 새 세션' 버튼 위치 확보
+  const newBtn = await page.evaluate(() => {
+    const btns = Array.from(document.querySelectorAll('button')).filter(b => /\+\s*새 세션/.test(b.textContent || '') || b.textContent.trim() === '+ 새 세션');
     const visible = btns.find(b => !b.disabled && b.offsetParent !== null);
     if (!visible) return null;
     visible.scrollIntoView({ block: 'center' });
-    return { rect: visible.getBoundingClientRect().toJSON(), text: visible.textContent.trim().slice(0, 30) };
+    return { rect: visible.getBoundingClientRect().toJSON(), text: visible.textContent.trim() };
   });
-  if (!targetBtn) throw new Error('강제 로그아웃 button not found');
-  log(`  target btn:`, targetBtn);
+  if (!newBtn) throw new Error('+ 새 세션 button not found');
+  log(`  target btn:`, newBtn);
 
-  // 가상 커서를 화면 본문 영역의 잘 보이는 위치로 천천히 이동시켜 명시적으로 등장시킴.
-  // 너무 빨리 이동하면 첫 프레임에서 커서가 안 보일 수 있어 단계를 충분히 둠.
+  // 가상 커서 명시적으로 등장 — 본문 좌측에 천천히 이동
   await page.mouse.move(0, 0);
   await page.waitForTimeout(150);
   await page.mouse.move(420, 380, { steps: 30 });
-  await page.waitForTimeout(500); // 커서가 그 위치에 머무는 모습이 GIF 에 잡히도록
+  await page.waitForTimeout(500);
   const tReady = Date.now() - ctxStart;
-  log(`  ready (cursor visible at 420,380) at t=${tReady}ms`);
+  log(`  ready (cursor visible) at t=${tReady}ms`);
   await page.waitForTimeout(PRE_CLICK_HOLD_MS);
 
-  // '강제 로그아웃' 버튼으로 이동 → 클릭. 단계 수를 충분히 두어 동선이 보이게.
-  const cx = targetBtn.rect.x + targetBtn.rect.width / 2;
-  const cy = targetBtn.rect.y + targetBtn.rect.height / 2;
-  log(`  animating cursor to 강제 로그아웃 (${cx.toFixed(0)}, ${cy.toFixed(0)})`);
+  // '+ 새 세션' 버튼으로 천천히 이동 → hover → 클릭
+  const cx = newBtn.rect.x + newBtn.rect.width / 2;
+  const cy = newBtn.rect.y + newBtn.rect.height / 2;
+  log(`  animating cursor to + 새 세션 (${cx.toFixed(0)}, ${cy.toFixed(0)})`);
   await page.mouse.move(cx, cy, { steps: 60 });
-  await page.waitForTimeout(450); // 버튼 위에 잠시 hover 해 클릭 위치를 인지하도록
+  await page.waitForTimeout(450);
   await page.mouse.click(cx, cy);
 
-  // 확인 모달이 노출되기를 기다림 (role="dialog" 또는 MUI Dialog/Modal)
-  let cancelRect = null;
-  try {
-    await page.waitForFunction(() => !!document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root'), null, { timeout: 4_000 });
-    log(`  confirm modal appeared`);
-    // 모달 노출 후 시청자가 인지하도록 충분히 hold (GIF 에서 보이도록)
-    await page.waitForTimeout(MODAL_VISIBLE_HOLD_MS);
-    // *취소* 버튼 위치 확보 (자동 취소로 실제 세션 영향 없게)
-    cancelRect = await page.evaluate(() => {
-      const modal = document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root');
-      if (!modal) return null;
-      const btns = Array.from(modal.querySelectorAll('button'));
-      const cancel = btns.find(b => /^(취소|Cancel|아니오|닫기)$/.test(b.textContent.trim()));
-      return cancel?.getBoundingClientRect().toJSON() || null;
-    });
-  } catch (e) {
-    log(`  warning: 확인 모달 not detected — 즉시 실행되는 화면일 수 있음`);
-  }
+  // 신규 세션 등록 화면 노출 대기 (모달 또는 페이지 전환)
+  await page.waitForFunction(() => {
+    const modal = document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root');
+    if (modal) return true;
+    return /세션 생성|새 세션|MCP 서버 선택|연결 정보|Create Session/i.test(document.body.innerText || '');
+  }, null, { timeout: 5_000 }).catch(() => log('  warning: 신규 세션 화면 not detected'));
+  await page.waitForTimeout(400);
 
-  if (cancelRect) {
-    // 가상 커서를 취소 버튼으로 이동시켜 시청자가 흐름을 인지하도록 — 그 뒤 클릭
-    const cancelCx = cancelRect.x + cancelRect.width / 2;
-    const cancelCy = cancelRect.y + cancelRect.height / 2;
-    log(`  animating cursor to 취소 (${cancelCx.toFixed(0)}, ${cancelCy.toFixed(0)})`);
-    await page.mouse.move(cancelCx, cancelCy, { steps: 25 });
-    await page.waitForTimeout(200);
-    await page.mouse.click(cancelCx, cancelCy);
+  // 결과 화면에서 첫 입력칸/필드 근처로 커서 이동시켜 hover 시연
+  const focusRect = await page.evaluate(() => {
+    const modal = document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root') || document.body;
+    const input = modal.querySelector('input, textarea, [role="combobox"], select');
+    return input?.getBoundingClientRect().toJSON() || null;
+  });
+  if (focusRect) {
+    await page.mouse.move(focusRect.x + 40, focusRect.y + focusRect.height / 2, { steps: 25 });
+  } else {
+    await page.mouse.move(1100, 120, { steps: 8 });
   }
-
-  // hover 회피
-  await page.mouse.move(1100, 120, { steps: 8 });
-  await page.waitForTimeout(POST_CANCEL_HOLD_MS);
+  await page.waitForTimeout(POST_CLICK_HOLD_MS);
   const tEnd = Date.now() - ctxStart;
   log(`  total ≈ ${tEnd}ms`);
 
