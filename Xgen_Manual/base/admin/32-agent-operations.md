@@ -72,7 +72,7 @@
     | **승인** | `updateAgentflowAdmin({ enable_deploy: true, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 승인되었습니다."* → 카드 배지 *배포됨* 으로 갱신. 거버넌스 큐로 자동 진행 |
     | **거부** | `updateAgentflowAdmin({ enable_deploy: false, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 거부되었습니다."* → 카드 배지 *미배포* 로 복귀. 작성자에게 별도 채널로 사유 통보 권장 |
 
-    ![Step 4 — 카드 액션 영역 (현재 캡처는 배포 대기 미존재 상태, 평상 시 설정/삭제 노출)](images/admin-deploy-approval-step4.png)
+    ![Step 4 — 관리자 승인 대기 카드의 ⋯ 메뉴를 열어 승인 / 거부 액션이 노출된 모습](images/admin-deploy-approval-step4.png)
 
 5. **결과 확인** — 처리 완료 후 카드 그리드가 자동 새로고침되며 배지가 갱신됩니다. 같은 카드가 다시 *배포 대기* 로 올라오면 작성자가 수정 후 재요청한 경우이므로 2단계부터 반복합니다.
 
