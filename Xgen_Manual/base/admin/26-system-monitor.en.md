@@ -66,18 +66,88 @@ The **Resource History** tab shows time-series charts for past trends.
 
 When investigating spikes, cross-reference the audit log around the same time to infer causes.
 
-## System Inspection & Log Viewer { #system-query-log }
+## System Inspection { #system-query }
 
-The **System Status** group has two more menus alongside *System Monitoring* — **System Inspection** and **Log Viewer**. They are covered briefly here because both screens are *read-only inspection* with little user action.
+Select **Admin → System Status → System Inspection** in the left sidebar. The screen header reads *"Service status and version compatibility"* and the page lists health-check results for every backend service the solution depends on.
 
-| Menu | Where to enter | Purpose |
+![System Inspection — Total / Healthy / Unhealthy / Incompatible count cards above a per-service status & version table](images/admin-system-health.png)
+
+### Screen layout
+
+| Area | Location | Description |
 |---|---|---|
-| **System Inspection** | Admin → System Status → System Inspection | Shows the *health/ping result* of connected components (API server, Agent engine, model serving) on one screen. First stop when an outage is suspected. |
-| **Log Viewer** | Admin → System Status → Log Viewer | Search, filter, and download backend server logs (stdout / error). **For user actions or policy changes, refer to the [Audit Log](27-audit-log.md) chapter** — this screen contains *system-component logs*, not user-activity logs. |
+| **Refresh** button | Top-right | Runs the health check again immediately. |
+| Card — **Total** | Top gray | Total number of monitored services. |
+| Card — **Healthy** | Top green | Services that responded successfully on the latest health check. |
+| Card — **Unhealthy** | Top red | Services that did not respond or returned an error — *anything other than 0 needs immediate attention*. |
+| Card — **Incompatible** | Top yellow | Services that responded with a version different from what the solution expects. |
+| **Service search** input | Body top-right | Filter the list instantly by service name. |
+| Service table | Body | One row per service — *Service / Status / Version / Compatibility* columns. |
+
+### Service table columns
+
+| Column | Description |
+|---|---|
+| **Service** | Backend component name the solution depends on (e.g., `workflow-service`, `retrieval-service`, `qdrant`, `postgres`, `redis`, `audio-service`, `xgen-model`). |
+| **Status** | Latest health-check result. Green *Healthy* / red *Unhealthy* badge. |
+| **Version** | Reported version string (e.g., `2.0.0`). `-` if not reported. |
+| **Compatibility** | Whether the version matches what the solution requires. `-` if not reported. |
+
+### Usage scenarios
+
+- **First check during an outage** — When users report issues (e.g., no chat response, embedding errors), open this screen first and confirm whether the *Unhealthy* card is non-zero.
+- **Post-deployment verification** — After a release or infrastructure operation, refresh to confirm that *all services* have returned to healthy.
+- **Version-compatibility tracing** — If *Incompatible* is non-zero, use the *Version* column to identify which services are off-version and share with the infrastructure team.
+
+## Log Viewer { #log-query }
+
+Select **Admin → System Status → Log Viewer** in the left sidebar. *Technical logs* emitted by backend services can be searched and filtered by level.
+
+![Log Viewer — All / Error / Warn / Info / Debug tabs, search/filter area, time-ordered log table](images/admin-backend-logs-all.png)
+
+### Screen layout
+
+| Area | Location | Description |
+|---|---|---|
+| Tab — **All** | Top-left (default) | All log levels in chronological order. |
+| Tab — **Error** | Second | System errors and exceptions only — *first stop when tracing an incident*. |
+| Tab — **Warn** | Third | Potential risk signals (succeeded but with anomalies). |
+| Tab — **Info** | Fourth | Normal-flow informational logs (e.g., request handled). |
+| Tab — **Debug** | Fifth | Detailed development / analysis logs. Normally disabled in production, enabled only in diagnostic mode. |
+| **Log search** input | Top-right | Instant filter by message or service. |
+| **Refresh** button | Top-right | Reload latest logs immediately. |
+
+### Log table columns
+
+| Column | Description |
+|---|---|
+| **Level** | `ERROR` / `WARN` / `INFO` / `DEBUG` shown as a colored badge. |
+| **Message** | Log body (e.g., `Successfully retrieved system status`, `No execution data found for the given filters`). |
+| **Source** | Identifier of the originating service / module (e.g., `get_system_status`, `workflow_processor`). |
+| **Details** | Call path, trace context, and other metadata. |
+| **Time** | Timestamp (second granularity). Click the column-header ↓ to toggle sort direction. |
+
+### Per-tab usage guide
+
+| Tab | Routine check frequency | Primary use |
+|---|---|---|
+| **All** | At the start of analysis | View the time-line context as a whole — when you want to see logs around an *error* event. |
+| **Error** | At least once a day | Trace causes of new ERRORs as soon as they appear. Cross-reference with user reports. |
+| **Warn** | Weekly | Accumulating warnings can foreshadow incidents — review trends. |
+| **Info** | As needed | Trace a specific request's normal flow or confirm an expected call happened. |
+| **Debug** | Diagnostic mode only | Noisy in production; turn on only when reproducing a specific issue. |
+
+![Log Viewer — *Error* tab filtering, showing only system errors with red badges](images/admin-backend-logs-error.png)
 
 !!! info "vs. Audit Log"
-    - **Log Viewer**: *technical logs* from backend components (stack traces, error messages). Used by operations to chase incidents.
+    - **Log Viewer**: *technical logs* from backend components (stack traces, processing-result messages). Used by operations to chase incidents.
     - **Audit Log**: a permanent record of *who did what when* (*user activity*). Used for regulatory and internal-audit response — see the [Audit Log](27-audit-log.md) chapter.
+
+### Operational recommendations
+
+- **Standard incident-response flow** — Use *System Inspection* to identify the unhealthy service → switch to *Log Viewer → Error tab* for the same time window → forward the message and source to the infrastructure team.
+- **Turn DEBUG off after use** — Debug-level logs put pressure on disk usage and search performance. Return to normal level as soon as diagnosis is done.
+- **Standardize search keywords** — Share common keywords (service names, exception classes) across the team so investigations converge quickly.
 
 ## Operational Recommendations
 
