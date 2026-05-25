@@ -126,6 +126,8 @@ Inactive users cannot log in, but their agentflows, collections, and chat histor
 
 There are two permission tiers. Toggle them through the **User Type** select in the user-edit modal (`Standard` ↔ `Superuser`).
 
+![Clicking the *User Type* select in the user edit modal opens a dropdown listing the available tier options (Standard / SuperUser)](images/admin-user-type-dropdown.gif)
+
 | Direction | Required Privilege |
 |---|---|
 | Standard User → SuperUser (promote) | SuperUser |
