@@ -115,6 +115,8 @@ Use this when blocking a user temporarily without removing them from the system.
 2. Change status to **Inactive**
 3. **Save**
 
+![Active / Inactive toggle in the user edit modal — clicking the blue (active) toggle flips it to gray (inactive)](images/admin-user-toggle.gif)
+
 Inactive users cannot log in, but their agentflows, collections, and chat history are preserved as-is.
 
 !!! warning "Delete vs. Deactivate"
