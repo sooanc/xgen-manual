@@ -62,7 +62,7 @@
 | Agent 운영 | 노드 관리 | [노드 목록](32a-node-list.md) |
 | Agent 운영 | 프롬프트 템플릿 | [Agent 운영 · 프롬프트 템플릿](32-agent-operations.md) |
 | Agent 운영 | 사용자 피드백 | [Agent 운영 · 사용자 피드백](32-agent-operations.md#user-feedback) |
-| Agent 운영 | 응답 품질 평가 | [Agent 운영 · 응답 품질 평가](32-agent-operations.md) |
+| Agent 운영 | 응답 품질 평가 | [Agent 운영 · 응답 품질 평가](32-agent-operations.md#quality-eval) |
 | Agent 운영 | Agent 리텐션 분석 | [Agent 운영 · 리텐션 분석](32-agent-operations.md) |
 | Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#task-planning) |
 | AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#risk-review) |
