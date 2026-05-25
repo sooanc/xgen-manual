@@ -131,8 +131,20 @@ Layout:
 - **Bottom — *Available Users***: filter via the search box, then click **+ Add** next to each user to move them up into the chip area. Multiple additions allowed.
 - **Save / Close** — changes apply instantly; *Close* dismisses the modal.
 
-!!! tip "When one user needs multiple roles"
-    *Role screen → Users button* is best for *many users ↔ one role* bulk assignments. For *one user ↔ many roles*, the **Roles** section in the [User Management](21-user-management.md) user-edit modal is faster (multi-select).
+### Assigning Multiple Roles to a User
+
+The *Users* button on the Role screen is best for assigning the same role to many users in bulk.
+
+When you need to grant *multiple* roles to a single user, set them via the *User Edit* modal on the [User Management](21-user-management.md) screen instead.
+
+Example:
+
+- *User Management > User Edit > Permissions* tab
+- Multi-select roles and **Save**
+
+This path is more efficient when you organize permissions around the user rather than around the role.
+
+![Switching to the *Permissions* tab in the user edit modal opens a multi-select roles area](images/admin-user-roles-assign.gif)
 
 ### Common scenarios { #scenarios }
 
