@@ -26,7 +26,8 @@ const VIEWPORT = { width: 1280, height: 720 };
 const FPS = 15;
 const SCALE_WIDTH = 960;
 const PRE_CLICK_HOLD_MS = 900;
-const POST_CLICK_HOLD_MS = 1600;
+const MODAL_VISIBLE_HOLD_MS = 2200;
+const POST_CANCEL_HOLD_MS = 1100;
 const TRIM_LEAD_IN_MS = 400;
 const OUT_FILE = 'admin-force-logout.gif';
 
@@ -155,22 +156,38 @@ async function captureShot(browser, storageState) {
   await page.waitForTimeout(200);
   await page.mouse.click(cx, cy);
 
-  // 확인 모달이 뜨면 *취소* 를 자동 클릭해 실제 로그아웃은 일으키지 않음.
-  // 모달이 없으면 액션이 즉시 실행됨 — 부득이.
-  await page.waitForTimeout(700);
-  const cancelClicked = await page.evaluate(() => {
-    const modal = document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root');
-    if (!modal) return 'no-modal';
-    const btns = Array.from(modal.querySelectorAll('button'));
-    const cancel = btns.find(b => /^(취소|Cancel|아니오|닫기)$/.test(b.textContent.trim()));
-    if (cancel) { cancel.click(); return 'cancelled'; }
-    return 'modal-present-no-cancel-btn';
-  });
-  log(`  confirm modal handling: ${cancelClicked}`);
+  // 확인 모달이 노출되기를 기다림 (role="dialog" 또는 MUI Dialog/Modal)
+  let cancelRect = null;
+  try {
+    await page.waitForFunction(() => !!document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root'), null, { timeout: 4_000 });
+    log(`  confirm modal appeared`);
+    // 모달 노출 후 시청자가 인지하도록 충분히 hold (GIF 에서 보이도록)
+    await page.waitForTimeout(MODAL_VISIBLE_HOLD_MS);
+    // *취소* 버튼 위치 확보 (자동 취소로 실제 세션 영향 없게)
+    cancelRect = await page.evaluate(() => {
+      const modal = document.querySelector('[role="dialog"], .MuiDialog-root, .MuiModal-root');
+      if (!modal) return null;
+      const btns = Array.from(modal.querySelectorAll('button'));
+      const cancel = btns.find(b => /^(취소|Cancel|아니오|닫기)$/.test(b.textContent.trim()));
+      return cancel?.getBoundingClientRect().toJSON() || null;
+    });
+  } catch (e) {
+    log(`  warning: 확인 모달 not detected — 즉시 실행되는 화면일 수 있음`);
+  }
+
+  if (cancelRect) {
+    // 가상 커서를 취소 버튼으로 이동시켜 시청자가 흐름을 인지하도록 — 그 뒤 클릭
+    const cancelCx = cancelRect.x + cancelRect.width / 2;
+    const cancelCy = cancelRect.y + cancelRect.height / 2;
+    log(`  animating cursor to 취소 (${cancelCx.toFixed(0)}, ${cancelCy.toFixed(0)})`);
+    await page.mouse.move(cancelCx, cancelCy, { steps: 25 });
+    await page.waitForTimeout(200);
+    await page.mouse.click(cancelCx, cancelCy);
+  }
 
   // hover 회피
   await page.mouse.move(1100, 120, { steps: 8 });
-  await page.waitForTimeout(POST_CLICK_HOLD_MS);
+  await page.waitForTimeout(POST_CANCEL_HOLD_MS);
   const tEnd = Date.now() - ctxStart;
   log(`  total ≈ ${tEnd}ms`);
 
