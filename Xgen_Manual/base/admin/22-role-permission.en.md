@@ -179,7 +179,7 @@ Example: if a "Team Lead" role supervises a "Team Member" role, the lead receive
 
 Click the *Permission Hierarchy* tab at the top. Existing relations are listed as table rows.
 
-![Permission Hierarchy tab — table rows of supervisor → target with Add Hierarchy / Inspect Permissions / Refresh in the top right](images/admin-role-management-supervision-tab.png)
+![Permission Hierarchy tab — clicking *Add Hierarchy* in the top right of the supervisor → target list opens the new-relation modal](images/admin-role-management-supervision-tab.gif)
 
 | Area | Description |
 |---|---|
