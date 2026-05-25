@@ -8,10 +8,10 @@ This chapter covers procedures for defining and assigning **roles** and **permis
 
 XGEN's permission model has two layers — *Role / Permission*.
 
-| # | Layer | Question it answers | Shape of the value | Defined by | Examples | Where it bites |
-|---|---|---|---|---|---|---|
-| **1** | **Role** | Which admin menus does this user see? | Multi-label array | Your organization | System Administrator, Governance Officer, Analyst, Operator | Menu scope shown in the sidebar |
-| **2** | **Permission** | Can this user use each section / tab / button inside a screen? | ABAC key array | Permission catalog → mapped to a role or to a user | `admin.user:read`, `main.agentflow:manage` | Section / tab / button-level gates inside a screen |
+| Layer | Question it answers | Shape of the value | Defined by | Examples | Where it bites |
+|---|---|---|---|---|---|
+| **Role** | Which admin menus does this user see? | Multi-label array | Your organization | System Administrator, Governance Officer, Analyst, Operator | Menu scope shown in the sidebar |
+| **Permission** | Can this user use each section / tab / button inside a screen? | ABAC key array | Permission catalog → mapped to a role or to a user | `admin.user:read`, `main.agentflow:manage` | Section / tab / button-level gates inside a screen |
 
 Permissions are **bundled into roles** or **granted directly to individual users**. The recommended pattern is to bundle by role first, then reinforce only edge cases with direct grants.
 
