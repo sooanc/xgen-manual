@@ -52,20 +52,31 @@ This menu is the **second of two approval stages** required before an agentflow 
 
 #### Approval workflow
 
-The procedure below moves through *sidebar entry → queue overview → row inspection → decision + comment* — all inside this one screen (`gov-agentflow-approval`).
+Agent approval is handled in the steps below. All review and decision actions can be completed within this single screen.
 
-1. **Open the screen** — In **Admin Center**, expand **AI Governance → Agentflow Approval** in the left sidebar. The header is followed by a **search field** and **four stat cards**.
+**1. Open the screen**
 
-2. **Read the queue** — Click any of the four stat cards to filter the table to that status.
+In Admin Center, navigate via the left sidebar:
 
-    | Stat card | Variant | Meaning |
-    |---|---|---|
-    | All status | info | Total items currently in the queue |
-    | Pending | warning | `is_governance_accepted` not set — **items to handle on this screen** |
-    | Approved | success | `is_governance_accepted: true` — agent is live |
-    | Rejected | error | A reviewer is recorded but `is_governance_accepted: false` — returned to author |
+- AI Governance
+- Agent Approval
 
-    The queue contains only agents the System Administrator has approved at stage 1 (plus items force-routed in by a risk-threshold breach from Risk Review). Anything rejected at stage 1 never reaches this screen, so reviewers can focus on **risk category, PII impact, and policy compliance**.
+The screen header is followed by a search field and the per-status stat cards.
+
+**2. Check approval status**
+
+Use the dashboard cards at the top to quickly see the current status of the queue.
+
+Examples:
+
+- All
+- Pending
+- Approved
+- Rejected
+
+Click any card to filter the list automatically by that status, so you can focus on what you need to act on.
+
+Only agents that have cleared the System Administrator's stage-1 deployment approval are listed in this review queue. Items whose risk-assessment results exceed the configured thresholds may also be added to the same queue automatically.
 
 3. **Read the table columns** — Headers sort on click.
 
