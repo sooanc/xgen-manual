@@ -1,6 +1,6 @@
 # Admin Manual
 
-A guide for {{customer.name}} system administrators operating the {{product.name}} solution.
+A guide for system administrators operating the {{product.name}} solution.
 
 > **Permissions:** Features documented here are only available to accounts with administrator privileges.
 

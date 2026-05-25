@@ -103,6 +103,8 @@ An administrator can directly reset another user's password.
 2. Expand the **Change Password** section at the bottom of the modal
 3. Enter a new password → **Save**
 
+![User Edit modal — under the Basic Info tab, expanding **비밀번호 변경 (Change Password)** reveals *New Password / Confirm Password* fields with the policy hint *minimum 8 characters; combine at least two of upper-case / lower-case / digit / special character*](images/admin-user-password-reset.png)
+
 > **Recommended:** Deliver the new password through a separate channel and instruct the user to change it on first login.
 
 ## Deactivating a User
