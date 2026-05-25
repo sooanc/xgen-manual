@@ -15,13 +15,29 @@ XGEN's permission model has two layers — *Role / Permission*.
 
 Permissions are **bundled into roles** or **granted directly to individual users**. The recommended pattern is to bundle by role first, then reinforce only edge cases with direct grants.
 
-### Evaluation Order (Summary)
+### How Permissions Are Checked
 
-When the UI decides whether to show a menu or a button, the solution always evaluates in the same order.
+The menus and buttons a user can see are controlled automatically by the system based on the user's permissions. The check proceeds in the order below.
 
-1. If the user is a SuperUser, pass immediately — every admin area is granted.
-2. Otherwise, match the user's **permission array (`permissions`)** against the required ABAC key. Wildcards such as `*:*` and `admin.user:*` participate in the match.
-3. If nothing matches, the menu or button is **hidden silently**.
+**1. Check whether the user is an administrator (SuperUser)**
+
+The system first checks whether the account is a SuperUser. SuperUser accounts have access to every administrative function by default.
+
+Note that menu access for *System Administrators* and *Governance Officers* may be partially separated according to internal operational policy.
+
+**2. Check the user's permissions**
+
+If the user is not a SuperUser, the system determines accessible menus based on the permissions granted to that user.
+
+Examples:
+
+- Has *User Management* permission → User Management menu is shown
+- Has *Agent Creation* permission → Agent Creation menu is shown
+- Has *Knowledge Management* permission → Knowledge Management menu is shown
+
+**3. Features without permission are hidden automatically**
+
+Menus and buttons for which the user lacks the required permission are not shown. Users only see the features available to them; everything else is hidden silently.
 
 ### Three Ways to Grant Permissions { #grant-paths }
 
