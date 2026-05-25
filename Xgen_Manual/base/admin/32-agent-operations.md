@@ -48,6 +48,8 @@
 
 1. **화면 진입** — 좌상단 모드 전환에서 **관리 설정** 모드로 들어간 뒤, 좌측 사이드바에서 **Agent 운영 → Agent 관리** (view ID `admin-agentflow-management`) 를 선택합니다. 카드 그리드가 노출되며, 상단에는 **전체 / 활성 / 비활성** 필터 탭과 검색창이 있습니다.
 
+    ![Step 1 — 사이드바 Agent 운영 → Agent 관리 진입 후 카드 그리드 로드](images/admin-deploy-approval-step1.gif)
+
 2. **대기 카드 식별** — 카드 배지 영역에서 **배포 대기**(warning 톤) 배지가 붙은 카드를 찾습니다. 같은 카드에는 작성자(`username`)·부서·최근 수정일·노드 수가 metadata 로 함께 표시됩니다. 검색창에 작성자명을 넣어 좁힐 수 있습니다.
 
     | 배지 색 | 의미 |
@@ -57,7 +59,11 @@
     | 초록(`success`) — 배포됨 | 이미 배포 승인 통과, 거버넌스 단계로 진행 중 또는 통과 완료 |
     | 회색 — 미배포 | 미요청 또는 거부 후 복귀 |
 
+    ![Step 2 — Agent 관리 카드 그리드와 상태 배지 (활성/비활성·개인·미배포 등)](images/admin-deploy-approval-step2.png)
+
 3. **상세 확인** — 카드를 클릭하면 해당 에이전트 상세 영역으로 진입합니다. 노드 구성·실행 로그·테스트 결과 등을 본 다음, 결정에 필요한 정보가 부족하면 작성자에게 추가 자료를 요청합니다. 다시 목록으로 돌아오려면 좌상단 **← 뒤로** 버튼을 누릅니다.
+
+    ![Step 3 — 카드 클릭으로 상세 진입 후 ← 뒤로 버튼으로 목록 복귀](images/admin-deploy-approval-step3.gif)
 
 4. **dropdown 액션 실행** — 대기 카드의 우측 **⋯**(더보기) 메뉴를 펼치면 `inquire_deploy === true` 일 때만 활성화되는 두 가지 항목이 노출됩니다.
 
@@ -66,7 +72,11 @@
     | **승인** | `updateAgentflowAdmin({ enable_deploy: true, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 승인되었습니다."* → 카드 배지 *배포됨* 으로 갱신. 거버넌스 큐로 자동 진행 |
     | **거부** | `updateAgentflowAdmin({ enable_deploy: false, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 거부되었습니다."* → 카드 배지 *미배포* 로 복귀. 작성자에게 별도 채널로 사유 통보 권장 |
 
+    ![Step 4 — 카드 액션 영역 (현재 캡처는 배포 대기 미존재 상태, 평상 시 설정/삭제 노출)](images/admin-deploy-approval-step4.png)
+
 5. **결과 확인** — 처리 완료 후 카드 그리드가 자동 새로고침되며 배지가 갱신됩니다. 같은 카드가 다시 *배포 대기* 로 올라오면 작성자가 수정 후 재요청한 경우이므로 2단계부터 반복합니다.
+
+    ![Step 5 — 처리 후 카드 그리드 갱신 화면](images/admin-deploy-approval-step5.png)
 
 !!! warning "승인 후에도 사용자 노출은 아직"
     본 화면에서 **승인** 을 눌러도 사용자 검색·실행에 즉시 노출되지는 않습니다. [AI 거버넌스 → 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) 단계가 끝나야 서비스 활성화됩니다. 작성자에게 결과 안내 시 "배포 승인됨, 거버넌스 심사 대기 중" 으로 정확하게 구분해서 알리세요.
