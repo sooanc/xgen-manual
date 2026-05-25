@@ -92,12 +92,6 @@
 
 ![관리자용 자주묻는 질문 — FAQ 등재·편집·카테고리 관리 화면](images/admin-support-faq.png)
 
-### 권한과 동작
-
-- 등록·수정·삭제 권한: `main.support-faq:manage` 이상
-- 카테고리는 6종(`GENERAL / ACCOUNT / BILLING / TECHNICAL / USAGE` + 기타) — 사용자 측 카테고리 필터에 직접 매핑됩니다.
-- 정렬은 조회수 순 (대시보드 FAQ 위젯과 동일 데이터)
-
 ### 등재 절차
 
 1. **3건 이상 동일 1:1 문의 → FAQ 승격 기준** — 카테고리·증상이 유사한 문의가 3건 이상 들어오면 FAQ로 등재
