@@ -95,7 +95,6 @@
 
 - [사용자 매뉴얼 · 기술지원](../user/19-tech-support.md) — 화면 구성·필터·CTA 등 기본 사용법
 - [역할/권한 관리](22-role-permission.md) — `main.support-*:manage` 등 권한 부여 방법
-- [감사 로그](27-audit-log.md) — 응대·게시 행위가 감사 로그에 어떻게 남는지
 
 ## 문의
 

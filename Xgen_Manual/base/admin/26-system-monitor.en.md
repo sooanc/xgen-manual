@@ -141,7 +141,7 @@ Select **Admin → System Status → Log Viewer** in the left sidebar. *Technica
 
 !!! info "vs. Audit Log"
     - **Log Viewer**: *technical logs* from backend components (stack traces, processing-result messages). Used by operations to chase incidents.
-    - **Audit Log**: a permanent record of *who did what when* (*user activity*). Used for regulatory and internal-audit response — see the [Audit Log](27-audit-log.md) chapter.
+    - **Audit Log**: a permanent record of *who did what when* (*user activity*). Used for regulatory and internal-audit response. For data-change audits, see [Data Management · Data Audit Log](33-data-management.md#data-audit-log).
 
 ### Operational recommendations
 

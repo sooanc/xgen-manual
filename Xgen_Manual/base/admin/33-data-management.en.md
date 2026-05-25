@@ -42,9 +42,9 @@ Register external-database connection profiles (e.g., BigQuery / Snowflake / a s
 
 Schedule and monitor recurring tasks (ETL, metrics aggregation, log cleanup, etc.). One-off jobs are also supported.
 
-### Data Audit Log
+### Data Audit Log { #data-audit-log }
 
-Audit log of data changes (INSERT / UPDATE / DELETE / DDL) on the operational DB — who, when, which table, which row. For audit of administrator *actions*, see the [Audit Log](27-audit-log.md) chapter.
+Audit log of data changes (INSERT / UPDATE / DELETE / DDL) on the operational DB — who, when, which table, which row.
 
 ## Operational Recommendations
 
@@ -55,7 +55,6 @@ Audit log of data changes (INSERT / UPDATE / DELETE / DDL) on the operational DB
 
 ## Related Chapters
 
-- [Audit Log](27-audit-log.md) — audit trail of system / administrator *actions* (distinct from data-change audit)
 - [System Monitor](26-system-monitor.md) — DB performance and disk usage monitoring
 
 ## Contact

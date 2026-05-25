@@ -13,7 +13,7 @@
 - Flow: only agents that already passed stage 1 ([Agent Management — Deployment Approval](../admin/32-agent-operations.md#agent-mgmt-deploy-approval)) appear in this queue. Items pushed in by a risk-threshold breach in Risk Review join the same queue.
 - Queue view: click any of the four stat cards (**All / Pending / Approved / Rejected**) at the top to filter instantly.
 - Review items: node layout, author, department, parameters (look at PII-exposing nodes first), category.
-- Decision: **Approve** (comment optional) or **Reject** (comment **required**). Both write `governance_reviewed_by` + `governance_review_comment` + timestamp to the [audit log](../admin/27-audit-log.md) and AI Service Change History permanently.
+- Decision: **Approve** (comment optional) or **Reject** (comment **required**). Both write `governance_reviewed_by` + `governance_review_comment` + timestamp to [AI Service Change History](../admin/29-governance-dashboard.md#audit-tracking) permanently.
 - Outcome: approved agents flip to servable immediately. Rejected agents return to the author, who fixes them and resubmits from stage 0.
 
 ## The governance approval queue is piling up (find the bottleneck)
@@ -29,11 +29,6 @@
 ## Add or adjust PII masking rules
 - Start: Admin Center → AI Governance → Control Policy → PII Policy
 - Procedure: [PII Policy](../admin/25-pii-policy.md)
-
-## Trace user actions (login, system-setting changes, etc.)
-- Start: Admin Center → Security & Audit → Audit Log
-- Procedure: [Audit Log](../admin/27-audit-log.md)
-- General-purpose system action audit
 
 ## Trace governance policy / approval changes
 - Start: Admin Center → AI Governance → AI Service Change History

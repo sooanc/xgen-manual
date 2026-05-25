@@ -1,0 +1,18 @@
+nav:
+  - 20-admin-overview.md
+  - 21-user-management.md
+  - 22-role-permission.md
+  - 22b-login-management.md
+  - 32-agent-operations.md
+  - 32a-node-list.md
+  - 29-governance-dashboard.md
+  - 25-pii-policy.md
+  - 23-llm-settings.md
+  - 24-embedding-settings.md
+  - 25b-guardrail-model.md
+  - 26-system-monitor.md
+  - 33-data-management.md
+  - 28-mcp-market.md
+  - 31-tech-support-handling.md
+  - 34-knowledge-operations.md
+  - 30-dashboard.md

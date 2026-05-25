@@ -114,7 +114,6 @@
 - [에이전트 만들기](../user/12-agentflow-create.md) — 개발자 입장에서의 에이전트 설계
 - [에이전트 운영](../user/13-agentflow-operations.md) — 개발자 입장의 운영·테스트·배포
 - [AI 거버넌스](29-governance-dashboard.md) — 위험 평가·승인을 거버넌스 담당자가 운영하는 화면
-- [감사 로그](27-audit-log.md) — 관리자 작업 자체에 대한 감사 로그
 
 ## 문의
 

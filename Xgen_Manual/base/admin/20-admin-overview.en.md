@@ -77,12 +77,12 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) |
 | Environment | Sidebar | [Sidebar · Environment Overview](#env-overview) |
 | System Status | System Monitoring | [System Monitor · System Monitoring](26-system-monitor.md) |
-| System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query-log) |
-| System Status | Log Viewer | [System Monitor · Log Viewer](26-system-monitor.md#system-query-log) |
+| System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query) |
+| System Status | Log Viewer | [System Monitor · Log Viewer](26-system-monitor.md#log-query) |
 | Data Management | Database | [Data Management · Database](33-data-management.md) |
 | Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md) |
 | Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md) |
-| Data Management | Data Audit Log | [Audit Log · Data Audit Log](27-audit-log.md) |
+| Data Management | Data Audit Log | [Data Management · Data Audit Log](33-data-management.md#data-audit-log) |
 | MCP Management | MCP Library | [MCP Library · MCP Library](28-mcp-market.md) |
 | MCP Management | MCP Operations & Monitoring | [MCP Library · MCP Operations / Monitoring](28-mcp-market.md#mcp-station) |
 | Service Operations | Announcement Board | [Tech Support Handling · Announcement Board](31-tech-support-handling.md) |
@@ -115,7 +115,7 @@ The *General* screen (`admin?view=admin-system-config`) exposes **every environm
     - **Type badge** — `Bool` / `Json` / `Str` / `Int`, etc.
 
 !!! warning "Verify impact before editing"
-    *General* exposes keys that directly affect LLM / Embedding / TTS / Node / Workflow behavior. The same keys are editable from individual menus (*LLM / Search·Embedding / Guardrail*), so keep a consistent record of *which screen* a change was made from. Invalid values affect in-flight chats and executions immediately — review with the [audit log](27-audit-log.md) before changes.
+    *General* exposes keys that directly affect LLM / Embedding / TTS / Node / Workflow behavior. The same keys are editable from individual menus (*LLM / Search·Embedding / Guardrail*), so keep a consistent record of *which screen* a change was made from. Invalid values affect in-flight chats and executions immediately — coordinate with the operations team before changes.
 
 !!! info "Menu Naming"
     Menu names on screen may vary slightly between solution versions and user permissions. This manual is based on {{product.name}} {{product.version}}; **bolded** menus are those this manual covers.

@@ -95,7 +95,6 @@ To monitor operations quality, track these weekly/monthly:
 
 - [User Manual · Technical Support](../user/19-tech-support.md) — basic screen layout, filters, CTA
 - [Roles & Permissions](22-role-permission.md) — how to grant permissions like `main.support-*:manage`
-- [Audit Log](27-audit-log.md) — how handling / publishing actions are recorded
 
 ## Inquiries
 

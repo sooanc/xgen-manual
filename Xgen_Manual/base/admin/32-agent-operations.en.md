@@ -114,7 +114,6 @@ Register and rank candidate new agents the organization wants to build. Collects
 - [Creating an Agent](../user/12-agentflow-create.md) — designer perspective
 - [Agent Operations (user-side)](../user/13-agentflow-operations.md) — designer perspective on running and testing
 - [AI Governance](29-governance-dashboard.md) — risk review and approval workflow for governance officers
-- [Audit Log](27-audit-log.md) — audit trail of admin actions
 
 ## Contact
 
