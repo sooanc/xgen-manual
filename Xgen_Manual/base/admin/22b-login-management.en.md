@@ -32,6 +32,8 @@ On entry the header reads *"List of users currently signed in. You can revoke al
 
 To expire all of a user's sessions immediately, click the **Force Logout** button on that user's row.
 
+![Clicking the *Force Logout* button at the right end of a user row in the Login Management list](images/admin-force-logout.gif)
+
 **When it takes effect**:
 
 - The instant you click, *every* active session for that user is invalidated (across tabs and devices).
