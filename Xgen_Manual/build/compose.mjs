@@ -229,7 +229,7 @@ export async function compose(customerId) {
 
   // 7. mkdocs.yml 생성
   const baseMkdocs = parseYaml(await readFile(PATHS.mkdocsBase, 'utf8'));
-  baseMkdocs.site_name = `${displayCustomer.name} - ${cfg.product.name} 솔루션 매뉴얼`;
+  // site_name 은 mkdocs.base.yml 의 값('솔루션 가이드')을 그대로 사용 — 고객사명 접두 제거
   baseMkdocs.site_dir = join(ROOT, 'dist', 'site', 'docs', cfg.customer.id);
   baseMkdocs.docs_dir = 'docs';
   if (cfg.outputs?.html?.site_url && /^https?:\/\//.test(cfg.outputs.html.site_url)) {
