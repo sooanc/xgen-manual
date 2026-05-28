@@ -142,17 +142,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
       })
       .join('\n') || '<div class="empty">빌드된 고객사가 없습니다. <code>node build/build.mjs --customer &lt;id&gt; --formats html</code> 로 빌드하세요.</div>';
 
-  const banner =
-    variant === 'admin'
-      ? `<div class="banner banner-admin">
-    <div class="banner-text">
-      <strong>🔒 관리자 전용 경로 (/admin/)</strong> — 운영 환경에서 인증 계층(SSO·관리자 그룹)으로 보호되는 위치입니다. 현재는 골격 데모용으로 인증 없이 접근 가능합니다.
-    </div>
-    <a class="banner-link" href="customers.html">📚 매뉴얼 관리</a>
-    <a class="banner-link" href="deploy.html">🚀 운영 배포</a>
-    <a class="banner-link" href="../index.html">← 메인 페이지로</a>
-  </div>`
-      : '';
+  const banner = '';
 
   const subtitle =
     variant === 'admin'

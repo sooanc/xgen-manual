@@ -13,26 +13,14 @@ import { compose, listCustomers, ROOT } from './compose.mjs';
 import { buildHtml } from './lib/html.mjs';
 import { buildDocx } from './lib/docx.mjs';
 import { buildSiteIndex } from './lib/site-index.mjs';
-import { buildAdminDeployPage } from './lib/admin-deploy.mjs';
-import { buildAdminCustomersPage } from './lib/admin-customers.mjs';
 
 const DIST = join(ROOT, 'dist');
 const CUSTOMERS = join(ROOT, 'customers');
-const BASE = join(ROOT, 'base');
-const DEPLOY_CONFIG = join(ROOT, 'deploy.config.yml');
-const DEPLOY_ROOT = join(DIST, 'deploy');
 
 async function regenerateAdminPages() {
   const siteRoot = join(DIST, 'site');
   await buildSiteIndex({ siteRoot, customersRoot: CUSTOMERS });
-  await buildAdminCustomersPage({ siteRoot, customersRoot: CUSTOMERS, baseRoot: BASE });
-  await buildAdminDeployPage({
-    siteRoot,
-    customersRoot: CUSTOMERS,
-    configPath: DEPLOY_CONFIG,
-    deployRoot: DEPLOY_ROOT,
-  });
-  console.log('[index] dist/site/index.html, /admin/{index,customers,deploy}.html 갱신됨');
+  console.log('[index] dist/site/index.html, /admin/index.html 갱신됨');
 }
 
 function parseCli() {
