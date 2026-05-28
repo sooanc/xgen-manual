@@ -7,8 +7,9 @@
 
 customer:
   id: jeju-bank
-  name: "제OOO"
+  name: "XGEN"
   industry: financial
+  gitlab_branch: jeju-dev
 
 product:
   name: "Xgen"

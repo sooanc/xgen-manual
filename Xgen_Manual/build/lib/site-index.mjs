@@ -6,7 +6,6 @@ import { readFile, writeFile, readdir, stat, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
-import { maskCustomerLabel } from './mask.mjs';
 
 const INDUSTRY_LABELS = {
   financial: '금융',
@@ -66,6 +65,7 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
       id,
       name: cfg?.customer?.name ?? id,
       industry: cfg?.customer?.industry ?? null,
+      gitlabBranch: cfg?.customer?.gitlab_branch ?? null,
       productName: cfg?.product?.name ?? null,
       version: cfg?.product?.version ?? null,
       manualVersion: cfg?.manual?.version ?? null,
@@ -114,9 +114,10 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
           ? '<span class="tag tag-standard">📖 XGEN</span>'
           : '';
         const builtAt = item.builtAt.toLocaleString('ko-KR');
-        // 표준 매뉴얼은 마스킹 제외, 일반 고객사는 이름·ID 마스킹 (대외비)
-        const displayName = item.isStandard ? item.name : maskCustomerLabel(item.name);
-        const displayId = item.isStandard ? item.id : maskCustomerLabel(item.id);
+        // 카드 타이틀은 customer.name 그대로 노출. ID 코드 칸은 customer.gitlab_branch
+        // (GitLab 브랜치 명) 가 있으면 우선 사용, 없으면 customer.id 폴백.
+        const displayName = item.name;
+        const displayId = item.gitlabBranch || item.id;
         const productLine =
           item.productName
             ? `<div><span class="label">제품</span> ${escapeHtml(item.productName)}${item.version ? ' v' + escapeHtml(item.version) : ''}</div>`

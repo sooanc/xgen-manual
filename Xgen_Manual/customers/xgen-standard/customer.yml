@@ -7,6 +7,7 @@
 customer:
   id: xgen-standard
   name: "XGEN"
+  gitlab_branch: stage
   # industry는 의도적으로 비움 — 표준 매뉴얼은 특정 산업에 종속되지 않음
 
 product:
