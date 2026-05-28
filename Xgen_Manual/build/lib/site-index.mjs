@@ -111,7 +111,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
           ? `<span class="tag tag-industry">${escapeHtml(industryLabel)}</span>`
           : '';
         const standardTag = item.isStandard
-          ? '<span class="tag tag-standard">📖 표준 매뉴얼</span>'
+          ? '<span class="tag tag-standard">📖 솔루션 매뉴얼</span>'
           : '';
         const builtAt = item.builtAt.toLocaleString('ko-KR');
         // 표준 매뉴얼은 마스킹 제외, 일반 고객사는 이름·ID 마스킹 (대외비)

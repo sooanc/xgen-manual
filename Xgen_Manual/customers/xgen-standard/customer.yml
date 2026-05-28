@@ -6,7 +6,7 @@
 
 customer:
   id: xgen-standard
-  name: "표준 매뉴얼"
+  name: "솔루션 매뉴얼"
   # industry는 의도적으로 비움 — 표준 매뉴얼은 특정 산업에 종속되지 않음
 
 product:
