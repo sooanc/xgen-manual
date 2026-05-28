@@ -95,5 +95,4 @@ extra_css:
   - assets/css/look-and-feel.v2.css
 
 extra_javascript:
-  - assets/js/back-to-main.js
   - assets/js/toc-active-default.js
