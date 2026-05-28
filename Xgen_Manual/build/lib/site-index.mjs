@@ -153,7 +153,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Xgen 솔루션 매뉴얼</title>
+<title>솔루션 가이드</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root {
@@ -198,7 +198,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
 <body>
 <div class="container">
   <header>
-    <h1>Xgen 솔루션 매뉴얼</h1>
+    <h1>솔루션 가이드</h1>
     <p>${subtitle}</p>
   </header>
 

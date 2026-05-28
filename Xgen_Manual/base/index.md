@@ -1,4 +1,4 @@
-# {{product.name}} 솔루션 매뉴얼
+# 솔루션 가이드
 
 **고객사:** {{customer.name}}
 **제품 버전:** {{product.version}}

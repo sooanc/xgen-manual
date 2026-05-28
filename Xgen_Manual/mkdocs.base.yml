@@ -2,7 +2,7 @@
 # compose.mjs가 이 파일을 기반으로 고객사별 mkdocs.yml을 생성합니다.
 # 이 파일을 직접 수정하면 모든 고객사 빌드에 영향을 줍니다.
 
-site_name: "Xgen 솔루션 매뉴얼"
+site_name: "솔루션 가이드"
 site_description: "Xgen 솔루션 사용자 및 관리자 매뉴얼"
 site_author: "Xgen Team"
 docs_dir: docs
