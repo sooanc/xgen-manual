@@ -152,12 +152,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
     <a class="banner-link" href="deploy.html">🚀 운영 배포</a>
     <a class="banner-link" href="../index.html">← 메인 페이지로</a>
   </div>`
-      : `<div class="banner">
-    <div class="banner-text">
-      <strong>⚠ 내부용 페이지</strong> — 실제 운영 환경에서는 인증 계층(리버스 프록시·CDN Access)이 고객사별 접근을 제한합니다. 이 목록은 빌드 산출물 점검을 위한 내부 인덱스이며, 운영 배포 시 제거하거나 관리자 전용 경로로 이동해야 합니다.
-    </div>
-    <a class="banner-link" href="admin/index.html">→ 관리자 전용 경로(/admin/)로 이동</a>
-  </div>`;
+      : '';
 
   const subtitle =
     variant === 'admin'
