@@ -233,6 +233,10 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
   .card-meta .muted { color: #999; font-size: 12px; }
   .card-meta code { background: #f0f1f3; padding: 1px 6px; border-radius: 3px; font-size: 12px; color: #333; }
   .empty { padding: 60px 20px; text-align: center; color: var(--sub); background: white; border:1px solid var(--border); border-radius: 10px; }
+  .guide { background: white; border:1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+  .guide-title { margin: 0 0 10px; font-size: 14px; font-weight: 600; color: var(--fg); }
+  .guide-list { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.8; color: var(--sub); }
+  .guide-list code { background: #f0f1f3; padding: 1px 6px; border-radius: 3px; font-size: 12px; color: #333; }
   footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--sub); font-size: 12px; }
   footer code { background: #f0f1f3; padding: 1px 6px; border-radius: 3px; }
 </style>
@@ -245,6 +249,15 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
   </header>
 
   ${banner}
+
+  <section class="guide" aria-label="매뉴얼 구분 안내">
+    <h2 class="guide-title">매뉴얼 구분</h2>
+    <ul class="guide-list">
+      <li><code>stage</code> — 개발 및 출시 예정 기능을 포함한 표준 매뉴얼</li>
+      <li><code>main</code> — 현재 운영 중인 안정 버전 기준의 매뉴얼</li>
+      <li>고객사별 매뉴얼 — 고객사 환경에 맞춰 구성된 전용 매뉴얼 (🔒 비밀번호 인증 필요)</li>
+    </ul>
+  </section>
 
   <div class="stats">
     <div><strong>${builtCount}</strong>개의 매뉴얼 빌드됨</div>
