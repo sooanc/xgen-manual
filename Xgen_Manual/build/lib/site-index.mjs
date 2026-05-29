@@ -137,9 +137,13 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
         const standardTag = item.isStandard
           ? '<span class="tag tag-standard">📖 XGEN</span>'
           : '';
-        // 고객사 전용 매뉴얼은 비밀번호 게이트 적용 (xgen-standard, xgen-main 표준 매뉴얼 2종 제외).
-        // 클릭 시 prompt 로 비밀번호 확인 후 진입. sessionStorage 로 한 번 통과하면 탭이 닫힐 때까지 유지.
-        const isGated = item.id !== 'xgen-standard' && item.id !== 'xgen-main';
+        // 공개 매뉴얼 화이트리스트 — 비밀번호 게이트 없이 즉시 진입 가능.
+        //   xgen-standard / xgen-main: 표준 매뉴얼 2종
+        //   gs-cert: GS인증용 외부 공개 매뉴얼
+        // 그 외(jeju-bank 등 일반 고객사) 는 비밀번호 게이트 적용. 클릭 시 gate.html 로 보내고
+        // sessionStorage 로 한 번 통과하면 탭이 닫힐 때까지 유지.
+        const PUBLIC_CARDS = new Set(['xgen-standard', 'xgen-main', 'gs-cert']);
+        const isGated = !PUBLIC_CARDS.has(item.id);
         const gatedTag = isGated
           ? '<span class="tag tag-gated">🔒 고객사 전용</span>'
           : '';
