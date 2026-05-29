@@ -81,18 +81,19 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
     return a.name.localeCompare(b.name, 'ko');
   });
 
-  const builtCustomerCount = items.filter((i) => !i.isStandard).length;
-  const definedCustomerCount = definedIds.filter((id) => id !== 'xgen-standard').length;
+  // 매뉴얼 총 개수 = 빌드된 모든 매뉴얼 (xgen-standard / xgen-main 등 공개용 표준 매뉴얼 포함)
+  const builtManualCount = items.length;
+  const definedManualCount = definedIds.length;
 
   // 메인 페이지 (/index.html) — 내부 미리보기, 운영 시 제거 또는 admin으로 이동 권고
-  const mainHtml = render(items, definedCustomerCount, builtCustomerCount, {
+  const mainHtml = render(items, definedManualCount, builtManualCount, {
     docsPrefix: 'docs',
     variant: 'main',
   });
   await writeFile(join(siteRoot, 'index.html'), mainHtml, 'utf8');
 
   // 관리자 경로 (/admin/index.html) — 운영 시 인증 게이팅 대상 위치 (구조 데모)
-  const adminHtml = render(items, definedCustomerCount, builtCustomerCount, {
+  const adminHtml = render(items, definedManualCount, builtManualCount, {
     docsPrefix: '../docs',
     variant: 'admin',
   });
@@ -141,14 +142,14 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
       </div>
     </a>`;
       })
-      .join('\n') || '<div class="empty">빌드된 고객사가 없습니다. <code>node build/build.mjs --customer &lt;id&gt; --formats html</code> 로 빌드하세요.</div>';
+      .join('\n') || '<div class="empty">빌드된 매뉴얼이 없습니다. <code>node build/build.mjs --customer &lt;id&gt; --formats html</code> 로 빌드하세요.</div>';
 
   const banner = '';
 
   const subtitle =
     variant === 'admin'
-      ? '관리자 전용 — 고객사 빌드 결과 목록'
-      : '고객사별 빌드 결과 목록 (내부 점검용)';
+      ? '관리자 전용 — 매뉴얼 빌드 결과 목록'
+      : '매뉴얼 빌드 결과 목록 (내부 점검용)';
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -206,12 +207,11 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
   ${banner}
 
   <div class="stats">
-    <div><strong>${builtCount}</strong> 고객사 빌드됨</div>
-    <div><strong>${definedCount}</strong> 고객사 정의됨</div>
-    <div><span style="color:#999">+ Xgen 표준 매뉴얼</span></div>
+    <div><strong>${builtCount}</strong>개의 매뉴얼 빌드됨</div>
+    <div><strong>${definedCount}</strong>개의 매뉴얼 정의됨</div>
   </div>
 
-  <input class="search" type="search" placeholder="고객사명·ID·산업으로 검색…" oninput="onSearch(this.value)" autofocus>
+  <input class="search" type="search" placeholder="매뉴얼명·ID·산업으로 검색…" oninput="onSearch(this.value)" autofocus>
 
   <div class="grid" id="grid">
     ${cards}
