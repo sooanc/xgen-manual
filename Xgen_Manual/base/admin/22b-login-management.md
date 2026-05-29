@@ -1,3 +1,6 @@
+---
+require_view: admin-active-sessions
+---
 # 로그인 관리
 
 본 챕터는 *현재 시스템에 로그인되어 있는 사용자 세션* 을 실시간으로 확인하고 필요 시 즉시 회수하는 절차를 다룹니다. 좌측 메뉴 **관리 설정 → 사용자 / 접근제어 → 로그인 관리** (view ID `admin-active-sessions`) 를 선택해 진입합니다.

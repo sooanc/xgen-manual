@@ -1,3 +1,6 @@
+---
+require_view: admin-active-sessions
+---
 # Login Management
 
 This chapter covers how to inspect *currently signed-in user sessions* in real time and revoke them on demand. Open it via **Admin Center → Users / Access Control → Login Management** in the left sidebar (view ID `admin-active-sessions`).

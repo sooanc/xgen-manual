@@ -1,0 +1,37 @@
+{
+  "_comment": "xgen-frontend main 브랜치(=xgen.x2bee.com) 기준 view 가용성. ok:false 인 view 는 compose.mjs 가 nav 에서 제외함. 소스 갭 분석(stage..main feature-registry diff) 기반으로 수기 작성. 라이브 캡처 후 자동 갱신 가능.",
+  "capturedAt": "2026-05-29T00:00:00.000Z",
+  "baseUrl": "https://xgen.x2bee.com",
+  "views": {
+    "main-planning": {
+      "ok": false,
+      "notFound": true,
+      "source": "source-diff",
+      "note": "feature-main-planning import 가 main 브랜치 feature-registry.ts 에서 주석 처리됨 (TODO-2026-05-12)"
+    },
+    "main-teams": {
+      "ok": false,
+      "notFound": true,
+      "source": "source-diff",
+      "note": "main-teams import 가 main 브랜치 feature-registry.ts 에서 주석 처리됨 (TODO-2026-05-12)"
+    },
+    "admin-active-sessions": {
+      "ok": false,
+      "notFound": true,
+      "source": "source-diff",
+      "note": "feature-admin-active-sessions import 가 main 브랜치 admin-feature-registry.ts 에 미존재"
+    },
+    "admin-compute-pool": {
+      "ok": false,
+      "notFound": true,
+      "source": "source-diff",
+      "note": "feature-admin-compute-pool import 가 main 브랜치 admin-feature-registry.ts 에 미존재"
+    },
+    "admin-agentflow-management-info": {
+      "ok": false,
+      "notFound": true,
+      "source": "source-diff",
+      "note": "feature-admin-agentflow-management-info import 가 main 브랜치 admin-feature-registry.ts 에 미존재 (info 탭만 빠짐, 챕터 단위 영향은 작음)"
+    }
+  }
+}

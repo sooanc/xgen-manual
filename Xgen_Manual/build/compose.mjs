@@ -82,16 +82,29 @@ function parseFrontmatter(text) {
 // ─── screen-truth.json 로드 ────────────────────────────────────────────────
 // 캡처가 stg 에서 실제 본 view 의 가용 여부. 파일 없거나 손상되면 빈 객체
 // fallback — 즉 어떤 챕터도 제외하지 않음 (안전 디폴트).
-async function loadScreenTruth() {
-  if (!existsSync(PATHS.screenTruth)) return { views: {} };
-  try {
-    const raw = await readFile(PATHS.screenTruth, 'utf8');
-    const parsed = JSON.parse(raw);
-    return { ...parsed, views: parsed.views || {} };
-  } catch (e) {
-    console.warn(`[compose] screen-truth.json 파싱 실패, fallback 사용: ${e.message}`);
-    return { views: {} };
+//
+// customerId 가 주어지고 customers/<id>/screen-truth.json 이 존재하면 *그 파일을 우선* 사용.
+// 이로써 같은 base/ 콘텐츠로 다른 환경(예: main 브랜치 = xgen.x2bee.com)을 타깃하는
+// 커스터머가 자기 환경에서 미존재한 view 를 별도로 표시할 수 있음.
+async function loadScreenTruth(customerId) {
+  const candidates = [];
+  if (customerId) {
+    candidates.push(join(PATHS.customers, customerId, 'screen-truth.json'));
   }
+  candidates.push(PATHS.screenTruth);
+
+  for (const path of candidates) {
+    if (!existsSync(path)) continue;
+    try {
+      const raw = await readFile(path, 'utf8');
+      const parsed = JSON.parse(raw);
+      console.log(`[compose${customerId ? `:${customerId}` : ''}] screen-truth source: ${relative(ROOT, path).split(sep).join('/')}`);
+      return { ...parsed, views: parsed.views || {} };
+    } catch (e) {
+      console.warn(`[compose] screen-truth 파싱 실패 (${path}): ${e.message}`);
+    }
+  }
+  return { views: {} };
 }
 
 // ─── 고객사 설정 로드 ───────────────────────────────────────────────────────
@@ -152,8 +165,10 @@ export async function compose(customerId) {
   await rm(composedRoot, { recursive: true, force: true });
   await mkdir(docsDir, { recursive: true });
 
-  // 2. 매뉴얼 소스 결정 — 표준 매뉴얼은 base/, 일반 고객사는 customers/<id>/manual/
-  const usesBase = customerId === 'xgen-standard';
+  // 2. 매뉴얼 소스 결정 — 표준 매뉴얼 / xgen-main 은 base/ 직접, 일반 고객사는 customers/<id>/manual/
+  //    xgen-main: 동일한 base/ 콘텐츠를 main 브랜치(=xgen.x2bee.com) 대상으로 빌드.
+  //               차이는 customers/xgen-main/screen-truth.json 의 ok:false view 로 자동 제외.
+  const usesBase = customerId === 'xgen-standard' || customerId === 'xgen-main';
   const manualSrc = usesBase ? PATHS.base : cfg.__paths.manualDir;
   if (!existsSync(manualSrc)) {
     throw new Error(
@@ -184,7 +199,7 @@ export async function compose(customerId) {
   // 6. 변수 치환 — 모든 .md 파일에 대해
   //    고객사명은 대외비라 마스킹된 버전을 macro context 와 site_name 에 주입.
   //    표준 매뉴얼(xgen-standard)은 마스킹 제외. customer.id 는 경로용이라 raw 유지.
-  const isStandard = customerId === 'xgen-standard';
+  const isStandard = customerId === 'xgen-standard' || customerId === 'xgen-main';
   const displayCustomer = isStandard
     ? cfg.customer
     : { ...cfg.customer, name: maskCustomerLabel(cfg.customer.name) };
@@ -200,7 +215,7 @@ export async function compose(customerId) {
   // 6a. 변수 치환 + frontmatter 의 require_view 수집
   //     require_view 가 가리키는 view 가 screen-truth.json 에서 ok:false 면 nav 제외 대상.
   //     i18n suffix(.en.md) 형제 파일도 함께 제외 — 두 언어 모두 nav 에서 숨기기 위해.
-  const screenTruth = await loadScreenTruth();
+  const screenTruth = await loadScreenTruth(customerId);
   const excludedRelPaths = []; // docsDir 기준 상대 경로 (POSIX) — mkdocs not_in_nav 용
   for (const f of mdFiles) {
     const text = await readFile(f, 'utf8');
