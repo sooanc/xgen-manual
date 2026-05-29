@@ -1,9 +1,15 @@
-# 금융권 고객사 (식별자 마스킹 적용) 설정.
-# 매뉴얼 본문은 manual/ 디렉토리에서 자유롭게 관리됩니다.
+# 금융권 고객사 (jeju-dev 브랜치) 설정 — xgen-frontend jeju-dev 브랜치를 그대로 빌드한 결과.
+# 라이브 화면은 https://jeju-xgen.x2bee.com 를 기준으로 합니다.
 #
-# 본 yaml 의 디스플레이 필드(name / domain / pdf.header) 는 GitHub 공개 노출을
-# 피하기 위해 마스킹 또는 일반 placeholder 로 두었습니다. id / base_url / 디렉토리명
-# 같은 구조 식별자는 빌드·URL 영향이 커 별도 결정 대상.
+# customers/jeju-bank/manual/ 폴더는 두지 않고, compose.mjs 가 이 ID 를 만나면
+# 자동으로 base/ 디렉토리를 source 로 사용합니다. 따라서 base/ 를 수정하면 다음
+# 빌드 시 본 매뉴얼에도 즉시 반영됩니다.
+#
+# jeju-dev 환경에서 미배포된 view 는 customers/jeju-bank/screen-truth.json 의
+# ok:false 표시를 따라 자동으로 nav 에서 제외되며, base/ 콘텐츠 자체는 손대지 않습니다.
+#
+# 본 매뉴얼은 고객사 전용으로, 솔루션 가이드 인트로 페이지에서 비밀번호 인증 후
+# 진입할 수 있습니다.
 
 customer:
   id: jeju-bank
@@ -13,13 +19,20 @@ customer:
 
 product:
   name: "Xgen"
-  version: "2.3.0"
-  domain: "xgen.example.com"
+  version: "jeju-dev / 2.3.0"
+  domain: "jeju-xgen.x2bee.com"
 
 manual:
   version: "2.3.0-rev1"
-  released_at: "2026-05-11"
+  released_at: "2026-05-29"
   channel: draft
+
+# 빌드 환경 메타데이터 — 인트로 페이지 "빌드 출처" 표에 사용
+build:
+  branch: jeju-dev
+  environment: JEJU
+  capture_url: jeju-xgen.x2bee.com
+  repository: xgen2.0/xgen-frontend
 
 vars:
   support_email: "x2bee_tech@plateer.com"

@@ -165,10 +165,11 @@ export async function compose(customerId) {
   await rm(composedRoot, { recursive: true, force: true });
   await mkdir(docsDir, { recursive: true });
 
-  // 2. 매뉴얼 소스 결정 — 표준 매뉴얼 / xgen-main 은 base/ 직접, 일반 고객사는 customers/<id>/manual/
-  //    xgen-main: 동일한 base/ 콘텐츠를 main 브랜치(=xgen.x2bee.com) 대상으로 빌드.
-  //               차이는 customers/xgen-main/screen-truth.json 의 ok:false view 로 자동 제외.
-  const usesBase = customerId === 'xgen-standard' || customerId === 'xgen-main';
+  // 2. 매뉴얼 소스 결정 — base/ 직접 사용하는 customer 들 vs 자체 customers/<id>/manual/ 사용
+  //    base/ 사용: xgen-standard (stg), xgen-main (main), jeju-bank (jeju-dev)
+  //      각각 자기 customers/<id>/screen-truth.json 의 ok:false view 로 환경별 갭만 자동 제외.
+  const BASE_BACKED_CUSTOMERS = new Set(['xgen-standard', 'xgen-main', 'jeju-bank']);
+  const usesBase = BASE_BACKED_CUSTOMERS.has(customerId);
   const manualSrc = usesBase ? PATHS.base : cfg.__paths.manualDir;
   if (!existsSync(manualSrc)) {
     throw new Error(
@@ -199,7 +200,7 @@ export async function compose(customerId) {
   // 6. 변수 치환 — 모든 .md 파일에 대해
   //    고객사명은 대외비라 마스킹된 버전을 macro context 와 site_name 에 주입.
   //    표준 매뉴얼(xgen-standard)은 마스킹 제외. customer.id 는 경로용이라 raw 유지.
-  const isStandard = customerId === 'xgen-standard' || customerId === 'xgen-main';
+  const isStandard = BASE_BACKED_CUSTOMERS.has(customerId);
   const displayCustomer = isStandard
     ? cfg.customer
     : { ...cfg.customer, name: maskCustomerLabel(cfg.customer.name) };

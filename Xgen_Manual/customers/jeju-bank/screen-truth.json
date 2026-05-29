@@ -1,0 +1,10 @@
+{
+  "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 본 환경은 base/(stg) 보다도 features 가 풍부해서 사이드바·매핑 표 단위 제외가 필요 없습니다. compose.mjs 는 본 파일을 우선 로드하여 root screen-truth.json 의 ok:false 표시(있다면) 도 override 합니다 — 모든 require_view 챕터는 기본값(visible) 으로 노출됩니다.",
+  "capturedAt": "2026-05-29T00:00:00.000Z",
+  "baseUrl": "https://jeju-xgen.x2bee.com",
+  "_sourceDiff": {
+    "comparedTo": "origin/main",
+    "summary": "jeju-dev 는 main 에 비해 main-planning, main-teams, main-intro, harness 5개 plugin, main-chat-canvas (Self-Adaptive UI), admin-active-sessions, admin-compute-pool, admin-agentflow-management-info 가 모두 활성. main 에서 'TODO-2026-05-12: Stage->Main Merge 전, 사용 불가 기능 주석처리' 로 비활성된 항목들이 jeju-dev 에는 살아있음. Canvas / Teams 가 사이드바 별도 메뉴로도 노출됨."
+  },
+  "views": {}
+}
