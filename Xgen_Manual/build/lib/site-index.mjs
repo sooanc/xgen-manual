@@ -68,6 +68,7 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
       gitlabBranch: cfg?.customer?.gitlab_branch ?? null,
       productName: cfg?.product?.name ?? null,
       version: cfg?.product?.version ?? null,
+      domain: cfg?.product?.domain ?? null,
       manualVersion: cfg?.manual?.version ?? null,
       manualReleasedAt: cfg?.manual?.released_at ?? null,
       builtAt: stats.mtime,
@@ -121,7 +122,11 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
         const displayId = item.gitlabBranch || item.id;
         const productLine =
           item.productName
-            ? `<div><span class="label">제품</span> ${escapeHtml(item.productName)}${item.version ? ' v' + escapeHtml(item.version) : ''}</div>`
+            ? `<div><span class="label">솔루션</span> ${escapeHtml(item.productName)}${item.version ? ' v' + escapeHtml(item.version) : ''}</div>`
+            : '';
+        const domainLine =
+          item.domain
+            ? `<div><span class="label">서비스 도메인</span> <code>${escapeHtml(item.domain)}</code></div>`
             : '';
         const manualLine =
           item.manualVersion
@@ -136,6 +141,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
       </div>
       <div class="card-meta">
         <div><span class="label">ID</span> <code>${escapeHtml(displayId)}</code></div>
+        ${domainLine}
         ${productLine}
         ${manualLine}
         <div><span class="label">최근 빌드</span> ${escapeHtml(builtAt)}</div>
