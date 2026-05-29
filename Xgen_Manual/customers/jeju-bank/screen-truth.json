@@ -1,10 +1,77 @@
 {
-  "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 본 환경은 base/(stg) 보다도 features 가 풍부해서 사이드바·매핑 표 단위 제외가 필요 없습니다. compose.mjs 는 본 파일을 우선 로드하여 root screen-truth.json 의 ok:false 표시(있다면) 도 override 합니다 — 모든 require_view 챕터는 기본값(visible) 으로 노출됩니다.",
-  "capturedAt": "2026-05-29T00:00:00.000Z",
+  "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",
+  "capturedAt": "2026-05-29T07:15:00.000Z",
   "baseUrl": "https://jeju-xgen.x2bee.com",
-  "_sourceDiff": {
-    "comparedTo": "origin/main",
-    "summary": "jeju-dev 는 main 에 비해 main-planning, main-teams, main-intro, harness 5개 plugin, main-chat-canvas (Self-Adaptive UI), admin-active-sessions, admin-compute-pool, admin-agentflow-management-info 가 모두 활성. main 에서 'TODO-2026-05-12: Stage->Main Merge 전, 사용 불가 기능 주석처리' 로 비활성된 항목들이 jeju-dev 에는 살아있음. Canvas / Teams 가 사이드바 별도 메뉴로도 노출됨."
+  "_liveAudit": {
+    "agentWorkroomSidebar": {
+      "visible": ["Teams (top-level)", "Canvas (top-level)", "Agent 제작 그룹 6종", "Agent 채팅 3종", "기술지원 3종"],
+      "missing": ["도구 연동 그룹 전체", "지식관리 그룹 전체"]
+    },
+    "adminSidebar": {
+      "visible": ["사용자/접근제어 3종(로그인 관리 포함)", "Agent 운영 9종(Agent 기획 포함)", "환경 설정 7종", "시스템 상태 3종", "데이터 관리 4종", "MCP 관리 2종", "서비스 운영 3종", "지식 운영 1종"],
+      "missing": ["AI 거버넌스 그룹 전체"]
+    }
   },
-  "views": {}
+  "views": {
+    "auth-profile": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "Agent 작업실 사이드바 도구 연동 그룹 자체가 jeju-xgen 에 미노출"
+    },
+    "tool-storage": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "Agent 작업실 사이드바 도구 연동 > API 도구 미노출 (그룹 전체 비공개)"
+    },
+    "knowledge-collection": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "Agent 작업실 사이드바 지식관리 그룹 자체가 jeju-xgen 에 미노출"
+    },
+    "knowledge-storage": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "지식관리 > 파일 저장소 미노출 (그룹 전체 비공개)"
+    },
+    "knowledge-database": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "지식관리 > DB 연동 미노출 (그룹 전체 비공개)"
+    },
+    "upload-history": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "지식관리 > 업로드 이력 미노출 (그룹 전체 비공개)"
+    },
+    "gov-monitoring": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "관리 설정 사이드바에 AI 거버넌스 그룹 자체가 jeju-xgen 에 미노출"
+    },
+    "gov-risk-management": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "관리 설정 > AI 거버넌스 > AI 위험도 평가 미노출 (그룹 전체 비공개)"
+    },
+    "gov-control-policy": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "관리 설정 > AI 거버넌스 > 통제 정책 관리 미노출 (그룹 전체 비공개) — 25-pii-policy 챕터도 본 view 의존이라 함께 제외"
+    },
+    "gov-audit-tracking": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "관리 설정 > AI 거버넌스 > AI 서비스 변경 이력 미노출 (그룹 전체 비공개)"
+    }
+  }
 }

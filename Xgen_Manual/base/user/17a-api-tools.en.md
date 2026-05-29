@@ -1,3 +1,6 @@
+---
+require_view: tool-storage
+---
 # API Tools
 
 This chapter covers registering and managing **external API tools** that agents can call. The **Tool Integration → API Tools** menu in the left sidebar is in scope.

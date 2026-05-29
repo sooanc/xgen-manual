@@ -1,3 +1,10 @@
+---
+require_view:
+  - gov-monitoring
+  - gov-risk-management
+  - gov-control-policy
+  - gov-audit-tracking
+---
 # AI Governance
 
 This chapter covers the **Admin Center → AI Governance** menu and how to operate each screen. It is the area where the organization manages **risk assessment, inspection, audit, and control policies** for AI usage.

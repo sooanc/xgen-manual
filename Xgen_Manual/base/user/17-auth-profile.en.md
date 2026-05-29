@@ -1,3 +1,6 @@
+---
+require_view: auth-profile
+---
 # Authentication Profile
 
 This chapter covers the **Authentication Profile** — a unit for managing credentials needed for integrations with external APIs and systems.

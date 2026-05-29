@@ -1,3 +1,9 @@
+---
+require_view:
+  - knowledge-collection
+  - knowledge-storage
+  - knowledge-database
+---
 # Knowledge Management
 
 This chapter covers building and operating collections of knowledge assets that agents can reference.

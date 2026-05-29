@@ -1,3 +1,9 @@
+---
+require_view:
+  - knowledge-collection
+  - knowledge-storage
+  - knowledge-database
+---
 # 지식 관리
 
 본 챕터는 에이전트가 참조할 수 있는 지식 자료를 컬렉션으로 만들고 운영하는 절차를 다룹니다.

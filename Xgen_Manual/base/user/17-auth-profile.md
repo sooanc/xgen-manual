@@ -1,3 +1,6 @@
+---
+require_view: auth-profile
+---
 # 인증 프로필
 
 본 챕터는 외부 API·시스템 연동에 필요한 인증 정보를 관리하는 **인증 프로필(Authentication Profile)** 사용법을 다룹니다.

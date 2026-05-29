@@ -1,3 +1,6 @@
+---
+require_view: gov-control-policy
+---
 # PII Protection Policy
 
 This chapter covers automatic detection and masking policies for personally identifiable information (PII) in data the solution processes. This is a core chapter for regulated industries such as finance, public sector, and healthcare.
