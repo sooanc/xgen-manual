@@ -16,9 +16,9 @@ Expand **Admin Center → Data Management** in the left sidebar to reveal 4 subm
 | Menu | View ID | Purpose |
 |---|---|---|
 | **Database** | `admin-database` | Inspect operational DB connection info, browse tables, run ad-hoc SQL |
-| **DB Connection** | `admin-db-connection` | Manage profiles for external databases (analytics DBs, data warehouses, etc.) |
-| **Batch Jobs** | `admin-db-batch` | Schedule and run recurring / one-off batch jobs, view history |
-| **Data Audit Log** | `admin-db-audit` | Audit log of data changes (INSERT / UPDATE / DELETE) |
+| **DB Connection** | `admin-db-connection` | Manage profiles for external databases (analytics DBs, data warehouses, etc.) | <!-- require_view: admin-db-connection -->
+| **Batch Jobs** | `admin-db-batch` | Schedule and run recurring / one-off batch jobs, view history | <!-- require_view: admin-db-batch -->
+| **Data Audit Log** | `admin-db-audit` | Audit log of data changes (INSERT / UPDATE / DELETE) | <!-- require_view: admin-audit-logs -->
 
 ## Key Screens
 

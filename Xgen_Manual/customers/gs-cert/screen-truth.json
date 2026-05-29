@@ -1,0 +1,139 @@
+{
+  "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",
+  "capturedAt": "2026-05-29T08:55:00.000Z",
+  "baseUrl": "https://xgen.x2bee.com",
+  "_liveAudit": {
+    "account": "gs@plateer.com",
+    "displayName": "GS인증",
+    "agentWorkroomSidebar": {
+      "visible": [
+        "Agent 제작 5종 (기획 제외)",
+        "도구 연동 2종",
+        "지식관리 3종 (업로드 이력 제외)",
+        "Agent 채팅 3종",
+        "기술지원 3종"
+      ],
+      "missing": [
+        "Agent 기획 (main-planning)",
+        "업로드 이력 (upload-history)"
+      ]
+    },
+    "adminSidebar": {
+      "visible": [
+        "사용자/접근제어 2종 (사용자 관리, 역할/권한 관리)",
+        "Agent 운영 8종",
+        "환경 설정 7종",
+        "시스템 상태 3종",
+        "데이터 관리 1종 (데이터베이스만)",
+        "MCP 관리 1종 (MCP 라이브러리만)",
+        "지식 운영 1종"
+      ],
+      "missing": [
+        "로그인 관리 (admin-active-sessions)",
+        "Agent 운영 > 업무기획 (admin-agent-dev-plan)",
+        "AI 거버넌스 그룹 전체 (gov-monitoring, gov-risk-management, gov-control-policy, gov-audit-tracking)",
+        "데이터 관리: DB 연결 (admin-db-connection), 배치 작업 (admin-db-batch), 데이터 감사 로그 (admin-audit-logs)",
+        "MCP 관리: MCP 운영/모니터링 (admin-mcp-station)",
+        "서비스 운영 그룹 전체 (admin-support-notice, admin-support-faq, admin-support-qna)"
+      ]
+    }
+  },
+  "views": {
+    "main-planning": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일 — main 브랜치에서 비활성 상태이며 gs 권한도 동일하게 미노출"
+    },
+    "upload-history": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일 — 지식관리 그룹 내 '업로드 이력' 메뉴 미노출"
+    },
+    "admin-active-sessions": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일 — 사용자/접근제어 그룹 내 '로그인 관리' 메뉴 미노출"
+    },
+    "admin-compute-pool": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일"
+    },
+    "admin-agentflow-management-info": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일"
+    },
+    "gov-monitoring": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "gs 권한 기준 관리 사이드바에 AI 거버넌스 그룹 자체가 미노출"
+    },
+    "gov-risk-management": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가"
+    },
+    "gov-control-policy": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "AI 거버넌스 그룹 미노출 — 25-pii-policy 챕터도 본 view 의존이라 함께 제외"
+    },
+    "gov-audit-tracking": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가"
+    },
+    "admin-db-connection": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "데이터 관리 그룹에서 '데이터베이스' 외 서브메뉴 모두 미노출"
+    },
+    "admin-db-batch": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "데이터 관리 > 배치 작업 미노출"
+    },
+    "admin-audit-logs": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "데이터 관리 > 데이터 감사 로그 미노출"
+    },
+    "admin-mcp-station": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "MCP 관리 그룹에서 'MCP 라이브러리' 외 'MCP 운영/모니터링' 미노출"
+    },
+    "admin-support-notice": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "서비스 운영 그룹 전체 미노출 — 공지 게시판 등록·응대 권한 없음"
+    },
+    "admin-support-faq": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "서비스 운영 그룹 미노출 — 자주 묻는 질문 응대 권한 없음"
+    },
+    "admin-support-qna": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "서비스 운영 그룹 미노출 — 1:1 관리자 문의 응대 권한 없음"
+    }
+  }
+}

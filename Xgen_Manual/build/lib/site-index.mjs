@@ -64,6 +64,7 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
     items.push({
       id,
       name: cfg?.customer?.name ?? id,
+      displayTitle: cfg?.customer?.display_title ?? null,
       industry: cfg?.customer?.industry ?? null,
       gitlabBranch: cfg?.customer?.gitlab_branch ?? null,
       productName: cfg?.product?.name ?? null,
@@ -78,19 +79,23 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
 
   // 정렬 우선순위:
   //   0 — xgen-standard (stage 기준 단일 진실원)
-  //   1 — xgen-main    (main 환경 공개 매뉴얼)
-  //   2 — 일반 고객사 (한글 이름 순)
-  // 동일 우선순위 안에서는 customer.name 의 한글 정렬을 사용.
+  //   1 — xgen-main     (main 환경 공개 매뉴얼)
+  //   2 — gs-cert       (main 환경 + GS인증 권한 제한 뷰)
+  //   3 — 일반 고객사   (한글 이름 순)
+  // 동일 우선순위 안에서는 display_title 우선, 그 다음 customer.name 의 한글 정렬을 사용.
   const sortRank = (item) => {
     if (item.id === 'xgen-standard') return 0;
     if (item.id === 'xgen-main') return 1;
-    return 2;
+    if (item.id === 'gs-cert') return 2;
+    return 3;
   };
   items.sort((a, b) => {
     const ra = sortRank(a);
     const rb = sortRank(b);
     if (ra !== rb) return ra - rb;
-    return a.name.localeCompare(b.name, 'ko');
+    const titleA = a.displayTitle || a.name;
+    const titleB = b.displayTitle || b.name;
+    return titleA.localeCompare(titleB, 'ko');
   });
 
   // 매뉴얼 총 개수 = 빌드된 모든 매뉴얼 (xgen-standard / xgen-main 등 공개용 표준 매뉴얼 포함)
@@ -155,20 +160,24 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
           item.manualVersion
             ? `<div><span class="label">매뉴얼</span> v${escapeHtml(item.manualVersion)}${item.manualReleasedAt ? ` <span class="muted">(${escapeHtml(item.manualReleasedAt)})</span>` : ''}</div>`
             : '';
-        // 검색 대상도 마스킹된 표시값 기준 — 비-내부자가 실명으로 검색해 들춰내지 못하도록
-        const searchData = (displayName + ' ' + displayId + ' ' + industryLabel).toLowerCase();
+        // 검색 대상도 마스킹된 표시값 기준 — 비-내부자가 실명으로 검색해 들춰내지 못하도록.
+        // display_title(예: 'GS인증') 가 명시된 customer 도 그 키워드로 찾을 수 있게 포함.
+        const searchData = (displayName + ' ' + displayId + ' ' + industryLabel + ' ' + (item.displayTitle || '')).toLowerCase();
         const cardClass = `card${item.isStandard ? ' card-standard' : ''}${isGated ? ' card-gated' : ''}`;
         // 게이트 카드는 전용 비밀번호 페이지(/gate.html)로 보내고, 통과 후 docs/<id>/index.html 로 이동.
         // 공개 카드는 매뉴얼 인덱스로 직접 이동.
         const href = isGated
           ? `${gateHref}?to=${encodeURIComponent(item.id)}`
           : `${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html`;
-        // 카드 제목은 ID(=gitlab_branch 우선) 를 노출. 모든 customer 의 displayName 이
-        // 마스킹/표준화 결과 'XGEN' 이라 동일해서 변별력이 없으므로, 환경을 가리키는 ID 가
-        // 사용자에게 더 유용. ID 행은 제목과 중복이므로 메타에서 제외.
+        // 카드 제목 우선순위:
+        //   1) customer.display_title 명시(예: 'GS인증' 같은 외부용 이름)
+        //   2) ID(=gitlab_branch 또는 customer.id) — 표준 매뉴얼 카드에서 환경 식별
+        // displayName(=customer.name) 은 마스킹/표준화 결과 다수 customer 가 'XGEN'
+        // 으로 동일해 카드 변별력이 없어 폴백 후순위로만 사용.
+        const cardTitle = item.displayTitle || displayId;
         return `<a class="${cardClass}" href="${href}" data-search="${escapeHtml(searchData)}">
       <div class="card-head">
-        <h2>${escapeHtml(displayId)}</h2>
+        <h2>${escapeHtml(cardTitle)}</h2>
         ${standardTag}${gatedTag}${industryTag}
       </div>
       <div class="card-meta">

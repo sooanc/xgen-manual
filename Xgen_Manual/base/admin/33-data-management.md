@@ -16,9 +16,9 @@
 | 메뉴 | View ID | 용도 |
 |---|---|---|
 | **데이터베이스** | `admin-database` | 운영 DB 접속 정보 확인, 테이블 목록 탐색, SQL 쿼리 직접 실행 |
-| **DB 연결** | `admin-db-connection` | 외부 DB 연결 프로파일 관리 (분석용 별도 DB·DW 등) |
-| **배치 작업** | `admin-db-batch` | 정기·일회성 배치 작업 등록·실행·이력 |
-| **데이터 감사 로그** | `admin-db-audit` | 데이터 변경(INSERT/UPDATE/DELETE)에 대한 감사 로그 |
+| **DB 연결** | `admin-db-connection` | 외부 DB 연결 프로파일 관리 (분석용 별도 DB·DW 등) | <!-- require_view: admin-db-connection -->
+| **배치 작업** | `admin-db-batch` | 정기·일회성 배치 작업 등록·실행·이력 | <!-- require_view: admin-db-batch -->
+| **데이터 감사 로그** | `admin-db-audit` | 데이터 변경(INSERT/UPDATE/DELETE)에 대한 감사 로그 | <!-- require_view: admin-audit-logs -->
 
 ## 주요 화면
 

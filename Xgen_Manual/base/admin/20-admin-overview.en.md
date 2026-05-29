@@ -80,11 +80,11 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query) |
 | System Status | Log Viewer | [System Monitor · Log Viewer](26-system-monitor.md#log-query) |
 | Data Management | Database | [Data Management · Database](33-data-management.md) |
-| Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md) |
-| Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md) |
-| Data Management | Data Audit Log | [Data Management · Data Audit Log](33-data-management.md#data-audit-log) |
+| Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md) | <!-- require_view: admin-db-connection -->
+| Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md) | <!-- require_view: admin-db-batch -->
+| Data Management | Data Audit Log | [Data Management · Data Audit Log](33-data-management.md#data-audit-log) | <!-- require_view: admin-audit-logs -->
 | MCP Management | MCP Library | [MCP Library · MCP Library](28-mcp-market.md) |
-| MCP Management | MCP Operations & Monitoring | [MCP Library · MCP Operations / Monitoring](28-mcp-market.md#mcp-station) |
+| MCP Management | MCP Operations & Monitoring | [MCP Library · MCP Operations / Monitoring](28-mcp-market.md#mcp-station) | <!-- require_view: admin-mcp-station -->
 | Service Operations | Announcement Board | [Tech Support Handling · Announcement Board](31-tech-support-handling.md) |
 | Service Operations | FAQ | [Tech Support Handling · FAQ](31-tech-support-handling.md) |
 | Service Operations | 1:1 Admin Inquiry | [Tech Support Handling · 1:1 Admin Inquiry](31-tech-support-handling.md) |

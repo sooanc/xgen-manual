@@ -80,11 +80,11 @@
 | 시스템 상태 | 시스템 조회 | [시스템 모니터 · 시스템 조회](26-system-monitor.md#system-query) |
 | 시스템 상태 | 로그 조회 | [시스템 모니터 · 로그 조회](26-system-monitor.md#log-query) |
 | 데이터 관리 | 데이터베이스 | [데이터 관리 · 데이터베이스](33-data-management.md) |
-| 데이터 관리 | DB 연결 | [데이터 관리 · DB 연결](33-data-management.md) |
-| 데이터 관리 | 배치 작업 | [데이터 관리 · 배치 작업](33-data-management.md) |
-| 데이터 관리 | 데이터 감사 로그 | [데이터 관리 · 데이터 감사 로그](33-data-management.md#data-audit-log) |
+| 데이터 관리 | DB 연결 | [데이터 관리 · DB 연결](33-data-management.md) | <!-- require_view: admin-db-connection -->
+| 데이터 관리 | 배치 작업 | [데이터 관리 · 배치 작업](33-data-management.md) | <!-- require_view: admin-db-batch -->
+| 데이터 관리 | 데이터 감사 로그 | [데이터 관리 · 데이터 감사 로그](33-data-management.md#data-audit-log) | <!-- require_view: admin-audit-logs -->
 | MCP 관리 | MCP 라이브러리 | [MCP 라이브러리 · MCP 라이브러리](28-mcp-market.md) |
-| MCP 관리 | MCP 운영/모니터링 | [MCP 라이브러리 · MCP 운영/모니터링](28-mcp-market.md#mcp-station) |
+| MCP 관리 | MCP 운영/모니터링 | [MCP 라이브러리 · MCP 운영/모니터링](28-mcp-market.md#mcp-station) | <!-- require_view: admin-mcp-station -->
 | 서비스 운영 | 공지 게시판 | [기술지원 응대 · 공지 게시판](31-tech-support-handling.md) |
 | 서비스 운영 | 자주 묻는 질문 | [기술지원 응대 · 자주 묻는 질문](31-tech-support-handling.md) |
 | 서비스 운영 | 1:1 관리자 문의 | [기술지원 응대 · 1:1 관리자 문의](31-tech-support-handling.md) |

@@ -1,3 +1,9 @@
+---
+require_view:
+  - admin-support-notice
+  - admin-support-faq
+  - admin-support-qna
+---
 # Technical Support Handling
 
 The **Technical Support** menu at the bottom of the left sidebar (Notice Board / FAQ / 1:1 Admin Inquiry) is a "questioning channel" for end users but a **handling / publishing channel** for administrators. This chapter covers how admins operate these three areas.
