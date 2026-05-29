@@ -1,23 +1,14 @@
 {
-  "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",
-  "capturedAt": "2026-05-29T07:15:00.000Z",
+  "capturedAt": "2026-05-29T08:00:20.786Z",
   "baseUrl": "https://jeju-xgen.x2bee.com",
-  "_liveAudit": {
-    "agentWorkroomSidebar": {
-      "visible": ["Teams (top-level)", "Canvas (top-level)", "Agent 제작 그룹 6종", "Agent 채팅 3종", "기술지원 3종"],
-      "missing": ["도구 연동 그룹 전체", "지식관리 그룹 전체"]
-    },
-    "adminSidebar": {
-      "visible": ["사용자/접근제어 3종(로그인 관리 포함)", "Agent 운영 9종(Agent 기획 포함)", "환경 설정 7종", "시스템 상태 3종", "데이터 관리 4종", "MCP 관리 2종", "서비스 운영 3종", "지식 운영 1종"],
-      "missing": ["AI 거버넌스 그룹 전체"]
-    }
-  },
   "views": {
     "auth-profile": {
       "ok": false,
-      "notFound": true,
+      "lastSize": 40787,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:22.268Z",
       "source": "live-audit",
-      "note": "Agent 작업실 사이드바 도구 연동 그룹 자체가 jeju-xgen 에 미노출"
+      "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 사이드바 '도구 연동' 그룹 자체가 미노출이라 사용자가 메뉴로 도달 불가. AUTHORING 0.1 단일 진실원(라이브 사이드바) 기준으로 ok:false."
     },
     "tool-storage": {
       "ok": false,
@@ -27,9 +18,11 @@
     },
     "knowledge-collection": {
       "ok": false,
-      "notFound": true,
+      "lastSize": 57973,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:13.754Z",
       "source": "live-audit",
-      "note": "Agent 작업실 사이드바 지식관리 그룹 자체가 jeju-xgen 에 미노출"
+      "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 사이드바 '지식관리' 그룹 자체가 미노출 (Agent 작업실 측). AUTHORING 0.1 기준 ok:false."
     },
     "knowledge-storage": {
       "ok": false,
@@ -51,27 +44,262 @@
     },
     "gov-monitoring": {
       "ok": false,
-      "notFound": true,
+      "lastSize": 93961,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:36.332Z",
       "source": "live-audit",
-      "note": "관리 설정 사이드바에 AI 거버넌스 그룹 자체가 jeju-xgen 에 미노출"
+      "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 관리 사이드바에 'AI 거버넌스' 그룹 자체가 미노출. AUTHORING 0.1 기준 ok:false."
     },
     "gov-risk-management": {
       "ok": false,
-      "notFound": true,
+      "lastSize": 88459,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:40.789Z",
       "source": "live-audit",
-      "note": "관리 설정 > AI 거버넌스 > AI 위험도 평가 미노출 (그룹 전체 비공개)"
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가."
     },
     "gov-control-policy": {
       "ok": false,
-      "notFound": true,
+      "lastSize": 93147,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:45.066Z",
       "source": "live-audit",
-      "note": "관리 설정 > AI 거버넌스 > 통제 정책 관리 미노출 (그룹 전체 비공개) — 25-pii-policy 챕터도 본 view 의존이라 함께 제외"
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가. 25-pii-policy 챕터도 본 view 의존이라 함께 제외."
     },
     "gov-audit-tracking": {
       "ok": false,
-      "notFound": true,
+      "lastSize": 93065,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:49.418Z",
       "source": "live-audit",
-      "note": "관리 설정 > AI 거버넌스 > AI 서비스 변경 이력 미노출 (그룹 전체 비공개)"
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가."
+    },
+    "/dashboard": {
+      "ok": true,
+      "lastSize": 139516,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:56:43.410Z",
+      "source": "user"
+    },
+    "/main": {
+      "ok": true,
+      "lastSize": 83637,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:56:47.816Z",
+      "source": "user"
+    },
+    "canvas-intro": {
+      "ok": true,
+      "lastSize": 249583,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:56:52.383Z",
+      "source": "user"
+    },
+    "agentflow-scheduler": {
+      "ok": true,
+      "lastSize": 69898,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:56:56.619Z",
+      "source": "user"
+    },
+    "new-chat": {
+      "ok": true,
+      "lastSize": 83637,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:00.898Z",
+      "source": "user"
+    },
+    "current-chat": {
+      "ok": true,
+      "lastSize": 47903,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:05.086Z",
+      "source": "user"
+    },
+    "chat-history": {
+      "ok": true,
+      "lastSize": 62327,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:09.429Z",
+      "source": "user"
+    },
+    "prompt-storage": {
+      "ok": true,
+      "lastSize": 70033,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:18.060Z",
+      "source": "user"
+    },
+    "support-notices": {
+      "ok": true,
+      "lastSize": 72859,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:26.525Z",
+      "source": "user"
+    },
+    "support-faq": {
+      "ok": true,
+      "lastSize": 101773,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:30.961Z",
+      "source": "user"
+    },
+    "support-qna": {
+      "ok": true,
+      "lastSize": 75685,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:57:35.287Z",
+      "source": "user"
+    },
+    "/admin": {
+      "ok": true,
+      "lastSize": 169272,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:58:35.468Z",
+      "source": "admin"
+    },
+    "admin-users": {
+      "ok": true,
+      "lastSize": 82310,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:58:39.732Z",
+      "source": "admin"
+    },
+    "admin-role-management": {
+      "ok": true,
+      "lastSize": 92589,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:58:44.135Z",
+      "source": "admin"
+    },
+    "admin-setting-llm": {
+      "ok": true,
+      "lastSize": 125544,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:58:51.393Z",
+      "source": "admin"
+    },
+    "admin-setting-embed": {
+      "ok": true,
+      "lastSize": 142666,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:58:55.903Z",
+      "source": "admin"
+    },
+    "admin-setting-guarder": {
+      "ok": true,
+      "lastSize": 105808,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:00.301Z",
+      "source": "admin"
+    },
+    "admin-system-monitor": {
+      "ok": true,
+      "lastSize": 118017,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:18.951Z",
+      "source": "admin"
+    },
+    "admin-audit-logs": {
+      "ok": true,
+      "lastSize": 187944,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:23.361Z",
+      "source": "admin"
+    },
+    "admin-mcp-market": {
+      "ok": true,
+      "lastSize": 78264,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:27.692Z",
+      "source": "admin"
+    },
+    "admin-mcp-station": {
+      "ok": true,
+      "lastSize": 76454,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:32.024Z",
+      "source": "admin"
+    },
+    "admin-support-notice": {
+      "ok": true,
+      "lastSize": 94726,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:53.754Z",
+      "source": "admin"
+    },
+    "admin-support-faq": {
+      "ok": true,
+      "lastSize": 161676,
+      "notFound": false,
+      "capturedAt": "2026-05-29T07:59:58.338Z",
+      "source": "admin"
+    },
+    "admin-support-qna": {
+      "ok": true,
+      "lastSize": 101247,
+      "notFound": false,
+      "capturedAt": "2026-05-29T08:00:02.714Z",
+      "source": "admin"
+    },
+    "admin-agentflow-management": {
+      "ok": true,
+      "lastSize": 78594,
+      "notFound": false,
+      "capturedAt": "2026-05-29T08:00:07.908Z",
+      "source": "admin"
+    },
+    "admin-feedback-monitoring": {
+      "ok": true,
+      "lastSize": 96698,
+      "notFound": false,
+      "capturedAt": "2026-05-29T08:00:12.174Z",
+      "source": "admin"
+    },
+    "admin-database": {
+      "ok": true,
+      "lastSize": 127906,
+      "notFound": false,
+      "capturedAt": "2026-05-29T08:00:16.477Z",
+      "source": "admin"
+    },
+    "admin-knowledge-collection": {
+      "ok": true,
+      "lastSize": 170689,
+      "notFound": false,
+      "capturedAt": "2026-05-29T08:00:20.786Z",
+      "source": "admin"
+    }
+  },
+  "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",
+  "_liveAudit": {
+    "agentWorkroomSidebar": {
+      "visible": [
+        "Teams (top-level)",
+        "Canvas (top-level)",
+        "Agent 제작 그룹 6종",
+        "Agent 채팅 3종",
+        "기술지원 3종"
+      ],
+      "missing": [
+        "도구 연동 그룹 전체",
+        "지식관리 그룹 전체"
+      ]
+    },
+    "adminSidebar": {
+      "visible": [
+        "사용자/접근제어 3종(로그인 관리 포함)",
+        "Agent 운영 9종(Agent 기획 포함)",
+        "환경 설정 7종",
+        "시스템 상태 3종",
+        "데이터 관리 4종",
+        "MCP 관리 2종",
+        "서비스 운영 3종",
+        "지식 운영 1종"
+      ],
+      "missing": [
+        "AI 거버넌스 그룹 전체"
+      ]
     }
   }
 }

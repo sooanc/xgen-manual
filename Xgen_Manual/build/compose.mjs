@@ -181,6 +181,31 @@ export async function compose(customerId) {
   // 3. 매뉴얼 트리 통째 복사
   await cp(manualSrc, docsDir, { recursive: true });
 
+  // 3a. customer-specific overlay — base/ 를 공유하는 customer (xgen-main / jeju-bank 등) 가
+  //     자신만의 캡처(예: 고객사 사용자명이 보이는 PNG) 로 base 파일을 덮어쓰고 싶을 때 사용.
+  //     customers/<id>/overlay/<rel> 가 있으면 .build/composed/<id>/docs/<rel> 로 복사.
+  //     예: customers/jeju-bank/overlay/user/images/login.png
+  //         → .build/composed/jeju-bank/docs/user/images/login.png 로 덮어씀.
+  if (usesBase) {
+    const overlayDir = join(cfg.__paths.customerDir, 'overlay');
+    if (existsSync(overlayDir)) {
+      const overlayFiles = await walkFiles(overlayDir);
+      let overlaidCount = 0;
+      for (const f of overlayFiles) {
+        const rel = relative(overlayDir, f).split(sep).join('/');
+        const dst = join(docsDir, rel);
+        await mkdir(dirname(dst), { recursive: true });
+        await copyFile(f, dst);
+        overlaidCount++;
+      }
+      if (overlaidCount > 0) {
+        console.log(
+          `[compose:${customerId}] overlaid ${overlaidCount} customer file(s) from customers/${customerId}/overlay/`
+        );
+      }
+    }
+  }
+
   // 4. shared/scripts → docs/assets/js
   const sharedScripts = join(PATHS.shared, 'scripts');
   if (existsSync(sharedScripts)) {
