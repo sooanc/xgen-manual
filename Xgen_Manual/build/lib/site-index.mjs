@@ -126,6 +126,12 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
         const standardTag = item.isStandard
           ? '<span class="tag tag-standard">📖 XGEN</span>'
           : '';
+        // 고객사 전용 매뉴얼은 비밀번호 게이트 적용 (xgen-standard, xgen-main 표준 매뉴얼 2종 제외).
+        // 클릭 시 prompt 로 비밀번호 확인 후 진입. sessionStorage 로 한 번 통과하면 탭이 닫힐 때까지 유지.
+        const isGated = item.id !== 'xgen-standard' && item.id !== 'xgen-main';
+        const gatedTag = isGated
+          ? '<span class="tag tag-gated">🔒 고객사 전용</span>'
+          : '';
         const builtAt = item.builtAt.toLocaleString('ko-KR');
         // 카드 타이틀은 customer.name 그대로 노출. ID 코드 칸은 customer.gitlab_branch
         // (GitLab 브랜치 명) 가 있으면 우선 사용, 없으면 customer.id 폴백.
@@ -145,10 +151,17 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
             : '';
         // 검색 대상도 마스킹된 표시값 기준 — 비-내부자가 실명으로 검색해 들춰내지 못하도록
         const searchData = (displayName + ' ' + displayId + ' ' + industryLabel).toLowerCase();
-        return `<a class="card${item.isStandard ? ' card-standard' : ''}" href="${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html" data-search="${escapeHtml(searchData)}">
+        const cardClass = `card${item.isStandard ? ' card-standard' : ''}${isGated ? ' card-gated' : ''}`;
+        const href = `${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html`;
+        // 게이트 카드는 onclick 으로 비밀번호 확인 후 진입. href 는 유지(우클릭→새 탭 으로 직접 진입은
+        // 클라이언트 게이트의 한계이지만, 이 사이트는 정적이라 GitHub Pages 수준에서는 가벼운 안내 게이트로 충분).
+        const onclickAttr = isGated
+          ? ` onclick="return openGated(event, '${escapeHtml(href)}')"`
+          : '';
+        return `<a class="${cardClass}" href="${href}"${onclickAttr} data-search="${escapeHtml(searchData)}">
       <div class="card-head">
         <h2>${escapeHtml(displayName)}</h2>
-        ${standardTag}${industryTag}
+        ${standardTag}${gatedTag}${industryTag}
       </div>
       <div class="card-meta">
         <div><span class="label">ID</span> <code>${escapeHtml(displayId)}</code></div>
@@ -166,7 +179,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
   const subtitle =
     variant === 'admin'
       ? '관리자 전용 — 매뉴얼 빌드 결과 목록'
-      : '매뉴얼 빌드 결과 목록 (내부 점검용)';
+      : '매뉴얼 빌드 결과 목록';
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -205,6 +218,9 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
   .tag-standard { background: #e0f2fe; color: #075985; font-weight: 600; }
   .card-standard { border-color: #075985; border-left: 4px solid #075985; }
   .card-standard:hover { border-color: #0c4a6e; }
+  .tag-gated { background: #fef3c7; color: #92400e; font-weight: 600; }
+  .card-gated { position: relative; }
+  .card-gated::before { content: ''; position: absolute; top: 0; right: 0; width: 0; height: 0; border-style: solid; border-width: 0 36px 36px 0; border-color: transparent #fef3c7 transparent transparent; border-radius: 0 10px 0 0; }
   .card-meta { font-size: 13px; color: var(--sub); display: flex; flex-direction: column; gap: 4px; }
   .card-meta .label { display: inline-block; min-width: 70px; color: #999; }
   .card-meta .muted { color: #999; font-size: 12px; }
@@ -245,6 +261,37 @@ function onSearch(q) {
   document.querySelectorAll('.card').forEach((card) => {
     card.style.display = card.dataset.search.includes(lower) ? '' : 'none';
   });
+}
+
+// 고객사 전용 매뉴얼 비밀번호 게이트.
+//   - 비밀번호는 SHA-256 해시로만 비교하여 평문 노출을 피함.
+//   - sessionStorage 로 한 번 통과하면 탭을 닫을 때까지 다시 묻지 않음.
+//   - 정적 사이트(GitHub Pages) 특성상 진짜 인증이 아닌 *고객사 전용임을 알리는 안내 게이트*.
+const GATED_PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+const GATED_STORAGE_KEY = 'xgen-manual-gated-unlocked';
+
+async function sha256Hex(text) {
+  const buf = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function openGated(event, url) {
+  event.preventDefault();
+  if (sessionStorage.getItem(GATED_STORAGE_KEY) === '1') {
+    window.location.href = url;
+    return false;
+  }
+  const pwd = window.prompt('이 매뉴얼은 고객사 전용입니다.\\n비밀번호를 입력해 주세요.');
+  if (pwd === null) return false; // 취소
+  const hex = await sha256Hex(pwd);
+  if (hex === GATED_PASSWORD_HASH) {
+    sessionStorage.setItem(GATED_STORAGE_KEY, '1');
+    window.location.href = url;
+  } else {
+    window.alert('비밀번호가 일치하지 않습니다. 다시 입력해 주세요.');
+  }
+  return false;
 }
 </script>
 </body>
