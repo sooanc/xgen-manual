@@ -32,6 +32,12 @@
       "notFound": true,
       "source": "source-diff",
       "note": "feature-admin-agentflow-management-info import 가 main 브랜치 admin-feature-registry.ts 에 미존재 (info 탭만 빠짐, 챕터 단위 영향은 작음)"
+    },
+    "upload-history": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "2026-05-29 라이브 전수조사 — Agent 작업실 > 지식관리 사이드바에 '업로드 이력' 메뉴 미노출 (xgen.x2bee.com 에이전트 개발자/시스템관리자/거버넌스 3계정 모두 동일 4개 메뉴: 지식 컬렉션·파일 저장소·DB 연동). 본문 절(15-knowledge.md#upload-history) 은 anchor 로 접근 가능하므로 그대로 두고, 사이드바 매핑 표 행만 인라인 마커로 제거."
     }
   }
 }

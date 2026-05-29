@@ -62,7 +62,7 @@ The left sidebar of user mode (Agent Workspace) is organized into 5 sections (so
 | Knowledge Management | Knowledge Collections | Agent Developer | [Knowledge Management · Collection List](15-knowledge.md#knowledge-collection) |
 | Knowledge Management | File Storage | Agent Developer | [Knowledge Management · File Storage](15-knowledge.md#storage) |
 | Knowledge Management | DB Integration | Agent Developer | [Knowledge Management · DB Integration](15-knowledge.md#database) |
-| Knowledge Management | Upload History | Agent Developer | [Knowledge Management · Upload History](15-knowledge.md#upload-history) |
+| Knowledge Management | Upload History | Agent Developer | [Knowledge Management · Upload History](15-knowledge.md#upload-history) | <!-- require_view: upload-history -->
 | Agent Chat | Start Chat | Standard User | [Using Chat · Starting Chat](14-chat.md#new-chat) |
 | Agent Chat | Current Chat | Standard User | [Using Chat · Current Chat](14-chat.md#current-chat) |
 | Agent Chat | Chat History | Standard User | [Using Chat · Chat History](14-chat.md#chat-history) |

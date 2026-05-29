@@ -242,6 +242,39 @@ export async function compose(customerId) {
   //     base/en 챕터 양쪽 다 빌드되어 직접 URL 접근은 유지됨.
   // (실제 주입은 아래 mkdocs.yml 생성 단계에서 baseMkdocs.not_in_nav 에 셋팅)
 
+  // 6c-pre. 인라인 require_view 마커 처리.
+  //   라인의 어딘가에 `<!-- require_view: <view-id> -->` 가 있고 해당 view 가
+  //   screen-truth 에서 ok:false 이면 그 라인 전체 제거.
+  //   챕터 단위가 아닌 *표 행 / 절 / 한 줄짜리 본문* 단위 갭 표현에 사용.
+  //   예: customers/xgen-main 에서 라이브에 없는 메뉴 행만 골라 가릴 때.
+  {
+    const inlineMarkerRegex = /<!--\s*require_view:\s*([a-zA-Z0-9_-]+)\s*-->/;
+    const inlineExcludedSet = new Set(excludedRelPaths);
+    for (const f of mdFiles) {
+      const relPath = relative(docsDir, f).split(sep).join('/');
+      if (inlineExcludedSet.has(relPath)) continue; // nav 제외된 챕터는 어차피 빌드만, 본문 손대지 않음
+
+      const text = await readFile(f, 'utf8');
+      let strippedCount = 0;
+      const out = text.split(/\r?\n/).filter((line) => {
+        const m = line.match(inlineMarkerRegex);
+        if (!m) return true;
+        const view = m[1];
+        if (screenTruth.views?.[view]?.ok === false) {
+          strippedCount++;
+          return false;
+        }
+        return true;
+      });
+      if (strippedCount > 0) {
+        await writeFile(f, out.join('\n'), 'utf8');
+        console.log(
+          `[compose:${customerId}] strip ${strippedCount} inline-marker line(s) → ${relPath}`
+        );
+      }
+    }
+  }
+
   // 6c. 제외된 챕터를 가리키는 *테이블 행* 을 다른 챕터 본문에서도 자동 제거.
   //     사이드바 매핑 표(예: user/11-getting-started.md 의 "Agent 작업실 구성" 표,
   //     admin/20-admin-overview.md 의 "관리자 사이드바 요약" 표) 에 적힌 행이
