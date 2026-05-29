@@ -76,9 +76,20 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
     });
   }
 
-  // 표준 매뉴얼은 항상 최상단, 나머지는 한글 이름 순
+  // 정렬 우선순위:
+  //   0 — xgen-standard (stage 기준 단일 진실원)
+  //   1 — xgen-main    (main 환경 공개 매뉴얼)
+  //   2 — 일반 고객사 (한글 이름 순)
+  // 동일 우선순위 안에서는 customer.name 의 한글 정렬을 사용.
+  const sortRank = (item) => {
+    if (item.id === 'xgen-standard') return 0;
+    if (item.id === 'xgen-main') return 1;
+    return 2;
+  };
   items.sort((a, b) => {
-    if (a.isStandard !== b.isStandard) return a.isStandard ? -1 : 1;
+    const ra = sortRank(a);
+    const rb = sortRank(b);
+    if (ra !== rb) return ra - rb;
     return a.name.localeCompare(b.name, 'ko');
   });
 
