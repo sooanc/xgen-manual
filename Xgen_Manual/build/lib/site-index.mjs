@@ -101,6 +101,7 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
   const mainHtml = render(items, definedManualCount, builtManualCount, {
     docsPrefix: 'docs',
     variant: 'main',
+    gateHref: 'gate.html',
   });
   await writeFile(join(siteRoot, 'index.html'), mainHtml, 'utf8');
 
@@ -108,12 +109,17 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
   const adminHtml = render(items, definedManualCount, builtManualCount, {
     docsPrefix: '../docs',
     variant: 'admin',
+    gateHref: '../gate.html',
   });
   await mkdir(join(siteRoot, 'admin'), { recursive: true });
   await writeFile(join(siteRoot, 'admin', 'index.html'), adminHtml, 'utf8');
+
+  // 비밀번호 게이트 페이지 (/gate.html) — 고객사 전용 매뉴얼 진입 전에 거치는 단일 폼.
+  // 사이트 루트 한 곳에만 두고 main/admin 양쪽에서 상대 경로로 참조.
+  await writeFile(join(siteRoot, 'gate.html'), renderGate(), 'utf8');
 }
 
-function render(items, definedCount, builtCount, { docsPrefix, variant }) {
+function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref }) {
   const cards =
     items
       .map((item) => {
@@ -152,19 +158,20 @@ function render(items, definedCount, builtCount, { docsPrefix, variant }) {
         // 검색 대상도 마스킹된 표시값 기준 — 비-내부자가 실명으로 검색해 들춰내지 못하도록
         const searchData = (displayName + ' ' + displayId + ' ' + industryLabel).toLowerCase();
         const cardClass = `card${item.isStandard ? ' card-standard' : ''}${isGated ? ' card-gated' : ''}`;
-        const href = `${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html`;
-        // 게이트 카드는 onclick 으로 비밀번호 확인 후 진입. href 는 유지(우클릭→새 탭 으로 직접 진입은
-        // 클라이언트 게이트의 한계이지만, 이 사이트는 정적이라 GitHub Pages 수준에서는 가벼운 안내 게이트로 충분).
-        const onclickAttr = isGated
-          ? ` onclick="return openGated(event, '${escapeHtml(href)}')"`
-          : '';
-        return `<a class="${cardClass}" href="${href}"${onclickAttr} data-search="${escapeHtml(searchData)}">
+        // 게이트 카드는 전용 비밀번호 페이지(/gate.html)로 보내고, 통과 후 docs/<id>/index.html 로 이동.
+        // 공개 카드는 매뉴얼 인덱스로 직접 이동.
+        const href = isGated
+          ? `${gateHref}?to=${encodeURIComponent(item.id)}`
+          : `${escapeHtml(docsPrefix)}/${escapeHtml(item.id)}/index.html`;
+        // 카드 제목은 ID(=gitlab_branch 우선) 를 노출. 모든 customer 의 displayName 이
+        // 마스킹/표준화 결과 'XGEN' 이라 동일해서 변별력이 없으므로, 환경을 가리키는 ID 가
+        // 사용자에게 더 유용. ID 행은 제목과 중복이므로 메타에서 제외.
+        return `<a class="${cardClass}" href="${href}" data-search="${escapeHtml(searchData)}">
       <div class="card-head">
-        <h2>${escapeHtml(displayName)}</h2>
+        <h2>${escapeHtml(displayId)}</h2>
         ${standardTag}${gatedTag}${industryTag}
       </div>
       <div class="card-meta">
-        <div><span class="label">ID</span> <code>${escapeHtml(displayId)}</code></div>
         ${domainLine}
         ${productLine}
         ${manualLine}
@@ -262,37 +269,97 @@ function onSearch(q) {
     card.style.display = card.dataset.search.includes(lower) ? '' : 'none';
   });
 }
-
-// 고객사 전용 매뉴얼 비밀번호 게이트.
-//   - 비밀번호는 SHA-256 해시로만 비교하여 평문 노출을 피함.
-//   - sessionStorage 로 한 번 통과하면 탭을 닫을 때까지 다시 묻지 않음.
-//   - 정적 사이트(GitHub Pages) 특성상 진짜 인증이 아닌 *고객사 전용임을 알리는 안내 게이트*.
-const GATED_PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
-const GATED_STORAGE_KEY = 'xgen-manual-gated-unlocked';
-
-async function sha256Hex(text) {
-  const buf = new TextEncoder().encode(text);
-  const hash = await crypto.subtle.digest('SHA-256', buf);
-  return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, '0')).join('');
+</script>
+</body>
+</html>`;
 }
 
-async function openGated(event, url) {
-  event.preventDefault();
-  if (sessionStorage.getItem(GATED_STORAGE_KEY) === '1') {
-    window.location.href = url;
-    return false;
+// ─── 비밀번호 게이트 페이지 ─────────────────────────────────────────────────
+// dist/site/gate.html — 고객사 전용 매뉴얼 진입 전 비밀번호 확인 폼.
+// URL 쿼리 'to=<customer-id>' 로 진입 대상 지정. 통과 시 docs/<id>/index.html 로 이동.
+// sessionStorage 에 한 번 통과한 사실을 저장해 같은 탭 안에선 다시 묻지 않음.
+//
+// 보안 한계: 정적 사이트(GitHub Pages) 라 인스펙터로 우회 가능. *고객사 전용 매뉴얼임을
+// 알리는 안내 게이트* 수준이며, 진짜 보안이 필요하면 서버 인증 계층이 별도로 필요합니다.
+function renderGate() {
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>고객사 전용 매뉴얼 — 솔루션 가이드</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg:#f7f8fa; --fg:#1a1d21; --sub:#5a6168; --border:#e1e4e8;
+    --primary:#3949ab; --primary-bg:#e8eaf6;
+    --error:#b91c1c;
   }
-  const pwd = window.prompt('이 매뉴얼은 고객사 전용입니다.\\n비밀번호를 입력해 주세요.');
-  if (pwd === null) return false; // 취소
-  const hex = await sha256Hex(pwd);
-  if (hex === GATED_PASSWORD_HASH) {
-    sessionStorage.setItem(GATED_STORAGE_KEY, '1');
-    window.location.href = url;
-  } else {
-    window.alert('비밀번호가 일치하지 않습니다. 다시 입력해 주세요.');
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; min-height:100vh; display:flex; align-items:center; justify-content:center; padding: 24px; }
+  .gate { max-width: 420px; width: 100%; background: white; border:1px solid var(--border); border-radius: 12px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); }
+  .gate-icon { font-size: 32px; line-height: 1; margin-bottom: 12px; }
+  .gate h1 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.3px; }
+  .gate p.lead { margin: 0 0 24px; color: var(--sub); font-size: 14px; }
+  .gate label { display:block; font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+  .gate input[type="password"] { width: 100%; padding: 12px 14px; border:1px solid var(--border); border-radius: 8px; font-size: 15px; background: white; transition: border-color .1s, box-shadow .1s; }
+  .gate input[type="password"]:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(57,73,171,0.1); }
+  .gate button { width: 100%; margin-top: 12px; padding: 12px 14px; background: var(--primary); color: white; border:none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background .1s; }
+  .gate button:hover { background: #2c3995; }
+  .gate .err { margin-top: 12px; color: var(--error); font-size: 13px; min-height: 1.4em; }
+  .gate .back { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
+  .gate .back a { color: var(--sub); text-decoration: none; }
+  .gate .back a:hover { color: var(--primary); text-decoration: underline; }
+  .gate .target { color: var(--fg); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="gate">
+  <div class="gate-icon">🔒</div>
+  <h1>고객사 전용 매뉴얼</h1>
+  <p class="lead">이 매뉴얼은 고객사 전용으로 공개되어 있습니다. 비밀번호를 입력해 주세요.</p>
+  <form id="form" autocomplete="off">
+    <label for="pwd">비밀번호</label>
+    <input id="pwd" type="password" autofocus required>
+    <button type="submit">진입</button>
+    <div id="err" class="err" role="alert"></div>
+  </form>
+  <p class="back">
+    <a href="index.html">← 솔루션 가이드 메인으로 돌아가기</a>
+  </p>
+</div>
+<script>
+  const HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'; // sha256('admin123')
+  const STORAGE_KEY = 'xgen-manual-gated-unlocked';
+  const params = new URLSearchParams(location.search);
+  const target = (params.get('to') || '').replace(/[^a-zA-Z0-9_-]/g, ''); // 안전 화이트리스트
+  const destination = target ? 'docs/' + target + '/index.html' : 'index.html';
+
+  // 같은 탭에서 이미 통과한 적이 있으면 폼을 거치지 않고 즉시 이동.
+  if (sessionStorage.getItem(STORAGE_KEY) === '1' && target) {
+    location.replace(destination);
   }
-  return false;
-}
+
+  async function sha256Hex(text) {
+    const buf = new TextEncoder().encode(text);
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  document.getElementById('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errEl = document.getElementById('err');
+    errEl.textContent = '';
+    const pwd = document.getElementById('pwd').value;
+    if (!pwd) return;
+    const hex = await sha256Hex(pwd);
+    if (hex === HASH) {
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      location.href = destination;
+    } else {
+      errEl.textContent = '비밀번호가 일치하지 않습니다. 다시 입력해 주세요.';
+      document.getElementById('pwd').select();
+    }
+  });
 </script>
 </body>
 </html>`;
