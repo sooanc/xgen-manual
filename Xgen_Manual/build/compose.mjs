@@ -242,6 +242,45 @@ export async function compose(customerId) {
   //     base/en 챕터 양쪽 다 빌드되어 직접 URL 접근은 유지됨.
   // (실제 주입은 아래 mkdocs.yml 생성 단계에서 baseMkdocs.not_in_nav 에 셋팅)
 
+  // 6c. 제외된 챕터를 가리키는 *테이블 행* 을 다른 챕터 본문에서도 자동 제거.
+  //     사이드바 매핑 표(예: user/11-getting-started.md 의 "Agent 작업실 구성" 표,
+  //     admin/20-admin-overview.md 의 "관리자 사이드바 요약" 표) 에 적힌 행이
+  //     라이브에 없는 메뉴를 안내해 사용자 혼란을 유발하는 것을 방지.
+  //
+  //     룰: 라인이 `|` 로 시작(=md 테이블 행) 하고 본문에 `](<excluded-base>.md...)` 패턴이
+  //         포함되면 그 라인 전체를 삭제. 다른 형태(문단·각주 등)는 영향 없음 — 그 경우는
+  //         AUTHORING.md 0.3 절에 따라 수동 정리 대상.
+  if (excludedRelPaths.length > 0) {
+    const excludedBases = new Set(
+      excludedRelPaths.map((rel) => rel.split('/').pop().replace(/\.en\.md$|\.md$/, ''))
+    );
+    const excludedSet = new Set(excludedRelPaths);
+    for (const f of mdFiles) {
+      const relPath = relative(docsDir, f).split(sep).join('/');
+      if (excludedSet.has(relPath)) continue; // 자기 자신은 손대지 않음
+
+      const text = await readFile(f, 'utf8');
+      let strippedCount = 0;
+      const out = text.split(/\r?\n/).filter((line) => {
+        if (!line.startsWith('|')) return true; // 테이블 행만 대상
+        for (const base of excludedBases) {
+          // [text](anything/base.md), [text](base.md#anchor) 모두 매칭
+          if (line.includes(`](${base}.md`) || line.includes(`/${base}.md`)) {
+            strippedCount++;
+            return false;
+          }
+        }
+        return true;
+      });
+      if (strippedCount > 0) {
+        await writeFile(f, out.join('\n'), 'utf8');
+        console.log(
+          `[compose:${customerId}] strip ${strippedCount} table row(s) → ${relPath} (excluded chapters: ${[...excludedBases].join(', ')})`
+        );
+      }
+    }
+  }
+
   // 7. mkdocs.yml 생성
   const baseMkdocs = parseYaml(await readFile(PATHS.mkdocsBase, 'utf8'));
   // site_name 은 mkdocs.base.yml 의 값('솔루션 가이드')을 그대로 사용 — 고객사명 접두 제거
