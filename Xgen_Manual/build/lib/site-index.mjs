@@ -149,7 +149,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
             : '';
         const domainLine =
           item.domain
-            ? `<div><span class="label">서비스 도메인</span> <code>${escapeHtml(item.domain)}</code></div>`
+            ? `<div><span class="label">서비스 도메인</span> <code class="domain">${escapeHtml(item.domain)}</code></div>`
             : '';
         const manualLine =
           item.manualVersion
@@ -232,6 +232,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
   .card-meta .label { display: inline-block; min-width: 70px; color: #999; }
   .card-meta .muted { color: #999; font-size: 12px; }
   .card-meta code { background: #f0f1f3; padding: 1px 6px; border-radius: 3px; font-size: 12px; color: #333; }
+  .card-meta code.domain { background: var(--primary-bg); color: var(--primary); font-weight: 600; padding: 2px 8px; font-size: 13px; }
   .empty { padding: 60px 20px; text-align: center; color: var(--sub); background: white; border:1px solid var(--border); border-radius: 10px; }
   .guide { background: white; border:1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
   .guide-title { margin: 0 0 10px; font-size: 14px; font-weight: 600; color: var(--fg); }
@@ -342,7 +343,9 @@ function renderGate() {
 </div>
 <script>
   const HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'; // sha256('admin123')
-  const STORAGE_KEY = 'xgen-manual-gated-unlocked';
+  // 키 버전(v2) 분리: 이전 prompt 기반 게이트가 'xgen-manual-gated-unlocked' 에 남긴 unlock
+  // 상태가 새 폼을 자동 통과시키는 문제를 막기 위해 키 이름 자체를 분리.
+  const STORAGE_KEY = 'xgen-manual-gate-unlocked-v2';
   const params = new URLSearchParams(location.search);
   const target = (params.get('to') || '').replace(/[^a-zA-Z0-9_-]/g, ''); // 안전 화이트리스트
   const destination = target ? 'docs/' + target + '/index.html' : 'index.html';
