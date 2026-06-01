@@ -102,13 +102,13 @@ Role creation is a **two-step** process — register the role first, then click 
     - **Description** — (optional)
 3. Once all required fields are filled, the **Create** button at the bottom right activates. Clicking it registers the role with 0 permissions.
 
-![Create-role modal — fields for English role name / display name / description with Cancel and Create buttons](images/admin-role-create.png)
+![Create-role modal — fields for English role name / display name / description with Cancel and Create buttons](images/admin-role-create.gif)
 
 ### Step 2 — Grant permissions { #permission-modal }
 
 To grant permissions, click the **Permissions** button on the role row. The *Permission Settings* modal opens, showing two scopes (ADMIN / MAIN) with permissions grouped by category.
 
-![Permission Settings modal — checkbox tree under ADMIN / MAIN scopes with a search input and selected/total counters per scope](images/admin-role-permissions-modal.png)
+![Permission Settings modal — checkbox tree under ADMIN / MAIN scopes with a search input and selected/total counters per scope](images/admin-role-permissions-modal.gif)
 
 Layout:
 
