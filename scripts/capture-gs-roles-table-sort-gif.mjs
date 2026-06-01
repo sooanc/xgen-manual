@@ -122,53 +122,40 @@ async function captureShot(browser, storageState) {
 
   await page.goto(`${BASE}/admin?view=admin-role-management`, { waitUntil: 'networkidle', timeout: 45_000 });
   await page.waitForFunction(() => /역할\/권한 관리/.test(document.body.innerText), null, { timeout: 30_000 });
-  await page.waitForTimeout(1200);
-
-  // 정렬할 컬럼 헤더 — '권한 수' 텍스트가 들어 있는 가장 작은 요소를 찾는다.
-  const colRect = await page.evaluate(() => {
-    // 모든 노드 중 자기 자신의 textContent 에 '권한 수' 가 있고 자식 중 같은 텍스트가 있는 것이 없는 가장 작은 요소를 고름.
-    const all = Array.from(document.querySelectorAll('th, [role="columnheader"], div, span, button, p, td'));
-    const candidates = all.filter(el => /권한 수/.test(el.textContent || ''));
-    if (!candidates.length) return null;
-    // 가장 작은 (포함된 텍스트 길이가 가장 짧은) 요소 선택
-    candidates.sort((a, b) => (a.textContent.length || 0) - (b.textContent.length || 0));
-    const target = candidates[0];
-    const clickable = target.closest('th, [role="columnheader"], button') || target;
-    clickable.scrollIntoView({ block: 'center' });
-    return clickable.getBoundingClientRect().toJSON();
-  });
-  if (!colRect) throw new Error('권한 수 column header not found');
+  // 역할 목록 (첫 화면) 안정화 대기
+  await page.waitForTimeout(1500);
 
   // 가상 커서를 좌측 본문에 두기 → trim 시작점
   await page.mouse.move(400, 400, { steps: 6 });
   const tReady = Date.now() - ctxStart;
-  log(`  ready at t=${tReady}ms; col rect:`, colRect);
-  await page.waitForTimeout(PRE_CLICK_HOLD_MS);
+  log(`  ready at t=${tReady}ms — 역할 목록 첫 화면 hold`);
 
-  // 컬럼 헤더 클릭 (1차 정렬)
-  const cx = colRect.x + Math.min(80, colRect.width / 2);
-  const cy = colRect.y + colRect.height / 2;
-  log(`  click 1 (${cx.toFixed(0)}, ${cy.toFixed(0)})`);
-  await page.mouse.move(cx, cy, { steps: 25 });
-  await page.waitForTimeout(200);
-  await page.mouse.click(cx, cy);
-  await page.waitForTimeout(1100);
-  // 다시 한번 클릭 (반대 방향 토글)
-  log(`  click 2 — toggle sort direction`);
-  await page.mouse.click(cx, cy);
-  await page.waitForTimeout(1100);
+  // 첫 화면 (역할 목록 테이블) 보여주기
+  await page.waitForTimeout(PRE_CLICK_HOLD_MS + 1500);
 
-  // 행 우측의 작업 버튼 영역을 한번 hover (편집 또는 권한 위치로 살짝 이동)
-  const actionRect = await page.evaluate(() => {
-    const btns = Array.from(document.querySelectorAll('button')).filter(b => b.textContent.trim() === '권한');
-    if (!btns[0]) return null;
-    btns[0].scrollIntoView({ block: 'center' });
-    return btns[0].getBoundingClientRect().toJSON();
+  // 권한 구조 탭 좌표 찾기
+  const tabRect = await page.evaluate(() => {
+    const tab = Array.from(document.querySelectorAll('[role="tab"], button')).find(el => /^권한\s*구조$|Permission\s*Structure/.test(el.textContent.trim()));
+    if (!tab) return null;
+    tab.scrollIntoView({ block: 'center' });
+    return tab.getBoundingClientRect().toJSON();
   });
-  if (actionRect) {
-    await page.mouse.move(actionRect.x + actionRect.width / 2, actionRect.y + actionRect.height / 2, { steps: 25 });
-  }
-  await page.waitForTimeout(POST_CLICK_HOLD_MS);
+  if (!tabRect) throw new Error('권한 구조 탭 미발견');
+  const tx = tabRect.x + tabRect.width / 2;
+  const ty = tabRect.y + tabRect.height / 2;
+  log(`  cursor → 권한 구조 탭 (${tx.toFixed(0)},${ty.toFixed(0)})`);
+  await page.mouse.move(tx, ty, { steps: 25 });
+  await page.waitForTimeout(250);
+
+  // 탭 클릭 → 화면 전환
+  await page.evaluate(() => {
+    const tab = Array.from(document.querySelectorAll('[role="tab"], button')).find(el => /^권한\s*구조$|Permission\s*Structure/.test(el.textContent.trim()));
+    tab?.click();
+  });
+  log('  권한 구조 탭 clicked → 전환 hold');
+
+  // 전환된 화면 보여주기 (충분히)
+  await page.waitForTimeout(POST_CLICK_HOLD_MS + 2500);
   const tEnd = Date.now() - ctxStart;
 
   const video = page.video();
