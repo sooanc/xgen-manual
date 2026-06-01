@@ -244,22 +244,66 @@ const log = (...a) => console.log('[gif]', ...a);
   ).catch(() => log('  warning: 에이전트 시작 텍스트가 사라지지 않았음 — 그래도 진행'));
   log('  agent node appears to be added');
 
-  // canvas-node.gif 변형: 노드 배치 후 커서를 노드 위로 이동시켜 노드 상세 패널을
-  // 열어 둔다. detail 패널이 우측에 펼쳐지면 그 상태를 hold 한다.
-  // 노드는 캔버스 중앙 부근에 배치되므로 viewport 중앙 좌표로 이동.
+  // canvas-node.gif 흐름:
+  //   ① 에이전트 시작 클릭 (위 startBtn.click() 단계) — 노드 배치
+  //   ② 우하단 "노드 추가" 버튼 클릭 → 모달 오픈
+  //   ③ 모달 안 "모델 컨텍스트 프로토콜(MCP)" 카테고리 클릭
+  //   ④ 모달 안 "문서로더" 카테고리 클릭
   await page.waitForTimeout(700);
-  const viewport = page.viewportSize();
-  const nodeX = Math.round(viewport.width / 2);
-  const nodeY = Math.round(viewport.height / 2);
-  log(`  moving cursor to node center (${nodeX}, ${nodeY})`);
-  await page.mouse.move(nodeX, nodeY, { steps: 20 });
-  await page.waitForTimeout(300);
-  log('  clicking node to open detail panel');
-  await page.mouse.click(nodeX, nodeY);
-  await page.waitForTimeout(800);
 
-  // ── 6. 결과 hold (detail 패널 보여주기) ──
-  await page.waitForTimeout(POST_CLICK_HOLD_MS + 1200);
+  // ② 노드 추가 버튼 — 우하단 툴바.
+  const addNodeBtn = page.getByRole('button', { name: /^노드\s*추가$|Add Node/ }).first();
+  await addNodeBtn.waitFor({ state: 'visible', timeout: 10_000 });
+  const addBox = await addNodeBtn.boundingBox();
+  if (addBox) {
+    const tx = addBox.x + addBox.width / 2;
+    const ty = addBox.y + addBox.height / 2;
+    log(`  cursor → 노드 추가 버튼 (${tx.toFixed(0)}, ${ty.toFixed(0)})`);
+    await page.mouse.move(tx, ty, { steps: 22 });
+    await page.waitForTimeout(200);
+  }
+  log('  clicking 노드 추가');
+  await addNodeBtn.click();
+  await page.waitForTimeout(800); // 모달 오픈 hold
+
+  // ③ "모델 컨텍스트 프로토콜(MCP)" 카테고리. 모달 안에서 텍스트 매칭.
+  const mcpItem = page.getByText(/모델\s*컨텍스트\s*프로토콜|MCP/i).first();
+  if (await mcpItem.isVisible({ timeout: 5_000 }).catch(() => false)) {
+    const mb = await mcpItem.boundingBox();
+    if (mb) {
+      const tx = mb.x + mb.width / 2;
+      const ty = mb.y + mb.height / 2;
+      log(`  cursor → MCP 카테고리 (${tx.toFixed(0)}, ${ty.toFixed(0)})`);
+      await page.mouse.move(tx, ty, { steps: 18 });
+      await page.waitForTimeout(250);
+      log('  clicking 모델 컨텍스트 프로토콜(MCP)');
+      await mcpItem.click();
+      await page.waitForTimeout(900);
+    }
+  } else {
+    log('  warning: MCP 카테고리 미발견, 다음 단계로 진행');
+  }
+
+  // ④ "문서로더" 카테고리.
+  const docItem = page.getByText(/문서\s*로더|Document\s*Loader|DocumentLoader/i).first();
+  if (await docItem.isVisible({ timeout: 5_000 }).catch(() => false)) {
+    const db = await docItem.boundingBox();
+    if (db) {
+      const tx = db.x + db.width / 2;
+      const ty = db.y + db.height / 2;
+      log(`  cursor → 문서로더 (${tx.toFixed(0)}, ${ty.toFixed(0)})`);
+      await page.mouse.move(tx, ty, { steps: 18 });
+      await page.waitForTimeout(250);
+      log('  clicking 문서로더');
+      await docItem.click();
+      await page.waitForTimeout(900);
+    }
+  } else {
+    log('  warning: 문서로더 항목 미발견');
+  }
+
+  // ── 6. 결과 hold (마지막 상태 1.5s 보여주기) ──
+  await page.waitForTimeout(1500);
   const tEnd = Date.now() - ctxStart;
   log(`  total recorded duration ≈ ${tEnd}ms`);
 
