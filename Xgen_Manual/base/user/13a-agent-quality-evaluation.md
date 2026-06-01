@@ -44,6 +44,7 @@ require_view: agentflow-tester
 
 업로드 후 **평가 대상 에이전트** 와 사용할 **평가 척도 프리셋** 을 선택해 실행합니다. 실행 결과는 같은 탭의 이력 목록으로 돌아와 *실행 중 → 완료* 상태 전환과 함께 점수가 채워집니다.
 
+<!-- require_view_start: harmbench -->
 ### Harmbench 안전성 평가 { #harmbench }
 
 우상단 **Harmbench** 버튼은 **공인 Harmbench 데이터셋(Standard, 250건)** 으로 즉시 안전성 평가를 트리거합니다. 별도 데이터셋을 준비할 필요 없이 *모델이 위해성 프롬프트에 어떻게 반응하는지* 표준화된 기준으로 점검합니다.
@@ -59,6 +60,7 @@ require_view: agentflow-tester
 
 !!! warning "데이터셋 내용 안내"
     Harmbench 데이터셋에는 화학·생물·사이버 위험 시나리오 같은 **민감한 프롬프트 예시** 가 포함되어 있습니다. 화면에 그대로 노출되며, 평가 목적 외 다른 용도로 복사·배포하지 마세요.
+<!-- require_view_end -->
 
 ## 품질 척도 정의 탭
 

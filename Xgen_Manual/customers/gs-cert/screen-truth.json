@@ -8,6 +8,12 @@
       "source": "live-audit",
       "note": "xgen-main 과 동일 — main 브랜치에서 비활성 상태이며 gs 권한도 동일하게 미노출"
     },
+    "harmbench": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "Agent 품질 평가 화면 우상단 'Harmbench' 버튼이 gs@plateer.com 사용자 UI 에 노출되지 않음 (2026-06-01 transition-gif 캡처 시도 시 TimeoutError 로 확인). 13a-agent-quality-evaluation.md 의 'Harmbench 안전성 평가' 절(블록 마커 require_view_start: harmbench) 을 통째 제외."
+    },
     "upload-history": {
       "ok": false,
       "notFound": true,

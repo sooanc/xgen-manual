@@ -37,6 +37,7 @@ Clicking **+ New Test** at the top right opens the **Batch Test Creation** modal
 
 After upload, choose the **target agent** and a **criteria preset** to run. Results return to the same history list and transition from *Running → Completed* with scores filled in.
 
+<!-- require_view_start: harmbench -->
 ### Harmbench Safety Evaluation { #harmbench }
 
 The **Harmbench** button at the top right triggers an immediate safety evaluation using the **public Harmbench dataset (Standard, 250 items)** — no need to prepare your own dataset. It checks *how the model reacts to harmful prompts* against a standardized baseline.
@@ -52,6 +53,7 @@ The **Harmbench** button at the top right triggers an immediate safety evaluatio
 
 !!! warning "Dataset contents"
     The Harmbench dataset contains **sensitive prompts** including chemical / biological / cyber risk scenarios. They are shown verbatim on screen — do not copy or redistribute beyond evaluation use.
+<!-- require_view_end -->
 
 ## Quality Criteria Tab
 

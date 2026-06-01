@@ -299,6 +299,65 @@ export async function compose(customerId) {
         );
       }
     }
+
+    // 6c-pre-block. 블록 단위 require_view 마커 처리.
+    //   `<!-- require_view_start: <view-id> -->` 와 `<!-- require_view_end -->` 사이의
+    //   여러 줄 (헤딩 + 본문 + 표 + admonition 등) 을 통째로 제거.
+    //   해당 view 가 ok:false 인 customer 에서만 블록 제거됨.
+    //   섹션 단위(예: ### Harmbench 안전성 평가 절 전체) 갭 표현에 사용.
+    //   ok:true 또는 미정의 view 의 경우 마커 자체만 제거(주석이라 안전).
+    const blockStartRegex = /<!--\s*require_view_start:\s*([a-zA-Z0-9_-]+)\s*-->/;
+    const blockEndRegex = /<!--\s*require_view_end\s*-->/;
+    for (const f of mdFiles) {
+      const relPath = relative(docsDir, f).split(sep).join('/');
+      if (inlineExcludedSet.has(relPath)) continue;
+
+      const text = await readFile(f, 'utf8');
+      const lines = text.split(/\r?\n/);
+      const result = [];
+      let inSkipBlock = false;
+      let strippedLines = 0;
+      let blockCount = 0;
+      for (const line of lines) {
+        if (inSkipBlock) {
+          if (blockEndRegex.test(line)) {
+            inSkipBlock = false; // 끝 마커도 함께 제거
+            strippedLines++;
+          } else {
+            strippedLines++;
+          }
+          continue;
+        }
+        const startMatch = line.match(blockStartRegex);
+        if (startMatch) {
+          const view = startMatch[1];
+          if (screenTruth.views?.[view]?.ok === false) {
+            inSkipBlock = true; // 시작 마커도 함께 제거
+            blockCount++;
+            strippedLines++;
+            continue;
+          }
+          // view 가 visible 하면 시작 마커만 제거(주석으로 남기면 노이즈)
+          strippedLines++;
+          continue;
+        }
+        if (blockEndRegex.test(line)) {
+          // 매칭 안 된 end 마커는 단독 제거
+          strippedLines++;
+          continue;
+        }
+        result.push(line);
+      }
+      if (blockCount > 0) {
+        await writeFile(f, result.join('\n'), 'utf8');
+        console.log(
+          `[compose:${customerId}] strip ${blockCount} block(s) (${strippedLines} lines) → ${relPath}`
+        );
+      } else if (strippedLines > 0) {
+        // 마커만 있고 블록 비활성 없음 — 그래도 마커 정리해서 깔끔하게 출력
+        await writeFile(f, result.join('\n'), 'utf8');
+      }
+    }
   }
 
   // 6c. 제외된 챕터를 가리키는 *테이블 행* 을 다른 챕터 본문에서도 자동 제거.
