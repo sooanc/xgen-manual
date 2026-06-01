@@ -266,7 +266,7 @@ const log = (...a) => console.log('[gif]', ...a);
   await page.waitForTimeout(1500); // 노드/엣지 그려질 때까지 추가 대기
   log('  canvas + nodes loaded');
 
-  // ── 6. 줌 70% → 60% (Zoom out 한 번 클릭) ──
+  // ── 6. 줌 70% → 30% 이하 (Zoom out 반복 클릭, 한 번에 약 -12%) ──
   const zoomOutRect = await page.evaluate(() => {
     const buttons = Array.from(document.querySelectorAll('button'));
     const btn = buttons.find(b => (b.getAttribute('aria-label') || '').includes('Zoom out'));
@@ -278,11 +278,27 @@ const log = (...a) => console.log('[gif]', ...a);
     log(`  cursor → Zoom out (${zoomOutRect.x.toFixed(0)},${zoomOutRect.y.toFixed(0)})`);
     await page.mouse.move(zoomOutRect.x, zoomOutRect.y, { steps: 22 });
     await page.waitForTimeout(150);
-    await page.evaluate(() => {
-      const btn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('Zoom out'));
-      btn?.click();
-    });
-    await page.waitForTimeout(600);
+    const TARGET_ZOOM = 30;
+    let safety = 12;
+    while (safety-- > 0) {
+      const current = await page.evaluate(() => {
+        const m = ((document.querySelector('[role="status"]') || {}).textContent || '').match(/(\d+)%/);
+        return m ? parseInt(m[1]) : null;
+      });
+      if (current === null) {
+        log('  zoom % unreadable, stopping');
+        break;
+      }
+      if (current <= TARGET_ZOOM) {
+        log(`  zoom reached ${current}%`);
+        break;
+      }
+      await page.evaluate(() => {
+        const btn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('Zoom out'));
+        btn?.click();
+      });
+      await page.waitForTimeout(350);
+    }
   }
 
   // ── 7. 펼치기 버튼 (오른쪽 하단 위 화살표) → 실행/로그 패널 expand ──
