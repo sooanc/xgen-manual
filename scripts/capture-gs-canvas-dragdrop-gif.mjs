@@ -292,6 +292,82 @@ const log = (...a) => console.log('[gif]', ...a);
     await page.waitForTimeout(900);
   }
 
+  async function connectPorts({ fromNodeMatch, fromPortLabelRegex, toNodeMatch, toPortLabelRegex, label }) {
+    // 캔버스 위 포트 (작은 원, ~10px) 좌표를 찾아 mouse drag 로 두 포트를 연결.
+    //   fromNodeMatch / toNodeMatch: 노드 textContent 매칭 정규식
+    //   fromPortLabelRegex / toPortLabelRegex: portRow 내 portLabel 매칭 정규식
+    const coords = await page.evaluate((args) => {
+      const portGroups = Array.from(document.querySelectorAll('[class*="__portGroup"]'));
+      const containers = [...new Set(portGroups.map((g) => {
+        let p = g.parentElement;
+        while (p && !/Node-module|node-card|nodeWrapper/.test(p.className || '')) p = p.parentElement;
+        return p || g.parentElement;
+      }))].filter(Boolean);
+
+      const fromRe = new RegExp(args.fromNode);
+      const toRe = new RegExp(args.toNode);
+      const fromLabelRe = new RegExp(args.fromLabel);
+      const toLabelRe = new RegExp(args.toLabel);
+
+      const fromNode = containers.find((n) => fromRe.test(n.textContent));
+      const toNode = containers.find((n) => toRe.test(n.textContent) && n !== fromNode);
+      if (!fromNode || !toNode) return { error: 'nodes not found', fromFound: !!fromNode, toFound: !!toNode };
+
+      function findPort(node, labelRe, preferOutput) {
+        // portRow 들 안에서 portLabel 매칭 → 가장 가까운 작은 port circle 좌표 반환
+        const rows = Array.from(node.querySelectorAll('[class*="__portRow"]'));
+        const matchedRows = rows.filter((r) => {
+          const lab = r.querySelector('[class*="__portLabel"]');
+          return lab && labelRe.test(lab.textContent.trim());
+        });
+        if (!matchedRows.length) return null;
+        // portRow 안의 port circle 들 (작은 점) 중에서 preferOutput 이면 오른쪽, 아니면 왼쪽 선택
+        let bestPort = null;
+        let bestX = preferOutput ? -Infinity : Infinity;
+        for (const r of matchedRows) {
+          const ports = Array.from(r.querySelectorAll('[class*="__port"]'))
+            .filter((p) => !/__portLabel|__portRow|__portGroup/.test(p.className || ''));
+          for (const p of ports) {
+            const rect = p.getBoundingClientRect();
+            const cx = rect.x + rect.width / 2;
+            if ((preferOutput && cx > bestX) || (!preferOutput && cx < bestX)) {
+              bestX = cx;
+              bestPort = { x: cx, y: rect.y + rect.height / 2 };
+            }
+          }
+        }
+        return bestPort;
+      }
+
+      const fromPort = findPort(fromNode, fromLabelRe, true);  // output 측 = 오른쪽 포트
+      const toPort = findPort(toNode, toLabelRe, false);       // input 측 = 왼쪽 포트
+      if (!fromPort || !toPort) return { error: 'ports not found', fromPort, toPort };
+      return { fromPort, toPort };
+    }, {
+      fromNode: fromNodeMatch,
+      toNode: toNodeMatch,
+      fromLabel: fromPortLabelRegex,
+      toLabel: toPortLabelRegex,
+    });
+
+    if (coords.error) {
+      log(`  connect ${label} skipped: ${coords.error}`);
+      return;
+    }
+    log(`  connecting ${label}: (${coords.fromPort.x.toFixed(0)},${coords.fromPort.y.toFixed(0)}) → (${coords.toPort.x.toFixed(0)},${coords.toPort.y.toFixed(0)})`);
+    await page.mouse.move(coords.fromPort.x, coords.fromPort.y, { steps: 14 });
+    await page.waitForTimeout(120);
+    await page.mouse.down();
+    // 직선 드래그 — 중간 지점 한 번 거쳐 가시성 ↑
+    const midX = (coords.fromPort.x + coords.toPort.x) / 2;
+    const midY = (coords.fromPort.y + coords.toPort.y) / 2;
+    await page.mouse.move(midX, midY, { steps: 18 });
+    await page.mouse.move(coords.toPort.x, coords.toPort.y, { steps: 18 });
+    await page.waitForTimeout(180);
+    await page.mouse.up();
+    await page.waitForTimeout(600);
+  }
+
   async function dragLatestNode(direction) {
     const drag = await page.evaluate((dir) => {
       const groups = Array.from(document.querySelectorAll('[class*="__portGroup"]'));
@@ -327,15 +403,29 @@ const log = (...a) => console.log('[gif]', ...a);
     await page.waitForTimeout(600);
   }
 
-  // ① ~ ③ 시작 노드 (사용자 질문 입력) → 왼쪽 배치
+  // ① ~ ③ 시작 노드 (사용자 질문 입력) → 왼쪽 배치 → XGEN 입력으로 연결
   await openAddNodeModal('start-node-add');
   await pickCategoryItem('시작 노드', '사용자 질문 입력');
   await dragLatestNode('left');
+  await connectPorts({
+    fromNodeMatch: '사용자 질문 입력|startnode',
+    fromPortLabelRegex: '텍스트|출력',
+    toNodeMatch: '에이전트 Xgen|Xgen',
+    toPortLabelRegex: '^텍스트$|입력 텍스트',
+    label: '시작 → XGEN',
+  });
 
-  // ④ ~ ⑤ 종료 노드 (AI 답변 출력) → 오른쪽 배치
+  // ④ ~ ⑤ 종료 노드 (AI 답변 출력) → 오른쪽 배치 → XGEN 스트림 출력에서 연결
   await openAddNodeModal('end-node-add');
   await pickCategoryItem('종료 노드', 'AI 답변 출력');
   await dragLatestNode('right');
+  await connectPorts({
+    fromNodeMatch: '에이전트 Xgen|Xgen',
+    fromPortLabelRegex: '스트림|STREAM',
+    toNodeMatch: 'AI 답변 출력|endnode',
+    toPortLabelRegex: '입력|텍스트',
+    label: 'XGEN → 종료',
+  });
 
   // 마지막 상태 hold
   await page.waitForTimeout(POST_CLICK_HOLD_MS + 800);
