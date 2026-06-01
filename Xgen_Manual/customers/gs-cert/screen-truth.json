@@ -1,7 +1,298 @@
 {
-  "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",
-  "capturedAt": "2026-05-29T08:55:00.000Z",
+  "capturedAt": "2026-06-01T00:52:30.506Z",
   "baseUrl": "https://xgen.x2bee.com",
+  "views": {
+    "main-planning": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일 — main 브랜치에서 비활성 상태이며 gs 권한도 동일하게 미노출"
+    },
+    "upload-history": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일 — 지식관리 그룹 내 '업로드 이력' 메뉴 미노출"
+    },
+    "admin-active-sessions": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일 — 사용자/접근제어 그룹 내 '로그인 관리' 메뉴 미노출"
+    },
+    "admin-compute-pool": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일"
+    },
+    "admin-agentflow-management-info": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "xgen-main 과 동일"
+    },
+    "gov-monitoring": {
+      "ok": false,
+      "lastSize": 83583,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:46.689Z",
+      "source": "live-audit",
+      "note": "직접 URL 진입 시 렌더링되지만 gs 권한 사이드바에 AI 거버넌스 그룹 자체가 미노출. AUTHORING 0.1 단일 진실원(사이드바) 기준 ok:false."
+    },
+    "gov-risk-management": {
+      "ok": false,
+      "lastSize": 80466,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:50.941Z",
+      "source": "live-audit",
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가"
+    },
+    "gov-control-policy": {
+      "ok": false,
+      "lastSize": 82721,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:55.216Z",
+      "source": "live-audit",
+      "note": "AI 거버넌스 그룹 미노출 — 25-pii-policy 챕터도 본 view 의존이라 함께 제외"
+    },
+    "gov-audit-tracking": {
+      "ok": false,
+      "lastSize": 82565,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:59.448Z",
+      "source": "live-audit",
+      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가"
+    },
+    "admin-db-connection": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "데이터 관리 그룹에서 '데이터베이스' 외 서브메뉴 모두 미노출"
+    },
+    "admin-db-batch": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "note": "데이터 관리 > 배치 작업 미노출"
+    },
+    "admin-audit-logs": {
+      "ok": false,
+      "lastSize": 174990,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:33.807Z",
+      "source": "live-audit",
+      "note": "데이터 관리 > 데이터 감사 로그 사이드바 미노출 — 직접 URL 진입은 가능하나 사용자 도달 불가"
+    },
+    "admin-mcp-station": {
+      "ok": false,
+      "lastSize": 57005,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:42.397Z",
+      "source": "live-audit",
+      "note": "MCP 관리 > MCP 운영/모니터링 사이드바 미노출"
+    },
+    "admin-support-notice": {
+      "ok": false,
+      "lastSize": 58300,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:04.729Z",
+      "source": "live-audit",
+      "note": "서비스 운영 그룹 전체 미노출 — 공지 게시판 등록·응대 권한 없음"
+    },
+    "admin-support-faq": {
+      "ok": false,
+      "lastSize": 56728,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:09.044Z",
+      "source": "live-audit",
+      "note": "서비스 운영 그룹 미노출 — 자주 묻는 질문 응대 권한 없음"
+    },
+    "admin-support-qna": {
+      "ok": false,
+      "lastSize": 52990,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:13.296Z",
+      "source": "live-audit",
+      "note": "서비스 운영 그룹 미노출 — 1:1 관리자 문의 응대 권한 없음"
+    },
+    "/dashboard": {
+      "ok": true,
+      "lastSize": 280267,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:29.718Z",
+      "source": "user"
+    },
+    "/main": {
+      "ok": true,
+      "lastSize": 238350,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:34.038Z",
+      "source": "user"
+    },
+    "canvas-intro": {
+      "ok": true,
+      "lastSize": 238350,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:38.276Z",
+      "source": "user"
+    },
+    "agentflow-scheduler": {
+      "ok": true,
+      "lastSize": 97030,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:42.508Z",
+      "source": "user"
+    },
+    "new-chat": {
+      "ok": true,
+      "lastSize": 140623,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:48.027Z",
+      "source": "user"
+    },
+    "current-chat": {
+      "ok": true,
+      "lastSize": 41888,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:52.261Z",
+      "source": "user"
+    },
+    "chat-history": {
+      "ok": true,
+      "lastSize": 114429,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:49:56.826Z",
+      "source": "user"
+    },
+    "knowledge-collection": {
+      "ok": true,
+      "lastSize": 95337,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:01.062Z",
+      "source": "user"
+    },
+    "prompt-storage": {
+      "ok": true,
+      "lastSize": 148387,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:05.346Z",
+      "source": "user"
+    },
+    "auth-profile": {
+      "ok": true,
+      "lastSize": 140612,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:09.626Z",
+      "source": "user"
+    },
+    "support-notices": {
+      "ok": true,
+      "lastSize": 69692,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:13.869Z",
+      "source": "user"
+    },
+    "support-faq": {
+      "ok": true,
+      "lastSize": 62392,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:18.103Z",
+      "source": "user"
+    },
+    "support-qna": {
+      "ok": true,
+      "lastSize": 77560,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:22.303Z",
+      "source": "user"
+    },
+    "/admin": {
+      "ok": true,
+      "lastSize": 157822,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:49.381Z",
+      "source": "admin"
+    },
+    "admin-users": {
+      "ok": true,
+      "lastSize": 80446,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:53.635Z",
+      "source": "admin"
+    },
+    "admin-role-management": {
+      "ok": true,
+      "lastSize": 180394,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:50:57.912Z",
+      "source": "admin"
+    },
+    "admin-setting-llm": {
+      "ok": true,
+      "lastSize": 116351,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:02.185Z",
+      "source": "admin"
+    },
+    "admin-setting-embed": {
+      "ok": true,
+      "lastSize": 132431,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:06.542Z",
+      "source": "admin"
+    },
+    "admin-setting-guarder": {
+      "ok": true,
+      "lastSize": 126434,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:10.912Z",
+      "source": "admin"
+    },
+    "admin-system-monitor": {
+      "ok": true,
+      "lastSize": 104050,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:29.536Z",
+      "source": "admin"
+    },
+    "admin-mcp-market": {
+      "ok": true,
+      "lastSize": 114030,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:51:38.142Z",
+      "source": "admin"
+    },
+    "admin-agentflow-management": {
+      "ok": true,
+      "lastSize": 157382,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:17.553Z",
+      "source": "admin"
+    },
+    "admin-feedback-monitoring": {
+      "ok": true,
+      "lastSize": 104075,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:21.843Z",
+      "source": "admin"
+    },
+    "admin-database": {
+      "ok": true,
+      "lastSize": 111493,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:26.151Z",
+      "source": "admin"
+    },
+    "admin-knowledge-collection": {
+      "ok": true,
+      "lastSize": 175178,
+      "notFound": false,
+      "capturedAt": "2026-06-01T00:52:30.506Z",
+      "source": "admin"
+    }
+  },
+  "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",
   "_liveAudit": {
     "account": "gs@plateer.com",
     "displayName": "GS인증",
@@ -36,104 +327,6 @@
         "MCP 관리: MCP 운영/모니터링 (admin-mcp-station)",
         "서비스 운영 그룹 전체 (admin-support-notice, admin-support-faq, admin-support-qna)"
       ]
-    }
-  },
-  "views": {
-    "main-planning": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "xgen-main 과 동일 — main 브랜치에서 비활성 상태이며 gs 권한도 동일하게 미노출"
-    },
-    "upload-history": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "xgen-main 과 동일 — 지식관리 그룹 내 '업로드 이력' 메뉴 미노출"
-    },
-    "admin-active-sessions": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "xgen-main 과 동일 — 사용자/접근제어 그룹 내 '로그인 관리' 메뉴 미노출"
-    },
-    "admin-compute-pool": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "xgen-main 과 동일"
-    },
-    "admin-agentflow-management-info": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "xgen-main 과 동일"
-    },
-    "gov-monitoring": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "gs 권한 기준 관리 사이드바에 AI 거버넌스 그룹 자체가 미노출"
-    },
-    "gov-risk-management": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가"
-    },
-    "gov-control-policy": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "AI 거버넌스 그룹 미노출 — 25-pii-policy 챕터도 본 view 의존이라 함께 제외"
-    },
-    "gov-audit-tracking": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가"
-    },
-    "admin-db-connection": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "데이터 관리 그룹에서 '데이터베이스' 외 서브메뉴 모두 미노출"
-    },
-    "admin-db-batch": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "데이터 관리 > 배치 작업 미노출"
-    },
-    "admin-audit-logs": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "데이터 관리 > 데이터 감사 로그 미노출"
-    },
-    "admin-mcp-station": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "MCP 관리 그룹에서 'MCP 라이브러리' 외 'MCP 운영/모니터링' 미노출"
-    },
-    "admin-support-notice": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "서비스 운영 그룹 전체 미노출 — 공지 게시판 등록·응대 권한 없음"
-    },
-    "admin-support-faq": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "서비스 운영 그룹 미노출 — 자주 묻는 질문 응대 권한 없음"
-    },
-    "admin-support-qna": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "note": "서비스 운영 그룹 미노출 — 1:1 관리자 문의 응대 권한 없음"
     }
   }
 }
