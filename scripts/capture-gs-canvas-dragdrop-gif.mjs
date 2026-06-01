@@ -293,42 +293,40 @@ const log = (...a) => console.log('[gif]', ...a);
   }
 
   async function connectPorts({ fromNodeMatch, fromPortLabelRegex, toNodeMatch, toPortLabelRegex, label }) {
-    // 캔버스 위 포트 (작은 원, ~10px) 좌표를 찾아 mouse drag 로 두 포트를 연결.
-    //   fromNodeMatch / toNodeMatch: 노드 textContent 매칭 정규식
-    //   fromPortLabelRegex / toPortLabelRegex: portRow 내 portLabel 매칭 정규식
-    const coords = await page.evaluate((args) => {
-      const portGroups = Array.from(document.querySelectorAll('[class*="__portGroup"]'));
-      const containers = [...new Set(portGroups.map((g) => {
-        let p = g.parentElement;
-        while (p && !/Node-module|node-card|nodeWrapper/.test(p.className || '')) p = p.parentElement;
-        return p || g.parentElement;
-      }))].filter(Boolean);
-
+    // PointerEvent 직접 dispatch 로 출력 포트 → 입력 포트 드래그.
+    const result = await page.evaluate(async (args) => {
+      const nodes = Array.from(document.querySelectorAll('[class*="__node"]:not([class*="__nodeName"]):not([class*="__nodeDesc"])'))
+        .filter((n) => {
+          const r = n.getBoundingClientRect();
+          return r.width > 100 && r.height > 50;
+        });
       const fromRe = new RegExp(args.fromNode);
       const toRe = new RegExp(args.toNode);
       const fromLabelRe = new RegExp(args.fromLabel);
       const toLabelRe = new RegExp(args.toLabel);
 
-      const fromNode = containers.find((n) => fromRe.test(n.textContent));
-      const toNode = containers.find((n) => toRe.test(n.textContent) && n !== fromNode);
-      if (!fromNode || !toNode) return { error: 'nodes not found', fromFound: !!fromNode, toFound: !!toNode };
+      const fromNode = nodes.find((n) => fromRe.test(n.textContent));
+      const toNode = nodes.find((n) => toRe.test(n.textContent) && n !== fromNode);
+      if (!fromNode || !toNode) return { error: 'nodes not found', count: nodes.length, fromFound: !!fromNode, toFound: !!toNode };
 
       function findPort(node, labelRe, preferOutput) {
-        // portRow 들 안에서 portLabel 매칭 → 가장 가까운 작은 port circle 좌표 반환
-        const rows = Array.from(node.querySelectorAll('[class*="__portRow"]'));
+        const rows = Array.from(node.querySelectorAll('[class*="__portRow"], [class*="__outputRow"]'));
         const matchedRows = rows.filter((r) => {
           const lab = r.querySelector('[class*="__portLabel"]');
           return lab && labelRe.test(lab.textContent.trim());
         });
         if (!matchedRows.length) return null;
-        // portRow 안의 port circle 들 (작은 점) 중에서 preferOutput 이면 오른쪽, 아니면 왼쪽 선택
         let bestPort = null;
         let bestX = preferOutput ? -Infinity : Infinity;
         for (const r of matchedRows) {
           const ports = Array.from(r.querySelectorAll('[class*="__port"]'))
-            .filter((p) => !/__portLabel|__portRow|__portGroup/.test(p.className || ''));
+            .filter((p) => {
+              const c = (p.className || '').toString();
+              return !/__portLabel|__portRow|__portGroup|__portTypeTag|__outputRow/.test(c);
+            });
           for (const p of ports) {
             const rect = p.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) continue;
             const cx = rect.x + rect.width / 2;
             if ((preferOutput && cx > bestX) || (!preferOutput && cx < bestX)) {
               bestX = cx;
@@ -339,9 +337,40 @@ const log = (...a) => console.log('[gif]', ...a);
         return bestPort;
       }
 
-      const fromPort = findPort(fromNode, fromLabelRe, true);  // output 측 = 오른쪽 포트
-      const toPort = findPort(toNode, toLabelRe, false);       // input 측 = 왼쪽 포트
+      const fromPort = findPort(fromNode, fromLabelRe, true);
+      const toPort = findPort(toNode, toLabelRe, false);
       if (!fromPort || !toPort) return { error: 'ports not found', fromPort, toPort };
+
+      function dispatch(type, x, y) {
+        const el = document.elementFromPoint(x, y);
+        if (!el) return;
+        const ev = new PointerEvent(type, {
+          bubbles: true, cancelable: true, composed: true, view: window,
+          pointerId: 1, pointerType: 'mouse', isPrimary: true,
+          clientX: x, clientY: y, screenX: x, screenY: y,
+          button: 0, buttons: type === 'pointerup' ? 0 : 1,
+        });
+        el.dispatchEvent(ev);
+        const mev = new MouseEvent(type.replace('pointer', 'mouse'), {
+          bubbles: true, cancelable: true, view: window,
+          clientX: x, clientY: y, screenX: x, screenY: y,
+          button: 0, buttons: type === 'pointerup' ? 0 : 1,
+        });
+        el.dispatchEvent(mev);
+      }
+
+      dispatch('pointerdown', fromPort.x, fromPort.y);
+      await new Promise((r) => setTimeout(r, 100));
+      const steps = 16;
+      for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        const x = fromPort.x + (toPort.x - fromPort.x) * t;
+        const y = fromPort.y + (toPort.y - fromPort.y) * t;
+        dispatch('pointermove', x, y);
+        await new Promise((r) => setTimeout(r, 30));
+      }
+      dispatch('pointerup', toPort.x, toPort.y);
+      await new Promise((r) => setTimeout(r, 400));
       return { fromPort, toPort };
     }, {
       fromNode: fromNodeMatch,
@@ -350,56 +379,78 @@ const log = (...a) => console.log('[gif]', ...a);
       toLabel: toPortLabelRegex,
     });
 
-    if (coords.error) {
-      log(`  connect ${label} skipped: ${coords.error}`);
+    if (result.error) {
+      log(`  connect ${label} skipped: ${result.error}${result.count !== undefined ? ` (nodes=${result.count})` : ''}`);
       return;
     }
-    log(`  connecting ${label}: (${coords.fromPort.x.toFixed(0)},${coords.fromPort.y.toFixed(0)}) → (${coords.toPort.x.toFixed(0)},${coords.toPort.y.toFixed(0)})`);
-    await page.mouse.move(coords.fromPort.x, coords.fromPort.y, { steps: 14 });
-    await page.waitForTimeout(120);
-    await page.mouse.down();
-    // 직선 드래그 — 중간 지점 한 번 거쳐 가시성 ↑
-    const midX = (coords.fromPort.x + coords.toPort.x) / 2;
-    const midY = (coords.fromPort.y + coords.toPort.y) / 2;
-    await page.mouse.move(midX, midY, { steps: 18 });
-    await page.mouse.move(coords.toPort.x, coords.toPort.y, { steps: 18 });
-    await page.waitForTimeout(180);
-    await page.mouse.up();
-    await page.waitForTimeout(600);
+    log(`  connected ${label}: (${result.fromPort.x.toFixed(0)},${result.fromPort.y.toFixed(0)}) → (${result.toPort.x.toFixed(0)},${result.toPort.y.toFixed(0)})`);
+    await page.waitForTimeout(500);
   }
 
   async function dragLatestNode(direction) {
-    const drag = await page.evaluate((dir) => {
-      const groups = Array.from(document.querySelectorAll('[class*="__portGroup"]'));
-      const containers = [...new Set(groups.map((g) => {
-        let p = g.parentElement;
-        while (p && !/Node-module|node-card|nodeWrapper/.test(p.className || '')) p = p.parentElement;
-        return p || g.parentElement;
-      }))].filter(Boolean);
-      const lastNode = containers[containers.length - 1];
-      const xgenNode = containers.find((n) => /에이전트 Xgen|Xgen/.test(n.textContent));
-      if (!lastNode || !xgenNode) return { error: 'nodes not found' };
+    // 캔버스 노드는 mouse 이벤트만으로는 드래그가 트리거되지 않습니다.
+    // 직접 PointerEvent + MouseEvent 를 dispatch 해야 핸들러가 잡힙니다.
+    const result = await page.evaluate(async (dir) => {
+      // 헤더 기준 좌표 계산. 가장 최근에 추가된 노드 = DOM 순서상 마지막 .__node
+      const nodes = Array.from(document.querySelectorAll('[class*="__node"]:not([class*="__nodeName"]):not([class*="__nodeDesc"])'))
+        .filter((n) => {
+          const r = n.getBoundingClientRect();
+          return r.width > 100 && r.height > 50;
+        });
+      const xgenNode = nodes.find((n) => /에이전트 Xgen/.test(n.textContent));
+      const lastNode = nodes[nodes.length - 1];
+      if (!lastNode || !xgenNode) return { error: 'nodes not found', count: nodes.length };
       const lb = lastNode.getBoundingClientRect();
       const xb = xgenNode.getBoundingClientRect();
-      const sourceX = lb.x + lb.width / 2;
-      const sourceY = lb.y + lb.height / 2;
+      // 헤더 영역에서 클릭해야 드래그가 시작됨
+      const lastHeader = lastNode.querySelector('[class*="__header"]:not([class*="__headerContent"]):not([class*="__headerActions"]):not([class*="__portGroupHeader"])');
+      const headerRect = lastHeader ? lastHeader.getBoundingClientRect() : lb;
+      const sourceX = headerRect.x + headerRect.width / 2;
+      const sourceY = headerRect.y + headerRect.height / 2;
       const targetX = dir === 'left'
-        ? xb.x - lb.width / 2 - 40
-        : xb.x + xb.width + lb.width / 2 + 40;
-      const targetY = xb.y + xb.height / 2;
-      return { sourceX, sourceY, targetX, targetY };
+        ? Math.max(80, xb.x - lb.width / 2 - 40)
+        : Math.min(window.innerWidth - lb.width / 2 - 20, xb.x + xb.width + lb.width / 2 + 40);
+      const targetY = xb.y + headerRect.height / 2 + 20;
+
+      function dispatch(type, x, y) {
+        const el = document.elementFromPoint(x, y);
+        if (!el) return;
+        const ev = new PointerEvent(type, {
+          bubbles: true, cancelable: true, composed: true, view: window,
+          pointerId: 1, pointerType: 'mouse', isPrimary: true,
+          clientX: x, clientY: y, screenX: x, screenY: y,
+          button: 0, buttons: type === 'pointerup' ? 0 : 1,
+        });
+        el.dispatchEvent(ev);
+        const mev = new MouseEvent(type.replace('pointer', 'mouse'), {
+          bubbles: true, cancelable: true, view: window,
+          clientX: x, clientY: y, screenX: x, screenY: y,
+          button: 0, buttons: type === 'pointerup' ? 0 : 1,
+        });
+        el.dispatchEvent(mev);
+      }
+
+      dispatch('pointerdown', sourceX, sourceY);
+      await new Promise((r) => setTimeout(r, 100));
+      const steps = 18;
+      for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        const x = sourceX + (targetX - sourceX) * t;
+        const y = sourceY + (targetY - sourceY) * t;
+        dispatch('pointermove', x, y);
+        await new Promise((r) => setTimeout(r, 25));
+      }
+      dispatch('pointerup', targetX, targetY);
+      await new Promise((r) => setTimeout(r, 400));
+
+      const after = lastNode.getBoundingClientRect();
+      return { sourceX, sourceY, targetX, targetY, beforeX: lb.x, afterX: after.x, dx: after.x - lb.x };
     }, direction);
-    if (drag.error) {
-      log(`  drag skipped: ${drag.error}`);
+    if (result.error) {
+      log(`  drag skipped: ${result.error}`);
       return;
     }
-    log(`  dragging from (${drag.sourceX.toFixed(0)},${drag.sourceY.toFixed(0)}) → (${drag.targetX.toFixed(0)},${drag.targetY.toFixed(0)})`);
-    await page.mouse.move(drag.sourceX, drag.sourceY, { steps: 20 });
-    await page.waitForTimeout(150);
-    await page.mouse.down();
-    await page.mouse.move(drag.targetX, drag.targetY, { steps: 28 });
-    await page.waitForTimeout(180);
-    await page.mouse.up();
+    log(`  dragged from (${result.sourceX.toFixed(0)},${result.sourceY.toFixed(0)}) → (${result.targetX.toFixed(0)},${result.targetY.toFixed(0)}) dx=${result.dx.toFixed(0)}`);
     await page.waitForTimeout(600);
   }
 
@@ -423,7 +474,7 @@ const log = (...a) => console.log('[gif]', ...a);
     fromNodeMatch: '에이전트 Xgen|Xgen',
     fromPortLabelRegex: '스트림|STREAM',
     toNodeMatch: 'AI 답변 출력|endnode',
-    toPortLabelRegex: '입력|텍스트',
+    toPortLabelRegex: '.', // wildcard — 종료 노드 input 측의 어떤 포트라도 매칭 (findPort 가 preferOutput=false 라 가장 왼쪽 포트 선택)
     label: 'XGEN → 종료',
   });
 
