@@ -1,3 +1,6 @@
+---
+require_view: admin-mcp-market
+---
 # MCP Library
 
 This chapter covers registering and managing **MCP (Model Context Protocol) tool servers** that provide external tools for agents.

@@ -15,7 +15,8 @@ Select **Tool Integration → API Tools** in the left sidebar.
 
 | Region | Content |
 |---|---|
-| Top tabs | **보관함 (My Box)** — tools you registered / **라이브러리 (Library)** — organization-shared tools / **API 컬렉션 (API Collections)** — grouped tools |
+| Top tabs | **보관함 (My Box)** — tools you registered / **라이브러리 (Library)** — organization-shared tools |
+| Top tabs | **API 컬렉션 (API Collections)** — grouped tools | <!-- require_view: api-tool-collection -->
 | Status filters | All / Active / Inactive / Archived |
 | Source filters | All / Personal / Shared |
 | Top-right actions | **New Tool** · **Import JSON** (OpenAPI / Postman) · **Import File** · **Multi-Select** |

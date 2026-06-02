@@ -263,11 +263,12 @@
       "source": "admin"
     },
     "admin-mcp-market": {
-      "ok": true,
+      "ok": false,
       "lastSize": 114030,
       "notFound": false,
       "capturedAt": "2026-06-01T00:51:38.142Z",
-      "source": "admin"
+      "source": "user-confirmed",
+      "note": "관리설정 > MCP 그룹 전체가 사용자 UI 에 미노출 (2026-06-02 사용자 확인). 28-mcp-market.md 챕터 통째 제외."
     },
     "admin-agentflow-management": {
       "ok": true,
@@ -296,6 +297,30 @@
       "notFound": false,
       "capturedAt": "2026-06-01T00:52:30.506Z",
       "source": "admin"
+    },
+    "admin-agent-retention": {
+      "ok": false,
+      "notFound": true,
+      "source": "user-confirmed",
+      "note": "Agent 운영 > Agent 리텐션 분석 메뉴가 사용자 UI 에 미노출 (2026-06-02 사용자 확인)."
+    },
+    "admin-system-guardrail": {
+      "ok": false,
+      "notFound": true,
+      "source": "user-confirmed",
+      "note": "환경 설정 > 가드레일 메뉴가 사용자 UI 에 미노출 (2026-06-02 사용자 확인). 25b-guardrail-model.md 챕터 통째 제외."
+    },
+    "admin-system-audio": {
+      "ok": false,
+      "notFound": true,
+      "source": "user-confirmed",
+      "note": "환경 설정 > 오디오 메뉴가 사용자 UI 에 미노출 (2026-06-02 사용자 확인)."
+    },
+    "api-tool-collection": {
+      "ok": false,
+      "notFound": true,
+      "source": "user-confirmed",
+      "note": "Agent 작업실 > 도구 연동 > API 도구 화면의 'API 컬렉션' 탭이 사용자 UI 에 미노출 (2026-06-02 사용자 확인). 17a-api-tools.md 의 해당 행만 제외."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",
@@ -312,7 +337,8 @@
       ],
       "missing": [
         "Agent 기획 (main-planning)",
-        "업로드 이력 (upload-history)"
+        "업로드 이력 (upload-history)",
+        "도구 연동 > API 도구 > API 컬렉션 탭 (api-tool-collection)"
       ]
     },
     "adminSidebar": {
@@ -328,9 +354,12 @@
       "missing": [
         "로그인 관리 (admin-active-sessions)",
         "Agent 운영 > 업무기획 (admin-agent-dev-plan)",
+        "Agent 운영 > Agent 리텐션 분석 (admin-agent-retention)",
+        "환경 설정 > 가드레일 (admin-system-guardrail)",
+        "환경 설정 > 오디오 (admin-system-audio)",
         "AI 거버넌스 그룹 전체 (gov-monitoring, gov-risk-management, gov-control-policy, gov-audit-tracking)",
         "데이터 관리: DB 연결 (admin-db-connection), 배치 작업 (admin-db-batch), 데이터 감사 로그 (admin-audit-logs)",
-        "MCP 관리: MCP 운영/모니터링 (admin-mcp-station)",
+        "MCP 관리 그룹 전체 (admin-mcp-market, admin-mcp-station)",
         "서비스 운영 그룹 전체 (admin-support-notice, admin-support-faq, admin-support-qna)"
       ]
     }

@@ -21,7 +21,7 @@
 | **프롬프트 템플릿** | `admin-prompt-store` | 조직 공유 프롬프트 템플릿 등록·버전 관리 |
 | **사용자 피드백** | `admin-feedback-monitoring` | 사용자가 남긴 응답 별점·문제 유형·코멘트 모음 (환각·규정 위반·데이터 오류·응답 실패 분류) |
 | **응답 품질 평가** | `admin-agentflow-tester` | 테스트 데이터셋 기준 에이전트 응답 품질 자동 평가 |
-| **Agent 리텐션 분석** | `admin-agent-retention` | 시간대별 에이전트 사용 유지율, 활성 사용자 추이 |
+| **Agent 리텐션 분석** | `admin-agent-retention` | 시간대별 에이전트 사용 유지율, 활성 사용자 추이 | <!-- require_view: admin-agent-retention -->
 | **업무기획** | `admin-agent-dev-plan` | 신규 에이전트 기획안 등록·검토, 개발 우선순위 관리 |
 
 ## 주요 화면

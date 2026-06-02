@@ -63,7 +63,7 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | Agent Operations | Prompt Templates | [Agent Operations · Prompt Templates](32-agent-operations.md) |
 | Agent Operations | User Feedback | [Agent Operations · User Feedback](32-agent-operations.md#user-feedback) |
 | Agent Operations | Response Quality Evaluation | [Agent Operations · Response Quality Evaluation](32-agent-operations.md) |
-| Agent Operations | Agent Retention Analysis | [Agent Operations · Retention Analysis](32-agent-operations.md) |
+| Agent Operations | Agent Retention Analysis | [Agent Operations · Retention Analysis](32-agent-operations.md) | <!-- require_view: admin-agent-retention -->
 | Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) |
 | AI Governance | AI Risk Assessment | [AI Governance · Risk Review](29-governance-dashboard.md#risk-review) |
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
@@ -73,8 +73,8 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |
 | Environment | Infrastructure | [Infrastructure · Environment Overview](#env-overview) |
 | Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |
-| Environment | Audio | [Audio · Environment Overview](#env-overview) |
-| Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) |
+| Environment | Audio | [Audio · Environment Overview](#env-overview) | <!-- require_view: admin-system-audio -->
+| Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) | <!-- require_view: admin-system-guardrail -->
 | Environment | Sidebar | [Sidebar · Environment Overview](#env-overview) |
 | System Status | System Monitoring | [System Monitor · System Monitoring](26-system-monitor.md) |
 | System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query) |
@@ -83,7 +83,7 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md) | <!-- require_view: admin-db-connection -->
 | Data Management | Batch Jobs | [Data Management · Batch Jobs](33-data-management.md) | <!-- require_view: admin-db-batch -->
 | Data Management | Data Audit Log | [Data Management · Data Audit Log](33-data-management.md#data-audit-log) | <!-- require_view: admin-audit-logs -->
-| MCP Management | MCP Library | [MCP Library · MCP Library](28-mcp-market.md) |
+| MCP Management | MCP Library | [MCP Library · MCP Library](28-mcp-market.md) | <!-- require_view: admin-mcp-market -->
 | MCP Management | MCP Operations & Monitoring | [MCP Library · MCP Operations / Monitoring](28-mcp-market.md#mcp-station) | <!-- require_view: admin-mcp-station -->
 | Service Operations | Announcement Board | [Tech Support Handling · Announcement Board](31-tech-support-handling.md) |
 | Service Operations | FAQ | [Tech Support Handling · FAQ](31-tech-support-handling.md) |

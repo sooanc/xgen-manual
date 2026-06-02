@@ -63,7 +63,7 @@
 | Agent 운영 | 프롬프트 템플릿 | [Agent 운영 · 프롬프트 템플릿](32-agent-operations.md) |
 | Agent 운영 | 사용자 피드백 | [Agent 운영 · 사용자 피드백](32-agent-operations.md#user-feedback) |
 | Agent 운영 | 응답 품질 평가 | [Agent 운영 · 응답 품질 평가](32-agent-operations.md#quality-eval) |
-| Agent 운영 | Agent 리텐션 분석 | [Agent 운영 · 리텐션 분석](32-agent-operations.md) |
+| Agent 운영 | Agent 리텐션 분석 | [Agent 운영 · 리텐션 분석](32-agent-operations.md) | <!-- require_view: admin-agent-retention -->
 | Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#task-planning) |
 | AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#risk-review) |
 | AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#inspection) |
@@ -73,8 +73,8 @@
 | 환경 설정 | LLM | [LLM 설정](23-llm-settings.md) |
 | 환경 설정 | 인프라 | [인프라 · 환경 설정 개요](#env-overview) |
 | 환경 설정 | 검색 / 임베딩 | [임베딩·벡터 검색 설정](24-embedding-settings.md) |
-| 환경 설정 | 오디오 | [오디오 · 환경 설정 개요](#env-overview) |
-| 환경 설정 | 가드레일 | [가드레일 모델 설정](25b-guardrail-model.md) |
+| 환경 설정 | 오디오 | [오디오 · 환경 설정 개요](#env-overview) | <!-- require_view: admin-system-audio -->
+| 환경 설정 | 가드레일 | [가드레일 모델 설정](25b-guardrail-model.md) | <!-- require_view: admin-system-guardrail -->
 | 환경 설정 | 사이드바 | [사이드바 · 환경 설정 개요](#env-overview) |
 | 시스템 상태 | 시스템 모니터링 | [시스템 모니터 · 시스템 모니터링](26-system-monitor.md) |
 | 시스템 상태 | 시스템 조회 | [시스템 모니터 · 시스템 조회](26-system-monitor.md#system-query) |
@@ -83,7 +83,7 @@
 | 데이터 관리 | DB 연결 | [데이터 관리 · DB 연결](33-data-management.md) | <!-- require_view: admin-db-connection -->
 | 데이터 관리 | 배치 작업 | [데이터 관리 · 배치 작업](33-data-management.md) | <!-- require_view: admin-db-batch -->
 | 데이터 관리 | 데이터 감사 로그 | [데이터 관리 · 데이터 감사 로그](33-data-management.md#data-audit-log) | <!-- require_view: admin-audit-logs -->
-| MCP 관리 | MCP 라이브러리 | [MCP 라이브러리 · MCP 라이브러리](28-mcp-market.md) |
+| MCP 관리 | MCP 라이브러리 | [MCP 라이브러리 · MCP 라이브러리](28-mcp-market.md) | <!-- require_view: admin-mcp-market -->
 | MCP 관리 | MCP 운영/모니터링 | [MCP 라이브러리 · MCP 운영/모니터링](28-mcp-market.md#mcp-station) | <!-- require_view: admin-mcp-station -->
 | 서비스 운영 | 공지 게시판 | [기술지원 응대 · 공지 게시판](31-tech-support-handling.md) |
 | 서비스 운영 | 자주 묻는 질문 | [기술지원 응대 · 자주 묻는 질문](31-tech-support-handling.md) |

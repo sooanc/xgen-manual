@@ -21,7 +21,7 @@ Expand **Admin Center → Agent Operations** in the left sidebar to reveal 9 sub
 | **Prompt Templates** | `admin-prompt-store` | Organization-shared prompt templates and their version history |
 | **User Feedback** | `admin-feedback-monitoring` | User-submitted star ratings / issue categories / comments (hallucination, policy violation, data error, response failure) |
 | **Response Quality Evaluation** | `admin-agentflow-tester` | Auto-score agent responses against a test dataset |
-| **Agent Retention Analysis** | `admin-agent-retention` | Time-series retention curves and active-user trends per agent |
+| **Agent Retention Analysis** | `admin-agent-retention` | Time-series retention curves and active-user trends per agent | <!-- require_view: admin-agent-retention -->
 | **Task Planning** | `admin-agent-dev-plan` | Register and triage proposed new agents, manage development priority |
 
 ## Key Screens

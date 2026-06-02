@@ -1,3 +1,6 @@
+---
+require_view: admin-mcp-market
+---
 # MCP 라이브러리
 
 본 챕터는 에이전트가 사용할 수 있는 외부 도구를 제공하는 **MCP(Model Context Protocol) 도구 서버** 의 등록·관리 절차를 다룹니다.
