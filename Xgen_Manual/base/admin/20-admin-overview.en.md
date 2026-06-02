@@ -98,7 +98,7 @@ Four Environment menus — **General / Infrastructure / Audio / Sidebar** — do
 |---|---|---|
 | General | Admin → Environment → General (`admin?view=admin-system-config`) | A unified, advanced view that lets you read/edit *every* system configuration value from a single screen. Day-to-day operations should rely on the individual menus (*LLM / Search / Embedding / Guardrail*); this screen is the *key-value precision-edit* entry point. (See *General screen in detail* below.) |
 | Infrastructure | Admin → Environment → Infrastructure | API server, Agent engine, model-serving *endpoints* and infrastructure parameters. Typically configured once at install time. |
-| Audio | Admin → Environment → Audio | STT/TTS voice-model integration. Only meaningful when voice features are enabled. |
+| Audio | Admin → Environment → Audio | STT/TTS voice-model integration. Only meaningful when voice features are enabled. | <!-- require_view: admin-system-audio -->
 | Sidebar | Admin → Environment → Sidebar | Toggle visibility of individual sidebar menus per organization, used to hide selected menus from users. |
 
 Dedicated chapters are planned as follow-up work; until then, use the entry paths above to inspect or change these settings directly on stg.
