@@ -56,6 +56,7 @@ The **Chat History** menu in the left sidebar lets you browse past sessions in c
 
 When a conversation grows long or shifts topic, starting a **New Chat** typically yields better responses.
 
+<!-- require_view_start: chat-export -->
 ## Exporting Conversations
 
 Top-right menu (⋯) → **Export** options:
@@ -65,6 +66,8 @@ Top-right menu (⋯) → **Export** options:
 | Text | Notes, sharing |
 | Markdown | Pasting into reports or wikis |
 | PDF | Printing, archival |
+
+<!-- require_view_end -->
 
 ## Security Notice
 

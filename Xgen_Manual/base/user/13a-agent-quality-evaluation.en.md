@@ -13,10 +13,12 @@ Select **Agent Creation → Agent Quality Evaluation** in the left sidebar. The 
 
 | Tab | Covers |
 |---|---|
-| **품질 평가 (Quality Evaluation)** | Test execution history + start a new test (includes Harmbench safety evaluation) |
+| **품질 평가 (Quality Evaluation)** | Test execution history + start a new test (includes Harmbench safety evaluation) | <!-- require_view: harmbench -->
+| **품질 평가 (Quality Evaluation)** | Test execution history + start a new test | <!-- require_view: no-harmbench -->
 | **품질 척도 정의 (Quality Criteria)** | Manage *criteria presets* used to score responses |
 
-Common top-right actions: **+ New Test**, **Harmbench**, Refresh.
+Common top-right actions: **+ New Test**, **Harmbench**, Refresh. <!-- require_view: harmbench -->
+Common top-right actions: **+ New Test**, Refresh. <!-- require_view: no-harmbench -->
 
 ## Quality Evaluation Tab
 
@@ -30,7 +32,8 @@ Clicking **+ New Test** at the top right opens the **Batch Test Creation** modal
 
 | Item | Description |
 |---|---|
-| Dataset format | `.xlsx`, `.xls`, `.csv`, `.json` (Harmbench / OpenAI and other common formats) |
+| Dataset format | `.xlsx`, `.xls`, `.csv`, `.json` (Harmbench / OpenAI and other common formats) | <!-- require_view: harmbench -->
+| Dataset format | `.xlsx`, `.xls`, `.csv`, `.json` (OpenAI and other common formats) | <!-- require_view: no-harmbench -->
 | Column structure | At minimum `question` / `expected_answer`. Extra columns (category, tags) are used in result analysis |
 | Upload method | Drag-and-drop or click-to-upload |
 | Quick start | Use the *Example* or *Excel* buttons at the top of the modal to download a sample dataset |
@@ -78,7 +81,7 @@ Saved presets show up in the **Criteria Preset** dropdown of the *Quality Evalua
 
 1. **Define criteria first** — Create the criteria preset that fits your organization *before* running tests, so all subsequent tests are comparable on the same scale.
 2. **Start with a small dataset** — Begin with ≤50 sample items to learn the criteria and result interpretation, then scale up.
-3. **Run Harmbench regularly** — Model or prompt changes can cause safety regressions; run it before every deploy.
+3. **Run Harmbench regularly** — Model or prompt changes can cause safety regressions; run it before every deploy. <!-- require_view: harmbench -->
 4. **Share results with governance** — For agents with "Org-wide" impact scope, use the evaluation score in [AI Governance](../admin/29-governance-dashboard.md) approval review.
 
 ## Related Chapters

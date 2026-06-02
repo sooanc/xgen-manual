@@ -24,7 +24,7 @@ Select **Tool Integration → API Tools** in the left sidebar.
 
 ## Register a New Tool
 
-1. Click **New Tool** in the top right.
+1. Click **New Tool** in the top right. A registration modal opens with a **mode toggle** at the top-right — choose between **Easy Mode** and **Developer Mode**. The modal opens in *Easy Mode* by default; the form-driven steps below apply to **Developer Mode** — see the [Easy Mode](#new-tool-easy-mode) section for the auto-discovery flow.
 2. Fill in:
     - **Name**: short identifier (e.g., `exchange rate Tool`)
     - **Description**: what the tool does (e.g., "Fetches the latest exchange rates")
@@ -35,6 +35,26 @@ Select **Tool Integration → API Tools** in the left sidebar.
     - **Auth profile**: select a profile from [Authentication Profile](17-auth-profile.md)
 3. Run **Test** to send a real call and verify a 200 response with the expected JSON.
 4. **Save** — the card appears under the *My Box* tab.
+
+### Easy Mode { #new-tool-easy-mode }
+
+Clicking **New Tool** enters **Easy Mode** by default. The mode toggle at the top right (**Easy Mode / Developer Mode**) lets you switch at any time.
+
+Easy Mode is an auto-discovery view that lets you register a tool without an OpenAPI spec — point it at a **public API page URL** and the solution parses the page to extract the callable endpoints and parameters automatically.
+
+![New Tool — Easy Mode entry screen](images/api-tool-new-easy.png)
+
+| Region | Content |
+|---|---|
+| Top-right mode toggle | Switch between **Easy Mode** ↔ **Developer Mode**. The active mode is highlighted. |
+| **Website URL** input | Address of the API documentation page to scan (e.g., `https://example.com/api-docs`) |
+| **API Discovery** button | Analyzes the URL and pulls out the callable endpoints and parameters |
+| Top-left **← Back** | Closes the modal and returns to the tool list |
+
+Once discovery finishes, pick the endpoints you want to register and click **Save**.
+
+!!! info "Difference vs Developer Mode"
+    **Developer Mode** lets you author or paste a full OpenAPI 3.x / Postman spec yourself to register multiple endpoints precisely. Use it when you already have a written spec, or when you want fine control beyond what the auto-discovery yields.
 
 ## Wire a Tool into an Agent
 

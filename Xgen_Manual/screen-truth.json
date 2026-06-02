@@ -169,6 +169,21 @@
       "ok": false,
       "source": "root-default",
       "note": "GS인증 전용 '시스템 조회 빠진 장애 대응 흐름' 텍스트. 기본 환경에선 시스템 조회 포함 흐름(admin-system-health, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "no-analysis-planning": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 'Agent 개발자 — 분석·기획 빠진' 사용자 유형 표 행. 기본 환경에선 분석·기획 포함 행(analysis-planning, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "no-harmbench": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 'Harmbench 빠진' 품질 평가 관련 표 행/본문. 기본 환경에선 Harmbench 포함 표현(harmbench, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "no-agentflow-version-control": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '버전 관리 빠진' 챕터 인트로 문구. 기본 환경에선 버전 관리 포함 문구(agentflow-version-control, 미정의→노출) 가 보이도록 ok:false."
     }
   },
   "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작."

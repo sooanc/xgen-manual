@@ -13,10 +13,12 @@ require_view: agentflow-tester
 
 | 탭 | 다루는 것 |
 |---|---|
-| **품질 평가** | 실행한 테스트 이력 + 신규 테스트 시작 (Harmbench 안전성 평가 포함) |
+| **품질 평가** | 실행한 테스트 이력 + 신규 테스트 시작 (Harmbench 안전성 평가 포함) | <!-- require_view: harmbench -->
+| **품질 평가** | 실행한 테스트 이력 + 신규 테스트 시작 | <!-- require_view: no-harmbench -->
 | **품질 척도 정의** | 테스트가 응답을 채점할 때 사용할 *평가 척도* 프리셋 등록·관리 |
 
-화면 우상단 공통 작업: **+ 새 테스트**, **Harmbench**, 새로고침.
+화면 우상단 공통 작업: **+ 새 테스트**, **Harmbench**, 새로고침. <!-- require_view: harmbench -->
+화면 우상단 공통 작업: **+ 새 테스트**, 새로고침. <!-- require_view: no-harmbench -->
 
 ## 품질 평가 탭
 
@@ -37,7 +39,8 @@ require_view: agentflow-tester
 
 | 항목 | 설명 |
 |---|---|
-| 데이터셋 형식 | `.xlsx`, `.xls`, `.csv`, `.json` (Harmbench / OpenAI 등 공통 포맷 지원) |
+| 데이터셋 형식 | `.xlsx`, `.xls`, `.csv`, `.json` (Harmbench / OpenAI 등 공통 포맷 지원) | <!-- require_view: harmbench -->
+| 데이터셋 형식 | `.xlsx`, `.xls`, `.csv`, `.json` (OpenAI 등 공통 포맷 지원) | <!-- require_view: no-harmbench -->
 | 컬럼 구조 | 최소 `question` / `expected_answer` 2열. 추가 메타(카테고리·태그) 컬럼은 결과 분석에 사용 |
 | 업로드 방법 | 파일 드래그 앤 드롭 또는 클릭 업로드 |
 | 빠른 시작 | 모달 상단 *예시* 또는 *Excel* 버튼으로 샘플 데이터셋 다운로드 |
@@ -85,7 +88,7 @@ require_view: agentflow-tester
 
 1. **척도 먼저 정의** — 새 테스트를 만들기 전에 우리 조직에 맞는 척도 프리셋을 만들어 두면, 이후 모든 테스트가 같은 기준으로 비교됩니다.
 2. **소규모 데이터셋으로 시작** — 처음에는 50건 이내 샘플로 척도와 결과 해석을 익히고, 점차 본 데이터셋 규모를 키웁니다.
-3. **Harmbench 는 정기 점검** — 모델·프롬프트가 바뀌면 안전성 회귀가 발생할 수 있으므로 배포 전 한 번씩 돌립니다.
+3. **Harmbench 는 정기 점검** — 모델·프롬프트가 바뀌면 안전성 회귀가 발생할 수 있으므로 배포 전 한 번씩 돌립니다. <!-- require_view: harmbench -->
 4. **결과는 거버넌스와 공유** — "전사" 영향 범위 에이전트는 평가 점수를 [AI 거버넌스](../admin/29-governance-dashboard.md) 승인 검토 자료로 활용합니다.
 
 ## 관련 챕터

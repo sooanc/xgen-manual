@@ -407,6 +407,36 @@
       "ok": true,
       "source": "gs-cert-spec",
       "note": "PDF 수정사항 7번 — GS인증 매뉴얼에서 시스템 조회 빠진 장애 대응 흐름 노출."
+    },
+    "analysis-planning": {
+      "ok": false,
+      "source": "gs-cert-spec-2",
+      "note": "PDF 2차 수정사항 1번 — Agent 개발자 영역 중 '분석·기획' 단어 노출 차단. 사용자 유형 표 행을 GS 전용 행으로 대체."
+    },
+    "no-analysis-planning": {
+      "ok": true,
+      "source": "gs-cert-spec-2",
+      "note": "PDF 2차 수정사항 1번 — GS인증 전용 'Agent 제작 / 도구 연동 / 지식관리' 만 적힌 사용자 유형 표 행 노출."
+    },
+    "no-harmbench": {
+      "ok": true,
+      "source": "gs-cert-spec-2",
+      "note": "PDF 2차 수정사항 3번 — GS인증 전용 'Harmbench 빠진' 품질 평가 표 행/본문 노출. 기존 harmbench ok:false 와 짝."
+    },
+    "agentflow-version-control": {
+      "ok": false,
+      "source": "gs-cert-spec-2",
+      "note": "PDF 2차 수정사항 2번 — 버전 관리 절 / 인트로 / 운영 권장 항목 일괄 strip."
+    },
+    "no-agentflow-version-control": {
+      "ok": true,
+      "source": "gs-cert-spec-2",
+      "note": "PDF 2차 수정사항 2번 — GS인증 전용 '버전 관리 빠진' 챕터 인트로 노출."
+    },
+    "chat-export": {
+      "ok": false,
+      "source": "gs-cert-spec-2",
+      "note": "PDF 2차 수정사항 4번 — 대화 내보내기 절 strip (해당 기능 미제공 확인)."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",

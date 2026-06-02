@@ -1,6 +1,7 @@
 # Agent Operations
 
-This chapter covers executing, deploying, sharing, and version-managing your agentflows.
+This chapter covers executing, deploying, sharing, and version-managing your agentflows. <!-- require_view: agentflow-version-control -->
+This chapter covers executing, deploying, and sharing your agentflows. <!-- require_view: no-agentflow-version-control -->
 
 ## Execution and Debugging { #testing }
 
@@ -93,15 +94,15 @@ Grant other users access to your agentflow.
 
 1. Click the **Share** button on the target agentflow in the list
 2. Search and select users
-3. Choose permission
+3. Choose permission — see the table below for permission types
+4. **Save**
 
 | Permission | Allowed Actions |
 |---|---|
 | Read | View, run |
 | Read/Write | View, run, edit |
 
-4. **Save**
-
+<!-- require_view_start: agentflow-version-control -->
 ## Version Management
 
 Each save automatically creates a version. To roll back:
@@ -115,6 +116,8 @@ Each save automatically creates a version. To roll back:
 
 !!! warning "Restore Creates a New Version"
     Restoring does not overwrite — it creates a **new version** containing the content of the chosen one. Previous versions are preserved.
+
+<!-- require_view_end -->
 
 ## Scheduled Automatic Runs { #scheduler }
 
@@ -142,7 +145,7 @@ To pause: click **Pause** on the schedule card. To resume: click **Resume**.
 
 - **Test thoroughly before deploying** — Run 5–10 times with varied inputs on the canvas to confirm stability
 - **Monitor the first 24 hours after deployment** — Check execution logs frequently to catch anomalies early
-- **Save explicit versions at meaningful moments** — Saving before/after major changes makes rollback easier
+- **Save explicit versions at meaningful moments** — Saving before/after major changes makes rollback easier <!-- require_view: agentflow-version-control -->
 
 ## Contact
 
