@@ -46,10 +46,6 @@ Default thresholds, adjustable per environment:
 3. **Notification Channel** — select where to send threshold alerts (email, webhook, etc.)
 4. **Save**
 
-!!! info "The threshold-settings (⚙) button is not present on the current stg build"
-    The *settings (⚙)* button mentioned in earlier versions of this manual is not exposed on the current stg System Monitoring screen (`admin?view=admin-system-monitor`). Threshold and alert-channel adjustments are expected to be managed through a separate system-config file or via *Environment → Infrastructure* during one-time operations setup. Once the UI is added, we will refresh this section with a modal screenshot.
-    A screenshot of the threshold-slider and notification-channel modal (opened via the Settings ⚙ button) will be added in a future manual update.
-
 !!! info "Ignoring Brief Spikes"
     Brief spikes from batch jobs or sudden user surges are normal. Configuring **Critical** alerts to fire only when sustained for over an hour reduces noise.
 
