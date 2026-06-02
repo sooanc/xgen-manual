@@ -321,6 +321,12 @@
       "notFound": true,
       "source": "user-confirmed",
       "note": "Agent 작업실 > 도구 연동 > API 도구 화면의 'API 컬렉션' 탭이 사용자 UI 에 미노출 (2026-06-02 사용자 확인). 17a-api-tools.md 의 해당 행만 제외."
+    },
+    "knowledge-ontology": {
+      "ok": false,
+      "notFound": false,
+      "source": "pending-user-confirm",
+      "note": "지식 컬렉션의 온톨로지 시각화/GraphRAG 절. stage 매뉴얼에 우선 추가했고, gs@plateer.com 권한에서의 노출 여부를 사용자가 확인한 뒤 ok:true 로 전환 예정."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",

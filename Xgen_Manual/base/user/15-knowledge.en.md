@@ -79,6 +79,39 @@ Check status and results of uploaded documents.
 | Completed | Searchable |
 | Failed | Error occurred (check logs) |
 
+<!-- require_view_start: knowledge-ontology -->
+## Ontology { #knowledge-ontology }
+
+A collection uploaded with the *Ontology* option enabled carries an **온톨로지 (Ontology)** badge on its card. Click the card to enter the collection detail, then click the **온톨로지 (Ontology)** button at the top right to visualize the concepts and relationships automatically extracted from the uploaded documents as an interactive graph.
+
+![Knowledge Collection list — collections with the *Ontology* option enabled display an *Ontology* badge in the top label area of the card](images/knowledge-ontology-cards.png)
+
+![Collection detail — click the *Ontology* button at the top right to enter the visualization screen](images/knowledge-ontology-button.png)
+
+### Visualization Layout
+
+| Region | Content |
+|---|---|
+| Top stats | **Triples / Classes / Properties / SCS** counts — a summary of the extracted knowledge assets |
+| Top-right actions | **Rebuild** · **View Profile** · **Fullscreen** |
+| Body | Interactive graph of Class (blue) / Instance (green) / Property (orange) nodes connected by edges |
+| Bottom-left legend | Node types (Class · Instance · Property) and edge types (`instanceOf`, `subClassOf`, `datatypeProperty`, `ObjectProperty`) |
+| Top-left search | **Node search** — filter graph nodes by keyword |
+
+![Ontology visualization — Triples/Classes/Properties/SCS stats with Class/Instance/Property nodes and instanceOf/subClassOf/datatypeProperty/ObjectProperty edges](images/knowledge-ontology-graph.png)
+
+### GraphRAG Query
+
+Type a question in the **GraphRAG Query** area at the bottom of the screen to generate an answer grounded in the ontology above. When the *Context ON* toggle at the top right is enabled, the graph's nodes and relationships are included in the LLM context to improve answer quality.
+
+### Operational Guidance
+
+- **When to rebuild** — When uploaded documents are partially refreshed the graph may reflect a stale snapshot. After bulk additions or replacements, run **Rebuild** to keep the graph current.
+- **Working with dense graphs** — When the graph is too crowded to read at a glance, use *View Profile* and the **Node search** at the top left to narrow the scope.
+- **Cost of Context ON** — GraphRAG context can improve answer accuracy but also raises LLM call cost. Monitor both response quality and cost together when defining policy for the production environment.
+
+<!-- require_view_end -->
+
 ## Sharing a Collection
 
 Grant other users access:
