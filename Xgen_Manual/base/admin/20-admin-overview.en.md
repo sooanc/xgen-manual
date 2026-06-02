@@ -99,11 +99,17 @@ The Admin sidebar has **7 groups and 16 menus** in total (some may be hidden dep
 
 ### Environment Overview — Menus Without a Dedicated Chapter { #env-overview }
 
+<!-- require_view_start: env-overview-4-menus -->
 Four Environment menus — **General / Infrastructure / Audio / Sidebar** — do not have a dedicated chapter in this manual. Each screen is *one-time installation- or tenant-level setup*, so the quickest path is to operate them directly on the solution screen.
+<!-- require_view_end -->
+<!-- require_view_start: env-overview-gs-2-menus -->
+Two Environment menus — **General / Sidebar** — do not have a dedicated chapter in this manual. Each screen is *one-time installation- or tenant-level setup*, so the quickest path is to operate them directly on the solution screen.
+<!-- require_view_end -->
 
 | Menu | Where to enter | Screen role |
 |---|---|---|
-| General | Admin → Environment → General (`admin?view=admin-system-config`) | A unified, advanced view that lets you read/edit *every* system configuration value from a single screen. Day-to-day operations should rely on the individual menus (*LLM / Search / Embedding / Guardrail*); this screen is the *key-value precision-edit* entry point. (See *General screen in detail* below.) |
+| General | Admin → Environment → General (`admin?view=admin-system-config`) | A unified, advanced view that lets you read/edit *every* system configuration value from a single screen. Day-to-day operations should rely on the individual menus (*LLM / Search / Embedding / Guardrail*); this screen is the *key-value precision-edit* entry point. (See *General screen in detail* below.) | <!-- require_view: admin-system-guardrail -->
+| General | Admin → Environment → General (`admin?view=admin-system-config`) | A unified, advanced view that lets you read/edit *every* system configuration value from a single screen. Day-to-day operations should rely on the individual menus (*LLM / Search / Embedding*); this screen is the *key-value precision-edit* entry point. (See *General screen in detail* below.) | <!-- require_view: no-guardrail-mention -->
 | Infrastructure | Admin → Environment → Infrastructure | API server, Agent engine, model-serving *endpoints* and infrastructure parameters. Typically configured once at install time. | <!-- require_view: admin-system-infra -->
 | Audio | Admin → Environment → Audio | STT/TTS voice-model integration. Only meaningful when voice features are enabled. | <!-- require_view: admin-system-audio -->
 | Sidebar | Admin → Environment → Sidebar | Toggle visibility of individual sidebar menus per organization, used to hide selected menus from users. |
@@ -121,8 +127,14 @@ The *General* screen (`admin?view=admin-system-config`) exposes **every environm
     - **Current value** / **Default** side by side. Cards carry a *Default* badge when the two match, or a *Configured* badge when they differ.
     - **Type badge** — `Bool` / `Json` / `Str` / `Int`, etc.
 
+<!-- require_view_start: admin-system-guardrail -->
 !!! warning "Verify impact before editing"
     *General* exposes keys that directly affect LLM / Embedding / TTS / Node / Workflow behavior. The same keys are editable from individual menus (*LLM / Search·Embedding / Guardrail*), so keep a consistent record of *which screen* a change was made from. Invalid values affect in-flight chats and executions immediately — coordinate with the operations team before changes.
+<!-- require_view_end -->
+<!-- require_view_start: no-guardrail-mention -->
+!!! warning "Verify impact before editing"
+    *General* exposes keys that directly affect LLM / Embedding / Node / Workflow behavior. The same keys are editable from individual menus (*LLM / Search·Embedding*), so keep a consistent record of *which screen* a change was made from. Invalid values affect in-flight chats and executions immediately — coordinate with the operations team before changes.
+<!-- require_view_end -->
 
 !!! info "Menu Naming"
     Menu names on screen may vary slightly between solution versions and user permissions. This manual is based on {{product.name}} {{product.version}}; **bolded** menus are those this manual covers.

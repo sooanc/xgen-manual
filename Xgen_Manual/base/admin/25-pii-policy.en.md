@@ -5,7 +5,8 @@ require_view: gov-control-policy
 
 This chapter covers automatic detection and masking policies for personally identifiable information (PII) in data the solution processes. This is a core chapter for regulated industries such as finance, public sector, and healthcare.
 
-> **This chapter focuses on the *Personal Information (PII) tab* of the "AI Control Policy" screen under Admin → AI Governance → Control Policy Management.** The adjacent *Forbidden Words* / *AI Risk Level* tabs are summarized at the end of the chapter. Configuration of an external Guard Model (e.g., Qwen3Guard-Gen vLLM) is a separate screen — see [Guardrail Model Setup](25b-guardrail-model.md).
+> **This chapter focuses on the *Personal Information (PII) tab* of the "AI Control Policy" screen under Admin → AI Governance → Control Policy Management.** The adjacent *Forbidden Words* / *AI Risk Level* tabs are summarized at the end of the chapter. Configuration of an external Guard Model (e.g., Qwen3Guard-Gen vLLM) is a separate screen — see [Guardrail Model Setup](25b-guardrail-model.md). <!-- require_view: admin-system-guardrail -->
+> **This chapter focuses on the *Personal Information (PII) tab* of the "AI Control Policy" screen under Admin → AI Governance → Control Policy Management.** The adjacent *Forbidden Words* / *AI Risk Level* tabs are summarized at the end of the chapter. <!-- require_view: no-guardrail-mention -->
 
 ## What PII Is and Why It Must Be Protected
 
@@ -128,7 +129,7 @@ After saving, new agents are auto-scored in [AI Governance — Risk Review](29-g
 ## Related Chapters
 
 - [AI Governance](29-governance-dashboard.md) — risk review, approval, audit, and the broader governance workflow
-- [Guardrail Model Setup](25b-guardrail-model.md) — external Guard Model (Qwen3Guard, etc.) endpoint configuration (separate screen)
+- [Guardrail Model Setup](25b-guardrail-model.md) — external Guard Model (Qwen3Guard, etc.) endpoint configuration (separate screen) <!-- require_view: admin-system-guardrail -->
 
 ## Contact
 

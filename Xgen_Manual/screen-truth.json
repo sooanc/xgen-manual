@@ -184,6 +184,21 @@
       "ok": false,
       "source": "root-default",
       "note": "GS인증 전용 '버전 관리 빠진' 챕터 인트로 문구. 기본 환경에선 버전 관리 포함 문구(agentflow-version-control, 미정의→노출) 가 보이도록 ok:false."
+    },
+    "env-overview-4-menus": {
+      "ok": true,
+      "source": "root-default",
+      "note": "stage 등 일반 환경에서 환경 설정 별도 챕터 미수록 메뉴를 '전체 설정 / 인프라 / 오디오 / 사이드바 4개' 로 표시 (기본값)."
+    },
+    "env-overview-gs-2-menus": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '전체 설정 / 사이드바 2개 메뉴' 본문. 기본 환경에선 ok:false → 4-menus 본문이 노출."
+    },
+    "no-guardrail-mention": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '가드레일·TTS 빠진 본문' (전체 설정 표 행 / 변경 전 영향 admonition / PII 챕터 가드레일 참조). 기본 환경에선 admin-system-guardrail 미정의→노출이라 가드레일 포함 표현이 보이고 본 view 는 ok:false."
     }
   },
   "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작."

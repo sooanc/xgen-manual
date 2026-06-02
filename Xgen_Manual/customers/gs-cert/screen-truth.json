@@ -437,6 +437,21 @@
       "ok": false,
       "source": "gs-cert-spec-2",
       "note": "PDF 2차 수정사항 4번 — 대화 내보내기 절 strip (해당 기능 미제공 확인)."
+    },
+    "env-overview-4-menus": {
+      "ok": false,
+      "source": "gs-cert-audit-2026-06-02",
+      "note": "GS인증 사이드바 라이브 전수조사 (2026-06-02) — 환경 설정 그룹 실제 노출 4메뉴 = 전체 설정 / LLM / 검색·임베딩 / 사이드바. 별도 챕터 미수록 메뉴는 그 중 전체 설정·사이드바 2개. 기존 '4개 메뉴 인프라·오디오 포함' 본문은 GS 매뉴얼에서 strip."
+    },
+    "env-overview-gs-2-menus": {
+      "ok": true,
+      "source": "gs-cert-audit-2026-06-02",
+      "note": "GS인증 매뉴얼에서 '별도 챕터 미수록 = 전체 설정 / 사이드바 2개' 본문 노출."
+    },
+    "no-guardrail-mention": {
+      "ok": true,
+      "source": "gs-cert-audit-2026-06-02",
+      "note": "GS인증 매뉴얼에서 본문 '가드레일·TTS 빠진' 버전 노출. ROOT default ok:false 오버라이드."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",
