@@ -23,7 +23,7 @@ The card opens with "Welcome, OOO! Which Agent would you like to start today's t
 
 ### Right Fixed Panel { #right-panel }
 
-Always shown in the same position regardless of widget grid customization. The panel contains **three items**; labels below match the stg live screen.
+Always shown in the same position regardless of widget grid customization. The panel contains **three items**; labels below match the live solution screen.
 
 | # | Panel label | Source | More link |
 |---|---|---|---|

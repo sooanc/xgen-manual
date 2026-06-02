@@ -19,7 +19,7 @@ Go to **Admin Center → Agent Operations → Node Management** in the left side
 
 The root category **XGen** contains 10 function groups, each composed of the nodes listed below. Drag any node onto the canvas to add it to an agentflow.
 
-> Environment-specific agents may appear under the *Agent* group, so the exact list can vary slightly by environment. The catalog below reflects the stg standard environment.
+> Environment-specific agents may appear under the *Agent* group, so the exact list can vary slightly by environment. The catalog below reflects the standard solution environment.
 
 ### MCP (`mcp`)
 | Node | ID | Description |

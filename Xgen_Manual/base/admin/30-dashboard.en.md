@@ -26,7 +26,7 @@ Both System Administrators and Governance Officers see the welcome subtitle **"S
 The right fixed panel contains the same **three items** as the user view (Latest Updates / FAQ / **Admin Inquiries**). For administrators, however, the **Admin Inquiries** panel is read as a *queue of incoming items to handle* rather than a view of one's own inquiry history — it surfaces the 1:1 inquiries the admin must respond to. The panel layout itself matches the user-side description in [User Manual · Right Fixed Panel](../user/18-dashboard.md#right-panel), where the three labels and data sources are documented.
 
 !!! note "Difference from earlier specs"
-    Earlier specs and prior versions of this manual mentioned a *"Recent Service Requests TOP 3"* panel for admins, but it is not exposed on the current stg live build for either user or admin accounts. The queue of items to handle is consolidated into the single *Admin Inquiries* panel.
+    Earlier specs and prior versions of this manual mentioned a *"Recent Service Requests TOP 3"* panel for admins, but it is not exposed on the current live solution build for either user or admin accounts. The queue of items to handle is consolidated into the single *Admin Inquiries* panel.
 
 ## System Administrator View
 
