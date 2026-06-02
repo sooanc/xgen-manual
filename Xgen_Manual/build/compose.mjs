@@ -278,7 +278,7 @@ export async function compose(customerId) {
     const inlineExcludedSet = new Set(excludedRelPaths);
     for (const f of mdFiles) {
       const relPath = relative(docsDir, f).split(sep).join('/');
-      if (inlineExcludedSet.has(relPath)) continue; // nav 제외된 챕터는 어차피 빌드만, 본문 손대지 않음
+      // nav 제외 챕터여도 본문 strip 은 수행 — 직접 URL 진입 시에도 해당 라인이 보이지 않도록.
 
       const text = await readFile(f, 'utf8');
       let strippedCount = 0;
@@ -310,7 +310,7 @@ export async function compose(customerId) {
     const blockEndRegex = /<!--\s*require_view_end\s*-->/;
     for (const f of mdFiles) {
       const relPath = relative(docsDir, f).split(sep).join('/');
-      if (inlineExcludedSet.has(relPath)) continue;
+      // nav 제외 챕터여도 본문 block strip 은 수행.
 
       const text = await readFile(f, 'utf8');
       const lines = text.split(/\r?\n/);

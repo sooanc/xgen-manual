@@ -18,7 +18,8 @@
 좌측 메뉴 **관리 설정 → Agent 운영** 을 펼치면 8개의 하위 메뉴가 노출됩니다.
 <!-- require_view_end -->
 
-![Agent 관리 — 조직 전체에 등록된 에이전트플로우 카드 목록. 좌측 사이드바 Agent 운영 그룹 9개 메뉴(Agent 관리/채팅 모니터링/사용자 토큰/노드 관리/프롬프트 템플릿/사용자 피드백/응답 품질 평가/Agent 리텐션 분석/업무기획) 펼침 상태](images/admin-agent-management.png)
+![Agent 관리 — 조직 전체에 등록된 에이전트플로우 카드 목록. 좌측 사이드바 Agent 운영 그룹 9개 메뉴(Agent 관리/채팅 모니터링/사용자 토큰/노드 관리/프롬프트 템플릿/사용자 피드백/응답 품질 평가/Agent 리텐션 분석/업무기획) 펼침 상태](images/admin-agent-management.png) <!-- require_view: agent-ops-9-menus -->
+![Agent 관리 — 조직 전체에 등록된 에이전트플로우 카드 목록. 좌측 사이드바 Agent 운영 그룹 8개 메뉴(Agent 관리/채팅 모니터링/노드 관리/프롬프트 템플릿/사용자 피드백/응답 품질 평가) 펼침 상태](images/admin-agent-management.png) <!-- require_view: agent-ops-8-menus -->
 
 ## 메뉴 구성
 

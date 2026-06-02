@@ -18,7 +18,8 @@ Expand **Admin Center → Agent Operations** in the left sidebar to reveal 9 sub
 Expand **Admin Center → Agent Operations** in the left sidebar to reveal 8 submenus.
 <!-- require_view_end -->
 
-![Agent Management — card grid of all agentflows registered in the organization, filtered by status / owner. The left sidebar shows the Agent Operations group with its 9 menus expanded.](images/admin-agent-management.png)
+![Agent Management — card grid of all agentflows registered in the organization, filtered by status / owner. The left sidebar shows the Agent Operations group with its 9 menus expanded.](images/admin-agent-management.png) <!-- require_view: agent-ops-9-menus -->
+![Agent Management — card grid of all agentflows registered in the organization, filtered by status / owner. The left sidebar shows the Agent Operations group with its 8 menus expanded.](images/admin-agent-management.png) <!-- require_view: agent-ops-8-menus -->
 
 ## Menu Structure
 
