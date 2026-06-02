@@ -44,7 +44,7 @@ Each profile has the following:
 ![New profile — the type selector and credential-entry view that opens when you click *New Profile*](images/auth-profile-create.png)
 
 !!! info "Button label"
-    The actual stg button label is **"새 프로필" / "New Profile"** (earlier versions of this manual referenced *"+ New Authentication Profile"*).
+    The actual solution button label is **"새 프로필" / "New Profile"** (earlier versions of this manual referenced *"+ New Authentication Profile"*).
 
 ## Profile Types
 
