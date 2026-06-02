@@ -82,13 +82,13 @@ Saved presets show up in the **Criteria Preset** dropdown of the *Quality Evalua
 1. **Define criteria first** — Create the criteria preset that fits your organization *before* running tests, so all subsequent tests are comparable on the same scale.
 2. **Start with a small dataset** — Begin with ≤50 sample items to learn the criteria and result interpretation, then scale up.
 3. **Run Harmbench regularly** — Model or prompt changes can cause safety regressions; run it before every deploy. <!-- require_view: harmbench -->
-4. **Share results with governance** — For agents with "Org-wide" impact scope, use the evaluation score in [AI Governance](../admin/29-governance-dashboard.md) approval review.
+4. **Share results with governance** — For agents with "Org-wide" impact scope, use the evaluation score in [AI Governance](../admin/29-governance-dashboard.md) approval review. <!-- require_view: gov-monitoring -->
 
 ## Related Chapters
 
 - [Creating an Agent](12-agentflow-create.md) — Build the agent to be evaluated
 - [Agent Operations · Execution and Debugging](13-agentflow-operations.md#testing) — Quick single-input run
-- [AI Governance — Risk Assessment & Review](../admin/29-governance-dashboard.md#risk-review) — Use evaluation scores in approval flow
+- [AI Governance — Risk Assessment & Review](../admin/29-governance-dashboard.md#risk-review) — Use evaluation scores in approval flow <!-- require_view: gov-monitoring -->
 
 ## Contact
 

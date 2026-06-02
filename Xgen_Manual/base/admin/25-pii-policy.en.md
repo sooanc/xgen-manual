@@ -1,6 +1,7 @@
 ---
 require_view: gov-control-policy
 ---
+<!-- require_view_start: gov-control-policy -->
 # PII Protection Policy
 
 This chapter covers automatic detection and masking policies for personally identifiable information (PII) in data the solution processes. This is a core chapter for regulated industries such as finance, public sector, and healthcare.
@@ -134,3 +135,5 @@ After saving, new agents are auto-scored in [AI Governance — Risk Review](29-g
 ## Contact
 
 For questions about PII policy, please contact the Xgen Solution Administrator.
+
+<!-- require_view_end -->

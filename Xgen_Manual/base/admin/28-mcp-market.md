@@ -1,6 +1,7 @@
 ---
 require_view: admin-mcp-market
 ---
+<!-- require_view_start: admin-mcp-market -->
 # MCP 라이브러리
 
 본 챕터는 에이전트가 사용할 수 있는 외부 도구를 제공하는 **MCP(Model Context Protocol) 도구 서버** 의 등록·관리 절차를 다룹니다.
@@ -124,3 +125,5 @@ MCP 서버는 보통 사용자별 세션으로 동작합니다. 비정상 세션
 ## 문의
 
 MCP 라이브러리 관련 문의는 Xgen 솔루션 관리자에게 문의해 주세요.
+
+<!-- require_view_end -->

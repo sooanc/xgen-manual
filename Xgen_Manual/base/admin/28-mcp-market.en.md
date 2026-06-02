@@ -1,6 +1,7 @@
 ---
 require_view: admin-mcp-market
 ---
+<!-- require_view_start: admin-mcp-market -->
 # MCP Library
 
 This chapter covers registering and managing **MCP (Model Context Protocol) tool servers** that provide external tools for agents.
@@ -124,3 +125,5 @@ MCP servers usually run with per-user sessions. Abnormal sessions accumulate and
 ## Contact
 
 For questions about the MCP Library, please contact the Xgen Solution Administrator.
+
+<!-- require_view_end -->

@@ -315,24 +315,28 @@ export async function compose(customerId) {
       const text = await readFile(f, 'utf8');
       const lines = text.split(/\r?\n/);
       const result = [];
-      let inSkipBlock = false;
+      // 중첩 가드 지원 — depth counter 사용.
+      // skipDepth > 0 이면 현재 외곽 strip 블록 안. 내부 start 도 함께 카운트 +1,
+      // end 마다 -1. 0 으로 떨어지면 strip 영역 종료.
+      let skipDepth = 0;
       let strippedLines = 0;
       let blockCount = 0;
       for (const line of lines) {
-        if (inSkipBlock) {
-          if (blockEndRegex.test(line)) {
-            inSkipBlock = false; // 끝 마커도 함께 제거
-            strippedLines++;
-          } else {
-            strippedLines++;
+        if (skipDepth > 0) {
+          const startInside = line.match(blockStartRegex);
+          if (startInside) {
+            skipDepth++;
+          } else if (blockEndRegex.test(line)) {
+            skipDepth--;
           }
+          strippedLines++;
           continue;
         }
         const startMatch = line.match(blockStartRegex);
         if (startMatch) {
           const view = startMatch[1];
           if (screenTruth.views?.[view]?.ok === false) {
-            inSkipBlock = true; // 시작 마커도 함께 제거
+            skipDepth = 1; // 시작 마커도 함께 제거
             blockCount++;
             strippedLines++;
             continue;

@@ -1,6 +1,7 @@
 ---
 require_view: admin-active-sessions
 ---
+<!-- require_view_start: admin-active-sessions -->
 # Login Management
 
 This chapter covers how to inspect *currently signed-in user sessions* in real time and revoke them on demand. Open it via **Admin Center → Users / Access Control → Login Management** in the left sidebar (view ID `admin-active-sessions`).
@@ -63,3 +64,5 @@ To expire all of a user's sessions immediately, click the **Force Logout** butto
 ## Contact
 
 For session-management and force-logout questions, contact the Xgen Solution Administrator.
+
+<!-- require_view_end -->

@@ -283,7 +283,7 @@ Layout:
 
 | Symptom | Cause / what to check |
 |---|---|
-| "I have the permission but the sidebar menu doesn't appear" | Sidebar visibility is decided by *permission prefix matching*. Example: holding only `admin.user:read` shows the *User Management* sidebar but not *AI Governance*. |
+| "I have the permission but the sidebar menu doesn't appear" | Sidebar visibility is decided by *permission prefix matching*. Example: holding only `admin.user:read` shows the *User Management* sidebar but not *AI Governance*. | <!-- require_view: gov-monitoring -->
 | "The role is assigned but the menu doesn't open" | The user may need to *re-login or refresh the token*. Or it may be a menu that requires SuperUser privilege (e.g., the entire Admin Center mode) — change **User Type** to `Superuser` in [User Management](21-user-management.md). |
 | "Role delete says 'X users are assigned and it cannot be deleted'" | This is the intended safety check. Click the **Users** button on the row, reduce the assigned count to 0, and try again. |
 | "I want to temporarily turn off a permission for one user only" | Go to [User Management](21-user-management.md) → edit → *Direct Permissions* and set the permission to **Deny**. When *role → grant* and *direct → deny* both exist, deny wins. |

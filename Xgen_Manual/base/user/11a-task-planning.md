@@ -1,6 +1,7 @@
 ---
 require_view: main-planning
 ---
+<!-- require_view_start: main-planning -->
 # Agent 기획
 
 본 챕터는 사용자가 "이 업무를 자동화할 Agent 가 필요하다" 는 **아이디어 단계의 기획서**를 등록·관리하는 화면을 다룹니다. 좌측 사이드바 **Agent 제작 → Agent 기획** 메뉴(Agent 제작 섹션 최상단) 가 본 챕터 범위입니다.
@@ -63,3 +64,5 @@ require_view: main-planning
 ## 문의
 
 Agent 기획 화면 관련 문의는 Xgen 솔루션 관리자에게 문의해 주세요.
+
+<!-- require_view_end -->

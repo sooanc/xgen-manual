@@ -1,3 +1,7 @@
+---
+require_view: gov-monitoring
+---
+<!-- require_view_start: gov-monitoring -->
 # Governance Officer
 
 > Users responsible for **risk, control, and audit** of AI usage. Usually a different role from the system administrator.
@@ -42,3 +46,4 @@
 ## Show me the governance overview
 - Start: Admin Center → AI Governance (default landing)
 - Procedure: [AI Governance](../admin/29-governance-dashboard.md)
+<!-- require_view_end -->

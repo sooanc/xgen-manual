@@ -10,7 +10,7 @@
 4. **품질 평가** — 테스트 데이터로 응답 품질 확인 → [에이전트 운영](../user/13-agentflow-operations.md#에이전트-품질-분석)
 5. **배포 요청 보내기** — Agent 목록 → 카드 더보기 메뉴 → **배포 정보** → 모달의 **배포 토글 ON** → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment)
 6. **시스템 관리자 배포 승인 대기** — 시스템 관리자가 Agent 관리 화면에서 승인하면 카드 배지가 *배포됨* 으로 갱신 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
-7. **거버넌스 담당자 거버넌스 승인 대기** — 거버넌스 담당자가 AI 거버넌스 → 에이전트플로우 승인 화면에서 위험·PII·정책을 검토해 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
+7. **거버넌스 담당자 거버넌스 승인 대기** — 거버넌스 담당자가 AI 거버넌스 → 에이전트플로우 승인 화면에서 위험·PII·정책을 검토해 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
 
 ## 로그인 직후 내 역할에 맞는 메인 화면을 보고 싶다
 - 시작 위치: 로그인 직후 자동 진입 (또는 좌상단 **XGEN** 로고)
@@ -43,7 +43,7 @@
 ## 내 Agent가 거버넌스에서 반려되었다
 - 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) → 위젯의 *거버넌스 승인 거절* 카운터 클릭, 또는 카드의 **배포 정보** 재진입
 - 절차: 반려 사유(`governance_review_comment`)를 확인 → 에이전트 수정 → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment) 의 0단계부터 재요청
-- 거버넌스 담당자 측 검토 기준: [AI 거버넌스 · 에이전트 승인](../admin/29-governance-dashboard.md#agent-approval)
+- 거버넌스 담당자 측 검토 기준: [AI 거버넌스 · 에이전트 승인](../admin/29-governance-dashboard.md#agent-approval) <!-- require_view: gov-monitoring -->
 
 ## 외부 API/MCP 서버를 도구로 등록하고 싶다
 - 시작 위치: 좌측 사이드바 **도구 연동 → API Tool**

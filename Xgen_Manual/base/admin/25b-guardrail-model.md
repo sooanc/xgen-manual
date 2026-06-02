@@ -1,6 +1,7 @@
 ---
 require_view: admin-system-guardrail
 ---
+<!-- require_view_start: admin-system-guardrail -->
 # 가드레일 모델 설정
 
 본 챕터는 외부 **Guard 모델**(예: Qwen3Guard-Gen vLLM) 호출 설정을 다룹니다. PII·금칙어 등 **정책** 자체는 [PII 보호 정책](25-pii-policy.md) 챕터의 AI 통제 정책 화면에서 관리하며, 본 챕터는 그 정책을 평가·실행하는 **모델 엔드포인트** 만 다룹니다.
@@ -62,3 +63,5 @@ require_view: admin-system-guardrail
 ## 문의
 
 가드레일 모델 설정 관련 문의는 Xgen 솔루션 관리자에게 문의해 주세요.
+
+<!-- require_view_end -->

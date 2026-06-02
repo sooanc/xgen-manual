@@ -30,7 +30,7 @@
 ## Monitor CPU / memory / disk health
 - Start: Admin Center → System Status → System Monitoring
 - Procedure: [System Monitor](../admin/26-system-monitor.md)
-- Recommended: configure alert thresholds
+- Recommended: configure alert thresholds <!-- require_view: system-threshold-settings -->
 
 ## Approve or reject deployment requests for agents built by Agent Developers (stage 1)
 - Start: Admin Center → **Agent Operations → Agent Management**
@@ -43,10 +43,14 @@
 - Procedure: flip **Approval Status** to *Disabled* in the agentflow settings modal
 - Effect: execution stops immediately (kill switch). Combine with the **Deploy** toggle (public/private) in the same modal to stage a partial rollback. Full details in [Agent Operations](../admin/32-agent-operations.md).
 
+<!-- require_view_start: admin-mcp-market -->
 ## Register and operate MCP servers
 - Start: Admin Center → MCP Management → MCP Library
 - Procedure: [MCP Library](../admin/28-mcp-market.md)
+<!-- require_view_end -->
 
+<!-- require_view_start: admin-support-notice -->
 ## A user posted on the admin inquiry board / 1:1 inquiry — how do I respond?
 - Start: Admin Center → Service Operations
 - Procedure: [Tech Support Handling](../admin/31-tech-support-handling.md)
+<!-- require_view_end -->

@@ -48,7 +48,7 @@ This screen is the System Administrator's surface for the **first** of two appro
     |---|---|---|---|
     | 0. Deployment request | Agent Developer (workspace) | Agent Operations → "Request deployment" | `inquire_deploy: true` |
     | **1. Deployment approval** | **System Administrator** | This screen (Agent Management) | `is_accepted: true`, `is_deployed: true` |
-    | **2. Governance approval** | **Governance Officer** | [AI Governance → Agentflow Approval](29-governance-dashboard.md#agent-approval) | `is_governance_accepted: true` |
+    | **2. Governance approval** | **Governance Officer** | [AI Governance → Agentflow Approval](29-governance-dashboard.md#agent-approval) | `is_governance_accepted: true` | <!-- require_view: gov-monitoring -->
     | ✅ Servable | — | Visible to end users only after stages 1 and 2 both pass | — |
 
     Stages 1 and 2 are **independent** — both must pass for the agent to appear in production. Items stuck at a single stage are surfaced on the dashboard *Agent deployment/approval status* widget under the **Deployment-pending / Governance-pending** counters.
@@ -80,7 +80,7 @@ The procedure below moves you from *entering the card grid* → *identifying the
 5. **Verify the outcome** — The grid refreshes automatically after the action and the badge updates accordingly. If the same card reappears as *Deployment pending*, the author has resubmitted after a fix — repeat from step 2.
 
 !!! warning "Approval here ≠ user visibility yet"
-    **Approve** on this screen does **not** publish the agent to end users — it must still pass [AI Governance → Agentflow Approval](29-governance-dashboard.md#agent-approval). When you brief the author, say "deployment approved, governance review pending" so the two stages are not confused.
+    **Approve** on this screen does **not** publish the agent to end users — it must still pass [AI Governance → Agentflow Approval](29-governance-dashboard.md#agent-approval). When you brief the author, say "deployment approved, governance review pending" so the two stages are not confused. <!-- require_view: gov-monitoring -->
 
 #### Kill switch while in service — Approval-status toggle
 
@@ -127,7 +127,7 @@ Register and rank candidate new agents the organization wants to build. Collects
 
 - [Creating an Agent](../user/12-agentflow-create.md) — designer perspective
 - [Agent Operations (user-side)](../user/13-agentflow-operations.md) — designer perspective on running and testing
-- [AI Governance](29-governance-dashboard.md) — risk review and approval workflow for governance officers
+- [AI Governance](29-governance-dashboard.md) — risk review and approval workflow for governance officers <!-- require_view: gov-monitoring -->
 
 ## Contact
 

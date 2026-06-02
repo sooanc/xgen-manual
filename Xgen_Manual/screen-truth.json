@@ -199,6 +199,11 @@
       "ok": false,
       "source": "root-default",
       "note": "GS인증 전용 '가드레일·TTS 빠진 본문' (전체 설정 표 행 / 변경 전 영향 admonition / PII 챕터 가드레일 참조). 기본 환경에선 admin-system-guardrail 미정의→노출이라 가드레일 포함 표현이 보이고 본 view 는 ok:false."
+    },
+    "no-governance": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '거버넌스 빠진 본문' (STEP1/3 표 행 / SuperUser admonition / 권한 등급 표 행 등). 기본 환경에선 gov-monitoring 미정의→노출이라 거버넌스 포함 표현이 보이고 본 view 는 ok:false."
     }
   },
   "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작."

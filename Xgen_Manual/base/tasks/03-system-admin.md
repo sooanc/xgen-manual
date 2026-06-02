@@ -30,7 +30,7 @@
 ## CPU·메모리·디스크 상태를 모니터링하려면
 - 시작 위치: 관리 설정 → 시스템 상태 → 시스템 모니터링
 - 절차: [시스템 모니터](../admin/26-system-monitor.md)
-- 알림 임계치 설정 권장
+- 알림 임계치 설정 권장 <!-- require_view: system-threshold-settings -->
 
 ## Agent 개발자가 만든 에이전트의 배포 요청을 승인·거부하려면 (1차 배포 승인)
 - 시작 위치: 관리 설정 → **Agent 운영 → Agent 관리**
@@ -43,10 +43,14 @@
 - 절차: 에이전트플로우 설정 모달의 **승인 상태(Approval Status)** 토글을 *비활성* 으로 전환
 - 효과: 즉시 실행 차단(킬 스위치). 같은 모달의 **배포 토글**(공개/비공개) 과 함께 단계적 롤백 가능. 자세히는 [Agent 운영](../admin/32-agent-operations.md) 참고.
 
+<!-- require_view_start: admin-mcp-market -->
 ## MCP 서버를 등록·운영하려면
 - 시작 위치: 관리 설정 → MCP 관리 → MCP 라이브러리
 - 절차: [MCP 라이브러리](../admin/28-mcp-market.md)
+<!-- require_view_end -->
 
+<!-- require_view_start: admin-support-notice -->
 ## 사용자가 관리자 문의 게시판·1:1 문의를 보냈다, 답변하려면
 - 시작 위치: 관리 설정 → 서비스 운영
 - 절차: [기술지원 응대](../admin/31-tech-support-handling.md)
+<!-- require_view_end -->

@@ -4,6 +4,7 @@ require_view:
   - admin-support-faq
   - admin-support-qna
 ---
+<!-- require_view_start: admin-support-notice -->
 # Technical Support Handling
 
 The **Technical Support** menu at the bottom of the left sidebar (Notice Board / FAQ / 1:1 Admin Inquiry) is a "questioning channel" for end users but a **handling / publishing channel** for administrators. This chapter covers how admins operate these three areas.
@@ -105,3 +106,5 @@ To monitor operations quality, track these weekly/monthly:
 ## Inquiries
 
 For questions about the Technical Support handling policy itself, email the Xgen Solution Administrator.
+
+<!-- require_view_end -->

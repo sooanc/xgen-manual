@@ -1,3 +1,7 @@
+---
+require_view: gov-monitoring
+---
+<!-- require_view_start: gov-monitoring -->
 # 거버넌스 담당자
 
 > AI 사용에 대한 **위험·통제·감사**를 책임지는 사용자. 일반 시스템 관리자와 권한이 분리되는 게 일반적입니다.
@@ -42,3 +46,4 @@
 ## 거버넌스 종합 모니터링이 궁금하다
 - 시작 위치: 관리 설정 → AI 거버넌스 (기본 진입 화면)
 - 절차: [AI 거버넌스](../admin/29-governance-dashboard.md)
+<!-- require_view_end -->

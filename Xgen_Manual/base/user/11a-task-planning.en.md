@@ -1,6 +1,7 @@
 ---
 require_view: main-planning
 ---
+<!-- require_view_start: main-planning -->
 # Agent Planning
 
 This chapter covers the screen where users record **idea-stage proposals** for new agents — "we should automate this task" before building anything. The **Agent Creation → Agent Planning** menu (top of the Agent Creation section) in the left sidebar is in scope.
@@ -63,3 +64,5 @@ The new plan is authored as a stepped modal. The top of the modal shows 5 step i
 ## Contact
 
 For Agent Planning screen questions, please contact the Xgen Solution Administrator.
+
+<!-- require_view_end -->

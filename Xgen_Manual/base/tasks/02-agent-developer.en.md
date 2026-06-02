@@ -10,7 +10,7 @@
 4. **Quality evaluation** — verify response quality with test data → [Agent Operations - Quality](../user/13-agentflow-operations.md#에이전트-품질-분석)
 5. **Submit deployment request** — Agent List → card More menu → **Deploy Info** → flip the **Deploy toggle ON** → [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
 6. **Wait for System Administrator deployment approval** — once the administrator approves on Agent Management, the card badge becomes *Deployed* → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow)
-7. **Wait for Governance Officer governance approval** — the agent becomes visible to end users only after the governance reviewer approves it on AI Governance → Agentflow Approval (risk, PII, policy) → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow)
+7. **Wait for Governance Officer governance approval** — the agent becomes visible to end users only after the governance reviewer approves it on AI Governance → Agentflow Approval (risk, PII, policy) → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
 
 ## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
@@ -43,7 +43,7 @@
 ## My agent was rejected by governance
 - Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) → click the *Governance rejected* counter, or re-open **Deploy Info** on the card
 - Procedure: read the rejection reason (`governance_review_comment`) → fix the agent → resubmit from stage 0 via [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
-- Governance reviewer's criteria: [AI Governance · Agent Approval](../admin/29-governance-dashboard.md#agent-approval)
+- Governance reviewer's criteria: [AI Governance · Agent Approval](../admin/29-governance-dashboard.md#agent-approval) <!-- require_view: gov-monitoring -->
 
 ## I want to register an external API / MCP server as a tool
 - Start: left sidebar **Tool Integration → API Tool**

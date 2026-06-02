@@ -48,7 +48,7 @@
     |---|---|---|---|
     | 0. 배포 요청 | Agent 개발자 (작업실) | 에이전트 운영 화면에서 "배포 요청" | `inquire_deploy: true` |
     | **1. 배포 승인** | **시스템 관리자** | 본 화면 (Agent 관리) | `is_accepted: true`, `is_deployed: true` |
-    | **2. 거버넌스 승인** | **거버넌스 담당자** | [AI 거버넌스 → 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) | `is_governance_accepted: true` |
+    | **2. 거버넌스 승인** | **거버넌스 담당자** | [AI 거버넌스 → 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) | `is_governance_accepted: true` | <!-- require_view: gov-monitoring -->
     | ✅ 서비스 가능 | — | 1·2 모두 통과한 시점부터 사용자에게 노출 | — |
 
     1·2 단계는 **독립적**이며 둘 다 통과해야만 운영 환경에 노출됩니다. 한쪽만 통과한 상태는 대시보드 **Agent 배포/승인 상태** 위젯의 *배포 승인 대기 / 거버넌스 승인 대기* 카운트에 집계되어 모니터링됩니다.
@@ -90,7 +90,7 @@
     ![Step 5 — 처리 후 카드 그리드 갱신 화면](images/admin-deploy-approval-step5.png)
 
 !!! warning "승인 완료 후에도 즉시 사용자에게 노출되지는 않습니다"
-    본 화면에서 배포 승인을 완료하더라도, [AI 거버넌스 > 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) 절차가 최종 완료되어야 서비스가 활성화됩니다.
+    본 화면에서 배포 승인을 완료하더라도, [AI 거버넌스 > 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) 절차가 최종 완료되어야 서비스가 활성화됩니다. <!-- require_view: gov-monitoring -->
 
 #### 운영 중 일시 비활성화 — 승인 상태 토글
 
@@ -216,7 +216,7 @@
 
 - [에이전트 만들기](../user/12-agentflow-create.md) — 개발자 입장에서의 에이전트 설계
 - [에이전트 운영](../user/13-agentflow-operations.md) — 개발자 입장의 운영·테스트·배포
-- [AI 거버넌스](29-governance-dashboard.md) — 위험 평가·승인을 거버넌스 담당자가 운영하는 화면
+- [AI 거버넌스](29-governance-dashboard.md) — 위험 평가·승인을 거버넌스 담당자가 운영하는 화면 <!-- require_view: gov-monitoring -->
 
 ## 문의
 

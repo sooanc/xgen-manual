@@ -1,6 +1,7 @@
 ---
 require_view: admin-system-guardrail
 ---
+<!-- require_view_start: admin-system-guardrail -->
 # Guardrail Model Setup
 
 This chapter covers calling an external **Guard model** (e.g., Qwen3Guard-Gen vLLM). The **policies** themselves (PII patterns, forbidden words, risk levels) live in the AI Control Policy screen — see [PII Protection Policy](25-pii-policy.md). This chapter is only about the **model endpoint** that evaluates those policies.
@@ -62,3 +63,5 @@ The default is **None**.
 ## Contact
 
 For guardrail-model questions, please contact the Xgen Solution Administrator.
+
+<!-- require_view_end -->

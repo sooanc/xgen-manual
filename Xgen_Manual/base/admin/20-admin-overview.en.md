@@ -17,13 +17,16 @@ The main column is organized into three steps:
 
 | Step | Content |
 |---|---|
-| STEP 1 — Understanding Admin Areas | Explains the split between "Governance Officer" and "System Administrator" responsibilities. AI Governance is governed by a separate permission system and is intentionally decoupled from general system administration. |
+| STEP 1 — Understanding Admin Areas | Explains the split between "Governance Officer" and "System Administrator" responsibilities. AI Governance is governed by a separate permission system and is intentionally decoupled from general system administration. | <!-- require_view: gov-monitoring -->
+| STEP 1 — Understanding Admin Areas | Explains the "System Administrator" responsibility scope. | <!-- require_view: no-governance -->
 | STEP 2 — Pick a Main Menu | Exposes the 9 admin areas (Users / Access Control, Agent Operations, AI Governance, Environment, System Status, Data Management, MCP Management, Service Operations, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-9-areas -->
 | STEP 2 — Pick a Main Menu | Exposes the 6 admin areas (Users / Access Control, Agent Operations, Environment, System Status, Data Management, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-6-areas -->
-| STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, system-security review, and AI governance policy operation. |
+| STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, system-security review, and AI governance policy operation. | <!-- require_view: gov-monitoring -->
+| STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, and system-security review. | <!-- require_view: no-governance -->
 
 See the [Admin Console Layout](#admin-console-layout) table below for the full menu breakdown.
 
+<!-- require_view_start: gov-monitoring -->
 !!! note "SuperUser Privileges Required"
     Admin Center is the **SuperUser-only area** that integrates user permissions, agent operations, AI governance, system environment, and data/knowledge assets.
 
@@ -35,6 +38,11 @@ See the [Admin Console Layout](#admin-console-layout) table below for the full m
     | **System Administrator** | Has access to operations, environment, and data administration menus, but cannot access the AI Governance menu. |
 
     The AI Governance menu is provided only to those with internal control and audit responsibility, and is operated separately from system administration privileges. This separation lets the platform run reliably under enterprise requirements for internal control, audit response, and access governance.
+<!-- require_view_end -->
+<!-- require_view_start: no-governance -->
+!!! note "SuperUser Privileges Required"
+    Admin Center is the **SuperUser-only area** that integrates user permissions, agent operations, system environment, and data/knowledge assets.
+<!-- require_view_end -->
 
 ## Permission Tiers { #permission-tiers }
 
@@ -43,7 +51,8 @@ The solution uses a **two-tier permission model**. Role definition / assignment 
 | Tier | Korean | What they can do |
 |---|---|---|
 | Standard User | 일반 사용자 | Encompasses two Agent Workspace user types (**Standard User** / **Agent Developer**). Standard Users use Chat / Technical Support / Dashboard only; Agent Developers receive additional menu permissions for Agent Creation / Tool Integration / Knowledge Management |
-| SuperUser | 슈퍼유저 | Manage users/roles, configure system, run AI governance, monitor operations, delegate permissions, reset the system |
+| SuperUser | 슈퍼유저 | Manage users/roles, configure system, run AI governance, monitor operations, delegate permissions, reset the system | <!-- require_view: gov-monitoring -->
+| SuperUser | 슈퍼유저 | Manage users/roles, configure system, monitor operations, delegate permissions, reset the system | <!-- require_view: no-governance -->
 
 - Even a Standard User account may receive additional individual admin-menu permissions if a SuperUser grants them per operational policy.
 
@@ -192,6 +201,7 @@ Examples:
 
 Grant only the permissions actually required, following the least-privilege principle.
 
+<!-- require_view_start: system-threshold-settings -->
 ### Set system monitoring thresholds
 
 Configure thresholds for system health monitoring.
@@ -204,6 +214,8 @@ Examples:
 - GPU utilization
 
 Verify that alerts are dispatched correctly when thresholds are exceeded.
+
+<!-- require_view_end -->
 
 ### Confirm audit log retention policy
 

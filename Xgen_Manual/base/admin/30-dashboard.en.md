@@ -15,7 +15,8 @@ The two quick-jump buttons at the top-right of the dashboard — **Agent Workspa
 | Agent Workspace | `/main` → auto-redirects to `?view=canvas-intro` (Agent design intro) | Standard Users may see the body as empty (permission gating — see the *Standard User warning* in [User Manual · Quick-jump](../user/18-dashboard.md)). Agent Developers see the full intro. | Full intro rendered (Agent-build permission included) |
 | Admin Center | `/admin` | Disabled | **Enabled** (entry to all admin screens: users, roles, LLM, governance, etc.) |
 
-> After entering `/admin`, use the left sidebar to navigate to AI Model Management, AI Governance, Users / Access Control, Environment, and other detailed areas.
+> After entering `/admin`, use the left sidebar to navigate to AI Model Management, AI Governance, Users / Access Control, Environment, and other detailed areas. <!-- require_view: gov-monitoring -->
+> After entering `/admin`, use the left sidebar to navigate to AI Model Management, Users / Access Control, Environment, and other detailed areas. <!-- require_view: no-governance -->
 
 ### Welcome Message Subtitle
 
@@ -61,6 +62,7 @@ On top of the Standard User / Agent Developer widgets, **operations and deployme
 
 The main screen for users responsible for **risk, control, and audit** of AI usage. Permissions are typically separated from the general system administrator, and governance-only widgets surface on the main screen.
 
+<!-- require_view_start: gov-monitoring -->
 ### Governance-Only Widgets (requires `admin.governance:*`)
 
 On top of the System Administrator operations widgets, the following governance-policy and evaluation widgets appear toward the bottom of the page.
@@ -85,12 +87,14 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 2. **Verify policy reflection immediately after changes** — After editing a risk-grade or forbidden-word policy, confirm the dashboard **Risk Policy** / **Forbidden-Word Policy** widgets update instantly. If they do not, suspect a cache or permission-sync issue.
 3. **Shortcut entries** — Click **Admin Center** and pick **AI Governance** from the left sidebar to edit policies.
 
+<!-- require_view_end -->
+
 ## Common Operational Issues
 
 | Symptom | Cause / What to Check |
 |---|---|
 | Governance widgets are not visible | Confirm the account has `admin.governance:*` |
-| **Risk Policy** widget shows "Inactive" | The policy itself is disabled. Use **AI Governance** to enable it |
+| **Risk Policy** widget shows "Inactive" | The policy itself is disabled. Use **AI Governance** to enable it | <!-- require_view: gov-monitoring -->
 | **Forbidden-Word Policy** widget shows 0 rules | New environment with no rules registered. Adding rules reflects automatically |
 | Right-panel **Admin Inquiries** is empty | No new 1:1 inquiries from users (empty-state message: *"No inquiries to the administrator yet."*) |
 | New admin sees a different widget layout | Widget settings are per-user. Guide them to **Reset** to start from default |
@@ -98,7 +102,7 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 ## Related Chapters
 
 - [User Manual · Dashboard](../user/18-dashboard.md) — layout fundamentals and widget customization (Standard User / Agent Developer views)
-- [AI Governance](29-governance-dashboard.md) — risk review, inspection, audit, and control-policy menus
+- [AI Governance](29-governance-dashboard.md) — risk review, inspection, audit, and control-policy menus <!-- require_view: gov-monitoring -->
 - [Roles & Permissions](22-role-permission.md) — how to grant permissions like `admin.governance:*`
 
 ## Inquiries

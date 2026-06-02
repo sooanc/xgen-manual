@@ -5,6 +5,7 @@ require_view:
   - gov-control-policy
   - gov-audit-tracking
 ---
+<!-- require_view_start: gov-monitoring -->
 # AI 거버넌스
 
 본 챕터는 **관리 설정 → AI 거버넌스** 메뉴의 구성과 각 화면의 운영 방법을 다룹니다. 조직의 AI 사용에 대한 **위험도 평가·점검·감사·통제 정책**을 통합 관리하는 영역입니다.
@@ -441,3 +442,5 @@ require_view:
 ## 문의
 
 AI 거버넌스 관련 문의는 Xgen 솔루션 관리자에게 문의해 주세요.
+
+<!-- require_view_end -->

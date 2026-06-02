@@ -89,13 +89,13 @@ require_view: agentflow-tester
 1. **척도 먼저 정의** — 새 테스트를 만들기 전에 우리 조직에 맞는 척도 프리셋을 만들어 두면, 이후 모든 테스트가 같은 기준으로 비교됩니다.
 2. **소규모 데이터셋으로 시작** — 처음에는 50건 이내 샘플로 척도와 결과 해석을 익히고, 점차 본 데이터셋 규모를 키웁니다.
 3. **Harmbench 는 정기 점검** — 모델·프롬프트가 바뀌면 안전성 회귀가 발생할 수 있으므로 배포 전 한 번씩 돌립니다. <!-- require_view: harmbench -->
-4. **결과는 거버넌스와 공유** — "전사" 영향 범위 에이전트는 평가 점수를 [AI 거버넌스](../admin/29-governance-dashboard.md) 승인 검토 자료로 활용합니다.
+4. **결과는 거버넌스와 공유** — "전사" 영향 범위 에이전트는 평가 점수를 [AI 거버넌스](../admin/29-governance-dashboard.md) 승인 검토 자료로 활용합니다. <!-- require_view: gov-monitoring -->
 
 ## 관련 챕터
 
 - [에이전트 만들기](12-agentflow-create.md) — 평가 대상 에이전트 제작
 - [에이전트 운영 · 실행과 디버깅](13-agentflow-operations.md#testing) — 단일 입력 빠른 실행
-- [AI 거버넌스 — 위험도 평가 및 심사](../admin/29-governance-dashboard.md#risk-review) — 평가 점수의 승인 흐름 활용
+- [AI 거버넌스 — 위험도 평가 및 심사](../admin/29-governance-dashboard.md#risk-review) — 평가 점수의 승인 흐름 활용 <!-- require_view: gov-monitoring -->
 
 ## 문의
 
