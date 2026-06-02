@@ -17,7 +17,8 @@
 | 단계 | 내용 |
 |---|---|
 | STEP 1 — 관리 영역 이해 | "거버넌스 담당자" / "시스템 관리자" 두 역할의 책임 범위 안내. AI 거버넌스 영역은 별도 권한 체계로 제공되며 시스템 관리 권한과 분리됨을 명시 |
-| STEP 2 — 주요 메뉴 선택 | 사이드바 9개 관리 영역(사용자 / 접근제어, Agent 운영, AI 거버넌스, 환경 설정, 시스템 상태, 데이터 관리, MCP 관리, 서비스 운영, 지식 운영)을 카드로 노출. 각 카드 클릭으로 해당 영역의 기본 화면으로 이동 |
+| STEP 2 — 주요 메뉴 선택 | 사이드바 9개 관리 영역(사용자 / 접근제어, Agent 운영, AI 거버넌스, 환경 설정, 시스템 상태, 데이터 관리, MCP 관리, 서비스 운영, 지식 운영)을 카드로 노출. 각 카드 클릭으로 해당 영역의 기본 화면으로 이동 | <!-- require_view: admin-step2-9-areas -->
+| STEP 2 — 주요 메뉴 선택 | 사이드바 6개 관리 영역(사용자 / 접근제어, Agent 운영, 환경 설정, 시스템 상태, 데이터 관리, 지식 운영)을 카드로 노출. 각 카드 클릭으로 해당 영역의 기본 화면으로 이동 | <!-- require_view: admin-step2-6-areas -->
 | STEP 3 — 운영 가이드 | 첫 사용 시 점검, 일상 운영 절차, 시스템 보안 점검, AI 거버넌스 정책 운영 등 자주 참조하는 운영 가이드 링크 |
 
 세부 메뉴 분류는 아래 [관리자 콘솔 구성](#관리자-콘솔-구성) 표를 참고하세요.
@@ -49,7 +50,12 @@
 
 ## 관리자 콘솔 구성
 
+<!-- require_view_start: admin-9-groups -->
 관리 설정 사이드바는 **9개 그룹·36개 메뉴**로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음). 메뉴 라벨은 솔루션 라이브 화면 기준입니다. 각 메뉴별로 본 매뉴얼이 다루는 챕터를 아래와 같이 매핑합니다.
+<!-- require_view_end -->
+<!-- require_view_start: admin-7-groups -->
+관리 설정 사이드바는 **7개 그룹·16개 메뉴**로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음). 메뉴 라벨은 솔루션 라이브 화면 기준입니다. 각 메뉴별로 본 매뉴얼이 다루는 챕터를 아래와 같이 매핑합니다.
+<!-- require_view_end -->
 
 | 그룹 | 메뉴 | 본 매뉴얼 챕터 |
 |---|---|---|
@@ -58,26 +64,26 @@
 | 사용자 / 접근제어 | 로그인 관리 | [로그인 관리](22b-login-management.md) |
 | Agent 운영 | Agent 관리 | [Agent 운영 · Agent 관리(배포 승인)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent 운영 | 채팅 모니터링 | [Agent 운영 · 채팅 모니터링](32-agent-operations.md#chat-monitoring) |
-| Agent 운영 | 사용자 토큰 | [Agent 운영 · 사용자 토큰](32-agent-operations.md) |
+| Agent 운영 | 사용자 토큰 | [Agent 운영 · 사용자 토큰](32-agent-operations.md) | <!-- require_view: admin-user-token-dashboard -->
 | Agent 운영 | 노드 관리 | [노드 목록](32a-node-list.md) |
 | Agent 운영 | 프롬프트 템플릿 | [Agent 운영 · 프롬프트 템플릿](32-agent-operations.md) |
 | Agent 운영 | 사용자 피드백 | [Agent 운영 · 사용자 피드백](32-agent-operations.md#user-feedback) |
 | Agent 운영 | 응답 품질 평가 | [Agent 운영 · 응답 품질 평가](32-agent-operations.md#quality-eval) |
 | Agent 운영 | Agent 리텐션 분석 | [Agent 운영 · 리텐션 분석](32-agent-operations.md) | <!-- require_view: admin-agent-retention -->
-| Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#task-planning) |
+| Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#task-planning) | <!-- require_view: admin-agent-dev-plan -->
 | AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#risk-review) |
 | AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#inspection) |
 | AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · AI 서비스 변경 이력](29-governance-dashboard.md#audit-tracking) |
 | AI 거버넌스 | 통제 정책 관리 | [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#control-policy), [PII 보호 정책](25-pii-policy.md) |
 | 환경 설정 | 전체 설정 | [전체설정 · 환경 설정 개요](#env-overview) |
 | 환경 설정 | LLM | [LLM 설정](23-llm-settings.md) |
-| 환경 설정 | 인프라 | [인프라 · 환경 설정 개요](#env-overview) |
+| 환경 설정 | 인프라 | [인프라 · 환경 설정 개요](#env-overview) | <!-- require_view: admin-system-infra -->
 | 환경 설정 | 검색 / 임베딩 | [임베딩·벡터 검색 설정](24-embedding-settings.md) |
 | 환경 설정 | 오디오 | [오디오 · 환경 설정 개요](#env-overview) | <!-- require_view: admin-system-audio -->
 | 환경 설정 | 가드레일 | [가드레일 모델 설정](25b-guardrail-model.md) | <!-- require_view: admin-system-guardrail -->
 | 환경 설정 | 사이드바 | [사이드바 · 환경 설정 개요](#env-overview) |
 | 시스템 상태 | 시스템 모니터링 | [시스템 모니터 · 시스템 모니터링](26-system-monitor.md) |
-| 시스템 상태 | 시스템 조회 | [시스템 모니터 · 시스템 조회](26-system-monitor.md#system-query) |
+| 시스템 상태 | 시스템 조회 | [시스템 모니터 · 시스템 조회](26-system-monitor.md#system-query) | <!-- require_view: admin-system-health -->
 | 시스템 상태 | 로그 조회 | [시스템 모니터 · 로그 조회](26-system-monitor.md#log-query) |
 | 데이터 관리 | 데이터베이스 | [데이터 관리 · 데이터베이스](33-data-management.md) |
 | 데이터 관리 | DB 연결 | [데이터 관리 · DB 연결](33-data-management.md) | <!-- require_view: admin-db-connection -->
@@ -97,7 +103,7 @@
 | 메뉴 | 화면 진입 | 화면 성격 |
 |---|---|---|
 | 전체 설정 | 관리 설정 → 환경 설정 → 전체 설정 (`admin?view=admin-system-config`) | 모든 시스템 구성 값을 *한 화면에서 통합 조회·편집* 하는 어드밴스드 뷰. 일반적인 운영은 *LLM / 검색·임베딩 / 가드레일* 등 **개별 메뉴** 를 사용하고, 본 화면은 *키-값 단위의 정밀 조회/편집* 용으로 사용합니다. (자세한 화면 구조는 아래 *전체 설정 화면 자세히* 참조) |
-| 인프라 | 관리 설정 → 환경 설정 → 인프라 | API 서버·Agent 엔진·모델 서빙 등 *연결 엔드포인트* 와 인프라 설정. 시스템 설치 시점에 1회 구성. |
+| 인프라 | 관리 설정 → 환경 설정 → 인프라 | API 서버·Agent 엔진·모델 서빙 등 *연결 엔드포인트* 와 인프라 설정. 시스템 설치 시점에 1회 구성. | <!-- require_view: admin-system-infra -->
 | 오디오 | 관리 설정 → 환경 설정 → 오디오 | STT/TTS 음성 모델 연동 설정. 음성 기능을 활성화한 환경에서만 의미. | <!-- require_view: admin-system-audio -->
 | 사이드바 | 관리 설정 → 환경 설정 → 사이드바 | 사이드바 메뉴의 노출 여부를 조직별로 토글하는 화면. 일부 메뉴를 사용자에게 숨기고 싶을 때 사용. |
 

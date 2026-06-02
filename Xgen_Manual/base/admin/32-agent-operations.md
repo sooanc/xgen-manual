@@ -1,12 +1,22 @@
 # Agent 운영
 
+<!-- require_view_start: agent-ops-9-menus -->
 본 챕터는 관리자가 조직 전체의 에이전트 자산을 **운영·감독·평가**하는 기능을 다룹니다. 좌측 사이드바 **관리 설정 → Agent 운영** 그룹 9개 메뉴가 본 챕터 범위입니다.
+<!-- require_view_end -->
+<!-- require_view_start: agent-ops-8-menus -->
+본 챕터는 관리자가 조직 전체의 에이전트 자산을 **운영·감독·평가**하는 기능을 다룹니다. 좌측 사이드바 **관리 설정 → Agent 운영** 그룹 8개 메뉴가 본 챕터 범위입니다.
+<!-- require_view_end -->
 
 > 일반 사용자(또는 Agent 개발자) 관점의 에이전트 만들기·실행은 [사용자 매뉴얼](../user/) 의 [에이전트 만들기](../user/12-agentflow-create.md), [에이전트 운영](../user/13-agentflow-operations.md) 챕터를 참고하세요. 본 챕터는 **관리자 시야**에서 조직 전체 에이전트를 보는 화면입니다.
 
 ## 화면 진입
 
+<!-- require_view_start: agent-ops-9-menus -->
 좌측 메뉴 **관리 설정 → Agent 운영** 을 펼치면 9개의 하위 메뉴가 노출됩니다.
+<!-- require_view_end -->
+<!-- require_view_start: agent-ops-8-menus -->
+좌측 메뉴 **관리 설정 → Agent 운영** 을 펼치면 8개의 하위 메뉴가 노출됩니다.
+<!-- require_view_end -->
 
 ![Agent 관리 — 조직 전체에 등록된 에이전트플로우 카드 목록. 좌측 사이드바 Agent 운영 그룹 9개 메뉴(Agent 관리/채팅 모니터링/사용자 토큰/노드 관리/프롬프트 템플릿/사용자 피드백/응답 품질 평가/Agent 리텐션 분석/업무기획) 펼침 상태](images/admin-agent-management.png)
 
@@ -16,13 +26,13 @@
 |---|---|---|
 | **Agent 관리** | `admin-agentflow-management` | 조직 전체 에이전트플로우 카드 목록. 상태/소유자별 필터, 검색 |
 | **채팅 모니터링** | `admin-chat-monitoring` | 실시간/이력 채팅 세션 추적, 응답·도구 호출 트레이스 확인 |
-| **사용자 토큰** | `admin-user-token-dashboard` | 사용자·기간별 토큰 소비량 대시보드, 비용 분석 |
+| **사용자 토큰** | `admin-user-token-dashboard` | 사용자·기간별 토큰 소비량 대시보드, 비용 분석 | <!-- require_view: admin-user-token-dashboard -->
 | **노드 관리** | `admin-node-management` | 에이전트플로우에서 재사용되는 노드 라이브러리 관리 — 상세는 [노드 목록](32a-node-list.md) |
 | **프롬프트 템플릿** | `admin-prompt-store` | 조직 공유 프롬프트 템플릿 등록·버전 관리 |
 | **사용자 피드백** | `admin-feedback-monitoring` | 사용자가 남긴 응답 별점·문제 유형·코멘트 모음 (환각·규정 위반·데이터 오류·응답 실패 분류) |
 | **응답 품질 평가** | `admin-agentflow-tester` | 테스트 데이터셋 기준 에이전트 응답 품질 자동 평가 |
 | **Agent 리텐션 분석** | `admin-agent-retention` | 시간대별 에이전트 사용 유지율, 활성 사용자 추이 | <!-- require_view: admin-agent-retention -->
-| **업무기획** | `admin-agent-dev-plan` | 신규 에이전트 기획안 등록·검토, 개발 우선순위 관리 |
+| **업무기획** | `admin-agent-dev-plan` | 신규 에이전트 기획안 등록·검토, 개발 우선순위 관리 | <!-- require_view: admin-agent-dev-plan -->
 
 ## 주요 화면
 
@@ -111,9 +121,12 @@
 
 대화 단위로 에이전트가 어떤 노드를 거쳤는지·도구 호출 결과는 무엇이었는지를 시각적으로 트레이스할 수 있는 화면. 응답 품질 이슈 조사·재현 시 우선 진입합니다.
 
+<!-- require_view_start: admin-agent-dev-plan -->
 ### 업무기획 { #task-planning }
 
 조직이 새로 만들 에이전트의 후보 목록을 등록·우선순위화하는 화면. 사용자 요청·기획자 제안·운영 데이터를 한 곳에서 모아 관리합니다.
+
+<!-- require_view_end -->
 
 ## 운영 권장 사항
 
@@ -151,6 +164,7 @@
 
 특정 기간 동안 문제가 일정 기준 이상 반복되는 경우에는 해당 Agent를 일시 중지하고 원인 점검을 수행해야 합니다.
 
+<!-- require_view_start: admin-user-token-dashboard -->
 ### 토큰 사용량 이상 징후 확인
 
 사용자 토큰 사용량 대시보드를 통해 비정상적인 사용 패턴을 점검할 수 있습니다.
@@ -162,6 +176,8 @@
 - 자동화 오남용 의심 패턴
 
 이상 징후 발견 시 운영팀 또는 보안 담당자와 함께 검토하는 것을 권장합니다.
+
+<!-- require_view_end -->
 
 ### 프롬프트 템플릿 버전 관리
 

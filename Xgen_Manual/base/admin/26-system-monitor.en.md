@@ -1,6 +1,11 @@
 # System Monitor
 
+<!-- require_view_start: system-threshold-settings -->
 This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server and configure thresholds. (Depending on the operational environment, a Grafana-based integrated monitoring view may also be available.)
+<!-- require_view_end -->
+<!-- require_view_start: system-no-threshold -->
+This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server. (Depending on the operational environment, a Grafana-based integrated monitoring view may also be available.)
+<!-- require_view_end -->
 
 ## System Overview
 
@@ -39,6 +44,7 @@ Default thresholds, adjustable per environment:
 | Memory | 70% | 85% | 95% |
 | Disk | 70% | 85% | 95% |
 
+<!-- require_view_start: system-threshold-settings -->
 ## Configuring Thresholds
 
 1. Click the **Settings (⚙)** button at the top right of System Monitor
@@ -48,6 +54,8 @@ Default thresholds, adjustable per environment:
 
 !!! info "Ignoring Brief Spikes"
     Brief spikes from batch jobs or sudden user surges are normal. Configuring **Critical** alerts to fire only when sustained for over an hour reduces noise.
+
+<!-- require_view_end -->
 
 ## Resource History
 
@@ -62,6 +70,7 @@ The **Resource History** tab shows time-series charts for past trends.
 
 When investigating spikes, cross-reference the audit log around the same time to infer causes.
 
+<!-- require_view_start: admin-system-health -->
 ## System Inspection { #system-query }
 
 Select **Admin → System Status → System Inspection** in the left sidebar. The screen header reads *"Service status and version compatibility"* and the page lists health-check results for every backend service the solution depends on.
@@ -94,6 +103,8 @@ Select **Admin → System Status → System Inspection** in the left sidebar. Th
 - **First check during an outage** — When users report issues (e.g., no chat response, embedding errors), open this screen first and confirm whether the *Unhealthy* card is non-zero.
 - **Post-deployment verification** — After a release or infrastructure operation, refresh to confirm that *all services* have returned to healthy.
 - **Version-compatibility tracing** — If *Incompatible* is non-zero, use the *Version* column to identify which services are off-version and share with the infrastructure team.
+
+<!-- require_view_end -->
 
 ## Log Viewer { #log-query }
 
@@ -161,7 +172,8 @@ Detailed development / analysis logs. Noisy in production; enable only when repr
 
 ### Operational recommendations
 
-- **Standard incident-response flow** — Use *System Inspection* to identify the unhealthy service → switch to *Log Viewer → Error tab* for the same time window → forward the message and source to the infrastructure team.
+- **Standard incident-response flow** — Use *System Inspection* to identify the unhealthy service → switch to *Log Viewer → Error tab* for the same time window → forward the message and source to the infrastructure team. <!-- require_view: admin-system-health -->
+- **Standard incident-response flow** — Switch to *Log Viewer → Error tab* for the same time window when an issue is reported → forward the message and source to the infrastructure team. <!-- require_view: system-no-health -->
 - **Turn DEBUG off after use** — Debug-level logs put pressure on disk usage and search performance. Return to normal level as soon as diagnosis is done.
 - **Standardize search keywords** — Share common keywords (service names, exception classes) across the team so investigations converge quickly.
 
@@ -169,7 +181,7 @@ Detailed development / analysis logs. Noisy in production; enable only when repr
 
 - **Weekly review** — Inspect the 30-day chart on **Resource History** weekly. Disks fill gradually, so weekly checks are essential.
 - **Watch for unplanned restarts** — Abnormally short uptime (e.g., under one day) suggests an unplanned restart. Check the audit log for cause.
-- **Periodic threshold recalibration** — Baseline utilization rises with user growth. Reassess threshold appropriateness quarterly.
+- **Periodic threshold recalibration** — Baseline utilization rises with user growth. Reassess threshold appropriateness quarterly. <!-- require_view: system-threshold-settings -->
 
 ## Contact
 

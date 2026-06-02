@@ -25,6 +25,7 @@ Select **Admin → MCP Management → MCP Library** in the left sidebar.
 !!! info "Related Menu"
     The **MCP Management** section also contains **MCP Operations & Monitoring** for tracking call statistics and session state of registered servers.
 
+<!-- require_view_start: mcp-server-register -->
 ## Registering an MCP Server
 
 1. Click **+ Add MCP Server** at the top right
@@ -40,6 +41,8 @@ Select **Admin → MCP Management → MCP Library** in the left sidebar.
 
 !!! warning "Environment Variable Security"
     Environment variables passed to the MCP server may include sensitive data such as API keys. The solution stores these encrypted, but be wary of plaintext exposure in screenshots, exports, and similar leaks.
+
+<!-- require_view_end -->
 
 ## Server Card Information
 
@@ -74,6 +77,7 @@ Registering an MCP server does not automatically grant all users access.
 
 4. **Save**
 
+<!-- require_view_start: admin-mcp-station -->
 ## MCP Operations & Monitoring (Station) { #mcp-station }
 
 The second menu in **MCP Management** — **MCP Operations & Monitoring** (view ID `admin-mcp-station`) — is where you manage the *runtime state* and *session lifecycle* of registered MCP servers on a single screen. If *MCP Library* is the *catalog / registration* surface, this screen is the *operations* entry point.
@@ -96,6 +100,8 @@ MCP servers usually run with per-user sessions. Abnormal sessions accumulate and
 1. Open **MCP Operations & Monitoring** or the MCP server detail → **Sessions** tab.
 2. Inspect the list for abnormal entries (errored, long idle).
 3. Click individual **Terminate** or use **Terminate All** at the top right.
+
+<!-- require_view_end -->
 
 ## Disabling / Restarting Servers
 

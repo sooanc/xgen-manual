@@ -11,12 +11,13 @@
 | Google Gemini | Google Gemini | 클라우드 | API 키 필요 |
 | AWS Bedrock | AWS Bedrock | 클라우드 | AWS 자격증명 필요 |
 | vLLM | vLLM | 셀프 호스팅 | 사내 GPU 서버에 배포한 모델 |
-| SGLang | SGLang | 셀프 호스팅 | 사내 GPU 서버에 배포한 모델 |
+| SGLang | SGLang | 셀프 호스팅 | 사내 GPU 서버에 배포한 모델 | <!-- require_view: llm-sglang -->
 
 !!! info "금융권 등 폐쇄망 환경 권장 사항"
     망분리 환경 또는 데이터 외부 반출 제한 정책이 적용되는 환경에서는 외부 클라우드 기반 LLM 사용이 제한될 수 있습니다.
 
-    이러한 경우에는 사내 인프라 기반의 추론 환경(vLLM, SGLang 등)을 우선 검토하는 것을 권장합니다.
+    이러한 경우에는 사내 인프라 기반의 추론 환경(vLLM, SGLang 등)을 우선 검토하는 것을 권장합니다. <!-- require_view: llm-sglang -->
+    이러한 경우에는 사내 인프라 기반의 추론 환경(vLLM 등)을 우선 검토하는 것을 권장합니다. <!-- require_view: llm-no-sglang -->
 
 ## 프로바이더 등록
 

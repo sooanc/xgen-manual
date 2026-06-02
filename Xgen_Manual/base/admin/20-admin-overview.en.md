@@ -17,7 +17,8 @@ The main column is organized into three steps:
 | Step | Content |
 |---|---|
 | STEP 1 — Understanding Admin Areas | Explains the split between "Governance Officer" and "System Administrator" responsibilities. AI Governance is governed by a separate permission system and is intentionally decoupled from general system administration. |
-| STEP 2 — Pick a Main Menu | Exposes the 9 admin areas (Users / Access Control, Agent Operations, AI Governance, Environment, System Status, Data Management, MCP Management, Service Operations, Knowledge Operations) as cards. Clicking a card opens that area's default screen. |
+| STEP 2 — Pick a Main Menu | Exposes the 9 admin areas (Users / Access Control, Agent Operations, AI Governance, Environment, System Status, Data Management, MCP Management, Service Operations, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-9-areas -->
+| STEP 2 — Pick a Main Menu | Exposes the 6 admin areas (Users / Access Control, Agent Operations, Environment, System Status, Data Management, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-6-areas -->
 | STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, system-security review, and AI governance policy operation. |
 
 See the [Admin Console Layout](#admin-console-layout) table below for the full menu breakdown.
@@ -49,7 +50,12 @@ New users are created as **Standard User** by default. Granting SuperUser privil
 
 ## Admin Console Layout
 
+<!-- require_view_start: admin-9-groups -->
 The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden depending on permissions). Menu labels match the live solution screen. The mapping from each menu to its manual chapter is below.
+<!-- require_view_end -->
+<!-- require_view_start: admin-7-groups -->
+The Admin sidebar has **7 groups and 16 menus** in total (some may be hidden depending on permissions). Menu labels match the live solution screen. The mapping from each menu to its manual chapter is below.
+<!-- require_view_end -->
 
 | Group | Menu | Manual Chapter |
 |---|---|---|
@@ -58,26 +64,26 @@ The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden dep
 | Users / Access Control | Login Management | [Login Management](22b-login-management.md) |
 | Agent Operations | Agent Management | [Agent Operations · Agent Management (Deployment Approval)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
-| Agent Operations | User Tokens | [Agent Operations · User Tokens](32-agent-operations.md) |
+| Agent Operations | User Tokens | [Agent Operations · User Tokens](32-agent-operations.md) | <!-- require_view: admin-user-token-dashboard -->
 | Agent Operations | Node Management | [Node List](32a-node-list.md) |
 | Agent Operations | Prompt Templates | [Agent Operations · Prompt Templates](32-agent-operations.md) |
 | Agent Operations | User Feedback | [Agent Operations · User Feedback](32-agent-operations.md#user-feedback) |
 | Agent Operations | Response Quality Evaluation | [Agent Operations · Response Quality Evaluation](32-agent-operations.md) |
 | Agent Operations | Agent Retention Analysis | [Agent Operations · Retention Analysis](32-agent-operations.md) | <!-- require_view: admin-agent-retention -->
-| Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) |
+| Agent Operations | Task Planning | [Agent Operations · Task Planning](32-agent-operations.md#task-planning) | <!-- require_view: admin-agent-dev-plan -->
 | AI Governance | AI Risk Assessment | [AI Governance · Risk Review](29-governance-dashboard.md#risk-review) |
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
 | AI Governance | Service Change History | [AI Governance · AI Service Change History](29-governance-dashboard.md#audit-tracking) |
 | AI Governance | Control Policy Management | [AI Governance · Control Policy](29-governance-dashboard.md#control-policy), [PII Policy](25-pii-policy.md) |
 | Environment | General | [General · Environment Overview](#env-overview) |
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |
-| Environment | Infrastructure | [Infrastructure · Environment Overview](#env-overview) |
+| Environment | Infrastructure | [Infrastructure · Environment Overview](#env-overview) | <!-- require_view: admin-system-infra -->
 | Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |
 | Environment | Audio | [Audio · Environment Overview](#env-overview) | <!-- require_view: admin-system-audio -->
 | Environment | Guardrail | [Guardrail Model Setup](25b-guardrail-model.md) | <!-- require_view: admin-system-guardrail -->
 | Environment | Sidebar | [Sidebar · Environment Overview](#env-overview) |
 | System Status | System Monitoring | [System Monitor · System Monitoring](26-system-monitor.md) |
-| System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query) |
+| System Status | System Inspection | [System Monitor · System Inspection](26-system-monitor.md#system-query) | <!-- require_view: admin-system-health -->
 | System Status | Log Viewer | [System Monitor · Log Viewer](26-system-monitor.md#log-query) |
 | Data Management | Database | [Data Management · Database](33-data-management.md) |
 | Data Management | DB Connection | [Data Management · DB Connection](33-data-management.md) | <!-- require_view: admin-db-connection -->
@@ -97,7 +103,7 @@ Four Environment menus — **General / Infrastructure / Audio / Sidebar** — do
 | Menu | Where to enter | Screen role |
 |---|---|---|
 | General | Admin → Environment → General (`admin?view=admin-system-config`) | A unified, advanced view that lets you read/edit *every* system configuration value from a single screen. Day-to-day operations should rely on the individual menus (*LLM / Search / Embedding / Guardrail*); this screen is the *key-value precision-edit* entry point. (See *General screen in detail* below.) |
-| Infrastructure | Admin → Environment → Infrastructure | API server, Agent engine, model-serving *endpoints* and infrastructure parameters. Typically configured once at install time. |
+| Infrastructure | Admin → Environment → Infrastructure | API server, Agent engine, model-serving *endpoints* and infrastructure parameters. Typically configured once at install time. | <!-- require_view: admin-system-infra -->
 | Audio | Admin → Environment → Audio | STT/TTS voice-model integration. Only meaningful when voice features are enabled. | <!-- require_view: admin-system-audio -->
 | Sidebar | Admin → Environment → Sidebar | Toggle visibility of individual sidebar menus per organization, used to hide selected menus from users. |
 

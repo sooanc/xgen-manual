@@ -134,6 +134,41 @@
       "notFound": false,
       "capturedAt": "2026-05-15T06:29:55.823Z",
       "source": "user"
+    },
+    "admin-7-groups": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 매뉴얼 전용 '7개 그룹·16개 메뉴' 텍스트. 기본 환경에선 9개 그룹 표현(admin-9-groups, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "admin-step2-6-areas": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 매뉴얼 전용 STEP 2 '6개 관리 영역' 텍스트. 기본 환경에선 9개 영역 표현(admin-step2-9-areas, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "agent-ops-8-menus": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 매뉴얼 전용 'Agent 운영 그룹 8개 메뉴' 텍스트. 기본 환경에선 9개 메뉴 표현(agent-ops-9-menus, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "env-overview-gs-summary": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 매뉴얼 전용 '환경 설정 개요' 축약 본문 (전체 설정 / 사이드바 2개)."
+    },
+    "llm-no-sglang": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '폐쇄망 권장 추론 환경(vLLM 등)' 텍스트. 기본 환경에선 'vLLM, SGLang 등' 표현(llm-sglang, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "system-no-threshold": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '임계치 설정 빠진 시스템 모니터 인트로' 텍스트. 기본 환경에선 임계치 포함 인트로(system-threshold-settings, 미정의→노출) 이 보이도록 ok:false."
+    },
+    "system-no-health": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 '시스템 조회 빠진 장애 대응 흐름' 텍스트. 기본 환경에선 시스템 조회 포함 흐름(admin-system-health, 미정의→노출) 이 보이도록 ok:false."
     }
   },
   "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작."

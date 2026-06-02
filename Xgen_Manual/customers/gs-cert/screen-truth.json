@@ -327,6 +327,86 @@
       "notFound": false,
       "source": "user-confirmed",
       "note": "지식 컬렉션의 온톨로지 시각화/GraphRAG 절. gs@plateer.com 권한에서 노출 확인 완료 (2026-06-02 사용자 확정) — GS인증 매뉴얼에 노출."
+    },
+    "admin-9-groups": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 2번 — 9개 그룹 텍스트 제외, 7개 그룹 텍스트로 대체."
+    },
+    "admin-7-groups": {
+      "ok": true,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 2번 — GS인증 매뉴얼에서 사용. ROOT default ok:false 오버라이드."
+    },
+    "admin-step2-9-areas": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 1번 — STEP 2 9개 영역 표현 제외, 6개 영역 표현으로 대체."
+    },
+    "admin-step2-6-areas": {
+      "ok": true,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 1번 — GS인증 매뉴얼에서 사용. ROOT default ok:false 오버라이드."
+    },
+    "agent-ops-9-menus": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 13번 — Agent 운영 그룹 9개 메뉴 표현 제외, 8개 메뉴 표현으로 대체."
+    },
+    "agent-ops-8-menus": {
+      "ok": true,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 13번 — GS인증 매뉴얼에서 사용. ROOT default ok:false 오버라이드."
+    },
+    "admin-user-token-dashboard": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 2·8·14번 — 사용자 토큰 메뉴/표 행/관련 본문 제외."
+    },
+    "admin-agent-dev-plan": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 2·8·13·14번 — 업무기획 메뉴/표 행/본문 절 제외."
+    },
+    "admin-system-infra": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 2·3번 — 인프라 메뉴 행 + 환경 설정 개요 표 행 제외."
+    },
+    "llm-sglang": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 5번 — LLM 설정 표의 SGLang 행 및 폐쇄망 환경 권장 사항 내 SGLang 언급 제외."
+    },
+    "system-threshold-settings": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 6번 — 시스템 모니터의 '임계치 설정' 절 전체 + 인트로 언급 + 운영 권장사항 항목 제외."
+    },
+    "mcp-server-register": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 9번 — MCP 서버 등록 절 + 관련 본문 제외 (MCP 서버 추가 버튼 미노출)."
+    },
+    "admin-system-health": {
+      "ok": false,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 7번 — 시스템 조회는 GS인증 시험 대상이 아니므로 본문 절·표 행·관련 언급 모두 제외."
+    },
+    "llm-no-sglang": {
+      "ok": true,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 5번 — GS인증 매뉴얼에서 SGLang 빠진 폐쇄망 권장 문구 노출. ROOT default ok:false 오버라이드."
+    },
+    "system-no-threshold": {
+      "ok": true,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 6번 — GS인증 매뉴얼에서 임계치 설정 빠진 시스템 모니터 인트로 노출."
+    },
+    "system-no-health": {
+      "ok": true,
+      "source": "gs-cert-spec",
+      "note": "PDF 수정사항 7번 — GS인증 매뉴얼에서 시스템 조회 빠진 장애 대응 흐름 노출."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",

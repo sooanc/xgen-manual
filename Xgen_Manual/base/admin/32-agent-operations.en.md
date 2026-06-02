@@ -1,12 +1,22 @@
 # Agent Operations
 
+<!-- require_view_start: agent-ops-9-menus -->
 This chapter covers the **administrative oversight** of all agents in the organization. The **Admin Center → Agent Operations** sidebar group exposes 9 menus covered here.
+<!-- require_view_end -->
+<!-- require_view_start: agent-ops-8-menus -->
+This chapter covers the **administrative oversight** of all agents in the organization. The **Admin Center → Agent Operations** sidebar group exposes 8 menus covered here.
+<!-- require_view_end -->
 
 > For the *builder* perspective on creating and running agents, see the user-side [Creating an Agent](../user/12-agentflow-create.md) and [Agent Operations](../user/13-agentflow-operations.md) chapters. This chapter is the **admin-side** view of the organization's entire agent fleet.
 
 ## Accessing the Screen
 
+<!-- require_view_start: agent-ops-9-menus -->
 Expand **Admin Center → Agent Operations** in the left sidebar to reveal 9 submenus.
+<!-- require_view_end -->
+<!-- require_view_start: agent-ops-8-menus -->
+Expand **Admin Center → Agent Operations** in the left sidebar to reveal 8 submenus.
+<!-- require_view_end -->
 
 ![Agent Management — card grid of all agentflows registered in the organization, filtered by status / owner. The left sidebar shows the Agent Operations group with its 9 menus expanded.](images/admin-agent-management.png)
 
@@ -16,13 +26,13 @@ Expand **Admin Center → Agent Operations** in the left sidebar to reveal 9 sub
 |---|---|---|
 | **Agent Management** | `admin-agentflow-management` | Organization-wide agentflow card grid; filter by status / owner; search |
 | **Chat Monitoring** | `admin-chat-monitoring` | Live and historical chat-session tracing — response and tool-call traces |
-| **User Tokens** | `admin-user-token-dashboard` | Token-consumption dashboard by user / period, cost analysis |
+| **User Tokens** | `admin-user-token-dashboard` | Token-consumption dashboard by user / period, cost analysis | <!-- require_view: admin-user-token-dashboard -->
 | **Node Management** | `admin-node-management` | Manage reusable nodes available across agentflows — see [Node List](32a-node-list.md) |
 | **Prompt Templates** | `admin-prompt-store` | Organization-shared prompt templates and their version history |
 | **User Feedback** | `admin-feedback-monitoring` | User-submitted star ratings / issue categories / comments (hallucination, policy violation, data error, response failure) |
 | **Response Quality Evaluation** | `admin-agentflow-tester` | Auto-score agent responses against a test dataset |
 | **Agent Retention Analysis** | `admin-agent-retention` | Time-series retention curves and active-user trends per agent | <!-- require_view: admin-agent-retention -->
-| **Task Planning** | `admin-agent-dev-plan` | Register and triage proposed new agents, manage development priority |
+| **Task Planning** | `admin-agent-dev-plan` | Register and triage proposed new agents, manage development priority | <!-- require_view: admin-agent-dev-plan -->
 
 ## Key Screens
 
@@ -95,16 +105,19 @@ Top summary cards: total feedback count, average star rating, good-answer rate (
 
 A per-conversation trace view showing which nodes an agent traversed and the result of each tool call. The first stop when investigating or reproducing a response-quality issue.
 
+<!-- require_view_start: admin-agent-dev-plan -->
 ### Task Planning { #task-planning }
 
 Register and rank candidate new agents the organization wants to build. Collects user requests, planner suggestions, and operational data in one place.
+
+<!-- require_view_end -->
 
 ## Operational Recommendations
 
 - **Monitor the dual-approval queue** — When the *Agent deployment/approval status* widget on the dashboard shows the **Deployment-pending** or **Governance-pending** counters drifting up, one of the two stages is the bottleneck. Both reviewers (System Administrator and Governance Officer) should sweep their queues at least weekly.
 - **Deployment approval ≠ user visibility** — Approving the deployment on this screen does **not** make the agent visible to end users — that happens only after governance approval. Communicate this precisely to authors as "deployment approved, governance review pending."
 - **Weekly user-feedback review** — When hallucination / policy-violation counts exceed a threshold for the week, immediately suspend the offending agent for inspection.
-- **Token-consumption alerts** — Watch the User Tokens dashboard for anomalous spikes (e.g., a user 10× their daily average) and share with the security team.
+- **Token-consumption alerts** — Watch the User Tokens dashboard for anomalous spikes (e.g., a user 10× their daily average) and share with the security team. <!-- require_view: admin-user-token-dashboard -->
 - **Pin prompt-template versions** — Agents that are live in production should reference pinned template versions. Unannounced template edits affect every consumer.
 - **Periodic quality runs** — Refresh the evaluation dataset quarterly and re-run Response Quality Evaluation to catch regressions.
 - **Hide internal-only agents** — Toggle private flags so internal agents do not appear in user-side search; they remain visible from this admin screen.

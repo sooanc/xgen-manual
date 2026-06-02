@@ -11,12 +11,13 @@ This chapter covers configuring the language model providers and parameters the 
 | Google Gemini | Google Gemini | Cloud | API key required |
 | AWS Bedrock | AWS Bedrock | Cloud | AWS credentials required |
 | vLLM | vLLM | Self-hosted | Models deployed on internal GPU servers |
-| SGLang | SGLang | Self-hosted | Models deployed on internal GPU servers |
+| SGLang | SGLang | Self-hosted | Models deployed on internal GPU servers | <!-- require_view: llm-sglang -->
 
 !!! info "Recommended for closed-network environments (e.g., financial sector)"
     In segregated network environments or under data-egress-restricted policies, the use of external cloud-based LLMs may be restricted.
 
-    In such cases we recommend prioritizing on-premise inference infrastructure (vLLM, SGLang, and similar).
+    In such cases we recommend prioritizing on-premise inference infrastructure (vLLM, SGLang, and similar). <!-- require_view: llm-sglang -->
+    In such cases we recommend prioritizing on-premise inference infrastructure (vLLM and similar). <!-- require_view: llm-no-sglang -->
 
 ## Registering a Provider
 
