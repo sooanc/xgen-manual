@@ -11,6 +11,7 @@
 5. **배포 요청 보내기** — Agent 목록 → 카드 더보기 메뉴 → **배포 정보** → 모달의 **배포 토글 ON** → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment)
 6. **시스템 관리자 배포 승인 대기** — 시스템 관리자가 Agent 관리 화면에서 승인하면 카드 배지가 *배포됨* 으로 갱신 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
 7. **거버넌스 담당자 거버넌스 승인 대기** — 거버넌스 담당자가 AI 거버넌스 → 에이전트플로우 승인 화면에서 위험·PII·정책을 검토해 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
+7. **시스템 관리자 배포 승인 통과** — 시스템 관리자가 Agent 관리 화면에서 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: no-governance -->
 
 ## 로그인 직후 내 역할에 맞는 메인 화면을 보고 싶다
 - 시작 위치: 로그인 직후 자동 진입 (또는 좌상단 **XGEN** 로고)
@@ -32,17 +33,24 @@
 ## 내 Agent에 배포 요청을 보내고 싶다
 - 시작 위치: Agent 작업실 → **Agent 제작 → Agent 목록** → 본인 카드의 **⋯** 메뉴 → **배포 정보**
 - 절차: [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment)
-- 핵심: DeploymentModal 의 **배포 토글 ON** 한 번으로 시스템 관리자 큐에 등록. 공유 배포 시 *Agent 개발 기획서* 선택 필수.
+- 핵심: DeploymentModal 의 **배포 토글 ON** 한 번으로 시스템 관리자 큐에 등록.
+- 공유 배포 시 *Agent 개발 기획서* 선택 필수. <!-- require_view: admin-agent-dev-plan -->
 
 ## 배포 요청 후 진행 상태를 확인하고 싶다
 - 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) 위젯 (Agent 개발자 뷰)
-- 절차: 위젯의 5개 카운터로 *배포 승인 대기 / 배포 승인 거절 / 거버넌스 승인 대기 / 거버넌스 승인 거절 / 배포·거버넌스 승인완료* 추적
-- 상세 흐름: [이중 승인 흐름](../user/13-agentflow-operations.md#dual-approval-flow)
-- 참고: 시스템 관리자(1단계) + 거버넌스 담당자(2단계) 모두 통과해야 사용자에게 노출. 한쪽만 통과한 상태는 미노출.
+- 절차: 위젯의 5개 카운터로 *배포 승인 대기 / 배포 승인 거절 / 거버넌스 승인 대기 / 거버넌스 승인 거절 / 배포·거버넌스 승인완료* 추적 <!-- require_view: gov-monitoring -->
+- 절차: 위젯의 카운터로 *배포 승인 대기 / 배포 승인 거절 / 배포 승인완료* 추적 <!-- require_view: no-governance -->
+- 상세 흐름: [이중 승인 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
+- 상세 흐름: [배포 승인 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: no-governance -->
+- 참고: 시스템 관리자(1단계) + 거버넌스 담당자(2단계) 모두 통과해야 사용자에게 노출. 한쪽만 통과한 상태는 미노출. <!-- require_view: gov-monitoring -->
+- 참고: 시스템 관리자 배포 승인을 통과하면 사용자에게 노출. <!-- require_view: no-governance -->
 
-## 내 Agent가 거버넌스에서 반려되었다
-- 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) → 위젯의 *거버넌스 승인 거절* 카운터 클릭, 또는 카드의 **배포 정보** 재진입
-- 절차: 반려 사유(`governance_review_comment`)를 확인 → 에이전트 수정 → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment) 의 0단계부터 재요청
+## 내 Agent가 거버넌스에서 반려되었다 <!-- require_view: gov-monitoring -->
+## 내 Agent 배포가 거부되었다 <!-- require_view: no-governance -->
+- 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) → 위젯의 *거버넌스 승인 거절* 카운터 클릭, 또는 카드의 **배포 정보** 재진입 <!-- require_view: gov-monitoring -->
+- 시작 위치: [대시보드 · Agent 배포/승인 상태](../user/18-dashboard.md) → 위젯의 *배포 승인 거절* 카운터 클릭, 또는 카드의 **배포 정보** 재진입 <!-- require_view: no-governance -->
+- 절차: 반려 사유(`governance_review_comment`)를 확인 → 에이전트 수정 → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment) 의 0단계부터 재요청 <!-- require_view: gov-monitoring -->
+- 절차: 거부 사유를 확인 → 에이전트 수정 → [배포 요청 보내기](../user/13-agentflow-operations.md#request-deployment) 의 0단계부터 재요청 <!-- require_view: no-governance -->
 - 거버넌스 담당자 측 검토 기준: [AI 거버넌스 · 에이전트 승인](../admin/29-governance-dashboard.md#agent-approval) <!-- require_view: gov-monitoring -->
 
 ## 외부 API/MCP 서버를 도구로 등록하고 싶다

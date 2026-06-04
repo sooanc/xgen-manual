@@ -2,7 +2,8 @@
 
 The first screen shown immediately after login. The URL path is `{{product.domain}}/dashboard`. It collects quick-jump shortcuts to frequently used screens and widgets summarizing your activity.
 
-> One URL, but **the widgets and quick-action buttons differ depending on the role of the logged-in account.** Standard Users and Agent Developers see different layouts, and the System Administrator / Governance Officer variants are covered separately in the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter.
+> One URL, but **the widgets and quick-action buttons differ depending on the role of the logged-in account.** Standard Users and Agent Developers see different layouts, and the System Administrator / Governance Officer variants are covered separately in the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter. <!-- require_view: gov-monitoring -->
+> One URL, but **the widgets and quick-action buttons differ depending on the role of the logged-in account.** Standard Users and Agent Developers see different layouts, and the System Administrator variant is covered separately in the [Admin Manual · Dashboard](../admin/30-dashboard.md) chapter. <!-- require_view: no-governance -->
 
 ## Layout (Shared Skeleton)
 
@@ -93,7 +94,8 @@ A full-page scroll of the dashboard:
 
 ## Related Chapters
 
-- [Dashboard (Admin View)](../admin/30-dashboard.md) — additional widgets and operational usage for System Administrators and Governance Officers.
+- [Dashboard (Admin View)](../admin/30-dashboard.md) — additional widgets and operational usage for System Administrators and Governance Officers. <!-- require_view: gov-monitoring -->
+- [Dashboard (Admin View)](../admin/30-dashboard.md) — additional widgets and operational usage for System Administrators. <!-- require_view: no-governance -->
 
 ## Inquiries
 

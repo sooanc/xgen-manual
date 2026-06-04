@@ -50,6 +50,16 @@
       "source": "live-audit",
       "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 관리 사이드바에 'AI 거버넌스' 그룹 자체가 미노출. AUTHORING 0.1 기준 ok:false."
     },
+    "no-agent-dev-plan": {
+      "ok": false,
+      "source": "jeju-audit-2026-06-04",
+      "note": "jeju 는 Agent 개발 기획서 기능 보유(admin-agent-dev-plan 미정의→노출) → 기획서 '빠진' 인버스 본문은 strip. gs-cert 전용 ok:true 와 대비."
+    },
+    "no-agentflow-version-control": {
+      "ok": false,
+      "source": "jeju-audit-2026-06-04",
+      "note": "jeju 는 버전 관리 기능 보유(agentflow-version-control 미정의→노출) → '버전 관리 빠진' 인버스 인트로/본문은 strip. 미설정 시 13-agentflow-operations 인트로가 두 줄로 중복 노출되던 버그 정정."
+    },
     "gov-risk-management": {
       "ok": false,
       "lastSize": 88459,

@@ -11,6 +11,7 @@
 5. **Submit deployment request** — Agent List → card More menu → **Deploy Info** → flip the **Deploy toggle ON** → [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
 6. **Wait for System Administrator deployment approval** — once the administrator approves on Agent Management, the card badge becomes *Deployed* → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow)
 7. **Wait for Governance Officer governance approval** — the agent becomes visible to end users only after the governance reviewer approves it on AI Governance → Agentflow Approval (risk, PII, policy) → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
+7. **Clear System Administrator deployment approval** — the agent becomes visible to end users once the administrator approves it on Agent Management → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: no-governance -->
 
 ## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
@@ -32,17 +33,24 @@
 ## I want to submit a deployment request for my agent
 - Start: Agent Workspace → **Agent Creation → Agent List** → **⋯** menu on your card → **Deploy Info**
 - Procedure: [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
-- Key: flipping the **Deploy toggle ON** in DeploymentModal is the single action that queues the request with the System Administrator. Shared deployments require selecting an *Agent Development Plan* first.
+- Key: flipping the **Deploy toggle ON** in DeploymentModal is the single action that queues the request with the System Administrator.
+- Shared deployments require selecting an *Agent Development Plan* first. <!-- require_view: admin-agent-dev-plan -->
 
 ## I want to track the status of my deployment request
 - Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) widget (Agent Developer view)
-- Procedure: read the five counters — *Deployment pending / Deployment rejected / Governance pending / Governance rejected / Both approvals completed*
-- Full flow: [Dual-approval flow](../user/13-agentflow-operations.md#dual-approval-flow)
-- Note: the agent reaches end users only after the System Administrator (stage 1) **and** the Governance Officer (stage 2) both approve. Single-stage approval keeps it hidden.
+- Procedure: read the five counters — *Deployment pending / Deployment rejected / Governance pending / Governance rejected / Both approvals completed* <!-- require_view: gov-monitoring -->
+- Procedure: read the counters — *Deployment pending / Deployment rejected / Deployment approved* <!-- require_view: no-governance -->
+- Full flow: [Dual-approval flow](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
+- Full flow: [Deployment-approval flow](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: no-governance -->
+- Note: the agent reaches end users only after the System Administrator (stage 1) **and** the Governance Officer (stage 2) both approve. Single-stage approval keeps it hidden. <!-- require_view: gov-monitoring -->
+- Note: the agent reaches end users once the System Administrator deployment approval clears. <!-- require_view: no-governance -->
 
-## My agent was rejected by governance
-- Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) → click the *Governance rejected* counter, or re-open **Deploy Info** on the card
-- Procedure: read the rejection reason (`governance_review_comment`) → fix the agent → resubmit from stage 0 via [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
+## My agent was rejected by governance <!-- require_view: gov-monitoring -->
+## My agent deployment was rejected <!-- require_view: no-governance -->
+- Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) → click the *Governance rejected* counter, or re-open **Deploy Info** on the card <!-- require_view: gov-monitoring -->
+- Start: [Dashboard · Agent deployment/approval status](../user/18-dashboard.md) → click the *Deployment rejected* counter, or re-open **Deploy Info** on the card <!-- require_view: no-governance -->
+- Procedure: read the rejection reason (`governance_review_comment`) → fix the agent → resubmit from stage 0 via [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment) <!-- require_view: gov-monitoring -->
+- Procedure: read the rejection reason → fix the agent → resubmit from stage 0 via [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment) <!-- require_view: no-governance -->
 - Governance reviewer's criteria: [AI Governance · Agent Approval](../admin/29-governance-dashboard.md#agent-approval) <!-- require_view: gov-monitoring -->
 
 ## I want to register an external API / MCP server as a tool

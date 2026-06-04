@@ -82,7 +82,7 @@ For existing OpenAPI / Postman specifications, bulk-register tools via **Import 
 
 - [Authentication Profile](17-auth-profile.md) — manages keys and tokens used by API calls
 - [Creating an Agent — Add Nodes](12-agentflow-create.md#노드-추가) — use a registered tool as a canvas node
-- [MCP Library](../admin/28-mcp-market.md) — MCP-based tools live in a separate admin screen (external MCP server registration and operation)
+- [MCP Library](../admin/28-mcp-market.md) — MCP-based tools live in a separate admin screen (external MCP server registration and operation) <!-- require_view: admin-mcp-market -->
 
 ## Contact
 

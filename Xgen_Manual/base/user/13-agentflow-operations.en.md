@@ -46,12 +46,15 @@ Open the **Deploy Info** modal from your agent's card action menu and flip the *
     | cURL | Auto-generated cURL command |
     | Embed | Snippet for embedding into external pages (popup or full-page) |
 
-4. Flip the **Deploy toggle** (*Private ↔ Deploying*) at the top of the modal to ON. This toggle is the **single trigger that submits the deployment request**. For shared deployments you must select an **Agent Development Plan** before turning the toggle on — otherwise the modal returns the error *"Shared deployment requires an Agent Development Plan."*
+4. Flip the **Deploy toggle** (*Private ↔ Deploying*) at the top of the modal to ON. This toggle is the **single trigger that submits the deployment request**.
+   For shared deployments you must select an **Agent Development Plan** before turning the toggle on — otherwise the modal returns the error *"Shared deployment requires an Agent Development Plan."* <!-- require_view: admin-agent-dev-plan -->
 5. As soon as the toggle is on, the card badge changes to **Deployment Pending** (`inquire_deploy: true`) — your request is now in the System Administrator's queue. There is nothing more to do on your side unless you choose to cancel by toggling it back off.
 
 !!! info "Modal screenshot deferred"
-    A screenshot of the modal showing the Deploy toggle, mode tabs (Webpage/API/cURL/Embed), and the Agent Development Plan picker will be added in a future manual update.
+    A screenshot of the modal showing the Deploy toggle, mode tabs (Webpage/API/cURL/Embed), and the Agent Development Plan picker will be added in a future manual update. <!-- require_view: admin-agent-dev-plan -->
+    A screenshot of the modal showing the Deploy toggle and mode tabs (Webpage/API/cURL/Embed) will be added in a future manual update. <!-- require_view: no-agent-dev-plan -->
 
+<!-- require_view_start: gov-monitoring -->
 ### What happens next — System Administrator + Governance Officer dual approval { #dual-approval-flow }
 
 Flipping the Deploy toggle does **not** immediately publish the agent. It goes live only after the following two stages both pass.
@@ -76,6 +79,23 @@ Track progress on the [Dashboard · Agent deployment/approval status](18-dashboa
 !!! warning "How to read rejection reasons"
     - **System Administrator rejection**: rejection notes are typically delivered out-of-band (chat, email). Confirm your team's operational channel in advance.
     - **Governance rejection**: re-open the **Deploy Info** modal, or — with the appropriate permission — read the *review comment* (`governance_review_comment`) directly on the governance review screen.
+<!-- require_view_end -->
+<!-- require_view_start: no-governance -->
+### What happens next — System Administrator deployment approval { #dual-approval-flow }
+
+Flipping the Deploy toggle does **not** immediately publish the agent. It goes live only after the **System Administrator's deployment approval** passes.
+
+| Stage | Reviewer | Where | Result |
+|---|---|---|---|
+| 0. Deploy request | **You (Agent Developer)** | Agent List → card dropdown → Deploy Info → Deploy toggle ON | Card badge *"Deployment Pending"* (`inquire_deploy: true`) |
+| 1. Deployment approval | **System Administrator** | Admin Center → Agent Operations → Agent Management | Card badge *"Deployed"* (`is_accepted: true`, `is_deployed: true`) — full procedure in [Admin Manual · Agent Management — Deployment Approval](../admin/32-agent-operations.md#agent-mgmt-deploy-approval) |
+| ✅ Servable | — | Visible to end users once deployment approval completes | — |
+
+Track progress on the [Dashboard · Agent deployment/approval status](18-dashboard.md) widget along the *Deployment pending → Approved* flow. If the System Administrator rejects, the card badge reverts to *"Not deployed"* — check the reason, fix, and resubmit.
+
+!!! warning "How to read rejection reasons"
+    **System Administrator rejection** notes are typically delivered out-of-band (chat, email). Confirm your team's operational channel in advance.
+<!-- require_view_end -->
 
 ## Deployment Status
 

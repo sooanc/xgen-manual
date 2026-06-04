@@ -35,7 +35,8 @@
 ## Approve or reject deployment requests for agents built by Agent Developers (stage 1)
 - Start: Admin Center → **Agent Operations → Agent Management**
 - Procedure: [Agent Management — Deployment Approval (System Administrator, first approval)](../admin/32-agent-operations.md#agent-mgmt-deploy-approval)
-- Key: on cards carrying the **Deployment pending** badge (`inquire_deploy: true`), open the **⋯** menu and choose **Approve** or **Reject**. Approving forwards the agent to the governance queue automatically — end-user visibility still requires governance approval.
+- Key: on cards carrying the **Deployment pending** badge (`inquire_deploy: true`), open the **⋯** menu and choose **Approve** or **Reject**. Approving forwards the agent to the governance queue automatically — end-user visibility still requires governance approval. <!-- require_view: gov-monitoring -->
+- Key: on cards carrying the **Deployment pending** badge (`inquire_deploy: true`), open the **⋯** menu and choose **Approve** or **Reject**. Approving publishes the agent to the production environment. <!-- require_view: no-governance -->
 - Widget: keep an eye on the *Deployment pending* counter in the dashboard *Agent deployment/approval status* widget.
 
 ## An already-deployed agent is misbehaving and needs an immediate cutoff

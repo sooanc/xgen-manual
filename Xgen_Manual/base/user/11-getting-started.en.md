@@ -30,7 +30,8 @@ The screen is composed of the following areas.
     The solution exposes 2 mode-switch buttons at the top-left.
 
     - **Agent Workspace** — the default work area for end users and Agent developers. This is the area this manual covers.
-    - **Admin Center** — a dedicated administration area for system administrators and governance officers. By default it is hidden or disabled for standard users and Agent developers; only menus permitted by the role / permission policy become accessible. For that area, see the [Admin Manual](../admin/index.md).
+    - **Admin Center** — a dedicated administration area for system administrators and governance officers. By default it is hidden or disabled for standard users and Agent developers; only menus permitted by the role / permission policy become accessible. For that area, see the [Admin Manual](../admin/index.md). <!-- require_view: gov-monitoring -->
+    - **Admin Center** — a dedicated administration area for system administrators. By default it is hidden or disabled for standard users and Agent developers; only menus permitted by the role / permission policy become accessible. For that area, see the [Admin Manual](../admin/index.md). <!-- require_view: no-governance -->
 
     Some menus may be hidden depending on your permission tier.
 

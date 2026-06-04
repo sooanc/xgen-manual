@@ -37,6 +37,7 @@
 
 ## 주요 화면
 
+<!-- require_view_start: gov-monitoring -->
 ### Agent 관리 — 배포 승인 (시스템 관리자 1차 승인) { #agent-mgmt-deploy-approval }
 
 조직 전체 에이전트플로우의 운영·승인 권한을 담당하는 화면입니다. Agent 개발자가 작업실에서 **배포 요청** 한 에이전트는 이 화면에서 시스템 관리자가 1차로 승인해야 다음 단계(거버넌스 심사)로 넘어갑니다.
@@ -48,10 +49,27 @@
     |---|---|---|---|
     | 0. 배포 요청 | Agent 개발자 (작업실) | 에이전트 운영 화면에서 "배포 요청" | `inquire_deploy: true` |
     | **1. 배포 승인** | **시스템 관리자** | 본 화면 (Agent 관리) | `is_accepted: true`, `is_deployed: true` |
-    | **2. 거버넌스 승인** | **거버넌스 담당자** | [AI 거버넌스 → 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) | `is_governance_accepted: true` | <!-- require_view: gov-monitoring -->
+    | **2. 거버넌스 승인** | **거버넌스 담당자** | [AI 거버넌스 → 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) | `is_governance_accepted: true` |
     | ✅ 서비스 가능 | — | 1·2 모두 통과한 시점부터 사용자에게 노출 | — |
 
     1·2 단계는 **독립적**이며 둘 다 통과해야만 운영 환경에 노출됩니다. 한쪽만 통과한 상태는 대시보드 **Agent 배포/승인 상태** 위젯의 *배포 승인 대기 / 거버넌스 승인 대기* 카운트에 집계되어 모니터링됩니다.
+<!-- require_view_end -->
+<!-- require_view_start: no-governance -->
+### Agent 관리 — 배포 승인 (시스템 관리자 승인) { #agent-mgmt-deploy-approval }
+
+조직 전체 에이전트플로우의 운영·승인 권한을 담당하는 화면입니다. Agent 개발자가 작업실에서 **배포 요청** 한 에이전트는 이 화면에서 시스템 관리자가 승인하면 운영 환경에 배포됩니다.
+
+!!! info "배포 승인 — 시스템 관리자 승인"
+    배포 요청된 에이전트가 사용자에게 **서비스되려면 시스템 관리자의 배포 승인을 통과**해야 합니다.
+
+    | 단계 | 담당 | 화면 | 통과 결과 |
+    |---|---|---|---|
+    | 0. 배포 요청 | Agent 개발자 (작업실) | 에이전트 운영 화면에서 "배포 요청" | `inquire_deploy: true` |
+    | **1. 배포 승인** | **시스템 관리자** | 본 화면 (Agent 관리) | `is_accepted: true`, `is_deployed: true` |
+    | ✅ 서비스 가능 | — | 배포 승인이 완료된 시점부터 사용자에게 노출 | — |
+
+    배포 승인이 완료되면 운영 환경에 노출됩니다. 승인 대기 건수는 대시보드 **Agent 배포/승인 상태** 위젯의 *배포 승인 대기* 카운트에 집계되어 모니터링됩니다.
+<!-- require_view_end -->
 
 #### 배포 승인 절차
 
@@ -67,7 +85,8 @@
     |---|---|
     | 회색(`secondary`) — 개인 | 본인만 보는 작업 — 배포 요청 아님 |
     | 노랑(`warning`) — **배포 대기** | `inquire_deploy: true`. **본 단계에서 처리 대상** |
-    | 초록(`success`) — 배포됨 | 이미 배포 승인 통과, 거버넌스 단계로 진행 중 또는 통과 완료 |
+    | 초록(`success`) — 배포됨 | 이미 배포 승인 통과, 거버넌스 단계로 진행 중 또는 통과 완료 | <!-- require_view: gov-monitoring -->
+    | 초록(`success`) — 배포됨 | 배포 승인 통과, 운영 환경에 노출 중 | <!-- require_view: no-governance -->
     | 회색 — 미배포 | 미요청 또는 거부 후 복귀 |
 
     ![Step 2 — Agent 관리 카드 그리드와 상태 배지 (활성/비활성·개인·미배포 등)](images/admin-deploy-approval-step2.png)
@@ -80,7 +99,8 @@
 
     | 액션 | 백엔드 호출 | 결과 |
     |---|---|---|
-    | **승인** | `updateAgentflowAdmin({ enable_deploy: true, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 승인되었습니다."* → 카드 배지 *배포됨* 으로 갱신. 거버넌스 큐로 자동 진행 |
+    | **승인** | `updateAgentflowAdmin({ enable_deploy: true, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 승인되었습니다."* → 카드 배지 *배포됨* 으로 갱신. 거버넌스 큐로 자동 진행 | <!-- require_view: gov-monitoring -->
+    | **승인** | `updateAgentflowAdmin({ enable_deploy: true, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 승인되었습니다."* → 카드 배지 *배포됨* 으로 갱신. 운영 환경에 노출 | <!-- require_view: no-governance -->
     | **거부** | `updateAgentflowAdmin({ enable_deploy: false, inquire_deploy: false, is_accepted })` | 토스트 *"`<name>` 에이전트플로우 배포가 거부되었습니다."* → 카드 배지 *미배포* 로 복귀. 작성자에게 별도 채널로 사유 통보 권장 |
 
     ![Step 4 — 관리자 승인 대기 카드의 ⋯ 메뉴를 열어 승인 / 거부 액션이 노출된 모습](images/admin-deploy-approval-step4.png)
@@ -89,8 +109,10 @@
 
     ![Step 5 — 처리 후 카드 그리드 갱신 화면](images/admin-deploy-approval-step5.png)
 
+<!-- require_view_start: gov-monitoring -->
 !!! warning "승인 완료 후에도 즉시 사용자에게 노출되지는 않습니다"
-    본 화면에서 배포 승인을 완료하더라도, [AI 거버넌스 > 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) 절차가 최종 완료되어야 서비스가 활성화됩니다. <!-- require_view: gov-monitoring -->
+    본 화면에서 배포 승인을 완료하더라도, [AI 거버넌스 > 에이전트플로우 승인](29-governance-dashboard.md#agent-approval) 절차가 최종 완료되어야 서비스가 활성화됩니다.
+<!-- require_view_end -->
 
 #### 운영 중 일시 비활성화 — 승인 상태 토글
 
@@ -109,14 +131,16 @@
 | 활성 (Active) | `has_startnode && has_endnode && node_count ≥ 3 && is_accepted !== false` | 실행 가능한 정상 에이전트 |
 | 비활성 (Inactive) | 위 조건 중 하나라도 미충족 | 노드 구성 미완성이거나 승인 상태 토글이 꺼짐 |
 | 배포 대기 | `inquire_deploy: true` | 1차 배포 승인 대기 — 본 화면에서 처리 |
-| 배포됨 | `is_deployed: true` | 시스템 관리자 배포 승인 완료. 거버넌스 승인까지 통과해야 사용자 노출 |
+| 배포됨 | `is_deployed: true` | 시스템 관리자 배포 승인 완료. 거버넌스 승인까지 통과해야 사용자 노출 | <!-- require_view: gov-monitoring -->
+| 배포됨 | `is_deployed: true` | 시스템 관리자 배포 승인 완료. 사용자에게 노출 | <!-- require_view: no-governance -->
 | 미배포 | `is_deployed: false && !inquire_deploy` | 미요청 상태 또는 거부 후 복귀 상태 |
 
 ### 사용자 피드백 { #user-feedback }
 
 ![사용자 피드백 — 전체 피드백 수·평균 별점·정답률 요약 카드와 Agent별 별점·문제 유형 테이블, CSV 다운로드 버튼](images/admin-feedback-monitoring.png)
 
-상단 요약 카드: 전체 피드백 수, 평균 별점, 정답률(이슈 없음 비율), 환각(허위 정보) 건수, 규정 위반, 데이터 오류, 응답 실패. 거버넌스 보고서 작성 시 이 화면의 CSV 다운로드를 출처로 사용합니다.
+상단 요약 카드: 전체 피드백 수, 평균 별점, 정답률(이슈 없음 비율), 환각(허위 정보) 건수, 규정 위반, 데이터 오류, 응답 실패. 거버넌스 보고서 작성 시 이 화면의 CSV 다운로드를 출처로 사용합니다. <!-- require_view: gov-monitoring -->
+상단 요약 카드: 전체 피드백 수, 평균 별점, 정답률(이슈 없음 비율), 환각(허위 정보) 건수, 규정 위반, 데이터 오류, 응답 실패. 운영 품질 보고서 작성 시 이 화면의 CSV 다운로드를 출처로 사용합니다. <!-- require_view: no-governance -->
 
 ### 채팅 모니터링 { #chat-monitoring }
 
@@ -131,6 +155,7 @@
 
 ## 운영 권장 사항
 
+<!-- require_view_start: gov-monitoring -->
 ### 이중 승인 대기 현황 점검
 
 대시보드의 **Agent 배포/승인 상태** 위젯에서 아래 항목의 대기 건수가 지속적으로 증가하는 경우 특정 승인 단계에 병목이 발생하고 있을 수 있습니다.
@@ -152,6 +177,12 @@
 
 - 배포 승인 완료
 - 거버넌스 심사 대기 중
+<!-- require_view_end -->
+<!-- require_view_start: no-governance -->
+### 배포 승인 대기 현황 점검
+
+대시보드의 **Agent 배포/승인 상태** 위젯에서 **배포 승인 대기** 건수가 지속적으로 증가하는 경우 승인 단계에 병목이 발생하고 있을 수 있습니다. 시스템 관리자가 주기적으로 승인 현황을 점검하는 것을 권장합니다.
+<!-- require_view_end -->
 
 ### 사용자 피드백 정기 검토
 

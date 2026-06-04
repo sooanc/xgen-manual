@@ -11,7 +11,7 @@
 3. **Admin Control Center** 안내 화면으로 진입 — 관리 영역의 책임 분담·주요 메뉴·운영 가이드를 3단계(STEP 1~3)로 안내
 
 ![관리 설정 진입 — Admin Control Center 화면. STEP 1 관리 영역 이해(거버넌스 담당자 / 시스템 관리자 책임 분담), STEP 2 주요 메뉴 선택(사용자/접근제어·Agent 운영·AI 거버넌스 등 9개 카드), 좌측에는 11개 관리 섹션 사이드바](images/admin-entry.png) <!-- require_view: admin-step2-9-areas -->
-![관리 설정 진입 — Admin Control Center 화면. STEP 1 관리 영역 이해(거버넌스 담당자 / 시스템 관리자 책임 분담), STEP 2 주요 메뉴 선택(사용자/접근제어·Agent 운영·환경 설정·시스템 상태·데이터 관리·지식 운영 6개 카드), 좌측에는 6개 관리 섹션 사이드바](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
+![관리 설정 진입 — Admin Control Center 화면. STEP 1 관리 영역 이해(시스템 관리자 책임 범위), STEP 2 주요 메뉴 선택(사용자/접근제어·Agent 운영·환경 설정·시스템 상태·데이터 관리·지식 운영 6개 카드), 좌측에는 6개 관리 섹션 사이드바](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
 
 진입 후 우측 본문은 다음 3단계로 구성됩니다.
 

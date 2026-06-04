@@ -1,8 +1,10 @@
 # Dashboard (Admin View)
 
-The `/dashboard` screen you land on after login is shared by all users, but accounts with admin permissions see additional governance / operations widgets and have the **Admin Center** quick-jump button enabled.
+The `/dashboard` screen you land on after login is shared by all users, but accounts with admin permissions see additional governance / operations widgets and have the **Admin Center** quick-jump button enabled. <!-- require_view: gov-monitoring -->
+The `/dashboard` screen you land on after login is shared by all users, but accounts with admin permissions see additional operations-monitoring widgets and have the **Admin Center** quick-jump button enabled. <!-- require_view: no-governance -->
 
-> Refer to [User Manual · Dashboard](../user/18-dashboard.md) first for layout fundamentals and widget customization. This chapter covers the **admin-only additions**, split into the **System Administrator view** and the **Governance Officer view**.
+> Refer to [User Manual · Dashboard](../user/18-dashboard.md) first for layout fundamentals and widget customization. This chapter covers the **admin-only additions**, split into the **System Administrator view** and the **Governance Officer view**. <!-- require_view: gov-monitoring -->
+> Refer to [User Manual · Dashboard](../user/18-dashboard.md) first for layout fundamentals and widget customization. This chapter covers the **admin-only additions**, presented as the single **System Administrator view**. <!-- require_view: no-governance -->
 
 ## Shared Across Both Admin Roles
 
@@ -13,14 +15,16 @@ The two quick-jump buttons at the top-right of the dashboard — **Agent Workspa
 | Button | Where it goes | Standard User / Agent Developer | Admin |
 |---|---|---|---|
 | Agent Workspace | `/main` → auto-redirects to `?view=canvas-intro` (Agent design intro) | Standard Users may see the body as empty (permission gating — see the *Standard User warning* in [User Manual · Quick-jump](../user/18-dashboard.md)). Agent Developers see the full intro. | Full intro rendered (Agent-build permission included) |
-| Admin Center | `/admin` | Disabled | **Enabled** (entry to all admin screens: users, roles, LLM, governance, etc.) |
+| Admin Center | `/admin` | Disabled | **Enabled** (entry to all admin screens: users, roles, LLM, governance, etc.) | <!-- require_view: gov-monitoring -->
+| Admin Center | `/admin` | Disabled | **Enabled** (entry to all admin screens: users, roles, LLM, etc.) | <!-- require_view: no-governance -->
 
 > After entering `/admin`, use the left sidebar to navigate to AI Model Management, AI Governance, Users / Access Control, Environment, and other detailed areas. <!-- require_view: gov-monitoring -->
 > After entering `/admin`, use the left sidebar to navigate to AI Model Management, Users / Access Control, Environment, and other detailed areas. <!-- require_view: no-governance -->
 
 ### Welcome Message Subtitle
 
-Both System Administrators and Governance Officers see the welcome subtitle **"System Operations & Deployment Dashboard"** with the helper text "Continuously monitors AI platform health and operational status, supporting reliable service delivery." (Standard Users and Agent Developers see "Agent 활용 Dashboard" instead — see [User Manual · Dashboard](../user/18-dashboard.md).)
+Both System Administrators and Governance Officers see the welcome subtitle **"System Operations & Deployment Dashboard"** with the helper text "Continuously monitors AI platform health and operational status, supporting reliable service delivery." (Standard Users and Agent Developers see "Agent 활용 Dashboard" instead — see [User Manual · Dashboard](../user/18-dashboard.md).) <!-- require_view: gov-monitoring -->
+System Administrators see the welcome subtitle **"System Operations & Deployment Dashboard"** with the helper text "Continuously monitors AI platform health and operational status, supporting reliable service delivery." (Standard Users and Agent Developers see "Agent 활용 Dashboard" instead — see [User Manual · Dashboard](../user/18-dashboard.md).) <!-- require_view: no-governance -->
 
 ### Right-Panel Interpretation Differs
 
@@ -58,11 +62,11 @@ On top of the Standard User / Agent Developer widgets, **operations and deployme
 3. **Catch high-impact issues quickly** — Scan the right panel's **Latest Updates** (all-user notices) and the count of new items in the **Admin Inquiries** panel to surface user-impacting issues.
 4. **Share a recommended widget layout** — When onboarding a new admin, recommend: in their account, **Reset** → arrange the recommended widget configuration → screenshot it into operations docs (widget settings are per-user; forced sync is not supported).
 
+<!-- require_view_start: gov-monitoring -->
 ## Governance Officer View
 
 The main screen for users responsible for **risk, control, and audit** of AI usage. Permissions are typically separated from the general system administrator, and governance-only widgets surface on the main screen.
 
-<!-- require_view_start: gov-monitoring -->
 ### Governance-Only Widgets (requires `admin.governance:*`)
 
 On top of the System Administrator operations widgets, the following governance-policy and evaluation widgets appear toward the bottom of the page.
@@ -93,7 +97,7 @@ These widgets only appear in the widget grid for accounts with `admin.governance
 
 | Symptom | Cause / What to Check |
 |---|---|
-| Governance widgets are not visible | Confirm the account has `admin.governance:*` |
+| Governance widgets are not visible | Confirm the account has `admin.governance:*` | <!-- require_view: gov-monitoring -->
 | **Risk Policy** widget shows "Inactive" | The policy itself is disabled. Use **AI Governance** to enable it | <!-- require_view: gov-monitoring -->
 | **Forbidden-Word Policy** widget shows 0 rules | New environment with no rules registered. Adding rules reflects automatically |
 | Right-panel **Admin Inquiries** is empty | No new 1:1 inquiries from users (empty-state message: *"No inquiries to the administrator yet."*) |

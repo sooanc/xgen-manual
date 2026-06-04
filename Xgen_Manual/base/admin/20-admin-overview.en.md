@@ -11,7 +11,7 @@ The admin console is not reached via a direct URL. Click the **Admin Center** bu
 3. You land on the **Admin Control Center** overview, which presents the responsibilities, primary menus, and operations guide in three steps (STEP 1–3)
 
 ![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (Governance Officer / System Administrator split), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, AI Governance, etc. — 9 cards), with the 11-section admin sidebar on the left](images/admin-entry.png) <!-- require_view: admin-step2-9-areas -->
-![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (Governance Officer / System Administrator split), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, Environment, System Status, Data Management, Knowledge Operations — 6 cards), with the 6-section admin sidebar on the left](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
+![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (System Administrator responsibility scope), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, Environment, System Status, Data Management, Knowledge Operations — 6 cards), with the 6-section admin sidebar on the left](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
 
 The main column is organized into three steps:
 
