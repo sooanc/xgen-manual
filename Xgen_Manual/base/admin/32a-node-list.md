@@ -155,7 +155,7 @@
 
 - [에이전트 만들기 · 노드 추가](../user/12-agentflow-create.md#노드-추가) — 사용자가 캔버스에서 노드를 추가하는 절차
 - [Agent 운영](32-agent-operations.md) — Agent 운영 그룹의 다른 메뉴 (Agent 관리·채팅 모니터링 등)
-- [MCP 라이브러리](28-mcp-market.md) — MCP 카테고리 하위 노드 등록·관리
+- [MCP 라이브러리](28-mcp-market.md) — MCP 카테고리 하위 노드 등록·관리 <!-- require_view: admin-mcp-market -->
 
 ## 문의
 

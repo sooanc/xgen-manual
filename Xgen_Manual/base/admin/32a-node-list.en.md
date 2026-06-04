@@ -147,7 +147,7 @@ Typing in the top search box returns partial-match results instantly:
 
 - [Creating an Agent · Adding Nodes](../user/12-agentflow-create.md#노드-추가) — User-side procedure for adding nodes on the canvas
 - [Agent Operations](32-agent-operations.md) — Other menus in the Agent Operations group (Agent Management, Chat Monitoring, etc.)
-- [MCP Library](28-mcp-market.md) — Manage MCP nodes that appear under the MCP category
+- [MCP Library](28-mcp-market.md) — Manage MCP nodes that appear under the MCP category <!-- require_view: admin-mcp-market -->
 
 ## Contact
 
