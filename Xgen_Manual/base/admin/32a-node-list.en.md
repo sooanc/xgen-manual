@@ -115,6 +115,61 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 | Print Format | `tools/print_format` | Custom-templated formatted output. Scores, timestamps, iteration details, to-do lists in structured layout |
 | Send Email | `tools/send_email` | Give AI email-sending capability. Configure SMTP → Agent composes and sends emails as part of the workflow |
 
+## Start / End Node Detailed Spec { #node-io-spec }
+
+The **start node** and **end nodes** that handle a workflow's I/O have a fairly fixed port/parameter layout, so their detailed specs are listed below. The *Item* column distinguishes **Input** (data coming into the node), **Output** (data the node emits), and **Parameter** (values set directly in the node's settings panel). Parameters marked "Optional" fall back to their default behavior when left blank.
+
+### Input String (`input_string`)
+
+The starting point of a workflow — receive text input from the user or set a fixed text value. It works in two modes: the user types a question directly, or a predefined text is passed through.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Input format | InputSchema | — | The input-schema definition passed when the node runs. Forwarded automatically from connected nodes. |
+| Output | Text | STR | — | Emits the entered text as a string (STR). Can then be connected to agent, transform, and other nodes. |
+| Parameter | Input value | STR | Optional | Enter text to fix in advance. Leave blank to let the user type it at runtime. |
+| Parameter | Use voice input | BOOL | Optional | Whether to enable speech-to-text (STT). `true` → a voice-file attach button appears in the prompt UI. `false` → voice input disabled, text input only. |
+
+### Print Agent Output (`tools/print_agent_output`)
+
+Displays an agent's output on the workflow UI screen. Connect it to an agent node's output port to show the final response directly to the user — an end_node.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Output | STREAM \| STR | Required / Multiple | Receives output from an agent or text node. The STREAM type handles real-time streaming output; STR handles a completed string. |
+| Output | — | — | — | No output. A display-only end node. |
+| Parameter | — | — | — | No parameters. |
+
+### Print Format (`tools/print_format`)
+
+Renders data on screen in a readable format using a customizable template. An end_node that displays scores, timestamps, iteration counts, to-do lists, and the like in a structured layout.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Output | FeedbackDICT | Required | Feedback data in dictionary (DICT) form. Must be structured data containing scores, timestamps, iteration info, TODO items, etc. |
+| Output | — | — | — | No output. A display-only end node. |
+| Parameter | Use formatted output | BOOL | Optional | Whether to use a styled template. `true` → formatting settings such as Format Style apply. `false` → emits raw data as-is. |
+| Parameter | Output style | STR | Optional | Choose the output style. `default` → plain text, `cards` → card UI, `timeline` → chronological list, `summary only` → compact single line. |
+| Parameter | Show score | BOOL | Optional | Whether to show the result's relevance score. `true` → score next to each result / `false` → hide score. |
+| Parameter | Show time | BOOL | Optional | Whether to show timestamps. `true` → creation time next to each result / `false` → hide timestamp. |
+| Parameter | Max iterations shown | INT | Optional | Set the maximum number of iterations to display on screen, as an integer. |
+| Parameter | Show to-do details | BOOL | Optional | Whether to show Todo/Task details. `true` → expand details / `false` → summary only. |
+
+### Send Email (`tools/send_email`)
+
+The agent composes and sends email automatically within the workflow. Once SMTP settings are configured, the AI handles the rest — an end_node used for notifications, reports, and similar deliveries.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Content | ANY | Required | The content sent as the email body. The ANY type allows various formats — text, dictionary, agent output, etc. |
+| Output | — | — | — | No output. An email-sending-only end node. |
+| Parameter | SMTP server address | STR | Required | SMTP server address. e.g., `smtp.gmail.com`, `smtp.naver.com` |
+| Parameter | SMTP port | INT | Required | SMTP server port number. e.g., `587` (TLS), `465` (SSL), `25` (unencrypted) |
+| Parameter | Sender email (ID) | STR | Required | The sender's email account address. e.g., `yourname@gmail.com` |
+| Parameter | Sender password | STR | Required | The sender account password or an app-specific password. For Gmail, an App Password is recommended. |
+| Parameter | Recipient email | STR | Required | Recipient email address(es). Separate multiple addresses with a comma (,) or semicolon (;). e.g., `a@x.com, b@x.com; c@x.com` |
+| Parameter | Include full output | BOOL | Optional | Whether to include the workflow's full output data in the email. `true` → full output data is appended to the body. `false` → send only the Content input. |
+
 ## How to Use
 
 ### Browse with the Tree View
