@@ -6,7 +6,7 @@
 
 1. **Enter workspace** — Agent Workspace → Agent Design → [Enter Agent Workspace](../user/12-agentflow-create.md#agent-작업실-진입)
 2. **Compose nodes** — add and connect nodes on the canvas starting from the Start Node → [Create an Agentflow](../user/12-agentflow-create.md)
-3. **Connect external tools** — register API Tools / MCP nodes → [Add Nodes](../user/12-agentflow-create.md#노드-추가)
+3. **Connect external tools** — register API Tools / MCP nodes → [Add Nodes](../user/12-agentflow-create.md#add-node)
 4. **Quality evaluation** — verify response quality with test data → [Agent Operations - Quality](../user/13-agentflow-operations.md#에이전트-품질-분석)
 5. **Submit deployment request** — Agent List → card More menu → **Deploy Info** → flip the **Deploy toggle ON** → [Submit a deployment request](../user/13-agentflow-operations.md#request-deployment)
 6. **Wait for System Administrator deployment approval** — once the administrator approves on Agent Management, the card badge becomes *Deployed* → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow)
@@ -55,7 +55,7 @@
 
 ## I want to register an external API / MCP server as a tool
 - Start: left sidebar **Tool Integration → API Tool**
-- Procedure: [Create an Agentflow - Add Nodes](../user/12-agentflow-create.md#노드-추가)
+- Procedure: [Create an Agentflow - Add Nodes](../user/12-agentflow-create.md#add-node)
 
 ## I want to see call statistics and failure rate for my deployed agents
 - Start: left sidebar **Agent Operations**

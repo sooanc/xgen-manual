@@ -75,7 +75,7 @@
 | Agent 운영 | Agent 관리 | [Agent 운영 · Agent 관리(배포 승인)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent 운영 | 채팅 모니터링 | [Agent 운영 · 채팅 모니터링](32-agent-operations.md#chat-monitoring) |
 | Agent 운영 | 사용자 토큰 | [Agent 운영 · 사용자 토큰](32-agent-operations.md) | <!-- require_view: admin-user-token-dashboard -->
-| Agent 운영 | 노드 관리 | [노드 목록](32a-node-list.md) |
+| Agent 운영 | 노드 관리 | [노드 목록](../user/12a-node-list.md) |
 | Agent 운영 | 프롬프트 템플릿 | [Agent 운영 · 프롬프트 템플릿](32-agent-operations.md) |
 | Agent 운영 | 사용자 피드백 | [Agent 운영 · 사용자 피드백](32-agent-operations.md#user-feedback) |
 | Agent 운영 | 응답 품질 평가 | [Agent 운영 · 응답 품질 평가](32-agent-operations.md#quality-eval) |

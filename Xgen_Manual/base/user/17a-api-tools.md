@@ -58,7 +58,7 @@ require_view: tool-storage
 
 ## 도구를 에이전트에 연결
 
-등록한 도구는 [에이전트 만들기](12-agentflow-create.md#노드-추가) 캔버스에서 **API Tool 노드** 로 끌어와 사용합니다. 에이전트는 노드 실행 시 API 호출 → 응답 파싱 → 다음 노드로 전달 흐름을 자동 수행합니다.
+등록한 도구는 [에이전트 만들기](12-agentflow-create.md#add-node) 캔버스에서 **API Tool 노드** 로 끌어와 사용합니다. 에이전트는 노드 실행 시 API 호출 → 응답 파싱 → 다음 노드로 전달 흐름을 자동 수행합니다.
 
 ## 가져오기 (Import)
 
@@ -81,7 +81,7 @@ require_view: tool-storage
 ## 관련 챕터
 
 - [인증 프로필](17-auth-profile.md) — API 호출에 필요한 키·토큰 관리
-- [에이전트 만들기 - 노드 추가](12-agentflow-create.md#노드-추가) — 등록한 도구를 캔버스 노드로 사용
+- [에이전트 만들기 - 노드 추가](12-agentflow-create.md#add-node) — 등록한 도구를 캔버스 노드로 사용
 - [지식 관리](15-knowledge.md) — 컬렉션 기반 RAG 지식 소스 운영 (API 도구와 별개 데이터 자원)
 - [MCP 라이브러리](../admin/28-mcp-market.md) — MCP 기반 도구는 관리자 화면에서 별도 관리 (외부 MCP 서버 등록·운영) <!-- require_view: admin-mcp-market -->
 

@@ -75,7 +75,7 @@ The Admin sidebar has **7 groups and 16 menus** in total (some may be hidden dep
 | Agent Operations | Agent Management | [Agent Operations · Agent Management (Deployment Approval)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
 | Agent Operations | User Tokens | [Agent Operations · User Tokens](32-agent-operations.md) | <!-- require_view: admin-user-token-dashboard -->
-| Agent Operations | Node Management | [Node List](32a-node-list.md) |
+| Agent Operations | Node Management | [Node List](../user/12a-node-list.md) |
 | Agent Operations | Prompt Templates | [Agent Operations · Prompt Templates](32-agent-operations.md) |
 | Agent Operations | User Feedback | [Agent Operations · User Feedback](32-agent-operations.md#user-feedback) |
 | Agent Operations | Response Quality Evaluation | [Agent Operations · Response Quality Evaluation](32-agent-operations.md) |

@@ -33,7 +33,7 @@ Select **Agent Creation → Agent Design** in the left sidebar. From the canvas 
 
 ![Canvas editor — clicking "Start Agent" on the empty canvas auto-places the XGEN Agent node](images/canvas-editor.gif)
 
-## Adding Nodes
+## Adding Nodes { #add-node }
 
 Clicking the **Node Search** button at the bottom right of the canvas opens the list of available nodes, grouped by category.
 
@@ -45,7 +45,7 @@ Clicking the **Node Search** button at the bottom right of the canvas opens the 
 | Branching | Conditional, loop |
 | I/O | Receive input, return output |
 
-> The full node catalog (categories, tags, detailed specs, etc.) is available in the [Admin Center > Node List](../admin/32a-node-list.md) chapter. Node registration and management features are also provided in the same chapter.
+> The full node catalog (categories, tags, detailed specs, etc.) and each node's input/output and parameter specs are available in the next [Node List](12a-node-list.md) chapter.
 
 To add:
 

@@ -1,19 +1,8 @@
 # Node List
 
-This chapter covers the **Node Management** screen (view ID `admin-node-management`) in Admin Center. It catalogs every node (agentflow building block) registered in the platform so you can browse, search, and inspect them.
+This chapter covers the full **node catalog** you can use when building an agentflow on the canvas, along with the input/output and parameter **detailed specs** for each node. Every node (agentflow building block) registered in the platform is listed by category, so reading it alongside the [Creating an Agent](12-agentflow-create.md) node-adding steps helps you quickly decide which node to pick and how to wire it.
 
-> For the *builder* perspective on adding nodes from the canvas, see [Creating an Agent · Adding Nodes](../user/12-agentflow-create.md#노드-추가).
-
-## Accessing the Screen
-
-Go to **Admin Center → Agent Operations → Node Management** in the left sidebar. The page header reads "Node Management — Manage and explore agentflow nodes."
-
-## Screen Layout
-
-| Area | Content |
-|---|---|
-| Top controls | **Table** / **Tree** view toggle; search box (partial match against category, function, node name, and tag) |
-| Body | Node catalog rendered as a table or a tree depending on the selected view |
+> For the actual procedure of adding nodes to the canvas, see [Creating an Agent · Adding Nodes](12-agentflow-create.md#add-node). This chapter is the reference for the nodes you choose there.
 
 ## Node Categories
 
@@ -783,7 +772,14 @@ Runs a fixed SQL query against a pre-configured database connection and returns 
 | Parameter | SQL Query | STR | Required | Enter the SQL query to run. Only `SELECT` / `WITH` queries are allowed. |
 | Parameter | Max Rows | INT | Optional | The maximum number of rows to return. `0` means no limit. |
 
-## How to Use
+## Node Management Screen (Admin) { #node-management-screen }
+
+A system administrator can browse and search the same node catalog from the **Admin Center → Agent Operations → Node Management** screen (view ID `admin-node-management`). The page header reads "Node Management — Manage and explore agentflow nodes."
+
+| Area | Content |
+|---|---|
+| Top controls | **Table** / **Tree** view toggle; search box (partial match against category, function, node name, and tag) |
+| Body | Node catalog rendered as a table or a tree depending on the selected view |
 
 ### Browse with the Tree View
 
@@ -804,7 +800,8 @@ Typing in the top search box returns partial-match results instantly:
 - **Category** — e.g., `Agent`, `Tool`
 - **Function** — e.g., `search`, `invoke`
 - **Node name** — e.g., `Document Loader`
-- **Tag** — labels attached to
+- **Tag** — labels attached to nodes
+
 ## Operational Recommendations
 
 - **Consistent category naming** — When adding custom nodes, reuse existing categories. Split into a new category only after enough nodes accumulate.
@@ -813,10 +810,10 @@ Typing in the top search box returns partial-match results instantly:
 
 ## Related Chapters
 
-- [Creating an Agent · Adding Nodes](../user/12-agentflow-create.md#노드-추가) — User-side procedure for adding nodes on the canvas
-- [Agent Operations](32-agent-operations.md) — Other menus in the Agent Operations group (Agent Management, Chat Monitoring, etc.)
-- [MCP Library](28-mcp-market.md) — Manage MCP nodes that appear under the MCP category <!-- require_view: admin-mcp-market -->
+- [Creating an Agent · Adding Nodes](12-agentflow-create.md#add-node) — Procedure for adding nodes on the canvas
+- [Agent Operations](../admin/32-agent-operations.md) — The admin Agent Operations group menus (Agent Management, Node Management, etc.)
+- [MCP Library](../admin/28-mcp-market.md) — Manage MCP nodes that appear under the MCP category <!-- require_view: admin-mcp-market -->
 
 ## Contact
 
-For inquiries about the Node Management screen, contact the Xgen Solution Administrator.
+For inquiries about nodes, contact the Xgen Solution Administrator.

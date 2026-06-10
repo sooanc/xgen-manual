@@ -58,7 +58,7 @@ Once discovery finishes, pick the endpoints you want to register and click **Sav
 
 ## Wire a Tool into an Agent
 
-Registered tools can be dropped onto the canvas as an **API Tool node** in [Creating an Agent](12-agentflow-create.md#노드-추가). When the node executes, the agent calls the API, parses the response, and passes it to the next node automatically.
+Registered tools can be dropped onto the canvas as an **API Tool node** in [Creating an Agent](12-agentflow-create.md#add-node). When the node executes, the agent calls the API, parses the response, and passes it to the next node automatically.
 
 ## Importing
 
@@ -81,7 +81,7 @@ For existing OpenAPI / Postman specifications, bulk-register tools via **Import 
 ## Related Chapters
 
 - [Authentication Profile](17-auth-profile.md) — manages keys and tokens used by API calls
-- [Creating an Agent — Add Nodes](12-agentflow-create.md#노드-추가) — use a registered tool as a canvas node
+- [Creating an Agent — Add Nodes](12-agentflow-create.md#add-node) — use a registered tool as a canvas node
 - [MCP Library](../admin/28-mcp-market.md) — MCP-based tools live in a separate admin screen (external MCP server registration and operation) <!-- require_view: admin-mcp-market -->
 
 ## Contact
