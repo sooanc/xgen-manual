@@ -462,6 +462,11 @@
       "ok": true,
       "source": "gs-cert-audit-2026-06-04",
       "note": "GS인증 매뉴얼에서 'Agent 개발 기획서' 기능 제외 → 기획서 없는 버전 본문 노출. admin-agent-dev-plan(ok:false) 의 인버스. ROOT default ok:false 오버라이드."
+    },
+    "node-ontology-search": {
+      "ok": false,
+      "source": "gs-cert-spec-2026-06-10",
+      "note": "사용자 요청(2026-06-10) — GS인증 매뉴얼 노드목록에서 '온톨로지 검색'(document_loaders/OntologySearch) 노드 제외. 32a-node-list 의 카탈로그 표 행 + 상세 명세 절을 block require_view 마커로 strip. 다른 customer 는 키 미정의 → 유지."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",

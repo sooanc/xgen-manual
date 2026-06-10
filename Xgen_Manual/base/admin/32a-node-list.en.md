@@ -62,7 +62,9 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 | Node | ID | Description |
 |---|---|---|
 | Search Context | `document_loaders/VectorDBContext` | Unified document search. Select search mode to configure vector-DB retrieval. Connect to Agent RAG Context |
+<!-- require_view_start: node-ontology-search -->
 | Ontology Search | `document_loaders/OntologySearch` | Graph-based ontology search using SPARQL + SCS context. Returns relevant triples and source chunks |
+<!-- require_view_end -->
 | Search Context (260517) | `document_loaders/VectorDBContextV2` | Search Context redesign (2026-05-17). Only essential options exposed, advanced tuning uses best-practice defaults |
 
 ### File System (`file_system`)
@@ -451,6 +453,7 @@ A unified document-search node. Select a search mode to configure how documents 
 | Parameter | Tool name | STR | Optional | The name identifier of the search tool (ignored in `Always Search` mode). |
 | Parameter | Strict source display | BOOL | Optional | Whether to force source display when referencing documents. |
 
+<!-- require_view_start: node-ontology-search -->
 ### Ontology Search (`document_loaders/OntologySearch`)
 
 A graph-based ontology-search node using SPARQL and SCS context. Queries a pre-built knowledge graph to find relevant triples and source chunks for a structured answer.
@@ -466,6 +469,7 @@ A graph-based ontology-search node using SPARQL and SCS context. Queries a pre-b
 | Parameter | Max source chunks | INT | Optional | The maximum number of source chunks to include in the answer. |
 | Parameter | Multi-turn search | BOOL | Optional | Whether to enable multi-turn ReAct graph traversal for complex multi-hop questions. |
 | Parameter | Max search turns | INT | Optional | The maximum number of search turns in multi-turn mode. |
+<!-- require_view_end -->
 
 ## File System Node Detailed Spec { #file-system-node-spec }
 
