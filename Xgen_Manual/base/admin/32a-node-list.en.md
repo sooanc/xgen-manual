@@ -524,6 +524,261 @@ Routes data to different paths based on a key value. Set the routing criteria (e
 | Output | — | — | — | Output handles are dynamically created per the Routing Criteria setting. A separate output port is made for each key value. |
 | Parameter | Routing Criteria | STR | Required | Enter the key name to route on. The router checks this key's value in the input data and forwards to the matching output path. e.g., `language`, `category`, `action` |
 
+## MCP Node Detailed Spec { #mcp-node-spec }
+
+Nodes in the **MCP (`mcp`)** category turn external MCP servers and APIs into tools (TOOL) the agent can use. Most have no *Input*; you specify the connection target via parameters, then connect the output tool to the agent's Tools input — a common pattern across the category. The notation matches [Start / End Node Detailed Spec](#node-io-spec).
+
+### MCP Tool Loader (`mcp/MCPLoader`)
+
+Connects to an MCP server and loads all its tools at once. Instead of configuring individual MCP nodes, this single node gives access to all tools on the MCP server. Just select an active MCP session.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the loaded MCP tool object. Connect to the agent's Tools input. |
+| Parameter | MCP session | STR | Required | Select the active MCP session to load tools from. |
+
+### Tavily Search MCP (`mcp/tavily_search_mcp`)
+
+Searches the web with Tavily, an AI-optimized search engine. Supports structured results, domain filtering, summary answers, raw content extraction, and search-depth settings. Suited for AI research tasks.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Tavily search tool object. Connect to the agent's Tools input. |
+| Parameter | Tavily API key | STR | Required | Enter the Tavily API key. |
+| Parameter | Max results | INT | Optional | Set the maximum number of search results to return. |
+| Parameter | Tool description | STR | Optional | Describe to the AI when to use this search tool. Leave blank to use the default behavior. |
+| Parameter | Include domains | STR | Optional | Domains to include in results, comma-separated. |
+| Parameter | Exclude domains | STR | Optional | Domains to exclude from results, comma-separated. |
+| Parameter | Include answer | BOOL | Optional | Provide a short summary answer alongside results. `true` → include summary answer. |
+| Parameter | Include raw content | BOOL | Optional | Include each result's raw HTML content. `true` → include raw HTML. |
+| Parameter | Include images | BOOL | Optional | Include relevant images in results. `true` → include images. |
+| Parameter | Search depth | STR | Optional | Search depth. `basic` → fast results, `advanced` → more comprehensive results. |
+
+### Brave Search MCP (`mcp/brave_search_mcp`)
+
+Searches the web in real time using the Brave Search API. Connect it and the AI can search the internet for up-to-date info. Supports country, period, and result-count filtering; a Brave API key is required.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Brave search tool object. Connect to the agent's Tools input. |
+| Parameter | Brave API key | STR | Required | Enter the Brave Search API key. Available from brave.com. |
+| Parameter | Result count | INT | Optional | Set the maximum number of search results to return. |
+| Parameter | Country | STR | Optional | Result country filter. e.g., `kr`=Korea, `us`=USA, `jp`=Japan |
+| Parameter | Period filter | SELECT | Optional | Time-range filter. `Default` → all, `pd` (Past Day) → last day, `pw` (Past Week) → last week, `pm` (Past Month) → last month, `py` (Past Year) → last year. |
+| Parameter | Text highlight | BOOL | Optional | Include text emphasis (bold/highlight) in results. `true` → include highlighting. |
+
+### EPG DAUM MCP (`mcp/epg_daum_mcp`)
+
+Fetches Korean home-shopping TV schedules from DAUM. The AI can look up broadcast times, program names, and channel info. Supports caching for repeated queries.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the DAUM EPG tool object. Connect to the agent's Tools input. |
+| Parameter | Use Cache | BOOL | Optional | Whether to use cached data. `true` → use cached data for a fast response, `false` → fetch fresh data. |
+
+### EPG NAVER MCP (`mcp/epg_naver_mcp`)
+
+Fetches Korean home-shopping TV schedules from NAVER. Provides the same features as EPG DAUM MCP, using NAVER as the data source.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the NAVER EPG tool object. Connect to the agent's Tools input. |
+| Parameter | Use Cache | BOOL | Optional | Whether to use cached data. `true` → use cached data for a fast response, `false` → fetch fresh data. |
+
+### GitHub MCP (`mcp/github_mcp`)
+
+Manages GitHub repositories via natural language. The AI can handle repo, issue, pull-request, and code search. Uses GitHub App authentication (App ID + Private Key).
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the GitHub management tool object. Connect to the agent's Tools input. |
+| Parameter | GitHub App ID | STR | Required | Enter the GitHub App ID. |
+| Parameter | GitHub App Private Key | STR | Required | Enter the GitHub App Private Key in PEM format. |
+| Parameter | GitHub Repository | STR | Required | Enter the target repository. Format: `owner/repo` |
+
+### GitLab MCP (`mcp/gitlab_mcp`)
+
+Manages GitLab projects via natural language. The AI can search projects, manage branches, edit files, handle issues, and create Merge Requests. Supports both GitLab.com and self-hosted GitLab instances.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the GitLab management tool object. Connect to the agent's Tools input. |
+| Parameter | GitLab URL | STR | Optional | Enter the GitLab instance URL. Default: `https://gitlab.com` (a self-hosted URL also works). |
+| Parameter | GitLab Personal Access Token | STR | Required | Enter the GitLab Personal Access Token. Issue at: Settings > Access Tokens. |
+
+### Meta Search MCP (`mcp/meta_search_mcp`)
+
+The AI automatically finds and crawls relevant websites to gather comprehensive info. No API key needed; the AI decides which sites to search and aggregates results across them.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the meta-search tool object. Connect to the agent's Tools input. |
+| Parameter | Max results | INT | Optional | Set the maximum number of results to return. |
+
+### Naver Datalab MCP (`mcp/naver_datalab_mcp`)
+
+Accesses Naver Datalab for search-trend analysis and shopping insights. The AI can look up popular search terms, search-volume trends, and shopping-category insights. Useful for market research and trend analysis.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Naver Datalab tool object. Connect to the agent's Tools input. |
+| Parameter | Description | STR | Required | Describe to the AI when to use this analytics tool. |
+
+### Naver News MCP (`mcp/naver_news_mcp`)
+
+Searches Korean news via the Naver News API. Connect it and the AI finds the latest Korean news articles to use in answers. Can sort by relevance or date. Requires Naver Open API credentials.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Naver news search tool object. Connect to the agent's Tools input. |
+| Parameter | Description | STR | Required | Describe to the AI when to use this news search tool. |
+| Parameter | Naver Client ID | STR | Required | Enter the Naver application Client ID. |
+| Parameter | Naver Client Secret | STR | Required | Enter the Naver application Client Secret. |
+| Parameter | Sort | STR | Optional | Result sort order. `sim` → by relevance, `date` → by most recent. |
+
+### PostgreSQL MCP (`mcp/postgresql_mcp`)
+
+Connects directly to a PostgreSQL database and runs read-only queries. Connect by entering host, port, username, password, and database name. Unlike Database Loader, it connects directly without DB Connection Manager — suited for quick query setups.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the PostgreSQL query tool object. Connect to the agent's Tools input. |
+| Parameter | Host | STR | Required | Enter the PostgreSQL server address. e.g., `192.168.0.10`, `localhost` |
+| Parameter | Port | INT | Required | Enter the port number. Default: `5432` |
+| Parameter | Username | STR | Required | Enter the database login username. |
+| Parameter | Password | STR | Required | Enter the database login password. |
+| Parameter | Database | STR | Required | Enter the name of the database to connect to. |
+| Parameter | DB Prompt | STR | Optional | Describe the database so the AI can write better queries. e.g., `Loan DB with repayment history.` |
+| Parameter | Tool Prefix | STR | Optional | A prefix to prepend to tool names when using multiple DBs at once. e.g., `hr` → `hr_list_tables`, `hr_query`. Leave blank for a single DB. |
+| Parameter | Schema | STR | Optional | Enter the PostgreSQL schema name. Default: `public`. e.g., `app_main` |
+| Parameter | Sample Rows | INT | Optional | The number of sample rows per table during schema inspection. `0` returns schema info only. |
+
+### Database Loader (`mcp/DatabaseLoader`)
+
+Loads a pre-configured database connection so the AI can query data. Select a connection in DB Connection Manager and the AI auto-uses the `list_tables`, `get_schema`, and `query` tools. Supports PostgreSQL, Oracle, Informix.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the database query tool object. Connect to the agent's Tools input. |
+| Parameter | DB connection | STR | Required | Select a database connection from the DB Connection Manager list. |
+| Parameter | Access password | STR | Required | Enter the password set when creating the DB connection. Required for security verification. |
+| Parameter | DB description | STR | Optional | Describe the database so the AI can write better queries. e.g., `Loan DB. The loan_records table holds loan history and repayment data.` |
+| Parameter | Tool prefix | STR | Optional | A prefix to prepend to tool names when using multiple DBs at once. e.g., `hr` → `hr_list_tables`, `hr_get_schema`, `hr_query`. Leave blank for a single DB. |
+| Parameter | Sample rows | INT | Optional | The number of sample rows per table to show during schema inspection. Helps the AI understand the data format. `0` returns schema info only. |
+
+### Product Search MCP (`mcp/product_search_mcp`)
+
+Searches product info using various filters. Look up popular products, upcoming broadcasts, past broadcasts, and currently-selling products. You can control the result count and whether images are included.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the product search tool object. Connect to the agent's Tools input. |
+| Parameter | Tool description | STR | Required | Describe to the AI when to use this product search tool. |
+| Parameter | Search type | STR | Optional | Select the search type. `popular` → popular, `future` → upcoming broadcasts, `past` → past broadcasts, `sales` → currently selling. Leave blank to let the AI decide. |
+| Parameter | Max results | INT | Optional | The maximum number of results to return. Default: 10 |
+| Parameter | Include images | BOOL | Optional | Include product images in results. `true` → include images. |
+
+### Slack MCP (`mcp/slack_mcp`)
+
+Connects the AI to a Slack workspace. The AI can send messages, manage channels, and search conversations. A Slack User Token (`xoxp-`) is required.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Slack management tool object. Connect to the agent's Tools input. |
+| Parameter | Slack User Token | STR | Required | Enter the Slack User Token. A token starting with `xoxp-`. |
+
+### Nano Banana MCP (`mcp/nano_banana_mcp`)
+
+A Gemini-based image generation and editing tool (Nano Banana). Generate images from text prompts or edit existing images with AI.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the image generation/editing tool object. Connect to the agent's Tools input. |
+| Parameter | Google API Key | STR | Required | Enter the Gemini API key issued from Google AI Studio. |
+| Parameter | Model | SELECT | Required | Select the generation model. `Flash` → fast generation, `Pro` → high-quality generation. |
+| Parameter | Image Size | SELECT | Optional | Set the output image resolution. 4K is available only on the Pro model. |
+| Parameter | Response Modality | SELECT | Optional | Select the response format. |
+
+### Atlassian MCP (`mcp/atlassian_mcp`)
+
+Manages Jira issues and Confluence documents via natural language. The AI can create issues, manage projects, author wiki pages, and search both platforms. Supports both Cloud and On-premise Atlassian.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Atlassian management tool object. Connect to the agent's Tools input. |
+| Parameter | Atlassian URL | STR | Required | Enter the Atlassian URL. e.g., `https://your-domain.atlassian.net` |
+| Parameter | Email | STR | Required | Enter the Atlassian account email. |
+| Parameter | API Token | STR | Required | Enter the Atlassian API Token. Issue at: `https://id.atlassian.com/manage/api-tokens` |
+| Parameter | Tools Scope | STR | Optional | Select the tool scope. `jira` → Jira tools only, `confluence` → Confluence tools only, `both` → both (default). |
+
+### Microsoft 365 MCP (`mcp/ms365_mcp`)
+
+Connects the AI to Microsoft 365. Supports Outlook Mail, Calendar, Teams, OneDrive, Planner, Excel, and more. Use feature presets to load only the tools you need. Initial setup requires Device Code Flow authentication in Admin > MCP Station.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the Microsoft 365 tool object. Connect to the agent's Tools input. |
+| Parameter | Feature preset | STR | — | Select which MS 365 services to enable. e.g., `all`, `mail-only`, `calendar-only`, etc. |
+| Parameter | Organization mode | BOOL | — | Include organizational features such as Teams, SharePoint, Planner. `true` → enable organizational features. |
+
+### API Collection Loader (`mcp/APICollectionLoader`)
+
+Loads a registered API collection (ToolGraph) so the AI can search and call APIs in natural language. Select a collection from the dropdown and the AI auto-uses `search_tools` and `call_tool`.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the API collection tool object. Connect to the agent's Tools input. |
+| Parameter | API collection | STR | Required | Select an API collection registered in Admin. |
+| Parameter | Max tools | INT | Optional | The maximum number of tools returned per search query. Default: 5 |
+| Parameter | API base URL override | STR | Optional | Override the collection's `base_url` (optional). |
+| Parameter | Auth token override | STR | Optional | Override the Bearer token. Leave blank to use the collection's AuthProfile (recommended). Enter a value for temporary testing only. |
+| Parameter | Tool prefix | STR | Optional | A prefix to prepend to generated tool names when chaining multiple loaders. e.g., `erp` → `erp_search_tools`, `erp_call_tool` |
+
+### Web Automation (Playwright) (`mcp/WebAutomationMCP`)
+
+Automates web tasks via Playwright browser control. Read data from Excel to auto-fill web forms, with user confirmation before saving. Supports login automation, page navigation, and complex form workflows.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the web-automation tool object. Connect to the agent's Tools input. |
+| Parameter | Playwright MCP session | STR | Required | Select the Playwright MCP session to use. |
+| Parameter | Target website URL | STR | Required | Enter the target website URL. e.g., `https://erp.company.com` |
+| Parameter | Login config (JSON) | JSON | Required | Enter the login configuration as JSON. Use environment variables in `${VAR}` form. |
+| Parameter | Page config (JSON) | JSON | Required | Set page key-to-path mappings as JSON. |
+| Parameter | Form config (JSON) | JSON | Required | Set form-field mappings and fixed values as JSON. |
+
+### Database Reader (`mcp/DatabaseReader`)
+
+Runs a fixed SQL query against a pre-configured database connection and returns the result as text. No AI needed; select a connection, enter a query, and the result flows to the next node. Supports PostgreSQL, Oracle, Informix.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Query result | STR | — | Emits the SQL query result as a string (STR). |
+| Parameter | DB Connection | STR | Required | Select a database connection from the DB Connection Manager list. |
+| Parameter | Custom Password | STR | Required | Enter the password set when creating the DB connection. |
+| Parameter | SQL Query | STR | Required | Enter the SQL query to run. Only `SELECT` / `WITH` queries are allowed. |
+| Parameter | Max Rows | INT | Optional | The maximum number of rows to return. `0` means no limit. |
+
 ## How to Use
 
 ### Browse with the Tree View
