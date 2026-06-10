@@ -331,6 +331,199 @@ Calls another saved workflow as a tool from within the current workflow. The age
 | Parameter | Workflow to run | STR | Required | Enter the name of the workflow to run. |
 | Parameter | Stream in real time | BOOL | Optional | Whether to stream in real time. `true` → forward the real-time stream to the next node (returns a Generator). `false` → collect all results, then return a string. |
 
+## Agent Node Detailed Spec { #agent-node-spec }
+
+Nodes in the **Agent (`agents`)** category act as the core AI brain of a workflow. Connect tools, documents, memory, and the like, and the agent uses them to answer user questions. The notation matches [Start / End Node Detailed Spec](#node-io-spec).
+
+### Agent Planflow (`agents/planflow`)
+
+A deterministic Plan-and-Execute agent for a single API collection. The AI parses intent, builds a plan on a graph, then executes it in order (no per-step LLM). Faster and easier to audit than a ReAct agent in API orchestration.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Text | STREAM STR \| STR | Required | Receives the user question or instruction. Supports both STREAM and STR types. |
+| Input | Prior Entities | DICT \| STR | — | Receives entity information extracted in a previous step. |
+| Output | Stream | STREAM STR | Stream | Emits the response as a real-time stream. |
+| Output | Result | STR | — | Emits the completed response as a string. |
+| Parameter | API Collection | STR | Required | Select an API collection registered in Admin. |
+| Parameter | Provider | STR | Required | The LLM provider used for Stage 1 (intent parsing) and Stage 4 (response generation). |
+| Parameter | OpenAI Model | STR | Required | The OpenAI model name to use. |
+| Parameter | Anthropic Model | STR | Required | The Anthropic model name to use (via litellm). |
+| Parameter | Streaming | BOOL | — | Deliver results to the client as a real-time stream (recommended). |
+| Parameter | Top K | INT | Optional | Stage 1 catalog size — the number of candidate tools to search. |
+| Parameter | Auth Token Override | STR | Optional | Override the Bearer token. Leave blank to use the collection's AuthProfile. |
+| Parameter | API Base URL Override | STR | Optional | Override the collection's `base_url` (optional). |
+
+### Agent Xgen (`agents/xgen`)
+
+The core AI brain node of a workflow. Connect various tools — DB queries, document search, web search, etc. — and the agent auto-selects them to answer user questions. Supports OpenAI, Anthropic, Google, AWS Bedrock, and vLLM providers.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Text | STREAM STR \| STR | Multiple | User question or instruction. Supports STREAM and STR types; multiple connections allowed. |
+| Input | Files | FILE | Multiple | Files for the agent to analyze. Connect with the Input Files node. |
+| Input | Images | LIST | Multiple | Image list for the agent to analyze. Connect with the Image Loader node. |
+| Input | Tools | TOOL | Multiple | Tools the agent uses. Connect (multiple) with Tool-family nodes. |
+| Input | Memory | OBJECT | — | Conversation memory object. Connect with the DB Memory node. |
+| Input | Search Context | DocsContext | Multiple | Document-search context. Connect with the Search Context node. |
+| Input | Output format | OutputSchema | — | Output schema definition. Connect with the Schema Provider (Output) node. |
+| Input | Plan | PLAN | — | Work plan. Connect with the Agent Planner node. |
+| Output | Stream | STREAM STR | Stream | Emits the response as a real-time stream. |
+| Parameter | AI engine | STR | Required | Select the AI provider: `openai` (ChatGPT), `anthropic` (Claude), `google` (Gemini), `bedrock` (AWS AI), `vllm` (self-hosted). |
+| Parameter | OpenAI model | STR | Required | The OpenAI model to use. Applies when Provider is `openai`. e.g., `gpt-4.1`, `gpt-4o`, `gpt-4.1-mini` |
+| Parameter | Server address | STR | Required | vLLM or custom AI server URL. Required when Provider is `vllm` or a separate server is used. |
+| Parameter | Answer creativity | FLOAT | Optional | Adjust the AI creativity level. Range: 0~2. Closer to 0 = consistent, factual answers; closer to 2 = diverse, creative answers. |
+| Parameter | Max answer length (max tokens) | INT | Optional | Maximum length of the AI response (tokens). Range: 1~65536 |
+| Parameter | Tool-call count | INT | Optional | Max number of tool calls the AI can make in one turn. Range: 1~100. Increase for complex multi-step tasks. |
+| Parameter | File processing mode | STR | Optional | Choose how uploaded files are processed. For scanned documents, `enhanced_ocr` is recommended. |
+| Parameter | Max images processed | INT | Optional | Max number of images the AI can process at once. Range: 0~100 |
+| Parameter | Always show sources | BOOL | Optional | Whether to always show sources when referencing documents. |
+| Parameter | Prompt Source | STR | — | Choose how the system prompt is provided. `direct` → write directly in System Prompt below; `template` → pick from saved prompt templates. |
+| Parameter | Template | STR | — | Select a saved prompt template. Only `System Prompt` type is shown. Enabled when `prompt_source` is `template`; content is editable after selection. |
+| Parameter | System Prompt | STR | — | Write the AI's role and instructions. e.g., `You are a friendly financial advisor. Answer loan and deposit questions accurately.` |
+| Parameter | Show intermediate steps | BOOL | Optional | Output the AI's reasoning process (tool calls, intermediate results, reasoning steps). Useful for debugging. |
+| Parameter | Apply safety filter | BOOL | Optional | Enable a safety filter that blocks inappropriate content (profanity, harmful info). Recommended for production. |
+| Parameter | Show AI typing | BOOL | Optional | Enable real-time chat-style output. `true` → text streams character by character. `false` → output the completed answer all at once. |
+| Parameter | Show result immediately (multi-agent) | BOOL | Optional | Whether to display this agent's response on screen when multiple agents are connected. `false` → process internally and pass to the next agent. |
+| Parameter | Answer separately | BOOL | Optional | Whether to display each agent's response in a separate area when multiple agents are connected. |
+
+### Agent Harness (`agents/run_harness`)
+
+Runs a saved Harness workflow as a single agent step. Uses all of the selected workflow's stage settings (system_prompt, selected tools, strategy, RAG/DB/MCP connections, etc.) as-is. The node acts as an input wrapper (one MCP).
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Text | STR | Required | The text input to pass to the Harness workflow. |
+| Output | Response | STR | — | Emits the Harness workflow's execution result as a string. |
+| Parameter | Harness workflow | STR | Required | Select the workflow to run from the saved Harness workflow list. The workflow's saved stage settings apply as-is. |
+
+## API Loader Node Detailed Spec { #api-loader-node-spec }
+
+Nodes in the **API Loader (`api_loader`)** category turn an external REST API into a tool the agent can call.
+
+### API Calling Tool (`api_loader/APICallingTool`)
+
+Builds a custom API tool and connects it to the agent. Once you configure the REST API endpoint, the agent calls it automatically when needed during a conversation. Response-data filtering lets you extract only the data you need.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Input format | InputSchema | — | The input schema passed on API call. Connect with the Schema Provider (Input) node to define a structured input format. |
+| Output | Tool | TOOL | — | Emits the generated API tool object. Connect to the agent's Tools input. |
+| Parameter | Tool name | STR | Required | The tool's unique name. The agent identifies and calls the tool by this name. |
+| Parameter | Tool description | STR | Required | Describe to the AI when this tool should be used. e.g., `Use this when asked about interest rates or exchange rates.` |
+| Parameter | API address | STR | Required | Enter the API URL to call. e.g., `https://api.example.com/rates` |
+| Parameter | HTTP method | STR | Required | Select the HTTP method: `GET`, `POST`, `PUT`, `DELETE`, `PATCH` |
+| Parameter | Response timeout (sec) | INT | — | API response timeout (seconds). Range: 1~300 |
+| Parameter | Use response filtering | BOOL | — | Whether to enable response filtering that extracts only specific data. `true` → the Response Filter Path / Fields settings below apply. |
+| Parameter | Response filter path | STR | — | Specify the JSON path of the data to extract. e.g., `payload.searchDataList` |
+| Parameter | Response filter fields | STR | — | Enter field names to extract, comma-separated. e.g., `interestRate,productNm` |
+
+### API Tool Loader (`api_loader/APIToolLoader`)
+
+Quickly loads an API tool pre-registered in the admin panel. Instead of configuring API settings yourself, just pick an already-configured tool from the dropdown.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the loaded API tool object. Connect to the agent's Tools input. |
+| Parameter | Select API tool | STR | Required | Select the tool to use from the list of registered API tools. |
+
+## Document Loader Node Detailed Spec { #document-loader-node-spec }
+
+Nodes in the **Document Loader (`document_loaders`)** category search documents from a vector DB or knowledge graph and provide them as the agent's RAG context.
+
+### Search Context (`document_loaders/VectorDBContext`)
+
+A unified document-search node. Select a search mode to configure how documents are retrieved from the vector database. Connect to the agent's RAG Context input.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Reference docs | DocsContext | — | Emits the retrieved document context. Connect to the agent's RAG Context input. |
+| Parameter | Search mode | STR | Required | Select the search mode. `Light` / `Light+` / `Hard` → created as a tool the agent can call; `Always Search` → runs the search automatically at prep time. |
+| Parameter | Collection name | STR | Required | Select the vector-DB collection to search. |
+| Parameter | Tool description | STR | Required | Describe when this tool should be used. Used by the AI to decide when to call it. |
+| Parameter | Top results | INT | Optional | The number of top results returned by vector search (applies in `Light`/`Light+`/`Always Search` modes). |
+| Parameter | Min relevance score | FLOAT | Optional | The minimum similarity score for inclusion. Range: 0.0~1.0 |
+| Parameter | Use reranking | BOOL | Optional | Whether to improve result accuracy with cross-encoder reranking. |
+| Parameter | Rerank candidates | INT | Optional | The number of top candidates to rerank. |
+| Parameter | Search-augmentation prompt | STR | Optional | A prompt to improve responses using the RAG context. |
+| Parameter | Tool name | STR | Optional | The name identifier of the search tool (ignored in `Always Search` mode). |
+| Parameter | Strict source display | BOOL | Optional | Whether to force source display when referencing documents. |
+
+### Ontology Search (`document_loaders/OntologySearch`)
+
+A graph-based ontology-search node using SPARQL and SCS context. Queries a pre-built knowledge graph to find relevant triples and source chunks for a structured answer.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | Tool | TOOL | — | Emits the ontology-search tool as TOOL. Connect to the agent's Tools input. |
+| Parameter | Tool name | STR | Required | The name identifier of this tool. |
+| Parameter | Tool description | STR | Required | Describe when the agent should use this tool. |
+| Parameter | Collection name | STR | Required | Select the collection where the ontology is built. |
+| Parameter | Use hierarchy context | BOOL | Optional | Whether to enable the SCS context profile for hierarchy-aware answers. |
+| Parameter | Max source chunks | INT | Optional | The maximum number of source chunks to include in the answer. |
+| Parameter | Multi-turn search | BOOL | Optional | Whether to enable multi-turn ReAct graph traversal for complex multi-hop questions. |
+| Parameter | Max search turns | INT | Optional | The maximum number of search turns in multi-turn mode. |
+
+## File System Node Detailed Spec { #file-system-node-spec }
+
+Nodes in the **File System (`file_system`)** category grant the AI the ability to handle tabular data and access a file system. Compose them by connecting *Table Data MCP*'s output to *FileSystem Storage*'s input.
+
+### Table Data MCP (`file_system/table_data_mcp`)
+
+Gives the AI the ability to handle tabular data (Excel, CSV). The agent can read, analyze, and transform spreadsheet data in natural language.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | — | — | — | No input. |
+| Output | FileSystem tool | FILE_SYSTEM_TOOL | — | Emits the file-system tool object. Connect to the FileSystem Storage node's input. |
+| Parameter | Max rows | INT | — | Max rows returned in a single read. Default: 50, Max: 100. For large data, call multiple times with the `start_row` parameter for pagination. |
+| Parameter | Max column width | INT | — | Max character width per column when displaying tabular data. Default: 100. Values exceeding this length are truncated with `...`. |
+
+### FileSystem Storage (`file_system/filesystem_storage`)
+
+Lets the AI access a file system to read and write files. The agent can browse, read, create, and modify files in a designated storage area.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | FileSystem tools | FILE_SYSTEM_TOOL | Multiple | Connect (multiple) outputs from file-system tool nodes such as Table Data MCP. |
+| Output | Tool | TOOL | — | Emits the assembled file-system tool as TOOL. Connect to the agent's Tools input. |
+| Parameter | Storage folder | STR | Required | Select the storage folder to use. The path is relative to the `file-storage/{user_id}/` subfolder. |
+
+## Memory / Router Node Detailed Spec { #memory-router-node-spec }
+
+The **Memory (`memory`)** category handles conversation memory, and the **Router (`router`)** category handles data-flow branching.
+
+### DB Memory (Smart) (`memory/db_memory_v3`)
+
+The smartest conversation-memory node. Beyond simple recall, it filters low-confidence AI responses, automatically decays the weight of older information over time, and intelligently selects the most relevant past conversations.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Current input | STR | — | Receives the current conversation input, stores it in memory, and searches for related context. |
+| Output | Memory | OBJECT | — | Emits the stored memory object. Connect to the agent's memory input. |
+| Output | Context | STR | — | Emits past-conversation context related to the current input as a string. |
+| Parameter | Conversation session ID | STR | — | Set a unique ID to distinguish conversation sessions. The same ID groups into the same conversation. |
+| Parameter | Max conversations | INT | Optional | Max messages to retain. 0 retains all. Range: 0~100 |
+| Parameter | Max characters | INT | Optional | Set the maximum character count of retained conversations. |
+| Parameter | Recent messages remembered | INT | Optional | The number of recent messages passed directly to the AI. Range: 2~10 |
+| Parameter | Top-K similar sources | INT | Optional | The number of top related messages to include. Range: 0~20 |
+| Parameter | Confidence threshold | FLOAT | Optional | The minimum confidence score for including a message. Range: 0~1 |
+| Parameter | Delete old conversations | BOOL | Optional | Whether to enable time-based decay. `true` → older messages gradually lose importance. |
+| Parameter | Include AI reasoning memory | BOOL | Optional | Whether to include the AI's reasoning process in memory. `true` → AI thinking content is also stored. |
+
+### Router (`router/Router`)
+
+Routes data to different paths based on a key value. Set the routing criteria (e.g., language, category) and an output path is dynamically created for each key value, with input data flowing into the matching path.
+
+| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
+|---|---|---|---|---|
+| Input | Input data | ANY | Required | Receives the data to route. The ANY type accepts any format. |
+| Output | — | — | — | Output handles are dynamically created per the Routing Criteria setting. A separate output port is made for each key value. |
+| Parameter | Routing Criteria | STR | Required | Enter the key name to route on. The router checks this key's value in the input data and forwards to the matching output path. e.g., `language`, `category`, `action` |
+
 ## How to Use
 
 ### Browse with the Tree View
