@@ -33,6 +33,9 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 | API Collection Loader | `mcp/APICollectionLoader` | Load admin-registered API collection (ToolGraph). AI auto-uses search_tools / call_tool |
 | Web Automation (Playwright) | `mcp/WebAutomationMCP` | Web-task automation via Playwright browser control. Excel-to-form auto-input with pre-save confirmation |
 | Database Reader | `mcp/DatabaseReader` | Run fixed SQL queries against a pre-configured DB connection. PostgreSQL, Oracle, Informix |
+<!-- require_view_start: node-standard-only -->
+| Database Result Processor | `mcp/DatabaseResultProcessor` | Transform DatabaseReader rows with a full SQL query (sqlite in-memory against table `rows`) or a no-SQL pipeline (filter, sort, paginate, group-aggregate, column-select). Output as markdown/json/csv/records/scalar |
+<!-- require_view_end -->
 
 ### Agent (`agents`)
 | Node | ID | Description |
@@ -54,14 +57,18 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 <!-- require_view_start: node-ontology-search -->
 | Ontology Search | `document_loaders/OntologySearch` | Graph-based ontology search using SPARQL + SCS context. Returns relevant triples and source chunks |
 <!-- require_view_end -->
+<!-- require_view_start: node-standard-only -->
 | Search Context (260517) | `document_loaders/VectorDBContextV2` | Search Context redesign (2026-05-17). Only essential options exposed, advanced tuning uses best-practice defaults |
+<!-- require_view_end -->
 
 ### File System (`file_system`)
 | Node | ID | Description |
 |---|---|---|
 | Table Data MCP | `file_system/table_data_mcp` | Give AI the ability to work with tabular data (Excel, CSV). Natural-language read, analyze, transform |
 | FileSystem Storage | `file_system/filesystem_storage` | Give AI access to a file system. Browse, read, create, modify files in a designated storage area |
+<!-- require_view_start: node-standard-only -->
 | Document Adapter | `file_system/document_adapter` | Edit form documents (DOCX/PPTX/HWPX). 9 tools (inspect_document / get_cell / get_shapes / render_template …) |
+<!-- require_view_end -->
 
 ### Memory (`memory`)
 

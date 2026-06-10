@@ -467,6 +467,11 @@
       "ok": false,
       "source": "gs-cert-spec-2026-06-10",
       "note": "사용자 요청(2026-06-10) — GS인증 매뉴얼 노드목록에서 '온톨로지 검색'(document_loaders/OntologySearch) 노드 제외. user/12a-node-list 의 카탈로그 표 행 + 상세 명세 절을 block require_view 마커로 strip. 다른 customer 는 키 미정의 → 유지. (구 admin/32a-node-list → user/12a-node-list 이동 2026-06-10)"
+    },
+    "node-standard-only": {
+      "ok": false,
+      "source": "gs-cert-live-diff-2026-06-10",
+      "note": "라이브 노드 카탈로그 대조(stg /api/node/get = 54개 vs main/gs = 47개, 2026-06-10) — GS(main) 환경에 없는 스탠다드 전용 노드를 GS인증 매뉴얼 노드목록에서 제외. 대상: mcp/DatabaseResultProcessor(DB 결과 가공) · file_system/document_adapter(문서 양식 편집기) · document_loaders/VectorDBContextV2(정보 검색 노드 260517). 카탈로그 행 + 상세 명세를 block 마커로 strip. xgen-main 도 동일 환경이라 동일 제외 필요(미적용 — 추후). 다른 customer 미정의 → 유지."
     }
   },
   "_comment": "gs@plateer.com (xgen.x2bee.com, main 환경) 권한 기준 view 가용성. 2026-05-29 라이브 사이드바 전수조사 (Agent 작업실 + 관리 설정). xgen-main 의 결손(main-planning / admin-active-sessions / upload-history / admin-compute-pool / admin-agentflow-management-info) 을 모두 이어받고, 그 위에 gs 권한이 추가 차단하는 메뉴들 (AI 거버넌스 그룹 전체 / 데이터 관리 일부 / MCP 운영 / 서비스 운영 전체) 을 더해 표시.",
