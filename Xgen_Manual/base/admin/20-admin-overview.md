@@ -178,6 +178,7 @@
 
 연결 오류가 없는지 사전 테스트를 권장합니다.
 
+<!-- require_view_start: admin-firstuse-pii-role -->
 ### PII 정책 검토
 
 개인정보 및 민감정보 보호 정책을 확인합니다.
@@ -201,6 +202,7 @@
 - 관리자
 
 최소 권한 원칙에 따라 필요한 권한만 부여하는 것을 권장합니다.
+<!-- require_view_end -->
 
 <!-- require_view_start: system-threshold-settings -->
 ### 시스템 모니터링 임계치 설정

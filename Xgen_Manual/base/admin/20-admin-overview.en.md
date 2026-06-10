@@ -177,6 +177,7 @@ Examples:
 
 A pre-check for connection errors is recommended.
 
+<!-- require_view_start: admin-firstuse-pii-role -->
 ### Review PII policy
 
 Review the personal-information / sensitive-information protection policy.
@@ -200,6 +201,7 @@ Examples:
 - Administrator
 
 Grant only the permissions actually required, following the least-privilege principle.
+<!-- require_view_end -->
 
 <!-- require_view_start: system-threshold-settings -->
 ### Set system monitoring thresholds
