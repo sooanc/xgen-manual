@@ -1,4 +1,4 @@
-# Node List
+# Agent Node List
 
 This chapter covers the full **node catalog** you can use when building an agentflow on the canvas, along with the input/output and parameter **detailed specs** for each node. Every node (agentflow building block) registered in the platform is listed by category, so reading it alongside the [Creating an Agent](12-agentflow-create.md) node-adding steps helps you quickly decide which node to pick and how to wire it.
 
