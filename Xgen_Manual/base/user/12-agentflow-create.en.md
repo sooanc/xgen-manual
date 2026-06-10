@@ -45,7 +45,7 @@ Clicking the **Node Search** button at the bottom right of the canvas opens the 
 | Branching | Conditional, loop |
 | I/O | Receive input, return output |
 
-> The full node catalog (categories, tags, detailed specs, etc.) and each node's input/output and parameter specs are available in the next [Node List](12a-node-list.md) chapter.
+> The full node catalog (categories, tags, detailed specs, etc.) and each node's input/output and parameter specs are available in the next [Agent Node List](12a-node-list.md) chapter.
 
 To add:
 
