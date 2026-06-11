@@ -79,15 +79,13 @@ export async function buildSiteIndex({ siteRoot, customersRoot }) {
 
   // 정렬 우선순위:
   //   0 — xgen-standard (stage 기준 단일 진실원)
-  //   1 — xgen-main     (main 환경 공개 매뉴얼)
-  //   2 — gs-cert       (main 환경 + GS인증 권한 제한 뷰)
-  //   3 — 일반 고객사   (한글 이름 순)
+  //   1 — gs-cert       (main 환경 + GS인증 권한 제한 뷰)
+  //   2 — 일반 고객사   (한글 이름 순)
   // 동일 우선순위 안에서는 display_title 우선, 그 다음 customer.name 의 한글 정렬을 사용.
   const sortRank = (item) => {
     if (item.id === 'xgen-standard') return 0;
-    if (item.id === 'xgen-main') return 1;
-    if (item.id === 'gs-cert') return 2;
-    return 3;
+    if (item.id === 'gs-cert') return 1;
+    return 2;
   };
   items.sort((a, b) => {
     const ra = sortRank(a);
@@ -142,7 +140,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
         //   gs-cert: GS인증용 외부 공개 매뉴얼
         // 그 외(jeju-bank 등 일반 고객사) 는 비밀번호 게이트 적용. 클릭 시 gate.html 로 보내고
         // sessionStorage 로 한 번 통과하면 탭이 닫힐 때까지 유지.
-        const PUBLIC_CARDS = new Set(['xgen-standard', 'xgen-main', 'gs-cert']);
+        const PUBLIC_CARDS = new Set(['xgen-standard', 'gs-cert']);
         const isGated = !PUBLIC_CARDS.has(item.id);
         const gatedTag = isGated
           ? '<span class="tag tag-gated">🔒 고객사 전용</span>'

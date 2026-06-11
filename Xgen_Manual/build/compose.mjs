@@ -168,7 +168,7 @@ export async function compose(customerId) {
   // 2. 매뉴얼 소스 결정 — base/ 직접 사용하는 customer 들 vs 자체 customers/<id>/manual/ 사용
   //    base/ 사용: xgen-standard (stg), xgen-main (main), jeju-bank (jeju-dev)
   //      각각 자기 customers/<id>/screen-truth.json 의 ok:false view 로 환경별 갭만 자동 제외.
-  const BASE_BACKED_CUSTOMERS = new Set(['xgen-standard', 'xgen-main', 'jeju-bank', 'gs-cert']);
+  const BASE_BACKED_CUSTOMERS = new Set(['xgen-standard', 'jeju-bank', 'gs-cert']);
   const usesBase = BASE_BACKED_CUSTOMERS.has(customerId);
   const manualSrc = usesBase ? PATHS.base : cfg.__paths.manualDir;
   if (!existsSync(manualSrc)) {
