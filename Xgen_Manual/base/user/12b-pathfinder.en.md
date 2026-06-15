@@ -1,4 +1,4 @@
-# Pathfinder (XGEN Pathfinder)
+# Pathfinder
 
 This chapter covers how to install, connect, and use the Chrome browser extension **Pathfinder (XGEN Pathfinder)**. Pathfinder analyzes the screen you are currently viewing or your workflow to suggest *which agent you should build*, and helps you create an agent quickly from a recommended template.
 
@@ -11,6 +11,8 @@ Purpose — prepare the files needed to install the Pathfinder plugin.
 
 1. Download the provided **Pathfinder archive file (.zip)**.
 2. Extract the archive **into a folder** — extraction is required.
+
+![The downloaded Pathfinder archive extracted into a folder](images/pathfinder-01-unzip.png)
 
 !!! warning "Notes on extraction"
     - The plugin cannot be installed while still in the compressed (.zip) state — you must extract it into a folder.
@@ -26,11 +28,20 @@ Purpose — add Pathfinder to the browser and connect it to XGEN.
     chrome://extensions/
     ```
 
+    ![The extensions management page opened by entering chrome://extensions/ in the Chrome address bar](images/pathfinder-02-extensions-page.png)
+
 2. Turn on **Developer mode** in the top-right corner.
 3. Click **Load unpacked**.
+
+    ![The *Load unpacked* button at the top-left of the extensions management page](images/pathfinder-03-load-unpacked.png)
+
 4. Select the **folder** you extracted in step 1.
 
+    ![Selecting the extracted Pathfinder folder](images/pathfinder-04-select-folder.png)
+
 When the installation completes, **"XGEN Pathfinder"** appears in the extensions list. Once it is listed, the installation was successful.
+
+!["XGEN Pathfinder" shown in the extensions list — installation complete](images/pathfinder-05-installed.png)
 
 !!! warning "Common errors"
     - **Selecting a zip file instead of a folder** causes the installation to fail — make sure you extracted it into a folder in step 1.
@@ -43,6 +54,8 @@ Purpose — connect to the XGEN platform through the extension.
 1. Click the **extensions icon** (puzzle shape) in the top-right of Chrome.
 2. Select **XGEN Pathfinder** from the list.
 3. Move to the XGEN screen, and the connection is confirmed automatically.
+
+![Selecting XGEN Pathfinder from the Chrome extensions list and connecting it to the XGEN screen](images/pathfinder-06-connect.png)
 
 Signs it is working
 
@@ -59,6 +72,10 @@ Steps
 
 1. Answer the **"What kind of Agent would you like to build?"** prompt with the task you want.
 2. Select a recommended **template** and proceed with creation.
+
+![The Pathfinder side panel active on the right of the XGEN screen — the "Agent creation / recommendation" conversation feature](images/pathfinder-07-usage-panel.png)
+
+![The agent created from Pathfinder's suggestion, composed visually as a Flow on the canvas](images/pathfinder-08-usage-flow.png)
 
 > For detailed editing and node composition of the created agent, see the [Creating an Agent](12-agentflow-create.md) chapter.
 
