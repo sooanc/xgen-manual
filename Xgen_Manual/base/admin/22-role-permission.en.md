@@ -27,13 +27,18 @@ Note that menu access for *System Administrators* and *Governance Officers* may 
 
 **2. Check the user's permissions**
 
-If the user is not a SuperUser, the system determines accessible menus based on the permissions granted to that user.
+If the user is not a SuperUser, the system determines accessible menus based on the permissions that apply to that user. The applied set is the **union of the permissions granted directly to the user and the permissions bundled into the roles the user belongs to**. As a result, if **either side** — a direct grant *or* a role — carries the access permission for a menu, that menu is shown.
+
+For example, even if the *User Management* access permission (`admin.user:read`) is not granted to the user directly, the *User Management* menu still appears as long as one of the user's roles holds that permission. The reverse also holds: a permission received only as a direct grant (not via any role) shows the menu just the same.
 
 Examples:
 
 - Has *User Management* permission → User Management menu is shown
 - Has *Agent Creation* permission → Agent Creation menu is shown
 - Has *Knowledge Management* permission → Knowledge Management menu is shown
+
+!!! note "Granted as a union — except for an explicit *Deny*"
+    Access to menus and features is granted as the *union of direct permissions and role permissions* described above. However, if a specific permission is explicitly **denied** in the *Direct Permissions* area of [User Management](21-user-management.md), the *deny takes precedence* over the same permission received via a role, and the feature is hidden. Use this to block a permission temporarily for a single user.
 
 **3. Features without permission are hidden automatically**
 
