@@ -130,6 +130,87 @@ Top summary cards: total feedback count, average star rating, good-answer rate (
 
 A per-conversation trace view showing which nodes an agent traversed and the result of each tool call. The first stop when investigating or reproducing a response-quality issue.
 
+<!-- require_view_start: admin-user-token-dashboard -->
+### User Tokens { #user-token }
+
+A screen for monitoring token consumption per user and for setting token-usage quota policies per user or per role. Select **Agent Operations → User Tokens** in the left sidebar (view ID `admin-user-token-dashboard`). Two tabs appear at the top of the screen — **Usage Statistics / Policy Settings**.
+
+#### Usage Statistics { #user-token-usage }
+
+A tab for reviewing each user's token consumption at a glance.
+
+![User Tokens — Usage Statistics tab. Four summary cards at the top and a per-user token usage table](images/admin-user-token-usage.png)
+
+There are four summary cards at the top.
+
+| Card | Meaning |
+|---|---|
+| **Total token usage** | Total tokens consumed by all users over the selected period |
+| **Total interactions** | Total count of conversations / executions |
+| **Avg tokens / interaction** | Average tokens consumed per interaction |
+| **Active users** | Number of users who used tokens in the period |
+
+Below the cards is a per-user detail table. Use **search** (username, ID, agentflow name), **date range**, and **refresh** at the top to scope the view.
+
+| Column | Description |
+|---|---|
+| **User** | Username and internal ID (`#number`) |
+| **Interactions** | Conversation / execution count for the user |
+| **Total tokens** | Sum of input + output tokens |
+| **Input / Output tokens** | Tokens for the prompt (input) / response (output) |
+| **Token distribution** | A bar visualizing the input/output ratio |
+| **Main agentflow** | The agentflow the user used the most |
+| **Last activity** | Time of the last token usage |
+| **Actions** | **View more** — opens a modal with that user's *per-agentflow usage* |
+
+#### Policy Settings { #user-token-policy }
+
+A tab for defining token-usage quotas per user or per role and specifying what happens when a quota is exceeded.
+
+![User Tokens — Policy Settings tab. Active/Inactive/All filter, policy list table, and the Current Violators panel below](images/admin-user-token-policy.png)
+
+At the top are **Active / Inactive / All** filter tabs plus **Refresh** and **+ New Policy** buttons. The policy list table has these columns.
+
+| Column | Description |
+|---|---|
+| **Target** | Who the policy applies to — a *user* or a *role*, and its name |
+| **Name** | A name identifying the policy (e.g. *Standard-user agent usage limit*) |
+| **Period** | Aggregation cycle — **Daily / Weekly / Monthly** |
+| **Scope** | Token type the limit applies to — **Total / Input / Output / Tool** |
+| **Limit** | The token cap for that period and scope |
+| **On exceed** | Action when the limit is reached — **Block** (red) or **Warn only** (amber) |
+| **Priority** | Order applied when multiple policies overlap — *lower value applies first* |
+| **State** | Active / Inactive |
+| **Actions** | **Edit** / **Deactivate** |
+
+The **Current Violators** panel at the bottom lists users who, under the active policies, have exceeded a limit or reached a warning. Each entry shows which policy (user/role) was matched along with `used / limit`.
+
+##### Creating a new policy
+
+Click **+ New Policy** to open the *New Token Limit Policy* modal.
+
+![New Token Limit Policy modal — name, target type (user/role), target, period, scope, limit, on-exceed action, priority, and active fields](images/admin-user-token-policy-create.png)
+
+The input fields are:
+
+1. **Name** — a name to identify the policy (e.g. *Planning team monthly limit*)
+2. **Target type** — choose **User** or **Role**
+3. **Target** — select the user (searchable) or role for the chosen type
+4. **Period** — Daily / Weekly / Monthly
+5. **Scope** — Total / Input / Output / Tool
+6. **Limit (token count)** — the cap for that period and scope
+7. **On-exceed action** — **Block** (blocks usage once the limit is reached) or **Warn only** (no block; only listed under violators)
+8. **Priority** — lower value applies first
+9. **Active** — a toggle to apply the policy immediately
+
+Click **Save**, and the policy appears in the list right away.
+
+!!! note "When a user limit and a role limit both exist — control is their *intersection*"
+    When a user has both a **token policy assigned directly to them** and a **token policy assigned to a role they belong to**, both policies apply **simultaneously**. Usage is counted against *all* matching policies (user and role), and the user must satisfy **both limits** — so the *stricter (smaller) limit* becomes the effective cap.
+
+    For example, if a user has a *user limit of 100,000 (daily)* and a *role limit of 200,000 (daily)*, the policy triggers the moment usage reaches **100,000 tokens** — the intersection of the two. When both limits are reached at once, the *on-exceed action* of the higher-**priority** policy (lower value first) is enforced, while the other policy still tracks the user in the violators list.
+<!-- require_view_end -->
+
 <!-- require_view_start: admin-agent-dev-plan -->
 ### Task Planning { #task-planning }
 
