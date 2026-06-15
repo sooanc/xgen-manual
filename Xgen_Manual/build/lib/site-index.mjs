@@ -158,10 +158,6 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
           item.domain
             ? `<div><span class="label">서비스 도메인</span> <code class="domain">${escapeHtml(item.domain)}</code></div>`
             : '';
-        const manualLine =
-          item.manualVersion
-            ? `<div><span class="label">매뉴얼</span> v${escapeHtml(item.manualVersion)}${item.manualReleasedAt ? ` <span class="muted">(${escapeHtml(item.manualReleasedAt)})</span>` : ''}</div>`
-            : '';
         // 검색 대상도 마스킹된 표시값 기준 — 비-내부자가 실명으로 검색해 들춰내지 못하도록.
         // display_title(예: 'GS인증') 가 명시된 customer 도 그 키워드로 찾을 수 있게 포함.
         const searchData = (displayName + ' ' + displayId + ' ' + industryLabel + ' ' + (item.displayTitle || '')).toLowerCase();
@@ -185,7 +181,6 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
       <div class="card-meta">
         ${domainLine}
         ${productLine}
-        ${manualLine}
         <div><span class="label">최근 빌드</span> ${escapeHtml(builtAt)}</div>
       </div>
     </a>`;
