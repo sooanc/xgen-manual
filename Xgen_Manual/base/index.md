@@ -2,7 +2,6 @@
 
 **고객사:** {{customer.name}}
 **제품 버전:** {{product.version}}
-**매뉴얼 버전:** {{manual.version}} ({{manual.released_at}})
 
 본 매뉴얼은 {{product.name}} 솔루션의 사용자 및 관리자 운영 가이드입니다. 두 가지 방식으로 활용하실 수 있습니다.
 

@@ -2,7 +2,6 @@
 
 **Customer:** {{customer.name}}
 **Product Version:** {{product.version}}
-**Manual Version:** {{manual.version}} ({{manual.released_at}})
 
 This manual is the user and administrator guide for the {{product.name}} solution. You can navigate it in two ways.
 
