@@ -1,4 +1,4 @@
-# Pathfinder
+# Using Pathfinder
 
 This chapter covers how to install, connect, and use the Chrome browser extension **Pathfinder (XGEN Pathfinder)**. Pathfinder analyzes the screen you are currently viewing or your workflow to suggest *which agent you should build*, and helps you create an agent quickly from a recommended template.
 
