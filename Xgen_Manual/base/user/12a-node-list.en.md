@@ -42,7 +42,7 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 |---|---|---|
 | Agent Planflow | `agents/planflow` | Deterministic Plan-and-Execute agent. Intent parsing → graph-based plan → sequential execution → natural-language response |
 | Agent Xgen | `agents/xgen` | The core AI brain of a workflow. Auto tool selection. OpenAI, Anthropic, Google, AWS models |
-| Agent Harness | `agents/run_harness` | Run a saved Harness workflow as a single agent step (system_prompt, tools, strategies, RAG, DB, MCP) |
+| Agent Harness | `agents/harness` | Run a saved Harness workflow as a single agent step (system_prompt, tools, strategies, RAG, DB, MCP) |
 
 ### API Loader (`api_loader`)
 | Node | ID | Description |
@@ -64,8 +64,7 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 ### File System (`file_system`)
 | Node | ID | Description |
 |---|---|---|
-| Table Data MCP | `file_system/table_data_mcp` | Give AI the ability to work with tabular data (Excel, CSV). Natural-language read, analyze, transform |
-| FileSystem Storage | `file_system/filesystem_storage` | Give AI access to a file system. Browse, read, create, modify files in a designated storage area |
+| My File Storage (Skill) | `file_system/filesystem_storage_skill` | Grant file-system access as a Skill (SKILL). Bundles 37 `fs_*` operations behind a single tool, cutting per-call tool-description overhead. Browse, read, create, modify files |
 <!-- require_view_start: node-standard-only -->
 | Document Adapter | `file_system/document_adapter` | Edit form documents (DOCX/PPTX/HWPX). 9 tools (inspect_document / get_cell / get_shapes / render_template …) |
 <!-- require_view_end -->
@@ -85,8 +84,11 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 ### Tool (`tools`)
 | Node | ID | Description |
 |---|---|---|
-| A2UI v0.9 Tools | `tools/a2ui_v0_9` | A2UI v0.9 UI-spec authoring tools. Catalog browse, component inspect, spec validation → safe UI JSON |
 | Certificate PDF Tool | `tools/Certificate PDF Tool` | Auto-generate certificate PDFs from provided data — certificates, awards, completion forms |
+| FloUI v1 (Skill) | `tools/floui_v1_skill` | FloUI v1 skill node. Bundles the xgen-frontend API catalog (workflow·chat·retrieval·storage·tools·prompt·aichat) plus extended A2UI components into a single SKILL |
+| Show Value | `tools/show_any` | A pass-through node that displays the value flowing through it on the canvas card. Quickly inspect intermediate values without a separate end node |
+| Tool Output Formatter | `tools/output_formatter` | Post-processing node that reshapes a tool's response before it reaches the agent. Connect to a Tool node's *Output Formatter* input port |
+| Workspace Dev (chat→preview) | `tools/workspace_dev` | Give the agent a persistent dev workspace — write files, run commands, expose a dev-server preview URL. Connect to the Agent's tools input |
 | Hierarchy Tools | `tools/hierarchy_tools` | Manager-worker Agent hierarchy. Manager delegates subtasks to specialist workers + combines results |
 | Image Loader | `image_loader` | Load images (URL or upload) into Agent images input for visual analysis |
 | Input Files | `input_files` | Receive user file uploads. Workflow starting point for processing documents, spreadsheets, images |
@@ -390,7 +392,7 @@ The core AI brain node of a workflow. Connect various tools — DB queries, docu
 | Parameter | Show result immediately (multi-agent) | BOOL | Optional | Whether to display this agent's response on screen when multiple agents are connected. `false` → process internally and pass to the next agent. |
 | Parameter | Answer separately | BOOL | Optional | Whether to display each agent's response in a separate area when multiple agents are connected. |
 
-### Agent Harness (`agents/run_harness`)
+### Agent Harness (`agents/harness`)
 
 Runs a saved Harness workflow as a single agent step. Uses all of the selected workflow's stage settings (system_prompt, selected tools, strategy, RAG/DB/MCP connections, etc.) as-is. The node acts as an input wrapper (one MCP).
 
@@ -439,6 +441,9 @@ Nodes in the **Document Loader (`document_loaders`)** category search documents 
 
 A unified document-search node. Select a search mode to configure how documents are retrieved from the vector database. Connect to the agent's RAG Context input.
 
+!!! note "Advanced tuning parameters"
+    Beyond the core parameters below, this node exposes ~40 **advanced tuning parameters** (hybrid search, multi-stage search, ontology graph, reranking, filtering LLM, etc.). Defaults are fine for most cases, so only the core items are listed below. For most users we recommend the **Search Context (260517)** node (`document_loaders/VectorDBContextV2`), which exposes only the essential options and handles the rest with best-practice defaults.
+
 | Item | Port / Parameter | Type | Required | Description & Behavior by Value |
 |---|---|---|---|---|
 | Input | — | — | — | No input. |
@@ -474,28 +479,21 @@ A graph-based ontology-search node using SPARQL and SCS context. Queries a pre-b
 
 ## File System Node Detailed Spec { #file-system-node-spec }
 
-Nodes in the **File System (`file_system`)** category grant the AI the ability to handle tabular data and access a file system. Compose them by connecting *Table Data MCP*'s output to *FileSystem Storage*'s input.
+Nodes in the **File System (`file_system`)** category grant the AI file-storage access and document-editing abilities.
 
-### Table Data MCP (`file_system/table_data_mcp`)
+### My File Storage (Skill) (`file_system/filesystem_storage_skill`)
 
-Gives the AI the ability to handle tabular data (Excel, CSV). The agent can read, analyze, and transform spreadsheet data in natural language.
+Grants the AI file-system access as a **Skill (SKILL)**. Bundles 37 `fs_*` operations (browse, read, create, modify, etc.) behind a single tool, greatly reducing per-call tool-description overhead versus TOOL mode. On first use the agent fetches the catalog once via `action='help'`.
 
 | Item | Port / Parameter | Type | Required | Description & Behavior by Value |
 |---|---|---|---|---|
 | Input | — | — | — | No input. |
-| Output | FileSystem tool | FILE_SYSTEM_TOOL | — | Emits the file-system tool object. Connect to the FileSystem Storage node's input. |
-| Parameter | Max rows | INT | — | Max rows returned in a single read. Default: 50, Max: 100. For large data, call multiple times with the `start_row` parameter for pagination. |
-| Parameter | Max column width | INT | — | Max character width per column when displaying tabular data. Default: 100. Values exceeding this length are truncated with `...`. |
-
-### FileSystem Storage (`file_system/filesystem_storage`)
-
-Lets the AI access a file system to read and write files. The agent can browse, read, create, and modify files in a designated storage area.
-
-| Item | Port / Parameter | Type | Required | Description & Behavior by Value |
-|---|---|---|---|---|
-| Input | FileSystem tools | FILE_SYSTEM_TOOL | Multiple | Connect (multiple) outputs from file-system tool nodes such as Table Data MCP. |
-| Output | Tool | TOOL | — | Emits the assembled file-system tool as TOOL. Connect to the agent's Tools input. |
+| Output | Skill | SKILL | — | Emits the assembled file-storage skill. Connect to the agent's **Skills (SKILL)** input. |
 | Parameter | Storage folder | STR | Required | Select the storage folder to use. The path is relative to the `file-storage/{user_id}/` subfolder. |
+| Parameter | Max rows | INT | Optional | Max rows returned in a single read. |
+| Parameter | Max column width | INT | Optional | Max character width per column when displaying tabular data. Excess is truncated with `...`. |
+| Parameter | Max chars per page | INT | Optional | Max characters shown per page. |
+| Parameter | Max lines per read | INT | Optional | Max lines returned in a single read. |
 
 ## Memory / Router Node Detailed Spec { #memory-router-node-spec }
 
@@ -779,6 +777,7 @@ Runs a fixed SQL query against a pre-configured database connection and returns 
 |---|---|---|---|---|
 | Input | — | — | — | No input. |
 | Output | Query result | STR | — | Emits the SQL query result as a string (STR). |
+| Output | Rows (structured) | LIST | — | Also emits the result as a structured row list (LIST). Connect to the **Database Result Processor** node for further processing. |
 | Parameter | DB Connection | STR | Required | Select a database connection from the DB Connection Manager list. |
 | Parameter | Custom Password | STR | Required | Enter the password set when creating the DB connection. |
 | Parameter | SQL Query | STR | Required | Enter the SQL query to run. Only `SELECT` / `WITH` queries are allowed. |
