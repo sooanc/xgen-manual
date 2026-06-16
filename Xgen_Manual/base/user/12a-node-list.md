@@ -369,14 +369,19 @@ AI 응답의 출력 형식을 정의합니다. JSON 스키마를 생성하면 AI
 | 입력값 | 파일 | FILE | 다중 | 에이전트가 분석할 파일. Input Files 노드와 연결합니다. |
 | 입력값 | 이미지 | LIST | 다중 | 에이전트가 분석할 이미지 목록. Image Loader 노드와 연결합니다. |
 | 입력값 | 도구 | TOOL | 다중 | 에이전트가 사용할 도구. Tool 계열 노드와 다중 연결합니다. |
-| 입력값 | 메모리 | OBJECT | — | 대화 메모리 객체. DB Memory 노드와 연결합니다. |
+| 입력값 | 스킬 | SKILL | 다중 | 에이전트가 사용할 스킬. Skill 계열 노드(예: FileSystem Skill) 와 연결합니다. 각 스킬은 여러 동작을 단일 도구로 묶어 호출당 컨텍스트 부담을 줄입니다. |
+| 입력값 | 메모리 | OBJECT | — | 대화 메모리 객체. DB Memory 노드와 연결하면 AI 가 이전 대화를 기억하고 과거 맥락을 활용해 더 일관성 있는 답변을 제공합니다. |
 | 입력값 | 참조 문서 | DocsContext | 다중 | 문서 검색 컨텍스트. Search Context 노드와 연결합니다. |
 | 입력값 | 출력값 형식 | OutputSchema | — | 출력 스키마 정의. Schema Provider(Output) 노드와 연결합니다. |
 | 입력값 | 계획 | PLAN | — | 작업 계획. Agent Planner 노드와 연결합니다. |
-| 출력값 | 스트림 | STREAM STR | 스트림 | 실시간 스트리밍 형태로 응답을 출력합니다. |
+| 출력값 | 스트림 | STREAM STR | 스트림 | 실시간 스트리밍 형태로 응답을 출력합니다. AI 가 답변을 생성하는 대로 글자가 하나씩 나타납니다. |
+| 출력값 | 결과 | STR | — | 완성된 응답 텍스트. AI 가 답변 생성을 마친 후 전체 답변을 한 번에 반환합니다. |
 | 파라미터 | AI 엔진 선택 | STR | 필수 | AI 제공자 선택: `openai`(ChatGPT), `anthropic`(Claude), `google`(Gemini), `bedrock`(AWS AI), `vllm`(자체 호스팅) |
-| 파라미터 | OpenAI 모델 | STR | 필수 | 사용할 OpenAI 모델. Provider 가 `openai` 일 때 적용. 예) `gpt-4.1`, `gpt-4o`, `gpt-4.1-mini` |
-| 파라미터 | 서버 주소 | STR | 필수 | vLLM 또는 커스텀 AI 서버 URL. Provider 가 `vllm` 이거나 별도 서버 사용 시 필수. |
+| 파라미터 | OpenAI 모델 | STR | 선택 | 사용할 OpenAI 모델. Provider 가 `openai` 일 때 적용. 예) `gpt-4.1`, `gpt-4o`, `gpt-4.1-mini` |
+| 파라미터 | Anthropic 모델 | STR | 선택 | 사용할 Anthropic 모델. Provider 가 `anthropic` 일 때 적용. |
+| 파라미터 | Google 모델 | STR | 선택 | 사용할 Google 모델. Provider 가 `google` 일 때 적용. |
+| 파라미터 | AWS Bedrock 모델 | STR | 선택 | 사용할 AWS Bedrock 모델. Provider 가 `bedrock` 일 때 적용. |
+| 파라미터 | vLLM 모델 | STR | 선택 | 사용할 vLLM 모델. Provider 가 `vllm` 일 때 적용. |
 | 파라미터 | 답변 창의성 수준 | FLOAT | 선택 | AI 창의성 수준 조절. 범위: 0~2. 0 에 가까울수록 일관되고 사실적인 답변, 2 에 가까울수록 다양하고 창의적인 답변. |
 | 파라미터 | 최대 답변 길이 (최대 토큰) | INT | 선택 | AI 응답의 최대 길이(토큰). 범위: 1~65536 |
 | 파라미터 | 도구 탐색 횟수 | INT | 선택 | 한 번의 턴에서 AI 가 도구를 호출할 수 있는 최대 횟수. 범위: 1~100. 복잡한 멀티스텝 작업 시 증가 권장. |

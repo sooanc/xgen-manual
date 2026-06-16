@@ -362,14 +362,19 @@ The core AI brain node of a workflow. Connect various tools — DB queries, docu
 | Input | Files | FILE | Multiple | Files for the agent to analyze. Connect with the Input Files node. |
 | Input | Images | LIST | Multiple | Image list for the agent to analyze. Connect with the Image Loader node. |
 | Input | Tools | TOOL | Multiple | Tools the agent uses. Connect (multiple) with Tool-family nodes. |
-| Input | Memory | OBJECT | — | Conversation memory object. Connect with the DB Memory node. |
+| Input | Skills | SKILL | Multiple | Skills the agent uses. Connect with Skill-family nodes (e.g., FileSystem Skill). Each skill bundles many operations behind a single tool, cutting per-call context overhead. |
+| Input | Memory | OBJECT | — | Conversation memory object. Connect with the DB Memory node to let the AI remember previous conversations and give more coherent replies using past context. |
 | Input | Search Context | DocsContext | Multiple | Document-search context. Connect with the Search Context node. |
 | Input | Output format | OutputSchema | — | Output schema definition. Connect with the Schema Provider (Output) node. |
 | Input | Plan | PLAN | — | Work plan. Connect with the Agent Planner node. |
-| Output | Stream | STREAM STR | Stream | Emits the response as a real-time stream. |
+| Output | Stream | STREAM STR | Stream | Emits the response as a real-time stream — text appears character by character as the AI generates it. |
+| Output | Result | STR | — | Complete response text. The full answer is returned after the AI finishes generating. |
 | Parameter | AI engine | STR | Required | Select the AI provider: `openai` (ChatGPT), `anthropic` (Claude), `google` (Gemini), `bedrock` (AWS AI), `vllm` (self-hosted). |
-| Parameter | OpenAI model | STR | Required | The OpenAI model to use. Applies when Provider is `openai`. e.g., `gpt-4.1`, `gpt-4o`, `gpt-4.1-mini` |
-| Parameter | Server address | STR | Required | vLLM or custom AI server URL. Required when Provider is `vllm` or a separate server is used. |
+| Parameter | OpenAI model | STR | Optional | The OpenAI model to use. Applies when Provider is `openai`. e.g., `gpt-4.1`, `gpt-4o`, `gpt-4.1-mini` |
+| Parameter | Anthropic model | STR | Optional | The Anthropic model to use. Applies when Provider is `anthropic`. |
+| Parameter | Google model | STR | Optional | The Google model to use. Applies when Provider is `google`. |
+| Parameter | AWS Bedrock model | STR | Optional | The AWS Bedrock model to use. Applies when Provider is `bedrock`. |
+| Parameter | vLLM model | STR | Optional | The vLLM model to use. Applies when Provider is `vllm`. |
 | Parameter | Answer creativity | FLOAT | Optional | Adjust the AI creativity level. Range: 0~2. Closer to 0 = consistent, factual answers; closer to 2 = diverse, creative answers. |
 | Parameter | Max answer length (max tokens) | INT | Optional | Maximum length of the AI response (tokens). Range: 1~65536 |
 | Parameter | Tool-call count | INT | Optional | Max number of tool calls the AI can make in one turn. Range: 1~100. Increase for complex multi-step tasks. |
