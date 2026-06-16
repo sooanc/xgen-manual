@@ -64,38 +64,51 @@ const SHOTS = [
     file: 'auth-profile-new.gif',
     account: 'admin',
   },
-  // 캔버스 우상단 ▶ Tutorial 버튼 → 튜토리얼 선택 패널 (기본 튜토리얼 탭) 등장
-  // 헤더 버튼이 텍스트 없이 PlayIcon + title 만 갖고, INIT_SCRIPT 가 title 을 strip 하므로
-  // getByRole 로는 잡히지 않는다 → data-tutorial 속성 셀렉터로 직접 지정.
+  // 캔버스 좌상단 '새 에이전트플로우' 드롭다운 → '튜토리얼 가이드로 시작' → 튜토리얼 선택 패널 (기본 튜토리얼 탭) 등장
+  // (이전 ▶ Tutorial 헤더 버튼은 제거됨 — 진입점이 드롭다운 메뉴로 변경)
   {
     id: 'tutorial-panel',
     url: '/canvas',
-    waitFor: 'button[data-tutorial="tutorial"]',
-    button: { selector: 'button[data-tutorial="tutorial"]' },
-    resultWait: () => /튜토리얼 선택|기본 튜토리얼|템플릿 튜토리얼|Select Tutorial|Basic Tutorial|Template Tutorial/i.test(document.body.innerText),
+    waitFor: 'button:has-text("새 에이전트플로우")',
+    setupClicks: [
+      {
+        // 1) '새 에이전트플로우' 드롭다운 열기
+        button: { role: 'button', name: /새 에이전트플로우/ },
+        postWaitMs: 600,
+      },
+    ],
+    button: { role: 'menuitem', name: /튜토리얼 가이드로 시작/ },
+    resultWait: () => /튜토리얼 선택|기본 튜토리얼|공유 튜토리얼|Select Tutorial|Basic Tutorial/i.test(document.body.innerText),
     resultWaitTimeoutMs: 5_000,
     file: 'tutorial-panel.gif',
-    account: 'admin',
+    account: 'agentdev',
   },
-  // 튜토리얼 패널이 열린 상태에서 "템플릿 튜토리얼" 탭 클릭 → 사용자가 등록한 가상튜토리얼 목록 (없으면 안내 텍스트)
+  // 튜토리얼 패널이 열린 상태에서 "공유 튜토리얼" 탭 클릭 → 공유튜토리얼로 등록된 템플릿 목록
   {
     id: 'tutorial-template-tab',
     url: '/canvas',
-    waitFor: 'button[data-tutorial="tutorial"]',
+    waitFor: 'button:has-text("새 에이전트플로우")',
     setupClicks: [
       {
-        // 1) 패널 열기
-        button: { selector: 'button[data-tutorial="tutorial"]' },
-        postWaitMs: 700,
+        // 1) 드롭다운 열기
+        button: { role: 'button', name: /새 에이전트플로우/ },
+        postWaitMs: 500,
+      },
+      {
+        // 2) 튜토리얼 가이드로 시작 → 패널 열기
+        button: { role: 'menuitem', name: /튜토리얼 가이드로 시작/ },
+        postWaitMs: 800,
       },
     ],
-    button: { role: 'button', name: /^템플릿 튜토리얼$|^Template Tutorials?$/ },
-    // 탭 클릭 시 등록 안내 텍스트 또는 카드 목록 중 하나가 표시됨. 둘 다 fallback 으로 단순 timeout 만으로 진행 가능.
-    resultWait: () => /등록된 튜토리얼이 없습니다|No tutorials|이 없습니다/i.test(document.body.innerText)
-      || /가상튜토리얼/i.test(document.body.innerText),
-    resultWaitTimeoutMs: 2_000,
+    button: { role: 'button', name: /^공유 튜토리얼$/ },
+    // 공유튜토리얼 등록 상태는 localStorage(xgen_user_registered_tutorials)에 저장되므로,
+    // 새 브라우저 컨텍스트로 캡처할 때 비어 있다. 등록된 목록이 보이도록 시드를 주입한다.
+    seedLocalStorage: { key: 'xgen_user_registered_tutorials', file: 'tutorial-ls-seed.json' },
+    // 탭 클릭 시 등록된 공유튜토리얼 카드 목록 또는 안내 텍스트가 표시됨.
+    resultWait: () => /스키마 출력 템플릿|문서참조|템플릿을 기반으로/i.test(document.body.innerText),
+    resultWaitTimeoutMs: 3_000,
     file: 'tutorial-template-tab.gif',
-    account: 'admin',
+    account: 'agentdev',
   },
   // Agent 제작 → Agent 기획 화면에서 '+ 새 기획서 제작하기' 버튼 → 신규 기획서 작성 폼이 열림
   {
@@ -190,6 +203,11 @@ const env = loadEnv(ENV_FILE);
 const BASE = env.XGEN_BASE_URL.replace(/\/$/, '');
 const ACCOUNTS = {
   admin: { email: env.XGEN_LOGIN_EMAIL, pass: env.XGEN_LOGIN_PASSWORD },
+  // 튜토리얼/공유튜토리얼 등 Agent 작업실 기능은 Agent 개발자 계정으로 캡처.
+  agentdev: {
+    email: env.XGEN_AGENT_DEVELOPER_EMAIL || env.XGEN_LOGIN_EMAIL,
+    pass: env.XGEN_AGENT_DEVELOPER_PASSWORD || env.XGEN_LOGIN_PASSWORD,
+  },
 };
 
 fs.rmSync(TMP_DIR, { recursive: true, force: true });
@@ -328,6 +346,19 @@ async function captureShot(browser, shot, storageState) {
     recordVideo: { dir: TMP_DIR, size: VIEWPORT },
   });
   await recCtx.addInitScript(INIT_SCRIPT);
+
+  // 선택적 localStorage 시드 주입 (예: 공유튜토리얼 등록 상태) — 새 컨텍스트는 비어 있으므로
+  // 매 네비게이션 전에 setItem 하여 앱이 로드 시 등록 목록을 읽을 수 있게 한다.
+  if (shot.seedLocalStorage) {
+    const seedPath = path.join(__dirname, shot.seedLocalStorage.file);
+    const seedValue = JSON.parse(fs.readFileSync(seedPath, 'utf8')); // 파일은 localStorage 문자열 값을 JSON 인코딩한 것
+    await recCtx.addInitScript(
+      ([k, v]) => { try { localStorage.setItem(k, v); } catch {} },
+      [shot.seedLocalStorage.key, seedValue],
+    );
+    log(`  seeded localStorage["${shot.seedLocalStorage.key}"] (${seedValue.length} chars)`);
+  }
+
   const page = await recCtx.newPage();
 
   const ctxStart = Date.now();

@@ -98,7 +98,7 @@ Credentials used by API tools to call external systems (Bearer Token, OAuth, etc
 
 ## Tutorials
 
-When you're new or want to pick up a new pattern quickly, click the **▶ Tutorial** button in the canvas header to open the *Select Tutorial* panel. The panel has two tabs.
+When you're new or want to pick up a new pattern quickly, open the **새 에이전트플로우 ▾** (New Agentflow) dropdown at the top left of the canvas and choose **튜토리얼 가이드로 시작** (Start with a tutorial guide) to open the *Select Tutorial* panel. The panel has two tabs.
 
 ### Basic Tutorials
 
@@ -113,7 +113,7 @@ A set of scenarios pre-registered with the solution; they run without any setup.
 - **일일 금융뉴스 브리핑 메일러** (Daily News Briefing Mailer) — news summary mailer
 - **경제뉴스 분석 + AI 자체 검증 (멀티에이전트)** (News Analysis with Self-Eval) — news analysis with built-in self-evaluation
 
-![Select Tutorial — Basic Tutorials tab shown when you click the ▶ icon at the top right of the canvas](images/tutorial-panel.gif)
+![Select Tutorial — Basic Tutorials tab, opened via *새 에이전트플로우 ▾ → 튜토리얼 가이드로 시작* at the top left of the canvas](images/tutorial-panel.gif)
 
 Each card shows the step count and tags. You can run it two ways.
 
@@ -124,20 +124,20 @@ Each card shows the step count and tags. You can run it two ways.
 
 ### Shared Tutorials
 
-Only items you explicitly added from the **Agentflow Library** via *Register Virtual Tutorial* appear here. Bundling templates you reuse often as virtual tutorials lets you replay the build pattern step by step in your own workspace later.
+Only items you added via *공유튜토리얼 등록* (Register Shared Tutorial) from the **템플릿** (Templates) tab in **Agent 목록** (Agent List) appear here. Bundling templates you reuse often as shared tutorials lets you replay the build pattern step by step later.
 
 ![Shared Tutorials — view after switching to the *Shared Tutorials* tab in the tutorial panel](images/tutorial-template-tab.gif)
 
 How to register:
 
-1. Open **Agent Workspace → Library** in the left sidebar
-2. On the card you want to turn into a virtual tutorial, click **Register Virtual Tutorial**
-3. Return to the canvas and verify it under **Tutorial → Shared Tutorials**
+1. Open **Agent Workspace → Agent 목록 (Agent List)** in the left sidebar, then select the **템플릿 (Templates)** tab at the top.
+2. On the template card you want to use, click **공유튜토리얼 등록 (Register Shared Tutorial)**.
+3. Open the panel from **새 에이전트플로우 ▾ → 튜토리얼 가이드로 시작** at the top left of the canvas and check the **공유 튜토리얼 (Shared Tutorials)** tab.
 
-To remove it, use the **Unregister Virtual Tutorial** button on the same card.
+To remove it, use the **공유튜토리얼 해제 (Unregister Shared Tutorial)** button on the same template card.
 
-!!! note "Empty agentflows cannot be registered"
-    An agentflow with zero nodes has nothing to demonstrate and cannot be registered as a virtual tutorial.
+!!! note "Templates with nothing to demonstrate cannot be registered"
+    A template with no nodes has nothing to demonstrate and cannot be registered as a shared tutorial.
 
 ## Auto Layout
 
