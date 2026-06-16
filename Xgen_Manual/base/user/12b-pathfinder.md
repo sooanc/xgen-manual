@@ -73,6 +73,13 @@
 1. **"어떤 Agent를 만들까요?"** 질문에 원하는 업무를 입력합니다.
 2. 추천된 **템플릿** 을 선택한 뒤 생성을 진행합니다.
 
+아래 동영상은 패스파인더로 업무를 입력하고 추천 템플릿을 선택해 에이전트를 생성하기까지의 전체 흐름을 보여줍니다.
+
+<video controls muted playsinline preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
+  <source src="images/pathfinder-09-usage.mp4" type="video/mp4">
+  브라우저가 동영상 재생을 지원하지 않는 경우 <a href="images/pathfinder-09-usage.mp4">동영상을 내려받아</a> 확인해 주세요.
+</video>
+
 ![XGEN 화면 우측에 활성화된 패스파인더 사이드 패널 — "Agent 생성/추천" 대화 기능](images/pathfinder-07-usage-panel.png)
 
 ![패스파인더 제안에 따라 생성된 에이전트가 캔버스에서 Flow 로 시각적으로 구성된 모습](images/pathfinder-08-usage-flow.png)
