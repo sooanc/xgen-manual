@@ -122,17 +122,17 @@ Each card shows the step count and tags. You can run it two ways.
 | **▶** (virtual cursor) | A virtual cursor demonstrates the flow automatically — adding, connecting, and saving nodes step by step |
 | **📄** (step-by-step guide) | You operate the canvas yourself while step hints walk you through it |
 
-### Template Tutorials
+### Shared Tutorials
 
 Only items you explicitly added from the **Agentflow Library** via *Register Virtual Tutorial* appear here. Bundling templates you reuse often as virtual tutorials lets you replay the build pattern step by step in your own workspace later.
 
-![Template Tutorials — view after switching to the *Template Tutorials* tab in the tutorial panel](images/tutorial-template-tab.gif)
+![Shared Tutorials — view after switching to the *Shared Tutorials* tab in the tutorial panel](images/tutorial-template-tab.gif)
 
 How to register:
 
 1. Open **Agent Workspace → Library** in the left sidebar
 2. On the card you want to turn into a virtual tutorial, click **Register Virtual Tutorial**
-3. Return to the canvas and verify it under **Tutorial → Template Tutorials**
+3. Return to the canvas and verify it under **Tutorial → Shared Tutorials**
 
 To remove it, use the **Unregister Virtual Tutorial** button on the same card.
 
