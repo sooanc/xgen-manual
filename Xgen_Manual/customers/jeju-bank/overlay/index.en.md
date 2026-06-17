@@ -22,19 +22,6 @@ Use this when you already know which menu you're after and want full detail.
 - [**Admin**](admin/) — screens used by system administrators and governance officers (Admin Center) <!-- require_view: gov-monitoring -->
 - [**Admin**](admin/) — screens used by system administrators (Admin Center) <!-- require_view: no-governance -->
 
-## Build Source
-
-This manual was authored and verified against the following environment.
-
-| Item | Value |
-|---|---|
-| Solution domain | <https://{{product.domain}}/> |
-| GitLab repository | `{{build.repository}}` |
-| Source branch | **`{{build.branch}}`** |
-| Capture environment | {{build.environment}} (`{{build.capture_url}}`) |
-
-Screenshots and UI strings (menu names, buttons, placeholders) reflect the branch and environment above. Other environments (Production / STG) may differ in some labels and policy defaults; build a separate manual for those environments when needed.
-
 ## Contact
 
 - Technical support: Xgen Solution Administrator
