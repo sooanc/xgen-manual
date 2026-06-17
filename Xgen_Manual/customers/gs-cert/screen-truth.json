@@ -2,6 +2,12 @@
   "capturedAt": "2026-06-01T00:52:30.506Z",
   "baseUrl": "https://xgen.x2bee.com",
   "views": {
+    "pathfinder": {
+      "ok": false,
+      "notFound": true,
+      "source": "manual-policy",
+      "note": "gs-cert 매뉴얼에는 패스파인더 챕터를 포함하지 않음 (고객사 요청). 12b-pathfinder.md frontmatter require_view: pathfinder 로 nav 제외."
+    },
     "main-planning": {
       "ok": false,
       "notFound": true,

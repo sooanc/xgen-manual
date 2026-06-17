@@ -13,10 +13,12 @@
 7. **거버넌스 담당자 거버넌스 승인 대기** — 거버넌스 담당자가 AI 거버넌스 → 에이전트플로우 승인 화면에서 위험·PII·정책을 검토해 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
 7. **시스템 관리자 배포 승인 통과** — 시스템 관리자가 Agent 관리 화면에서 승인하면 비로소 사용자에게 노출 → [이후 흐름](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: no-governance -->
 
+<!-- require_view_start: pathfinder -->
 ## 패스파인더로 에이전트를 빠르게 만들고 싶다
 - 시작 위치: 크롬 브라우저 확장 프로그램 **XGEN Pathfinder** (별도 설치)
-- 절차: [패스파인더](../user/12b-pathfinder.md)
-- 핵심: 현재 화면·업무 흐름을 분석해 적절한 에이전트 생성 방법을 제안하고, 추천 템플릿으로 빠르게 생성. 생성 후 상세 편집은 [에이전트 만들기](../user/12-agentflow-create.md) 참고.
+- 절차: [패스파인더 사용하기](../user/12b-pathfinder.md)
+- 핵심: XGEN 캔버스에서 AI 에이전트 워크플로우를 만드는 것을 도와주는 어시스턴트. 대화로 필요한 노드를 찾아 캔버스에 구성하고, 도구 연동·화면 조작까지 지원. 생성 후 상세 편집은 [에이전트 만들기](../user/12-agentflow-create.md) 참고.
+<!-- require_view_end -->
 
 ## 로그인 직후 내 역할에 맞는 메인 화면을 보고 싶다
 - 시작 위치: 로그인 직후 자동 진입 (또는 좌상단 **XGEN** 로고)

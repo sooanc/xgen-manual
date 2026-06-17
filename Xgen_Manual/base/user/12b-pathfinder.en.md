@@ -1,3 +1,6 @@
+---
+require_view: pathfinder
+---
 # Using Pathfinder
 
 This chapter covers how to install, connect, and use the Chrome browser extension **Pathfinder (XGEN Pathfinder)**. Pathfinder is **an assistant that helps you build AI agent workflows on the XGEN canvas**. Through conversation alone, it finds the nodes you need and assembles them on the canvas, integrates external services as tools, and even handles page actions and real-time guidance.

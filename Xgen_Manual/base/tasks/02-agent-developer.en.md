@@ -13,10 +13,12 @@
 7. **Wait for Governance Officer governance approval** — the agent becomes visible to end users only after the governance reviewer approves it on AI Governance → Agentflow Approval (risk, PII, policy) → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: gov-monitoring -->
 7. **Clear System Administrator deployment approval** — the agent becomes visible to end users once the administrator approves it on Agent Management → [What happens next](../user/13-agentflow-operations.md#dual-approval-flow) <!-- require_view: no-governance -->
 
+<!-- require_view_start: pathfinder -->
 ## I want to create an agent quickly with Pathfinder
 - Start: the **XGEN Pathfinder** Chrome browser extension (installed separately)
-- Procedure: [Pathfinder](../user/12b-pathfinder.md)
-- Key point: it analyzes your current screen and workflow to suggest an appropriate way to create an agent, then builds it quickly from a recommended template. For detailed editing afterward, see [Creating an Agent](../user/12-agentflow-create.md).
+- Procedure: [Using Pathfinder](../user/12b-pathfinder.md)
+- Key point: it is an assistant that helps you build AI agent workflows on the XGEN canvas — it finds and assembles the needed nodes through conversation, and supports tool integration and page actions. For detailed editing afterward, see [Creating an Agent](../user/12-agentflow-create.md).
+<!-- require_view_end -->
 
 ## See the main screen tailored to my role right after login
 - Start: automatic redirect right after login (or click the **XGEN** logo at the top-left)
