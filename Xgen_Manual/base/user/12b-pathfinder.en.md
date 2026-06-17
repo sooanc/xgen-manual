@@ -12,23 +12,23 @@ This chapter covers how to install, connect, and use the Chrome browser extensio
 
 Pathfinder helps you with the following.
 
-**🎨 Build workflows**
+**Build workflows**
 
 - **Create agents by chatting** — Say something like "build a Google News search agent" and Pathfinder finds the needed nodes and assembles them on the canvas.
 - **Add, connect, delete nodes** — Place and connect nodes on the canvas to complete a workflow.
 - **Set parameters** — Adjust the configuration values of each node.
 
-**🔧 Integrate tools**
+**Integrate tools**
 
 - **Connect external services** — Register features you use on a website as XGEN tools.
 - **Auto-detect APIs** — Analyze actions such as button clicks on external sites and turn them into tools.
 
-**🖱️ Operate the page**
+**Operate the page**
 
 - **Navigate menus** — Guide you to the page you want.
 - **Click buttons, enter input** — Perform UI actions on your behalf.
 
-**💡 Real-time support**
+**Real-time support**
 
 - **Context-aware suggestions** — Offer help suited to the task you are currently working on.
 - **Answer questions** — Guide you on how to use XGEN or design workflows.
