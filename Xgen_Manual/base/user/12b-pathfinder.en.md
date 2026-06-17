@@ -1,9 +1,34 @@
 # Using Pathfinder
 
-This chapter covers how to install, connect, and use the Chrome browser extension **Pathfinder (XGEN Pathfinder)**. Pathfinder analyzes the screen you are currently viewing or your workflow to suggest *which agent you should build*, and helps you create an agent quickly from a recommended template.
+This chapter covers how to install, connect, and use the Chrome browser extension **Pathfinder (XGEN Pathfinder)**. Pathfinder is **an assistant that helps you build AI agent workflows on the XGEN canvas**. Through conversation alone, it finds the nodes you need and assembles them on the canvas, integrates external services as tools, and even handles page actions and real-time guidance.
 
-!!! note "A helper tool for creating agents"
-    Pathfinder is not a menu inside the XGEN screen — it is a **browser extension** installed separately in Chrome. It works while you are logged in to XGEN and helps you start [Creating an Agent](12-agentflow-create.md) faster.
+!!! note "A helper tool for building agents"
+    Pathfinder is not a menu inside the XGEN screen — it is a **browser extension** installed separately in Chrome. It works while you are logged in to XGEN and helps you carry out [Creating an Agent](12-agentflow-create.md) faster.
+
+## What Pathfinder can do
+
+Pathfinder helps you with the following.
+
+**🎨 Build workflows**
+
+- **Create agents by chatting** — Say something like "build a Google News search agent" and Pathfinder finds the needed nodes and assembles them on the canvas.
+- **Add, connect, delete nodes** — Place and connect nodes on the canvas to complete a workflow.
+- **Set parameters** — Adjust the configuration values of each node.
+
+**🔧 Integrate tools**
+
+- **Connect external services** — Register features you use on a website as XGEN tools.
+- **Auto-detect APIs** — Analyze actions such as button clicks on external sites and turn them into tools.
+
+**🖱️ Operate the page**
+
+- **Navigate menus** — Guide you to the page you want.
+- **Click buttons, enter input** — Perform UI actions on your behalf.
+
+**💡 Real-time support**
+
+- **Context-aware suggestions** — Offer help suited to the task you are currently working on.
+- **Answer questions** — Guide you on how to use XGEN or design workflows.
 
 ## 1. Download and prepare the Pathfinder plugin
 
@@ -66,7 +91,7 @@ Signs it is working
 
 Purpose — quickly create an AI agent that automates your work.
 
-Pathfinder analyzes your current screen or workflow and suggests *an appropriate way to create an agent*. The agent built from the suggestion is composed visually on the canvas as a Flow.
+Tell Pathfinder the task you want to build through conversation, and it finds the needed nodes and assembles them into a workflow (Flow) on the canvas. The resulting agent is represented visually on the canvas as nodes and connections.
 
 Steps
 
