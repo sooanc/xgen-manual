@@ -101,7 +101,7 @@ require_view: pathfinder
 1. **"어떤 Agent를 만들까요?"** 질문에 원하는 업무를 입력합니다.
 2. 추천된 **템플릿** 을 선택한 뒤 생성을 진행합니다.
 
-아래 동영상은 패스파인더로 업무를 입력하고 추천 템플릿을 선택해 에이전트를 생성하기까지의 전체 흐름을 보여줍니다.
+아래 동영상은 패스파인더로 업무를 입력하고 API를 만들어 에이전트를 생성하기까지의 전체 흐름을 보여줍니다.
 
 <video controls muted playsinline preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
   <source src="images/pathfinder-09-usage.mp4" type="video/mp4">

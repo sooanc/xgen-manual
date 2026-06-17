@@ -101,7 +101,7 @@ Steps
 1. Answer the **"What kind of Agent would you like to build?"** prompt with the task you want.
 2. Select a recommended **template** and proceed with creation.
 
-The video below shows the full flow — entering a task in Pathfinder, selecting a recommended template, and creating the agent.
+The video below shows the full flow — entering a task in Pathfinder, creating an API, and creating the agent.
 
 <video controls muted playsinline preload="metadata" width="100%" style="max-width: 960px; border-radius: 8px;">
   <source src="images/pathfinder-09-usage.mp4" type="video/mp4">
