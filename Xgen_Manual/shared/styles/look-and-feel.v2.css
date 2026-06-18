@@ -12,11 +12,22 @@
  *   - 폰트: Pretendard Variable (XGEN 솔루션과 동일)
  */
 
-/* 웹폰트(jsDelivr CDN Pretendard) 로드 제거 — 네트워크 다운로드 지연 방지.
- * Pretendard 가 로컬에 설치돼 있으면 아래 font-family 가 그대로 사용하고,
- * 없으면 시스템 폰트(-apple-system / Segoe UI / Noto Sans KR 등) 로 폴백한다. */
+/* Pretendard Variable 폰트를 매뉴얼에 self-host(번들) — 외부 CDN 의존 없이
+ * 같은 origin 의 상대경로(fonts/)에서 제공한다. compose.mjs 가 shared/styles/ 를
+ * docs/assets/css/ 로 복사하므로 PretendardVariable.woff2 는
+ * assets/css/fonts/PretendardVariable.woff2 로 배치되어, 본 CSS 기준 'fonts/...' 로 참조된다.
+ * 웹·로컬·오프라인 어디서나 로컬 설치 여부와 무관하게 동일한 Pretendard 로 렌더링된다.
+ *
+ * 출처: orioncactus/pretendard v1.3.9 (SIL Open Font License 1.1) */
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/PretendardVariable.woff2') format('woff2-variations');
+}
 
-/* 전역 폰트 패밀리 — 로컬 Pretendard 우선, 없으면 시스템 폰트 폴백 */
+/* 전역 폰트 패밀리 — 번들된 Pretendard 우선, 없으면 시스템 폰트 폴백 */
 :root,
 body,
 .md-typeset,
