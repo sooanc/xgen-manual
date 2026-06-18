@@ -27,6 +27,11 @@
 - Start: Admin Center → Environment → Search / Embedding
 - Procedure: [Embedding / Search Settings](../admin/24-embedding-settings.md)
 
+## Inspect / edit every system environment variable from one screen (All Settings)
+- Start: Admin Center → Environment → General
+- Procedure: [All Settings](../admin/27-system-config.md)
+- Key: prefer the dedicated menus for LLM / embedding / guardrail; use All Settings for key-value precision review and edits. Always confirm the blast radius before changing.
+
 ## Monitor CPU / memory / disk health
 - Start: Admin Center → System Status → System Monitoring
 - Procedure: [System Monitor](../admin/26-system-monitor.md)

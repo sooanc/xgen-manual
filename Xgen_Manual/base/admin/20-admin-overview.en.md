@@ -85,7 +85,7 @@ The Admin sidebar has **7 groups and 16 menus** in total (some may be hidden dep
 | AI Governance | Inspection History | [AI Governance · Inspection](29-governance-dashboard.md#inspection) |
 | AI Governance | Service Change History | [AI Governance · AI Service Change History](29-governance-dashboard.md#audit-tracking) |
 | AI Governance | Control Policy Management | [AI Governance · Control Policy](29-governance-dashboard.md#control-policy), [PII Policy](25-pii-policy.md) |
-| Environment | General | [General · Environment Overview](#env-overview) |
+| Environment | General | [All Settings](27-system-config.md) |
 | Environment | LLM | [LLM Settings](23-llm-settings.md) |
 | Environment | Infrastructure | [Infrastructure · Environment Overview](#env-overview) | <!-- require_view: admin-system-infra -->
 | Environment | Search / Embedding | [Embedding Settings](24-embedding-settings.md) |

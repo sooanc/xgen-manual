@@ -85,7 +85,7 @@
 | AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#inspection) |
 | AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · AI 서비스 변경 이력](29-governance-dashboard.md#audit-tracking) |
 | AI 거버넌스 | 통제 정책 관리 | [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#control-policy), [PII 보호 정책](25-pii-policy.md) |
-| 환경 설정 | 전체 설정 | [전체설정 · 환경 설정 개요](#env-overview) |
+| 환경 설정 | 전체 설정 | [전체 설정](27-system-config.md) |
 | 환경 설정 | LLM | [LLM 설정](23-llm-settings.md) |
 | 환경 설정 | 인프라 | [인프라 · 환경 설정 개요](#env-overview) | <!-- require_view: admin-system-infra -->
 | 환경 설정 | 검색 / 임베딩 | [임베딩·벡터 검색 설정](24-embedding-settings.md) |
