@@ -29,9 +29,10 @@ theme:
     scheme: default
     primary: indigo
     accent: indigo
-  font:
-    text: Noto Sans KR
-    code: JetBrains Mono
+  # 웹폰트(Google Fonts) 로드 비활성화 — 네트워크 폰트 다운로드로 인한 로딩 지연 제거.
+  # 폰트는 look-and-feel.v2.css 의 font-family 가 로컬 설치 폰트(Pretendard/Noto Sans KR/
+  # JetBrains Mono) 를 우선 사용하고, 없으면 시스템 폰트로 폴백한다.
+  font: false
 
 plugins:
   - search:
