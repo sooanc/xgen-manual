@@ -135,6 +135,11 @@ There are two permission tiers. Toggle them through the **User Type** select in 
 
 All permission tier changes are recorded in the audit log. If you are the last remaining SuperUser, demoting yourself will leave the system with no one able to access the Admin Center — confirm at least one other SuperUser exists before demoting.
 
+!!! warning "Grant SuperUser only to a minimal number of people"
+    A SuperUser account holds the **highest-level privileges**, able to perform every administrative function including agent deployment approval. For security and operational control, grant SuperUser only to a limited number of people within the organization (**1–2 recommended**).
+
+    Operate all other users as the **Standard** type, and selectively grant only the menu and feature permissions they need for their work — a *separation-of-privilege principle* we recommend. For how to grant permissions selectively, see [Roles & Permissions](22-role-permission.md#permission-model).
+
 ## Operational Recommendations
 
 - **Unify password policy** — Apply organizational password policy when adding users. Manage minimum length, complexity, and rotation period from system settings.
