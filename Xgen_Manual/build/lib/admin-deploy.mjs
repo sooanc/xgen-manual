@@ -167,7 +167,7 @@ function render({ customers, targets, manifests, history }) {
     --danger:#8b1f24; --danger-bg:#fde2e4;
   }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: 'Noto Sans KR', system-ui, sans-serif; background:var(--bg); color:var(--fg); line-height:1.55; font-size: 14px; }
+  body { margin:0; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background:var(--bg); color:var(--fg); line-height:1.55; font-size: 14px; }
   .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
   .topbar { display:flex; align-items:center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
   .topbar a { color: var(--primary); text-decoration: none; font-size: 13px; }

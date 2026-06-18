@@ -208,7 +208,7 @@ function render(items, definedCount, builtCount, { docsPrefix, variant, gateHref
     --admin:#fde2e4; --admin-fg:#8b1f24;
   }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; }
+  body { margin:0; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; }
   .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
   header h1 { margin:0 0 6px; font-size: 28px; letter-spacing: -0.3px; }
   header p { margin: 0; color: var(--sub); font-size: 14px; }
@@ -315,7 +315,7 @@ function renderGate() {
     --error:#b91c1c;
   }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; min-height:100vh; display:flex; align-items:center; justify-content:center; padding: 24px; }
+  body { margin:0; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; min-height:100vh; display:flex; align-items:center; justify-content:center; padding: 24px; }
   .gate { max-width: 420px; width: 100%; background: white; border:1px solid var(--border); border-radius: 12px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); }
   .gate-icon { font-size: 32px; line-height: 1; margin-bottom: 12px; }
   .gate h1 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.3px; }

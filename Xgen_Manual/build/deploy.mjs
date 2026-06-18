@@ -162,7 +162,7 @@ async function packageDeploy(target, customerIds, targetName) {
   if (target.strip_root_index) {
     const placeholder = `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><title>${target.base_url ?? '솔루션 가이드'}</title>
-<style>body{font-family:'Noto Sans KR',sans-serif;margin:0;display:flex;height:100vh;align-items:center;justify-content:center;color:#444;background:#f7f8fa;}div{text-align:center;padding:32px;}</style>
+<style>body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;margin:0;display:flex;height:100vh;align-items:center;justify-content:center;color:#444;background:#f7f8fa;}div{text-align:center;padding:32px;}</style>
 </head><body><div>
 <h1>솔루션 가이드</h1>
 <p>접근하시려는 매뉴얼 페이지의 직접 링크를 사용해 주세요.<br>또는 사내 포털에서 다시 접속하시기 바랍니다.</p>
