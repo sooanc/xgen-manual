@@ -80,7 +80,7 @@ A quick check of the following can avoid delays caused by simple environmental i
 
 - Hard-refresh the browser cache (Windows: `Ctrl + Shift + R`, macOS: `Cmd + Shift + R`)
 - Confirm the same symptom in a different browser or an incognito window
-- Confirm your network / corporate security stack does not block the `{{product.domain}}` domain
+- Confirm your network / corporate security stack does not block the solution domain
 - Search the FAQ page for the same symptom
 
 ## Inquiries

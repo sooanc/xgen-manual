@@ -4,7 +4,7 @@ This chapter covers logging into the {{product.name}} solution and resolving com
 
 ## Standard Login
 
-1. Open {{product.domain}} in a browser
+1. In a web browser, navigate to the address provided by your organization
 2. The login screen appears automatically
 3. Enter your organization email and password
 4. Click **Log In**
@@ -15,7 +15,7 @@ This chapter covers logging into the {{product.name}} solution and resolving com
 
 When the organization uses internal SSO, login is automatic without a separate login screen.
 
-- Once logged into the corporate intranet, navigating to {{product.domain}} takes you directly to the solution
+- Once logged into the corporate intranet, navigating to the address provided by your organization takes you directly to the solution
 - If SSO is not working, see the [Troubleshooting](#troubleshooting) section below
 
 (Detailed SSO configuration varies by customer environment; this standard manual covers the common case.)

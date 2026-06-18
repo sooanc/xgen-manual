@@ -1,7 +1,7 @@
 # {{product.name}} Solution Manual
 
-**Customer:** {{customer.name}}
-**Product Version:** {{product.version}}
+{% if customer.id != 'xgen-standard' %}**Customer:** {{customer.name}}
+{% endif %}**Product Version:** {{product.version}}
 
 This manual is the user and administrator guide for the {{product.name}} solution. You can navigate it in two ways.
 

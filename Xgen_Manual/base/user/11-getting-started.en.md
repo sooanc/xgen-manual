@@ -6,12 +6,7 @@ This chapter covers what end users and Agent developers need to know upon first 
 
 Agent Workspace is the default work area you land in immediately after login. At the top-left, the **Agent Workspace** button — one of the two mode-switch buttons (**Agent Workspace** / **Admin Center**) — is shown active.
 
-1. In a web browser, navigate to the address provided by your organization:
-
-    ```
-    https://{{product.domain}}
-    ```
-
+1. In a web browser, navigate to the address provided by your organization
 2. Log in with your organization email and password — see [Login](10-login.md) for procedure details
 3. After login you land on the [Dashboard](18-dashboard.md) automatically; the top-left **Agent Workspace** mode is selected
 

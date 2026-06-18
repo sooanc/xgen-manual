@@ -1,6 +1,6 @@
 # User Manual
 
-A guide for {{customer.name}} staff using the {{product.name}} solution in their daily work.
+A guide for using the {{product.name}} solution at work.
 
 ## Learning Path
 

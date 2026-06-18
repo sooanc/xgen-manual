@@ -1,7 +1,7 @@
 # 솔루션 가이드
 
-**고객사:** {{customer.name}}
-**제품 버전:** {{product.version}}
+{% if customer.id != 'xgen-standard' %}**고객사:** {{customer.name}}
+{% endif %}**제품 버전:** {{product.version}}
 
 본 매뉴얼은 {{product.name}} 솔루션의 사용자 및 관리자 운영 가이드입니다. 두 가지 방식으로 활용하실 수 있습니다.
 

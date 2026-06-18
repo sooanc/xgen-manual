@@ -58,4 +58,4 @@ Flexible integration with external systems and AI models.
 |---|---|
 | Browser | Latest Chrome or Edge |
 | Resolution | 1920 × 1080 or higher |
-| Network | HTTPS access to the solution domain ({{product.domain}}) |
+| Network | HTTPS access to the solution domain |
