@@ -40,9 +40,9 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 ### Agent (`agents`)
 | Node | ID | Description |
 |---|---|---|
-| Agent Planflow | `agents/planflow` | Deterministic Plan-and-Execute agent. Intent parsing → graph-based plan → sequential execution → natural-language response |
+| Agent Planflow | `agents/planflow` | Deterministic Plan-and-Execute agent. Intent parsing → graph-based plan → sequential execution → natural-language response | <!-- require_view: gs-cert-node-exclude -->
 | Agent Xgen | `agents/xgen` | The core AI brain of a workflow. Auto tool selection. OpenAI, Anthropic, Google, AWS models |
-| Agent Harness | `agents/harness` | Run a saved Harness workflow as a single agent step (system_prompt, tools, strategies, RAG, DB, MCP) |
+| Agent Harness | `agents/harness` | Run a saved Harness workflow as a single agent step (system_prompt, tools, strategies, RAG, DB, MCP) | <!-- require_view: gs-cert-node-exclude -->
 
 ### API Loader (`api_loader`)
 | Node | ID | Description |
@@ -64,7 +64,8 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 ### File System (`file_system`)
 | Node | ID | Description |
 |---|---|---|
-| My File Storage (Skill) | `file_system/filesystem_storage_skill` | Grant file-system access as a Skill (SKILL). Bundles 37 `fs_*` operations behind a single tool, cutting per-call tool-description overhead. Browse, read, create, modify files |
+| My File Storage (Skill) | `file_system/filesystem_storage_skill` | Grant file-system access as a Skill (SKILL). Bundles 37 `fs_*` operations behind a single tool, cutting per-call tool-description overhead. Browse, read, create, modify files | <!-- require_view: gs-cert-node-exclude -->
+| Grant My File Read/Edit Access | `file_system/filesystem_storage_skill` | Grant file-system access as a Skill (SKILL). Bundles 37 `fs_*` operations behind a single tool, cutting per-call tool-description overhead. Browse, read, create, modify files | <!-- require_view: gs-cert-node-only -->
 <!-- require_view_start: node-standard-only -->
 | Document Adapter | `file_system/document_adapter` | Edit form documents (DOCX/PPTX/HWPX). 9 tools (inspect_document / get_cell / get_shapes / render_template …) |
 <!-- require_view_end -->
@@ -85,21 +86,21 @@ The root category **XGen** contains 10 function groups, each composed of the nod
 | Node | ID | Description |
 |---|---|---|
 | Certificate PDF Tool | `tools/Certificate PDF Tool` | Auto-generate certificate PDFs from provided data — certificates, awards, completion forms |
-| FloUI v1 (Skill) | `tools/floui_v1_skill` | FloUI v1 skill node. Bundles the xgen-frontend API catalog (workflow·chat·retrieval·storage·tools·prompt·aichat) plus extended A2UI components into a single SKILL |
-| Show Value | `tools/show_any` | A pass-through node that displays the value flowing through it on the canvas card. Quickly inspect intermediate values without a separate end node |
-| Tool Output Formatter | `tools/output_formatter` | Post-processing node that reshapes a tool's response before it reaches the agent. Connect to a Tool node's *Output Formatter* input port |
-| Workspace Dev (chat→preview) | `tools/workspace_dev` | Give the agent a persistent dev workspace — write files, run commands, expose a dev-server preview URL. Connect to the Agent's tools input |
+| FloUI v1 (Skill) | `tools/floui_v1_skill` | FloUI v1 skill node. Bundles the xgen-frontend API catalog (workflow·chat·retrieval·storage·tools·prompt·aichat) plus extended A2UI components into a single SKILL | <!-- require_view: gs-cert-node-exclude -->
+| Show Value | `tools/show_any` | A pass-through node that displays the value flowing through it on the canvas card. Quickly inspect intermediate values without a separate end node | <!-- require_view: gs-cert-node-exclude -->
+| Tool Output Formatter | `tools/output_formatter` | Post-processing node that reshapes a tool's response before it reaches the agent. Connect to a Tool node's *Output Formatter* input port | <!-- require_view: gs-cert-node-exclude -->
+| Workspace Dev (chat→preview) | `tools/workspace_dev` | Give the agent a persistent dev workspace — write files, run commands, expose a dev-server preview URL. Connect to the Agent's tools input | <!-- require_view: gs-cert-node-exclude -->
 | Hierarchy Tools | `tools/hierarchy_tools` | Manager-worker Agent hierarchy. Manager delegates subtasks to specialist workers + combines results |
 | Image Loader | `image_loader` | Load images (URL or upload) into Agent images input for visual analysis |
 | Input Files | `input_files` | Receive user file uploads. Workflow starting point for processing documents, spreadsheets, images |
 | Input Template | `input_template` | Dynamic prompts using `{{variable}}` placeholders. Reusable prompt patterns |
 | Local CLI Tool | `tools/local_cli_tool` | Run pre-approved CLI commands on the local machine (Tauri desktop only). Git, Node.js, Python safe execution |
 | Agent Planner | `tools/agent_planner` | Step-by-step work plan generation. Decompose complex tasks → connect plan output to Agent plan input |
-| Sandbox Code Executor | `tools/sandbox_exec` | Run code in an isolated throwaway KVM VM. Calculation, data transformation, logic validation |
+| Sandbox Code Executor | `tools/sandbox_exec` | Run code in an isolated throwaway KVM VM. Calculation, data transformation, logic validation | <!-- require_view: gs-cert-node-exclude -->
 | Schema Provider (Input) | `input_schema_provider` | Define input JSON schema for the AI. Connect to nodes that need structured input |
 | Schema Provider (Output) | `output_schema_provider` | Define output JSON schema. AI structures responses accordingly for consistent, parseable answers |
 | Value Processor | `tools/value_processor` | Extract/transform values from structured input (JSON, XML, YAML, CSV, text, regex) |
-| Workbench Prompt | `tools/workbench_prompt` | Pull centrally-managed, versioned prompts from Workbench Prompt Studio (dev/stg/prd stages) |
+| Workbench Prompt | `tools/workbench_prompt` | Pull centrally-managed, versioned prompts from Workbench Prompt Studio (dev/stg/prd stages) | <!-- require_view: gs-cert-node-exclude -->
 | Workflow Tool | `tools/workflow_tool` | Use another saved workflow as a tool. Agent can call sub-workflows — modular workflow design |
 
 ### Start Node (`startnode`)
@@ -335,6 +336,7 @@ Calls another saved workflow as a tool from within the current workflow. The age
 
 Nodes in the **Agent (`agents`)** category act as the core AI brain of a workflow. Connect tools, documents, memory, and the like, and the agent uses them to answer user questions. The notation matches [Start / End Node Detailed Spec](#node-io-spec).
 
+<!-- require_view_start: gs-cert-node-exclude -->
 ### Agent Planflow (`agents/planflow`)
 
 A deterministic Plan-and-Execute agent for a single API collection. The AI parses intent, builds a plan on a graph, then executes it in order (no per-step LLM). Faster and easier to audit than a ReAct agent in API orchestration.
@@ -353,6 +355,7 @@ A deterministic Plan-and-Execute agent for a single API collection. The AI parse
 | Parameter | Top K | INT | Optional | Stage 1 catalog size — the number of candidate tools to search. |
 | Parameter | Auth Token Override | STR | Optional | Override the Bearer token. Leave blank to use the collection's AuthProfile. |
 | Parameter | API Base URL Override | STR | Optional | Override the collection's `base_url` (optional). |
+<!-- require_view_end -->
 
 ### Agent Xgen (`agents/xgen`)
 
@@ -392,6 +395,7 @@ The core AI brain node of a workflow. Connect various tools — DB queries, docu
 | Parameter | Show result immediately (multi-agent) | BOOL | Optional | Whether to display this agent's response on screen when multiple agents are connected. `false` → process internally and pass to the next agent. |
 | Parameter | Answer separately | BOOL | Optional | Whether to display each agent's response in a separate area when multiple agents are connected. |
 
+<!-- require_view_start: gs-cert-node-exclude -->
 ### Agent Harness (`agents/harness`)
 
 Runs a saved Harness workflow as a single agent step. Uses all of the selected workflow's stage settings (system_prompt, selected tools, strategy, RAG/DB/MCP connections, etc.) as-is. The node acts as an input wrapper (one MCP).
@@ -401,6 +405,7 @@ Runs a saved Harness workflow as a single agent step. Uses all of the selected w
 | Input | Text | STR | Required | The text input to pass to the Harness workflow. |
 | Output | Response | STR | — | Emits the Harness workflow's execution result as a string. |
 | Parameter | Harness workflow | STR | Required | Select the workflow to run from the saved Harness workflow list. The workflow's saved stage settings apply as-is. |
+<!-- require_view_end -->
 
 ## API Loader Node Detailed Spec { #api-loader-node-spec }
 
@@ -481,7 +486,12 @@ A graph-based ontology-search node using SPARQL and SCS context. Queries a pre-b
 
 Nodes in the **File System (`file_system`)** category grant the AI file-storage access and document-editing abilities.
 
+<!-- require_view_start: gs-cert-node-exclude -->
 ### My File Storage (Skill) (`file_system/filesystem_storage_skill`)
+<!-- require_view_end -->
+<!-- require_view_start: gs-cert-node-only -->
+### Grant My File Read/Edit Access (`file_system/filesystem_storage_skill`)
+<!-- require_view_end -->
 
 Grants the AI file-system access as a **Skill (SKILL)**. Bundles 37 `fs_*` operations (browse, read, create, modify, etc.) behind a single tool, greatly reducing per-call tool-description overhead versus TOOL mode. On first use the agent fetches the catalog once via `action='help'`.
 
@@ -783,6 +793,7 @@ Runs a fixed SQL query against a pre-configured database connection and returns 
 | Parameter | SQL Query | STR | Required | Enter the SQL query to run. Only `SELECT` / `WITH` queries are allowed. |
 | Parameter | Max Rows | INT | Optional | The maximum number of rows to return. `0` means no limit. |
 
+<!-- require_view_start: gs-cert-node-exclude -->
 ## Node Management Screen (Admin) { #node-management-screen }
 
 A system administrator can browse and search the same node catalog from the **Admin Center → Agent Operations → Node Management** screen (view ID `admin-node-management`). The page header reads "Node Management — Manage and explore agentflow nodes."
@@ -812,6 +823,7 @@ Typing in the top search box returns partial-match results instantly:
 - **Function** — e.g., `search`, `invoke`
 - **Node name** — e.g., `Document Loader`
 - **Tag** — labels attached to nodes
+<!-- require_view_end -->
 
 ## Operational Recommendations
 

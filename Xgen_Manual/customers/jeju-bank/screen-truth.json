@@ -2,6 +2,11 @@
   "capturedAt": "2026-05-29T08:00:20.786Z",
   "baseUrl": "https://jeju-xgen.x2bee.com",
   "views": {
+    "gs-cert-node-only": {
+      "ok": false,
+      "source": "gs-cert-guard",
+      "note": "GS인증 전용 노드목록 본문(리네임 노드명 + 관리자쪽 이동된 '노드 관리 화면' 절)을 jeju 매뉴얼에서 노출 차단. gs-cert 만 ok:true."
+    },
     "auth-profile": {
       "ok": false,
       "lastSize": 40787,

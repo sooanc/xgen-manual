@@ -1,3 +1,6 @@
+---
+require_view: admin-users
+---
 # User Management
 
 This chapter covers procedures for **approving, modifying, and deactivating** system user accounts. **New users are added through the user-side self-signup flow → Pending-Approval queue → SuperUser approval.** *The "+ Add User" button (admin directly creating an account) is not exposed on the current solution build.*

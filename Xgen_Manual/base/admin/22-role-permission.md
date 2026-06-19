@@ -1,3 +1,6 @@
+---
+require_view: admin-role-management
+---
 # 역할/권한 관리
 
 본 챕터에서는 솔루션에서 사용하는 **역할(Role)** 및 **권한(Permission)** 의 정의와 사용자 할당 절차를 설명합니다.

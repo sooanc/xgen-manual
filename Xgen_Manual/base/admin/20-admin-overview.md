@@ -11,7 +11,7 @@
 3. **Admin Control Center** 안내 화면으로 진입 — 관리 영역의 책임 분담·주요 메뉴·운영 가이드를 3단계(STEP 1~3)로 안내
 
 ![관리 설정 진입 — Admin Control Center 화면. STEP 1 관리 영역 이해(거버넌스 담당자 / 시스템 관리자 책임 분담), STEP 2 주요 메뉴 선택(사용자/접근제어·Agent 운영·AI 거버넌스 등 9개 카드), 좌측에는 11개 관리 섹션 사이드바](images/admin-entry.png) <!-- require_view: admin-step2-9-areas -->
-![관리 설정 진입 — Admin Control Center 화면. STEP 1 관리 영역 이해(시스템 관리자 책임 범위), STEP 2 주요 메뉴 선택(사용자/접근제어·Agent 운영·환경 설정·시스템 상태·데이터 관리·지식 운영 6개 카드), 좌측에는 6개 관리 섹션 사이드바](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
+![관리 설정 진입 — Admin Control Center 화면. STEP 1 관리 영역 이해(시스템 관리자 책임 범위), STEP 2 주요 메뉴 선택(Agent 운영·환경 설정·시스템 상태·데이터 관리·지식 운영 5개 카드), 좌측에는 5개 관리 섹션 사이드바](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
 
 진입 후 우측 본문은 다음 3단계로 구성됩니다.
 
@@ -20,7 +20,7 @@
 | STEP 1 — 관리 영역 이해 | "거버넌스 담당자" / "시스템 관리자" 두 역할의 책임 범위 안내. AI 거버넌스 영역은 별도 권한 체계로 제공되며 시스템 관리 권한과 분리됨을 명시 | <!-- require_view: gov-monitoring -->
 | STEP 1 — 관리 영역 이해 | "시스템 관리자" 역할의 책임 범위 안내 | <!-- require_view: no-governance -->
 | STEP 2 — 주요 메뉴 선택 | 사이드바 9개 관리 영역(사용자 / 접근제어, Agent 운영, AI 거버넌스, 환경 설정, 시스템 상태, 데이터 관리, MCP 관리, 서비스 운영, 지식 운영)을 카드로 노출. 각 카드 클릭으로 해당 영역의 기본 화면으로 이동 | <!-- require_view: admin-step2-9-areas -->
-| STEP 2 — 주요 메뉴 선택 | 사이드바 6개 관리 영역(사용자 / 접근제어, Agent 운영, 환경 설정, 시스템 상태, 데이터 관리, 지식 운영)을 카드로 노출. 각 카드 클릭으로 해당 영역의 기본 화면으로 이동 | <!-- require_view: admin-step2-6-areas -->
+| STEP 2 — 주요 메뉴 선택 | 사이드바 5개 관리 영역(Agent 운영, 환경 설정, 시스템 상태, 데이터 관리, 지식 운영)을 카드로 노출. 각 카드 클릭으로 해당 영역의 기본 화면으로 이동 | <!-- require_view: admin-step2-6-areas -->
 | STEP 3 — 운영 가이드 | 첫 사용 시 점검, 일상 운영 절차, 시스템 보안 점검, AI 거버넌스 정책 운영 등 자주 참조하는 운영 가이드 링크 | <!-- require_view: gov-monitoring -->
 | STEP 3 — 운영 가이드 | 첫 사용 시 점검, 일상 운영 절차, 시스템 보안 점검 등 자주 참조하는 운영 가이드 링크 | <!-- require_view: no-governance -->
 
@@ -64,14 +64,14 @@
 관리 설정 사이드바는 **9개 그룹·36개 메뉴**로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음). 메뉴 라벨은 솔루션 라이브 화면 기준입니다. 각 메뉴별로 본 매뉴얼이 다루는 챕터를 아래와 같이 매핑합니다.
 <!-- require_view_end -->
 <!-- require_view_start: admin-7-groups -->
-관리 설정 사이드바는 **7개 그룹·16개 메뉴**로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음). 메뉴 라벨은 솔루션 라이브 화면 기준입니다. 각 메뉴별로 본 매뉴얼이 다루는 챕터를 아래와 같이 매핑합니다.
+관리 설정 사이드바는 **6개 그룹·14개 메뉴**로 구성됩니다 (사용자 권한에 따라 일부는 표시되지 않을 수 있음). 메뉴 라벨은 솔루션 라이브 화면 기준입니다. 각 메뉴별로 본 매뉴얼이 다루는 챕터를 아래와 같이 매핑합니다.
 <!-- require_view_end -->
 
 | 그룹 | 메뉴 | 본 매뉴얼 챕터 |
 |---|---|---|
-| 사용자 / 접근제어 | 사용자 관리 | [사용자 관리 · 사용자 목록·승인](21-user-management.md#user-list) |
-| 사용자 / 접근제어 | 역할/권한 관리 | [역할/권한 관리 · 권한 모델 / 역할 정의](22-role-permission.md#permission-model) |
-| 사용자 / 접근제어 | 로그인 관리 | [로그인 관리](22b-login-management.md) |
+| 사용자 / 접근제어 | 사용자 관리 | [사용자 관리 · 사용자 목록·승인](21-user-management.md#user-list) | <!-- require_view: admin-users -->
+| 사용자 / 접근제어 | 역할/권한 관리 | [역할/권한 관리 · 권한 모델 / 역할 정의](22-role-permission.md#permission-model) | <!-- require_view: admin-role-management -->
+| 사용자 / 접근제어 | 로그인 관리 | [로그인 관리](22b-login-management.md) | <!-- require_view: admin-active-sessions -->
 | Agent 운영 | Agent 관리 | [Agent 운영 · Agent 관리(배포 승인)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent 운영 | 채팅 모니터링 | [Agent 운영 · 채팅 모니터링](32-agent-operations.md#chat-monitoring) |
 | Agent 운영 | 사용자 토큰 | [Agent 운영 · 사용자 토큰](32-agent-operations.md) | <!-- require_view: admin-user-token-dashboard -->
@@ -129,8 +129,8 @@
 
 *전체 설정*(`admin?view=admin-system-config`) 은 솔루션이 사용하는 **모든 환경 변수** 를 한 페이지에서 다루는 화면입니다. 페이지 머리글은 *"전체 설정 — 모든 시스템 구성 값을 확인하고 편집합니다."* 이며, 본문은 세 영역으로 구성됩니다.
 
-1. **상단 stat 카드 3개** — 전체 설정 개수 / 현재 *설정됨* (기본값과 다른) 개수 / 기본값 그대로인 개수. 예: *전체 184 / 설정됨 57 / 기본값 127* (수치는 환경별로 다름).
-2. **카테고리 탭** — 좌→우로 *전체 / 노드 / 워크플로우 / 애플리케이션 / 벡터 DB / OpenAI / Gemini / Anthropic / …* 등 영역별 탭과 각 카테고리의 설정 개수가 함께 표시됩니다. 카테고리는 환경에 따라 추가될 수 있으며 가로 스크롤로 모두 노출됩니다.
+1. **상단 stat 카드 3개** — 전체 설정 개수 / 현재 *설정됨* (기본값과 다른) 개수 / 기본값 그대로인 개수. 예: *전체 191 / 설정됨 67 / 기본값 124* (수치는 환경별로 다름).
+2. **카테고리 탭** — 좌→우로 *전체 / 노드 / 워크플로우 / 애플리케이션 / 벡터 DB / OpenAI / Gemini / Anthropic / AWS / 비전·언어* 등 영역별 탭과 각 카테고리의 설정 개수(탭 라벨 옆 숫자)가 함께 표시됩니다. 카테고리는 환경에 따라 추가될 수 있으며 가로 스크롤로 모두 노출됩니다.
 3. **설정 항목 카드** — 카테고리 안에서 키-값 단위 카드가 나열됩니다. 각 카드는 다음을 보여줍니다.
     - **키(KEY) + 경로** — 대문자 키(`IS_AVAILABLE_TTS`) 와 점 표기 경로(`tts.is_available_tts`)
     - **현재 값** / **기본값** — 현재 적용 값과 출고 기본값을 함께 표시. 두 값이 같으면 *기본값* 배지, 다르면 *설정됨* 배지가 카드 우상단에 노출됩니다.

@@ -209,6 +209,11 @@
       "ok": false,
       "source": "root-default",
       "note": "GS인증 전용 'Agent 개발 기획서 빠진 본문' (배포 흐름의 기획서 선택 안내 등). 기본 환경에선 admin-agent-dev-plan 미정의→노출이라 기획서 포함 표현이 보이고 본 view 는 ok:false. gs-cert 만 ok:true 오버라이드."
+    },
+    "gs-cert-node-only": {
+      "ok": false,
+      "source": "root-default",
+      "note": "GS인증 전용 노드목록 본문(리네임 '내 파일 조회 수정 권한부여' 행/헤딩 + 관리자쪽 이동된 '노드 관리 화면' 절)을 GS 외 환경에서 노출 차단. gs-cert 만 ok:true 오버라이드."
     }
   },
   "_note": "Auto-generated cache. scripts/capture-manual-{user,admin}.mjs 가 stg 캡처 결과(view ok/notFound/lastSize)를 머지 기록. compose.mjs 가 본 파일을 읽어 .md frontmatter 의 require_view 와 매칭해 미존재 챕터를 nav 에서 제외함. 파일이 비거나 손상되면 어떤 챕터도 제외하지 않는 안전 디폴트로 동작."

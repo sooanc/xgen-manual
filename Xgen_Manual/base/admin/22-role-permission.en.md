@@ -1,3 +1,6 @@
+---
+require_view: admin-role-management
+---
 # Role / Permission Management
 
 This chapter covers procedures for defining and assigning **roles** and **permissions**.

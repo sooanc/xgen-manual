@@ -218,6 +218,38 @@ Register and rank candidate new agents the organization wants to build. Collects
 
 <!-- require_view_end -->
 
+<!-- require_view_start: gs-cert-node-only -->
+## Node Management { #node-management-screen }
+
+A system administrator can browse and search the catalog of nodes available in agentflows from the **Admin Center → Agent Operations → Node Management** screen (view ID `admin-node-management`). The page header reads "Node Management — Manage and explore agentflow nodes." For the full node list and I/O specs, see the [Agent Node List](../user/12a-node-list.md) chapter.
+
+| Area | Content |
+|---|---|
+| Top controls | **Table** / **Tree** view toggle; search box (partial match against category, function, node name, and tag) |
+| Body | Node catalog rendered as a table or a tree depending on the selected view |
+
+### Browse with the Tree View
+
+1. Switch the top toggle to **Tree**
+2. Expand a category in the tree on the left
+3. Click an item — the right panel shows node details (I/O spec, tags, description)
+
+### Browse with the Table View
+
+1. Switch the top toggle to **Table**
+2. Sort and filter columns to compare nodes side-by-side
+3. Click a row — the right panel shows the same detail view
+
+### Search
+
+Typing in the top search box returns partial-match results instantly:
+
+- **Category** — e.g., `Agent`, `Tool`
+- **Function** — e.g., `search`, `invoke`
+- **Node name** — e.g., `Document Loader`
+- **Tag** — labels attached to nodes
+<!-- require_view_end -->
+
 ## Operational Recommendations
 
 <!-- require_view_start: gov-monitoring -->

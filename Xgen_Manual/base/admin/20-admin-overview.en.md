@@ -11,7 +11,7 @@ The admin console is not reached via a direct URL. Click the **Admin Center** bu
 3. You land on the **Admin Control Center** overview, which presents the responsibilities, primary menus, and operations guide in three steps (STEP 1–3)
 
 ![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (Governance Officer / System Administrator split), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, AI Governance, etc. — 9 cards), with the 11-section admin sidebar on the left](images/admin-entry.png) <!-- require_view: admin-step2-9-areas -->
-![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (System Administrator responsibility scope), STEP 2 Pick a Main Menu (Users/Access Control, Agent Operations, Environment, System Status, Data Management, Knowledge Operations — 6 cards), with the 6-section admin sidebar on the left](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
+![Admin Center entry — the Admin Control Center screen. STEP 1 Understanding Admin Areas (System Administrator responsibility scope), STEP 2 Pick a Main Menu (Agent Operations, Environment, System Status, Data Management, Knowledge Operations — 5 cards), with the 5-section admin sidebar on the left](images/admin-entry.png) <!-- require_view: admin-step2-6-areas -->
 
 The main column is organized into three steps:
 
@@ -20,7 +20,7 @@ The main column is organized into three steps:
 | STEP 1 — Understanding Admin Areas | Explains the split between "Governance Officer" and "System Administrator" responsibilities. AI Governance is governed by a separate permission system and is intentionally decoupled from general system administration. | <!-- require_view: gov-monitoring -->
 | STEP 1 — Understanding Admin Areas | Explains the "System Administrator" responsibility scope. | <!-- require_view: no-governance -->
 | STEP 2 — Pick a Main Menu | Exposes the 9 admin areas (Users / Access Control, Agent Operations, AI Governance, Environment, System Status, Data Management, MCP Management, Service Operations, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-9-areas -->
-| STEP 2 — Pick a Main Menu | Exposes the 6 admin areas (Users / Access Control, Agent Operations, Environment, System Status, Data Management, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-6-areas -->
+| STEP 2 — Pick a Main Menu | Exposes the 5 admin areas (Agent Operations, Environment, System Status, Data Management, Knowledge Operations) as cards. Clicking a card opens that area's default screen. | <!-- require_view: admin-step2-6-areas -->
 | STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, system-security review, and AI governance policy operation. | <!-- require_view: gov-monitoring -->
 | STEP 3 — Operations Guide | Quick links to the operations recipes: first-time checklist, daily operations, and system-security review. | <!-- require_view: no-governance -->
 
@@ -64,14 +64,14 @@ New users are created as **Standard User** by default. Granting SuperUser privil
 The Admin sidebar has **9 groups and 36 menus** in total (some may be hidden depending on permissions). Menu labels match the live solution screen. The mapping from each menu to its manual chapter is below.
 <!-- require_view_end -->
 <!-- require_view_start: admin-7-groups -->
-The Admin sidebar has **7 groups and 16 menus** in total (some may be hidden depending on permissions). Menu labels match the live solution screen. The mapping from each menu to its manual chapter is below.
+The Admin sidebar has **6 groups and 14 menus** in total (some may be hidden depending on permissions). Menu labels match the live solution screen. The mapping from each menu to its manual chapter is below.
 <!-- require_view_end -->
 
 | Group | Menu | Manual Chapter |
 |---|---|---|
-| Users / Access Control | User Management | [User Management · User List & Approval](21-user-management.md#user-list) |
-| Users / Access Control | Role / Permission | [Role / Permission · Permission Model / Roles](22-role-permission.md#permission-model) |
-| Users / Access Control | Login Management | [Login Management](22b-login-management.md) |
+| Users / Access Control | User Management | [User Management · User List & Approval](21-user-management.md#user-list) | <!-- require_view: admin-users -->
+| Users / Access Control | Role / Permission | [Role / Permission · Permission Model / Roles](22-role-permission.md#permission-model) | <!-- require_view: admin-role-management -->
+| Users / Access Control | Login Management | [Login Management](22b-login-management.md) | <!-- require_view: admin-active-sessions -->
 | Agent Operations | Agent Management | [Agent Operations · Agent Management (Deployment Approval)](32-agent-operations.md#agent-mgmt-deploy-approval) |
 | Agent Operations | Chat Monitoring | [Agent Operations · Chat Monitoring](32-agent-operations.md#chat-monitoring) |
 | Agent Operations | User Tokens | [Agent Operations · User Tokens](32-agent-operations.md) | <!-- require_view: admin-user-token-dashboard -->
@@ -129,8 +129,8 @@ Dedicated chapters are planned as follow-up work; until then, use the entry path
 
 The *General* screen (`admin?view=admin-system-config`) exposes **every environment variable** the solution uses on a single page. The page header reads *"General — Inspect and edit every system configuration value."* The body has three areas:
 
-1. **Three top stat cards** — total settings / *configured* (different from default) / still on default. Example: *Total 184 / Configured 57 / Default 127* (numbers vary by environment).
-2. **Category tabs** — left to right *All / Node / Workflow / Application / Vector DB / OpenAI / Gemini / Anthropic / …* each showing its count. Categories may grow with the environment; the tab strip is horizontally scrollable.
+1. **Three top stat cards** — total settings / *configured* (different from default) / still on default. Example: *Total 191 / Configured 67 / Default 124* (numbers vary by environment).
+2. **Category tabs** — left to right *All / Node / Workflow / Application / Vector DB / OpenAI / Gemini / Anthropic / AWS / Vision·Language* each showing its count (the number next to the tab label). Categories may grow with the environment; the tab strip is horizontally scrollable.
 3. **Setting cards** — within each category, keys are listed as cards. Each card shows:
     - **Key + dotted path** — e.g., `IS_AVAILABLE_TTS` with `tts.is_available_tts`
     - **Current value** / **Default** side by side. Cards carry a *Default* badge when the two match, or a *Configured* badge when they differ.
