@@ -38,7 +38,7 @@ The category tabs may vary by environment, but they generally cover the followin
 | Document processing | Extracting text from images inside uploaded documents | — |
 | Audio (STT / TTS) | Speech-to-text and text-to-speech | — |
 | Application | Operating policies: deployment approval, sharing, sessions, security | (see [Application](#application) below) |
-| Approval integration | Integration with an external e-approval system | — |
+| Approval integration | Integration with an external e-approval system | — | <!-- require_view: gs-cert-config-exclude -->
 | Knowledge retention (TTL) | Automatic expiry period for knowledge | — |
 | Notification | Slack, email, and system alerts | — |
 | GPU infrastructure | On-demand GPU rental and model serving | — |
@@ -134,9 +134,9 @@ This area sets operating policies — deployment approval, sharing, sessions, se
 |---|---|
 | `DEPLOYMENT_MODE` | Approval procedure for external agent deployment: *immediate / admin one-step / admin + governance two-step*. The two-step flow is covered in [Agent Operations](32-agent-operations.md#agent-mgmt-deploy-approval) and [AI Governance](29-governance-dashboard.md#agent-approval). |
 | `REQUIRE_RE_DEPLOY_ACCEPT` | Whether editing/saving a workflow invalidates the existing deployment approval and requires re-approval. |
-| `SHARE_POLICY` | How sharing relates to deployment: *independent*, or *sharing takes effect only once deployed*. |
-| `SHARE_PERMISSION_MODE` | Scope of share permissions: *read/run only*, or *read-write allowed per role*. |
-| `SHARE_ON_UNDEPLOY` | How existing shares are handled when deployment is removed: *suspend / revoke / retain*. |
+| `SHARE_POLICY` | How sharing relates to deployment: *independent*, or *sharing takes effect only once deployed*. | <!-- require_view: gs-cert-config-exclude -->
+| `SHARE_PERMISSION_MODE` | Scope of share permissions: *read/run only*, or *read-write allowed per role*. | <!-- require_view: gs-cert-config-exclude -->
+| `SHARE_ON_UNDEPLOY` | How existing shares are handled when deployment is removed: *suspend / revoke / retain*. | <!-- require_view: gs-cert-config-exclude -->
 | `AGENT_DEV_PLAN_REQUIRED` | Whether selecting an Agent development plan is mandatory at deployment (request) time. |
 | `ADMIN_IP_ACL` | IP whitelist allowed for super-admin login and requests. No IP check is performed when empty. |
 | `ACCESS_TOKEN_EXPIRE_MIN` | Maximum session lifetime (minutes) after which the session auto-expires. |
@@ -144,8 +144,9 @@ This area sets operating policies — deployment approval, sharing, sessions, se
 | `REFRESH_TOKEN_EXPIRE_DAYS` | Period (days) during which auto re-login is possible; once expired, the user must log in again. |
 | `WORKFLOW_MAX_WORKERS` | Cap on concurrent workflow executions. |
 | `SIDEBAR_CONFIG` | Sidebar menu composition (JSON), usually managed via *Environment → Sidebar*. |
-| `PATHFINDER_DOWNLOAD_URL` | Download link opened from the Pathfinder banner on the Agent design start screen. |
+| `PATHFINDER_DOWNLOAD_URL` | Download link opened from the Pathfinder banner on the Agent design start screen. | <!-- require_view: gs-cert-config-exclude -->
 
+<!-- require_view_start: gs-cert-config-exclude -->
 ## Approval Integration
 
 Settings to integrate agent deployment approval with an external e-approval system.
@@ -158,6 +159,7 @@ Settings to integrate agent deployment approval with an external e-approval syst
 | `APPROVAL_CALLBACK_BASE_URL` | Base URL that receives approval results. |
 | `APPROVAL_ADMIN_APPROVERS` | Candidate email list for first-step approvers (platform admins). |
 | `APPROVAL_GOVERNANCE_APPROVERS` | Candidate email list for second-step approvers (governance), used in two-step mode. |
+<!-- require_view_end -->
 
 ## Knowledge Retention (TTL)
 
@@ -178,7 +180,7 @@ Settings to notify external channels of system events and alerts.
 | `NOTIFICATION_ENABLED` | Master switch for sending notifications. |
 | `SLACK_WEBHOOK_URL` | Slack notification destination. |
 | `EMAIL_SMTP_HOST` / `EMAIL_SMTP_PORT` / `EMAIL_USERNAME` | SMTP server details for email sending. |
-| `CPU_ALERT_THRESHOLD` / `MEMORY_ALERT_THRESHOLD` | Resource-usage alert thresholds (%). |
+| `CPU_ALERT_THRESHOLD` / `MEMORY_ALERT_THRESHOLD` | Resource-usage alert thresholds (%). | <!-- require_view: gs-cert-config-exclude -->
 | `NOTIFICATION_*` (unified messaging) | Integration details for an in-house unified messaging system (host, client, interface identifiers, etc.). |
 
 ## GPU Infrastructure · Model Serving
@@ -189,7 +191,7 @@ Automation for renting external GPUs to serve models, plus connections to additi
 |---|---|
 | `VAST_*` | On-demand GPU rental (VAST) settings — container image to use, instance selection criteria such as price cap, disk, and GPU RAM, plus auto-destroy and timeout. |
 | `VLLM_*` (vast) | Options for the vLLM server launched on the rented GPU — served model, max context length, GPU memory utilization, parallelism. |
-| `SGL_*` | SGLang inference server connection. |
+| `SGL_*` | SGLang inference server connection. | <!-- require_view: gs-cert-config-exclude -->
 | `SESSION_STATION_*` | Connection and retention time for the session/conversation-state store. |
 | `WORKFLOW_EXECUTION_TIMEOUT` | Time limit (seconds) for a single workflow execution. |
 

@@ -475,6 +475,11 @@
       "source": "gs-cert-live-diff-2026-06-10",
       "note": "라이브 노드 카탈로그 대조(stg /api/node/get = 54개 vs main/gs = 47개, 2026-06-10) — GS(main) 환경에 없는 스탠다드 전용 노드를 GS인증 매뉴얼 노드목록에서 제외. 대상: mcp/DatabaseResultProcessor(DB 결과 가공) · file_system/document_adapter(문서 양식 편집기) · document_loaders/VectorDBContextV2(정보 검색 노드 260517). 카탈로그 행 + 상세 명세를 block 마커로 strip. xgen-main 도 동일 환경이라 동일 제외 필요(미적용 — 추후). 다른 customer 미정의 → 유지."
     },
+    "gs-cert-config-exclude": {
+      "ok": false,
+      "source": "gs-cert-spec-2026-06-19",
+      "note": "사용자 요청(2026-06-19) — GS인증 매뉴얼은 관리설정 > 환경 설정 > 전체 설정 라이브 UI(191개 키) 에 없는 항목을 제외. 라이브 전수조사로 GS 전체 설정에 부재 확인된 항목: 간편결재 연동(approval.* 없음) · 공유 정책 SHARE_POLICY/SHARE_PERMISSION_MODE/SHARE_ON_UNDEPLOY(app.share* 없음) · PATHFINDER_DOWNLOAD_URL(pathfinder 키 없음) · CPU/MEMORY 알림 임계치(notification 임계치 키 없음) · SGL_*(sglang 네임스페이스 없음). 27-system-config.md(한·영) 의 해당 절·표 행을 마커로 strip. 다른 customer 미정의 → 유지."
+    },
     "gs-cert-node-exclude": {
       "ok": false,
       "source": "gs-cert-spec-2026-06-19",
