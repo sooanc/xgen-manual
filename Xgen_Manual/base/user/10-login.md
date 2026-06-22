@@ -2,6 +2,7 @@
 
 본 챕터는 {{product.name}} 솔루션에 로그인하는 절차와 자주 발생하는 문제 해결 방법을 다룹니다.
 
+<!-- require_view_start: jeju-no-standard-login -->
 ## 표준 로그인
 
 1. 웹 브라우저에서 회사가 안내한 주소로 접속
@@ -10,6 +11,7 @@
 4. **로그인** 버튼 클릭
 
 ![로그인 화면 — 이메일/비밀번호 입력란과 로그인 버튼](images/login.png)
+<!-- require_view_end -->
 
 ## SSO 환경
 

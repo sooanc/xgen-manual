@@ -2,6 +2,7 @@
 
 This chapter covers logging into the {{product.name}} solution and resolving common issues.
 
+<!-- require_view_start: jeju-no-standard-login -->
 ## Standard Login
 
 1. In a web browser, navigate to the address provided by your organization
@@ -10,6 +11,7 @@ This chapter covers logging into the {{product.name}} solution and resolving com
 4. Click **Log In**
 
 ![Login screen — email / password fields and the Log In button](images/login.png)
+<!-- require_view_end -->
 
 ## SSO Environment
 
