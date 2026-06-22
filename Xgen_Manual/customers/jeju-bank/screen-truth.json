@@ -5,7 +5,12 @@
     "jeju-no-standard-login": {
       "ok": false,
       "source": "jeju-spec-2026-06-22",
-      "note": "사용자 요청(2026-06-22) — 제주은행 매뉴얼은 SSO 기반 로그인이라 '표준 로그인'(이메일·비밀번호 + 로그인 스크린샷) 절을 제외. base/user/10-login.md(한·영) 의 ## 표준 로그인 섹션을 block 마커로 strip. 다른 customer 미정의 → 유지."
+      "note": "사용자 요청(2026-06-22) — 제주은행 매뉴얼은 SSO 기반 로그인이라 표준 로그인 관련 본문을 제외. base/user/10-login.md(한·영) 의 ## 표준 로그인 섹션 + 기존 ## 비밀번호 분실(표준 재설정 절차) 섹션을 block 마커로 strip. 다른 customer 미정의 → 유지."
+    },
+    "jeju-sso-password": {
+      "ok": true,
+      "source": "jeju-spec-2026-06-22",
+      "note": "사용자 요청(2026-06-22) — 제주 전용 SSO 안내형 ## 비밀번호 분실 절(비밀번호 조회·변경·재설정 미제공, 사내 계정 관리 담당자 문의). 기존 표준 재설정 절(jeju-no-standard-login)의 대체. root/gs-cert 에 ok:false 가드로 GS 외 노출 차단."
     },
     "gs-cert-node-only": {
       "ok": false,

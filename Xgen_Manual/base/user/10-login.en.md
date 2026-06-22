@@ -22,6 +22,7 @@ When the organization uses internal SSO, login is automatic without a separate l
 
 (Detailed SSO configuration varies by customer environment; this standard manual covers the common case.)
 
+<!-- require_view_start: jeju-no-standard-login -->
 ## Forgotten Password
 
 For standard login environments:
@@ -32,6 +33,22 @@ For standard login environments:
 4. Log in with the new password
 
 If the email does not arrive or the flow does not work, contact the Xgen Solution Administrator.
+<!-- require_view_end -->
+<!-- require_view_start: jeju-sso-password -->
+## Forgotten Password
+
+In environments where XGEN is integrated via SSO (Single Sign-On), passwords are not managed directly within XGEN.
+
+If you have lost your password or cannot log in, follow your organization's authentication system or account management policy.
+
+- When you need to reset or change your corporate account password
+- When you experience login issues such as account lockout or authentication errors
+- When you need to verify your SSO-linked account information
+
+Please contact the XGEN Solution Administrator or your organization's account management staff.
+
+XGEN is integrated with an SSO system for user authentication and does not provide password lookup, change, or reset features.
+<!-- require_view_end -->
 
 ## Pending Approval
 
