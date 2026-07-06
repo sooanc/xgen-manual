@@ -66,7 +66,7 @@
       "notFound": false,
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
+      "note": "2026-07-06 MCP 거버넌스 재검증: jeju 는 이중승인(관리자 배포 승인→AI 위험도 평가 및 심사에서 거버넌스 승인). AI 거버넌스 사이드바 5개 노출 확인."
     },
     "no-agent-dev-plan": {
       "ok": false,
@@ -84,7 +84,7 @@
       "notFound": false,
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
+      "note": "2026-07-06 MCP 거버넌스 재검증: jeju 는 이중승인(관리자 배포 승인→AI 위험도 평가 및 심사에서 거버넌스 승인). AI 거버넌스 사이드바 5개 노출 확인."
     },
     "gov-control-policy": {
       "ok": true,
@@ -92,7 +92,7 @@
       "notFound": false,
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
+      "note": "2026-07-06 MCP 거버넌스 재검증: jeju 는 이중승인(관리자 배포 승인→AI 위험도 평가 및 심사에서 거버넌스 승인). AI 거버넌스 사이드바 5개 노출 확인."
     },
     "gov-audit-tracking": {
       "ok": true,
@@ -100,7 +100,7 @@
       "notFound": false,
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
+      "note": "2026-07-06 MCP 거버넌스 재검증: jeju 는 이중승인(관리자 배포 승인→AI 위험도 평가 및 심사에서 거버넌스 승인). AI 거버넌스 사이드바 5개 노출 확인."
     },
     "/dashboard": {
       "ok": true,
@@ -297,13 +297,6 @@
       "notFound": false,
       "capturedAt": "2026-05-29T08:00:20.786Z",
       "source": "admin"
-    },
-    "gov-agentflow-approval": {
-      "ok": false,
-      "notFound": true,
-      "source": "live-audit",
-      "capturedAt": "2026-07-06T00:00:00.000Z",
-      "note": "2026-07-06 MCP: jeju AI 거버넌스 사이드바에 에이전트플로우 승인(거버넌스 승인) 큐 미노출 = 단일승인. 표준 이중승인 서술을 require_view 마커로 jeju 에서 제거."
     }
   },
   "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",

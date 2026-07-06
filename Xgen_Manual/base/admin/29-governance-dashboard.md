@@ -45,7 +45,6 @@ require_view:
     - 정책 위반: 6
     - 비정상 접근: 5
 
-<!-- require_view_start: gov-agentflow-approval -->
 ### 에이전트 승인 { #agent-approval }
 
 본 메뉴는 에이전트가 사용자에게 서비스되기 위한 **이중 승인 중 2단계(거버넌스 승인)** 를 처리하는 화면입니다. 1단계인 *배포 승인*은 [Agent 운영 → Agent 관리](32-agent-operations.md#agent-mgmt-deploy-approval) 에서 시스템 관리자가 먼저 처리하며, 이 단계를 통과한 에이전트만 본 큐에 노출됩니다.
@@ -179,7 +178,6 @@ require_view:
 *저장* 클릭 후 처리 중 표시가 사라지면 통계 카드와 목록이 자동으로 갱신됩니다. 같은 에이전트가 다시 *승인대기* 로 올라오면 작성자가 수정·재요청한 경우이며, 위 절차(2~4) 를 반복합니다.
 
 승인·반려 모든 처리는 [AI 서비스 변경 이력](#audit-tracking) 에 기록되며, 심사자(`governance_reviewed_by`)·코멘트(`governance_review_comment`)·일시가 영구 보존됩니다.
-<!-- require_view_end -->
 
 ## AI 점검 이력 및 계획 { #inspection }
 
@@ -394,7 +392,6 @@ require_view:
 
 해당 화면은 에이전트 배포 승인 이력과 승인 진행 상태를 추적·관리하는 용도로 사용됩니다.
 
-<!-- require_view_start: gov-agentflow-approval -->
 **탭 6 — 거버넌스 승인 이력**
 
 ![거버넌스 승인 이력 — 이중 승인 2단계 처리 기록](images/admin-gov-audit-tab6-governance-approval.png)
@@ -414,7 +411,6 @@ require_view:
 - 승인 상태
 
 해당 화면은 시스템 관리자 승인 이력과 함께 비교하여, 이중 승인 절차의 전체 진행 상태를 추적·관리하는 용도로 사용됩니다.
-<!-- require_view_end -->
 
 !!! info "탭별 권장 활용"
     - **배포 승인 이력 / 거버넌스 승인 이력** — 이중 승인 워크플로의 단계별 처리 기록을 확인합니다. 회계·내부감사 응대 시 1차 근거로 사용합니다.
