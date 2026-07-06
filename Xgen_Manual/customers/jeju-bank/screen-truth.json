@@ -304,6 +304,13 @@
       "source": "live-audit",
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "note": "2026-07-06 MCP: jeju 시스템 상태 사이드바=시스템 모니터링+로그 조회만, 시스템 조회(admin-system-health) 미노출·직접 view 인트로 리다이렉트 → jeju 미보유. 26-system-monitor 의 시스템 조회 섹션 strip."
+    },
+    "canvas-dragdrop": {
+      "ok": false,
+      "notFound": true,
+      "source": "manual-exclusion",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
+      "note": "2026-07-06 jeju 매뉴얼에서 '10 canvas dragdrop.gif' 드래그 동작 섹션 제외(사용자 요청). jeju용 노드 드래그 GIF 미보유 → 12-agentflow-create 의 !!! info 드래그 동작 블록 strip."
     }
   },
   "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",

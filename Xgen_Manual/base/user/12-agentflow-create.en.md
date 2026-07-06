@@ -53,10 +53,12 @@ To add:
 2. **Drag and drop** a node card onto the canvas
 3. The node is placed on the canvas
 
+<!-- require_view_start: canvas-dragdrop -->
 !!! info "Drag motion"
     Drag a node card from the left palette and drop it onto the canvas.
 
     ![Node drag-and-drop motion](gif/10 canvas dragdrop.gif)
+<!-- require_view_end -->
 
 ## Connecting Nodes
 

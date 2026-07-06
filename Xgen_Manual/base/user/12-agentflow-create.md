@@ -53,10 +53,12 @@
 2. 노드 카드를 캔버스로 **드래그 앤 드롭**
 3. 캔버스에 노드가 배치됨
 
+<!-- require_view_start: canvas-dragdrop -->
 !!! info "드래그 동작"
     캔버스 좌측 노드 팔레트에서 노드 카드를 드래그해 캔버스에 배치하는 흐름입니다.
 
     ![노드 드래그 앤 드롭 동작](gif/10 canvas dragdrop.gif)
+<!-- require_view_end -->
 
 ## 노드 연결
 
