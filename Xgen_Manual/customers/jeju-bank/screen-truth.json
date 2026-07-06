@@ -311,6 +311,18 @@
       "source": "manual-exclusion",
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "note": "2026-07-06 jeju 매뉴얼에서 '10 canvas dragdrop.gif' 드래그 동작 섹션 제외(사용자 요청). jeju용 노드 드래그 GIF 미보유 → 12-agentflow-create 의 !!! info 드래그 동작 블록 strip."
+    },
+    "no-governance": {
+      "ok": false,
+      "source": "manual-exclusion",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
+      "note": "2026-07-06 jeju 는 거버넌스 활성 고객사(이중승인). 비거버넌스 변형 블록/행 제외 → 20-admin-overview STEP1/STEP3 중복 제거."
+    },
+    "admin-step2-6-areas": {
+      "ok": false,
+      "source": "manual-exclusion",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
+      "note": "2026-07-06 jeju 는 9개 관리 영역(거버넌스 포함). 5개 영역(비거버넌스) 변형 제외 → 20-admin-overview admin-entry.png 중복 및 STEP2 5개-카드 행 제거."
     }
   },
   "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",
