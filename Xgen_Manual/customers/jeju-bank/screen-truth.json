@@ -61,12 +61,12 @@
       "note": "지식관리 > 업로드 이력 미노출 (그룹 전체 비공개)"
     },
     "gov-monitoring": {
-      "ok": false,
+      "ok": true,
       "lastSize": 93961,
       "notFound": false,
-      "capturedAt": "2026-05-29T07:59:36.332Z",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 관리 사이드바에 'AI 거버넌스' 그룹 자체가 미노출. AUTHORING 0.1 기준 ok:false."
+      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
     },
     "no-agent-dev-plan": {
       "ok": false,
@@ -79,28 +79,28 @@
       "note": "jeju 는 버전 관리 기능 보유(agentflow-version-control 미정의→노출) → '버전 관리 빠진' 인버스 인트로/본문은 strip. 미설정 시 13-agentflow-operations 인트로가 두 줄로 중복 노출되던 버그 정정."
     },
     "gov-risk-management": {
-      "ok": false,
+      "ok": true,
       "lastSize": 88459,
       "notFound": false,
-      "capturedAt": "2026-05-29T07:59:40.789Z",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가."
+      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
     },
     "gov-control-policy": {
-      "ok": false,
+      "ok": true,
       "lastSize": 93147,
       "notFound": false,
-      "capturedAt": "2026-05-29T07:59:45.066Z",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가. 25-pii-policy 챕터도 본 view 의존이라 함께 제외."
+      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
     },
     "gov-audit-tracking": {
-      "ok": false,
+      "ok": true,
       "lastSize": 93065,
       "notFound": false,
-      "capturedAt": "2026-05-29T07:59:49.418Z",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "AI 거버넌스 그룹 미노출 — 사이드바 도달 불가."
+      "note": "2026-07-06 MCP 거버넌스 계정 재검증: jeju admin AI 거버넌스 사이드바에 시스템 모니터링·AI 위험도 평가·통제 정책 관리·데이터 감사 로그·점검 이력 노출 확인 → ok:true."
     },
     "/dashboard": {
       "ok": true,
@@ -297,6 +297,13 @@
       "notFound": false,
       "capturedAt": "2026-05-29T08:00:20.786Z",
       "source": "admin"
+    },
+    "gov-agentflow-approval": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
+      "note": "2026-07-06 MCP: jeju AI 거버넌스 사이드바에 에이전트플로우 승인(거버넌스 승인) 큐 미노출 = 단일승인. 표준 이중승인 서술을 require_view 마커로 jeju 에서 제거."
     }
   },
   "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",

@@ -45,6 +45,7 @@ Computes **per-category risk scores** for deployed agents; agents that exceed a 
     - Policy Violation: 6
     - Abnormal Access: 5
 
+<!-- require_view_start: gov-agentflow-approval -->
 ### Agent Approval { #agent-approval }
 
 This menu is the **second of two approval stages** required before an agentflow can be served to end users. The **first stage — deployment approval — is performed by the System Administrator** on [Agent Operations → Agent Management](32-agent-operations.md#agent-mgmt-deploy-approval); only agents that pass that stage reach this queue.
@@ -173,6 +174,7 @@ The footer buttons in the detail modal, or the right-side buttons on the row, op
 When the *Submitting…* state clears, the stat cards and table refresh automatically. If the same agent reappears as *Pending*, the author has resubmitted after a fix — repeat the workflow.
 
 Every approve/reject action is recorded in [AI Service Change History](#audit-tracking); the reviewer (`governance_reviewed_by`), comment (`governance_review_comment`), and timestamp are retained permanently.
+<!-- require_view_end -->
 
 ## Inspection { #inspection }
 
