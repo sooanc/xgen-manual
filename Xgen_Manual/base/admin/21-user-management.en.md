@@ -98,6 +98,7 @@ The SuperUser or an administrator with user-management permission reviews pendin
 !!! note "SuperUser privileges required"
     Approving / rejecting pending accounts, changing permission tiers, and resetting passwords all require **SuperUser** — or an equivalent user-management permission. Standard Users do not see this screen at all.
 
+<!-- require_view_start: jeju-no-standard-login -->
 ## Password Reset
 
 An administrator can directly reset another user's password.
@@ -109,6 +110,19 @@ An administrator can directly reset another user's password.
 ![User Edit modal — clicking **비밀번호 변경 (Change Password)** under the Basic Info tab expands *New Password / Confirm Password* fields with the policy hint *minimum 8 characters; combine at least two of upper-case / lower-case / digit / special character*](images/admin-user-password-reset.gif)
 
 > **Recommended:** Deliver the new password through a separate channel and instruct the user to change it on first login.
+<!-- require_view_end -->
+<!-- require_view_start: jeju-sso-password -->
+## Password Reset
+
+XGEN authenticates through SSO (single sign-on), and user passwords are managed by the internal account-management system. Routine password resets are therefore handled by your organization's authentication and account policies, not by XGEN.
+
+- If a user cannot log in or an account is locked → contact your internal account administrator
+- If SSO-linked account details need verification → request it from your organization's identity-system administrator
+
+> Only when an XGEN-local account password must be changed directly, you can adjust it under **Edit User → Change Password** on the user-management screen. Even then, record and manage the change according to your internal account-management policy.
+
+![User Edit modal — clicking the **Change Password** button under the Basic Info tab expands the new-password field and password-policy hint](images/admin-user-password-reset.gif)
+<!-- require_view_end -->
 
 ## Deactivating a User
 
