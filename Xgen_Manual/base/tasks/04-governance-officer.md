@@ -40,7 +40,7 @@ require_view: gov-monitoring
 - 거버넌스 한정 감사 (일반 시스템 로그와 분리)
 
 ## 정기 점검 일정을 등록·관리하려면
-- 시작 위치: 관리 설정 → AI 거버넌스 → AI 점검 이력 및 계획
+- 시작 위치: 관리 설정 → AI 거버넌스 → 점검 이력 및 계획
 - 절차: [AI 거버넌스 - 점검 이력 및 계획](../admin/29-governance-dashboard.md#inspection)
 
 ## 거버넌스 종합 모니터링이 궁금하다

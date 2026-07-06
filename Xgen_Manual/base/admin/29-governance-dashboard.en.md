@@ -23,12 +23,12 @@ The left sidebar's **AI Governance** area presents four management menus organiz
 | # | Sidebar label | Page header (on entry) | Section in this chapter | In-page structure |
 |---|---|---|---|---|
 | 1 | **AI Risk Assessment** | AI Risk Assessment | [Risk Review](#risk-review) | Risk-category widget grid → items over the threshold open the *Agent Approval* view inside |
-| 2 | **Inspection History** | AI Inspection History & Plan | [Inspection](#inspection) | Four tabs — Inspection History / Inspection Plan / Overdue / Inspection Register |
+| 2 | **Inspection History** | Inspection History & Plan | [Inspection](#inspection) | Four tabs — Inspection History / Inspection Plan / Overdue / Inspection Register |
 | 3 | **AI Service Change History** | (service / operation change history list) | [AI Service Change History](#audit-tracking) | Click an Agent name to open the detail view → **6 sub-tabs**: Execution Detail History / Data Access Info / Agent Change History / Policy Change History / Deployment Approval History / Governance Approval History |
 | 4 | **Control Policy Management** | (3-tab policy management) | [Control Policy](#control-policy) | Three tabs — PII Protection / Forbidden Words / Risk Levels |
 
 !!! info "Sidebar labels may differ from page headers"
-    Clicking *Inspection History* in the sidebar opens a page whose header reads **AI Inspection History & Plan**. This chapter locates each menu by its **sidebar label**, and uses the page header only as a confirmation cue after entry.
+    Clicking *Inspection History* in the sidebar opens a page whose header reads **Inspection History & Plan**. This chapter locates each menu by its **sidebar label**, and uses the page header only as a confirmation cue after entry.
 
     Internally the four items belong to backend permission categories (`gov-risk-review` / `gov-inspection` / `gov-service-history` / `gov-control-policy`), but **those category names are not shown as sidebar group labels** — all four sit flat inside a single *AI Governance* accordion.
 
