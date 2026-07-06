@@ -18,38 +18,41 @@
       "note": "GS인증 전용 노드목록 본문(리네임 노드명 + 관리자쪽 이동된 '노드 관리 화면' 절)을 jeju 매뉴얼에서 노출 차단. gs-cert 만 ok:true."
     },
     "auth-profile": {
-      "ok": false,
+      "ok": true,
       "lastSize": 40787,
       "notFound": false,
-      "capturedAt": "2026-05-29T07:57:22.268Z",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 사이드바 '도구 연동' 그룹 자체가 미노출이라 사용자가 메뉴로 도달 불가. AUTHORING 0.1 단일 진실원(라이브 사이드바) 기준으로 ok:false."
+      "note": "2026-07-06 MCP 사이드바 재검증: jeju agent-dev 사이드바에 도구 연동(API 도구·인증 프로필)·지식관리(지식 컬렉션·파일 저장소·DB 연동) 그룹·항목 실제 노출 확인 → 낡은 ok:false 복원."
     },
     "tool-storage": {
-      "ok": false,
-      "notFound": true,
+      "ok": true,
+      "notFound": false,
       "source": "live-audit",
-      "note": "Agent 작업실 사이드바 도구 연동 > API 도구 미노출 (그룹 전체 비공개)"
+      "note": "2026-07-06 MCP 사이드바 재검증: jeju agent-dev 사이드바에 도구 연동(API 도구·인증 프로필)·지식관리(지식 컬렉션·파일 저장소·DB 연동) 그룹·항목 실제 노출 확인 → 낡은 ok:false 복원.",
+      "capturedAt": "2026-07-06T00:00:00.000Z"
     },
     "knowledge-collection": {
-      "ok": false,
+      "ok": true,
       "lastSize": 57973,
       "notFound": false,
-      "capturedAt": "2026-05-29T07:57:13.754Z",
+      "capturedAt": "2026-07-06T00:00:00.000Z",
       "source": "live-audit",
-      "note": "직접 URL 진입 시 페이지는 렌더링되지만 jeju 사이드바 '지식관리' 그룹 자체가 미노출 (Agent 작업실 측). AUTHORING 0.1 기준 ok:false."
+      "note": "2026-07-06 MCP 사이드바 재검증: jeju agent-dev 사이드바에 도구 연동(API 도구·인증 프로필)·지식관리(지식 컬렉션·파일 저장소·DB 연동) 그룹·항목 실제 노출 확인 → 낡은 ok:false 복원."
     },
     "knowledge-storage": {
-      "ok": false,
-      "notFound": true,
+      "ok": true,
+      "notFound": false,
       "source": "live-audit",
-      "note": "지식관리 > 파일 저장소 미노출 (그룹 전체 비공개)"
+      "note": "2026-07-06 MCP 사이드바 재검증: jeju agent-dev 사이드바에 도구 연동(API 도구·인증 프로필)·지식관리(지식 컬렉션·파일 저장소·DB 연동) 그룹·항목 실제 노출 확인 → 낡은 ok:false 복원.",
+      "capturedAt": "2026-07-06T00:00:00.000Z"
     },
     "knowledge-database": {
-      "ok": false,
-      "notFound": true,
+      "ok": true,
+      "notFound": false,
       "source": "live-audit",
-      "note": "지식관리 > DB 연동 미노출 (그룹 전체 비공개)"
+      "note": "2026-07-06 MCP 사이드바 재검증: jeju agent-dev 사이드바에 도구 연동(API 도구·인증 프로필)·지식관리(지식 컬렉션·파일 저장소·DB 연동) 그룹·항목 실제 노출 확인 → 낡은 ok:false 복원.",
+      "capturedAt": "2026-07-06T00:00:00.000Z"
     },
     "upload-history": {
       "ok": false,
