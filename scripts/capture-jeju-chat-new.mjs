@@ -57,8 +57,7 @@ const log = (...a) => console.log('[chat-new]', ...a);
   await page.waitForSelector('aside button', { timeout: 15_000 }).catch(() => {});
 
   const SHOTS = [
-    { view: 'new-chat', file: 'chat-new.png' },
-    { view: 'knowledge-collection', file: 'collection-list.png' },
+    { view: 'auth-profile', file: 'auth-profile.png' },
   ];
   const PLACEHOLDER_SIZES = new Set([8971, 41107, 36798]);
   for (const shot of SHOTS) {
