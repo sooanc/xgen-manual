@@ -329,6 +329,12 @@
       "source": "manual-exclusion",
       "capturedAt": "2026-07-07T00:00:00.000Z",
       "note": "2026-07-07 jeju 는 분석·기획 영역 보유(no-agent-dev-plan ok:false = 기획서 기능 보유). 11-getting-started 사용자 유형 표에서 분석·기획 없는 Agent 개발자 행 제외 → Agent 개발자 단일 레코드로 통합(사용자 요청). analysis-planning 미정의→WITH-분석·기획 행만 노출."
+    },
+    "system-no-threshold": {
+      "ok": false,
+      "source": "manual-exclusion",
+      "capturedAt": "2026-07-07T00:00:00.000Z",
+      "note": "2026-07-07 jeju 는 임계치 설정(⚙) 기능 보유(system-threshold-settings 미정의→노출) → '임계치 설정 빠진' 인트로 변형 strip. root 와 동일 처리. 미설정 시 26-system-monitor 인트로가 두 줄로 중복 노출되던 버그 정정."
     }
   },
   "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",

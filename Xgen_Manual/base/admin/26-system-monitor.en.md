@@ -1,10 +1,10 @@
 # System Monitor
 
 <!-- require_view_start: system-threshold-settings -->
-This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server and configure thresholds. (Depending on the operational environment, a Grafana-based integrated monitoring view may also be available.)
+This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server and configure thresholds. Enabling the Grafana integration in **Settings** makes a **Grafana Shortcut** button appear on the admin dashboard, taking you straight to the Grafana-based integrated monitoring view (see [Grafana Integrated Monitoring](#grafana)).
 <!-- require_view_end -->
 <!-- require_view_start: system-no-threshold -->
-This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server. (Depending on the operational environment, a Grafana-based integrated monitoring view may also be available.)
+This chapter describes how to monitor the resource state (CPU, memory, disk, network, etc.) of the solution server. Enabling the Grafana integration in **Settings** makes a **Grafana Shortcut** button appear on the admin dashboard, taking you straight to the Grafana-based integrated monitoring view (see [Grafana Integrated Monitoring](#grafana)).
 <!-- require_view_end -->
 
 ## System Overview
@@ -69,6 +69,30 @@ The **Resource History** tab shows time-series charts for past trends.
 | Last 30 days | 1-hour granularity |
 
 When investigating spikes, cross-reference the audit log around the same time to infer causes.
+
+## Grafana Integrated Monitoring { #grafana }
+
+Separately from the solution's built-in monitoring, if Grafana is deployed in your operational environment you can register its URL in **Settings** and jump straight from the admin dashboard to the Grafana-based integrated monitoring view. Until the URL is set, the shortcut button does not appear.
+
+### Enabling the Integration
+
+1. Go to **Admin → Settings → All Settings** in the left sidebar
+2. Find the **`GRAFANA_URL`** (`app.grafana_url`) setting via the top search box or the **Application** tab
+3. Enter your organization's Grafana URL in **Current Value** and save
+
+| Item | Description |
+|---|---|
+| Setting key | `GRAFANA_URL` (`app.grafana_url`) |
+| Description | The URL opened by the **Grafana Shortcut** button on the dashboard |
+| Type | String (Str) |
+| Default | `empty` (unset) |
+
+!!! info "The button is hidden while the value is empty"
+    While `GRAFANA_URL` is `empty`, the **Grafana Shortcut** button does not appear on the admin dashboard. Saving a URL makes it show up immediately.
+
+### Opening from the Dashboard
+
+Once the URL is set, a **Grafana Shortcut** button appears on the admin dashboard. Clicking it opens the configured Grafana view in a new tab, where you can review the integrated dashboard — CPU, memory, request volume, and more — in one place. For dashboard widget layout, see [Admin Dashboard](30-dashboard.md).
 
 <!-- require_view_start: admin-system-health -->
 ## System Inspection { #system-query }
