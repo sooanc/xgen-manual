@@ -75,10 +75,6 @@ Track progress on the [Dashboard · Agent deployment/approval status](18-dashboa
 | Governance pending | Cleared stage 1; awaiting Governance Officer review |
 | Governance rejected | Governance Officer rejected — read the comment (`governance_review_comment`) and resubmit from stage 0 |
 | Both approvals completed | Both passed; the agent is live for end users |
-
-!!! warning "How to read rejection reasons"
-    - **System Administrator rejection**: rejection notes are typically delivered out-of-band (chat, email). Confirm your team's operational channel in advance.
-    - **Governance rejection**: re-open the **Deploy Info** modal, or — with the appropriate permission — read the *review comment* (`governance_review_comment`) directly on the governance review screen.
 <!-- require_view_end -->
 <!-- require_view_start: no-governance -->
 ### What happens next — System Administrator deployment approval { #dual-approval-flow }
@@ -92,9 +88,6 @@ Flipping the Deploy toggle does **not** immediately publish the agent. It goes l
 | ✅ Servable | — | Visible to end users once deployment approval completes | — |
 
 Track progress on the [Dashboard · Agent deployment/approval status](18-dashboard.md) widget along the *Deployment pending → Approved* flow. If the System Administrator rejects, the card badge reverts to *"Not deployed"* — check the reason, fix, and resubmit.
-
-!!! warning "How to read rejection reasons"
-    **System Administrator rejection** notes are typically delivered out-of-band (chat, email). Confirm your team's operational channel in advance.
 <!-- require_view_end -->
 
 ## Deployment Status
