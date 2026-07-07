@@ -45,9 +45,6 @@ Select **Knowledge Management → Knowledge Collections** in the left sidebar.
 
 ![New collection modal — name / description / encryption / expiration fields](images/knowledge-collection-create.png)
 
-!!! info "Button label"
-    The actual solution button label is **"새 컬렉션 생성" / "Create New Collection"**.
-
 ## Document Upload
 
 1. Collection detail → **Upload** button
