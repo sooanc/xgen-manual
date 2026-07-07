@@ -38,9 +38,6 @@ Tabs:
 
 ![Prompt editor — the editing view opened by *New Prompt* (name / type / content / variables / tags)](images/prompt-editor.png)
 
-!!! info "Button label"
-    The actual solution button label is **"새 프롬프트" / "New Prompt"** (without the `+` prefix that earlier versions of this manual mentioned).
-
 ### Example with Variables
 
 ```
