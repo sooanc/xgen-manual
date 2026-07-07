@@ -81,7 +81,7 @@
 | Agent 운영 | 응답 품질 평가 | [Agent 운영 · 응답 품질 평가](32-agent-operations.md#quality-eval) |
 | Agent 운영 | Agent 리텐션 분석 | [Agent 운영 · 리텐션 분석](32-agent-operations.md) | <!-- require_view: admin-agent-retention -->
 | Agent 운영 | 업무기획 | [Agent 운영 · 업무기획](32-agent-operations.md#task-planning) | <!-- require_view: admin-agent-dev-plan -->
-| AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가 및 심사](29-governance-dashboard.md#risk-review) |
+| AI 거버넌스 | AI 위험도 평가 | [AI 거버넌스 · 위험도 평가](29-governance-dashboard.md#risk-review) |
 | AI 거버넌스 | 점검 이력 관리 | [AI 거버넌스 · 점검 이력 및 계획](29-governance-dashboard.md#inspection) |
 | AI 거버넌스 | AI 서비스 변경 이력 | [AI 거버넌스 · AI 서비스 변경 이력](29-governance-dashboard.md#audit-tracking) |
 | AI 거버넌스 | 통제 정책 관리 | [AI 거버넌스 · 통제 정책 관리](29-governance-dashboard.md#control-policy), [PII 보호 정책](25-pii-policy.md) |

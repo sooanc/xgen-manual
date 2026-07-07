@@ -88,7 +88,7 @@ Saved presets show up in the **Criteria Preset** dropdown of the *Quality Evalua
 
 - [Creating an Agent](12-agentflow-create.md) — Build the agent to be evaluated
 - [Agent Operations · Execution and Debugging](13-agentflow-operations.md#testing) — Quick single-input run
-- [AI Governance — Risk Assessment & Review](../admin/29-governance-dashboard.md#risk-review) — Use evaluation scores in approval flow <!-- require_view: gov-monitoring -->
+- [AI Governance — Risk Assessment](../admin/29-governance-dashboard.md#risk-review) — Use evaluation scores in approval flow <!-- require_view: gov-monitoring -->
 
 ## Contact
 

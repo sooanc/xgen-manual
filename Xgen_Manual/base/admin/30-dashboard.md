@@ -104,7 +104,7 @@ AI 사용에 대한 **위험·통제·감사**를 책임지는 사용자의 메�
 상세 검토 및 승인 작업은 다음 메뉴에서 수행할 수 있습니다.
 
 - AI 거버넌스
-- [위험도 평가 및 심사](29-governance-dashboard.md#risk-review)
+- [위험도 평가](29-governance-dashboard.md#risk-review)
 
 #### 정책 변경 후 반영 상태 확인
 

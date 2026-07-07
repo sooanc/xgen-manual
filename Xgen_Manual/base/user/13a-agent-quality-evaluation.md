@@ -95,7 +95,7 @@ require_view: agentflow-tester
 
 - [에이전트 만들기](12-agentflow-create.md) — 평가 대상 에이전트 제작
 - [에이전트 운영 · 실행과 디버깅](13-agentflow-operations.md#testing) — 단일 입력 빠른 실행
-- [AI 거버넌스 — 위험도 평가 및 심사](../admin/29-governance-dashboard.md#risk-review) — 평가 점수의 승인 흐름 활용 <!-- require_view: gov-monitoring -->
+- [AI 거버넌스 — 위험도 평가](../admin/29-governance-dashboard.md#risk-review) — 평가 점수의 승인 흐름 활용 <!-- require_view: gov-monitoring -->
 
 ## 문의
 
