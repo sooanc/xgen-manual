@@ -34,11 +34,11 @@ Agent 작업실은 로그인 직후 자동으로 진입하는 기본 작업 영�
 
 Agent 작업실은 다음 사용자 유형이 사용하며, 부여된 유형·역할에 따라 좌측 사이드바에 노출되는 메뉴 범위가 달라집니다.
 
-| 유형 | 영문 | Agent 작업실에서 하는 일 |
+| 유형(역할) | Type | Agent 작업실에서 하는 일 |
 |---|---|---|
 | 일반 사용자 | Standard User | **Agent 채팅 / 기술지원 / 대시보드** 3개 영역 사용. 회사가 배포해둔 Agent와 채팅, 공지·FAQ 조회, 1:1 문의 |
-| Agent 개발자 | Agent Developer | 위 + **Agent 제작 / 도구 연동 / 지식관리 / 분석·기획** 영역. 본인 Agent 설계·배포·운영 (권한 등급은 Standard User 동일, 별도 역할로 부여) | <!-- require_view: analysis-planning -->
-| Agent 개발자 | Agent Developer | 위 + Agent 제작 / 도구 연동 / 지식관리 / 본인 Agent 설계·배포·운영 (권한 등급은 Standard User 동일, 별도 역할로 부여) | <!-- require_view: no-analysis-planning -->
+| Agent 개발자 | Standard User | 위 + **Agent 제작 / 도구 연동 / 지식관리 / 분석·기획** 영역. 본인 Agent 설계·배포·운영 (권한 등급은 Standard User 동일, 별도 역할로 부여) | <!-- require_view: analysis-planning -->
+| Agent 개발자 | Standard User | 위 + Agent 제작 / 도구 연동 / 지식관리 / 본인 Agent 설계·배포·운영 (권한 등급은 Standard User 동일, 별도 역할로 부여) | <!-- require_view: no-analysis-planning -->
 
 !!! info "유형 vs 권한 등급"
     "사용자 유형" 은 Agent 작업실에서 무엇을 하는지 기준의 분류이고, **권한 등급** 은 Standard User / SuperUser 2단계입니다. Agent 개발자는 Standard User 에 부여되는 추가 메뉴 권한으로 운영됩니다. 권한 등급의 전체 정의는 [관리자 콘솔 개요 · 권한 등급](../admin/20-admin-overview.md#권한-등급) 참고.

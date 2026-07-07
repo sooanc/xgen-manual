@@ -323,6 +323,12 @@
       "source": "manual-exclusion",
       "capturedAt": "2026-07-06T00:00:00.000Z",
       "note": "2026-07-06 jeju 는 9개 관리 영역(거버넌스 포함). 5개 영역(비거버넌스) 변형 제외 → 20-admin-overview admin-entry.png 중복 및 STEP2 5개-카드 행 제거."
+    },
+    "no-analysis-planning": {
+      "ok": false,
+      "source": "manual-exclusion",
+      "capturedAt": "2026-07-07T00:00:00.000Z",
+      "note": "2026-07-07 jeju 는 분석·기획 영역 보유(no-agent-dev-plan ok:false = 기획서 기능 보유). 11-getting-started 사용자 유형 표에서 분석·기획 없는 Agent 개발자 행 제외 → Agent 개발자 단일 레코드로 통합(사용자 요청). analysis-planning 미정의→WITH-분석·기획 행만 노출."
     }
   },
   "_comment": "xgen-frontend jeju-dev 브랜치(=jeju-xgen.x2bee.com) 기준 view 가용성. 2026-05-29 권한 부여 후 시스템관리자(x2bee_ds@plateer.com) + 에이전트 개발자(customer_success@plateer.com) 양쪽 계정으로 라이브 사이드바 전수조사. compose.mjs 가 본 파일을 우선 로드하여 require_view 챕터를 자동 제외.",
