@@ -59,9 +59,6 @@ Click the dedicated **Logout** icon (door-arrow) in the top-right header — it 
 !!! info "What clicking the user avatar does"
     Clicking the avatar (the initial-letter circle) at the top right does **not** open a dropdown menu — it navigates directly to **MyPage (`/mypage`)**. Profile and password changes happen inside MyPage, and logout is available as a separate **Logout** icon in the header for a one-click sign-out.
 
-!!! note "Caution on Shared PCs"
-    After using the solution on a shared PC or meeting-room PC, be sure to log out and close the browser. Confirm that password autosave is disabled.
-
 ## Security Guidelines
 
 - Do not store passwords on sticky notes, messengers, or other unsecured locations.
