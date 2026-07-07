@@ -46,8 +46,6 @@ If you have lost your password or cannot log in, follow your organization's auth
 - When you need to verify your SSO-linked account information
 
 Please contact the XGEN Solution Administrator or your organization's account management staff.
-
-XGEN is integrated with an SSO system for user authentication and does not provide password lookup, change, or reset features.
 <!-- require_view_end -->
 
 ## Pending Approval
