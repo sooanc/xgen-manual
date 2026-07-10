@@ -187,6 +187,26 @@ Manages the **inspection schedule and history** for AI systems across the organi
 
 Inspection items are linked to risk-review results; completing an inspection re-computes the affected risk scores.
 
+!!! note "How the next inspection date and status are determined"
+    The **Next inspection date** is derived by adding the registered **inspection cycle** to the **Last inspection date**. If you do not set a next date when registering an inspection, it is calculated automatically from the cycle.
+
+    | Inspection cycle | Next inspection date |
+    |---|---|
+    | Monthly | Last inspection date + 1 month |
+    | Quarterly | Last inspection date + 3 months |
+    | Semi-annual | Last inspection date + 6 months |
+    | Annual | Last inspection date + 12 months |
+
+    The status badge compares the current date (`{{지금}}`) with the next inspection date and shows one of three states:
+
+    | Status | Display | Criterion |
+    |---|---|---|
+    | On time | *On time* | More than 5 days remain until the next inspection date |
+    | Due | `D-5` | The next inspection date is within 5 days — shown starting 5 days before |
+    | Overdue | `+N days overdue` | The next inspection date has passed. Overdue days = *current date − next inspection date* |
+
+    In short, an item is flagged **Due** once 5 days or fewer remain until its next inspection date (D-5).
+
 ## AI Service Change History { #audit-tracking }
 
 Records governance-policy changes and user operational actions.
