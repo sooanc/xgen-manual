@@ -13,6 +13,7 @@ import { compose, listCustomers, ROOT } from './compose.mjs';
 import { buildHtml } from './lib/html.mjs';
 import { buildDocx } from './lib/docx.mjs';
 import { buildSiteIndex } from './lib/site-index.mjs';
+import { fixI18nHomeLinks } from './lib/fix-i18n-home.mjs';
 
 const DIST = join(ROOT, 'dist');
 const CUSTOMERS = join(ROOT, 'customers');
@@ -49,7 +50,16 @@ async function buildOne(customerId, formats, { serve }) {
       mkdocsConfig: r.mkdocsConfig,
       serve,
     });
-    if (!serve) console.log(`[build:${customerId}] html OK`);
+    if (!serve) {
+      // mkdocs-static-i18n 홈 링크 버그 교정 (영문 페이지 Home → 영문 홈).
+      const siteRoot = join(DIST, 'site', 'docs', customerId);
+      const { files, links } = await fixI18nHomeLinks(siteRoot);
+      if (links > 0)
+        console.log(
+          `[build:${customerId}] i18n home-link 교정: ${links}건 (${files} 파일)`
+        );
+      console.log(`[build:${customerId}] html OK`);
+    }
   }
 
   if (formats.includes('docx')) {
