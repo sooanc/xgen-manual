@@ -36,6 +36,9 @@ build:
 
 vars:
   support_email: "x2bee_tech@plateer.com"
+  # 지식 컬렉션 만료일(TTL) 정책 — jeju-xgen.x2bee.com 라이브 기준 (15-knowledge.md).
+  knowledge_ttl_max_days: 1
+  knowledge_ttl_default_days: 1
 
 outputs:
   html:
