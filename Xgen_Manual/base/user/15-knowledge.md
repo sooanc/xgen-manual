@@ -40,7 +40,7 @@ require_view:
     - **이름**: 식별 가능한 한글/영문 이름
     - **설명** (선택): 무슨 자료인지 한 줄 요약
     - **암호화** (선택): 비밀번호 보호 활성화 시 비밀번호 설정
-    - **만료일자** (선택): 자동 삭제 예정일. 최대 {{vars.knowledge_ttl_max_days}}일 이내로 설정할 수 있으며 기본값은 {{vars.knowledge_ttl_default_days}}일입니다. 만료 후 14일의 유예를 거쳐 영구 삭제되며, 영구 보관하려면 비워 둡니다
+    - **만료일자** (선택): 자동 삭제 예정일. 최대 {{vars.knowledge_ttl_max_days}}일 이내로 설정할 수 있으며 기본값은 {{vars.knowledge_ttl_default_days}}일입니다. 만료 후 14일의 유예를 거쳐 영구 삭제됩니다.{{vars.knowledge_ttl_permanent_note}}
 3. **생성**
 
 ![새 컬렉션 생성 모달 — 이름·설명·암호화·만료일자 등 입력 화면](images/knowledge-collection-create.png)

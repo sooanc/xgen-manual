@@ -40,7 +40,7 @@ Select **Knowledge Management → Knowledge Collections** in the left sidebar.
     - **Name**: identifiable name (Korean or English)
     - **Description** (optional): one-line summary
     - **Encryption** (optional): set a password if enabling password protection
-    - **Expiration date** (optional): scheduled auto-delete date. You can set it up to {{vars.knowledge_ttl_max_days}} day(s) ahead (default {{vars.knowledge_ttl_default_days}} day(s)); after expiry the collection is permanently deleted following a 14-day grace period. Leave empty for permanent retention
+    - **Expiration date** (optional): scheduled auto-delete date. You can set it up to {{vars.knowledge_ttl_max_days}} day(s) ahead (default {{vars.knowledge_ttl_default_days}} day(s)). After expiry the collection is permanently deleted following a 14-day grace period.{{vars.knowledge_ttl_permanent_note_en}}
 3. **Create**
 
 ![New collection modal — name / description / encryption / expiration fields](images/knowledge-collection-create.png)

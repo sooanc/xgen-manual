@@ -38,6 +38,8 @@ vars:
   # 지식 컬렉션 만료일(TTL) 정책 — gs-cert 라이브 기준 (15-knowledge.md).
   knowledge_ttl_max_days: 1540
   knowledge_ttl_default_days: 30
+  knowledge_ttl_permanent_note: " 영구 보관하려면 만료일자를 비워 둡니다."
+  knowledge_ttl_permanent_note_en: " Leave the date empty for permanent retention."
 
 outputs:
   html:

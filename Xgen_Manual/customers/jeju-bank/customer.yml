@@ -39,6 +39,9 @@ vars:
   # 지식 컬렉션 만료일(TTL) 정책 — jeju-xgen.x2bee.com 라이브 기준 (15-knowledge.md).
   knowledge_ttl_max_days: 1
   knowledge_ttl_default_days: 1
+  # 제주는 만료일자 비우기(영구 보관)를 지원하지 않으므로 안내 문장을 노출하지 않는다.
+  knowledge_ttl_permanent_note: ""
+  knowledge_ttl_permanent_note_en: ""
 
 outputs:
   html:
