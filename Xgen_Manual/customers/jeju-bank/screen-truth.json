@@ -298,6 +298,20 @@
       "capturedAt": "2026-05-29T08:00:20.786Z",
       "source": "admin"
     },
+    "admin-file-storage": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "capturedAt": "2026-07-24T00:00:00.000Z",
+      "note": "2026-07-24 MCP: jeju 지식 운영 사이드바=지식 컬렉션 관리(TTL 정책+업로드 이력)만 노출. 파일 저장소 관리(admin-file-storage)는 ?view= 딥링크로는 렌더되나 사이드바 미노출 → jeju 미보유. 34-knowledge-operations 의 파일 저장소 관리 절/사이드바 행 strip. stg 표준은 노출(키 미정의→노출)."
+    },
+    "admin-db-collection": {
+      "ok": false,
+      "notFound": true,
+      "source": "live-audit",
+      "capturedAt": "2026-07-24T00:00:00.000Z",
+      "note": "2026-07-24 MCP: jeju 지식 운영 사이드바에 DB 컬렉션 관리(admin-db-collection) 미노출. ?view= 딥링크로는 렌더되나 사이드바 미노출 → jeju 미보유. 34-knowledge-operations 의 DB 컬렉션 관리 절/사이드바 행 strip. stg 표준은 노출."
+    },
     "admin-system-health": {
       "ok": false,
       "notFound": true,

@@ -1,6 +1,6 @@
 # Knowledge Operations
 
-This chapter covers the screens under **Admin Center → Knowledge Operations** in the left sidebar. Here you manage organization-wide **retention policy (TTL)** for knowledge collections and review, on a per-user basis, the history of **files uploaded to collections and file storage, and access to linked databases**.
+This chapter covers the screens under **Admin Center → Knowledge Operations** in the left sidebar. Here you manage organization-wide **retention policy (TTL)** for knowledge collections and review, on a per-user basis, the history of **documents uploaded and accessed**.
 
 > For *creating* collections, uploading documents, and running embeddings, see the user-side [Knowledge Management](../user/15-knowledge.md) chapter. This chapter is the admin lens for fleet-wide **policy and audit history**.
 
@@ -11,8 +11,8 @@ The **Knowledge Operations** section contains three menus.
 | Sidebar menu | Role | Section |
 |---|---|---|
 | Knowledge Collection Management | TTL retention policy + collection upload history | [Knowledge Collection Management](#collection) |
-| File Storage Management | Upload history across all users' file storage | [File Storage Management](#file-storage) |
-| DB Collection Management | Access history across all users' DB links | [DB Collection Management](#db-collection) |
+| File Storage Management | Upload history across all users' file storage | [File Storage Management](#file-storage) | <!-- require_view: admin-file-storage -->
+| DB Collection Management | Access history across all users' DB links | [DB Collection Management](#db-collection) | <!-- require_view: admin-db-collection -->
 
 ## Knowledge Collection Management { #collection }
 
@@ -65,6 +65,7 @@ Click a row to expand a **detail panel** with processing details not shown in th
 | Duplicate upload | Whether it is the same file (identical files skip the actual upload) |
 | Started · Completed · Directory | Processing window and storage path |
 
+<!-- require_view_start: admin-file-storage -->
 ## File Storage Management { #file-storage }
 
 Select **Admin Center → Knowledge Operations → File Storage Management** in the left sidebar. This screen shows **upload history across all users' file storage** — files placed in storage, viewed by user and folder, separate from collections.
@@ -83,7 +84,9 @@ Search by **storage · file name · folder** and separately by **user** at the t
 | Date | Upload timestamp |
 
 Click a row to expand the upload's detail panel.
+<!-- require_view_end -->
 
+<!-- require_view_start: admin-db-collection -->
 ## DB Collection Management { #db-collection }
 
 Select **Admin Center → Knowledge Operations → DB Collection Management** in the left sidebar. This screen shows **access history across all users' DB collections (DB links)** — for audit purposes, which operations users performed against linked databases.
@@ -103,13 +106,14 @@ Click a row to expand the access detail panel.
 
 !!! note "Difference from agent-level data-access history"
     This screen reviews file and DB access history **by user**. To see **which data a specific agent accessed during execution**, use the **Data Access** tab in the agent detail of [AI Service Change History](29-governance-dashboard.md#audit-tracking-detail). Use this screen for the user perspective, the governance screen for the agent perspective.
+<!-- require_view_end -->
 
 ## Operational Recommendations
 
 - **Decide TTL once, review semi-annually** — Too short ⇒ repeated re-uploads (operational burden); too long ⇒ disk cost grows. Typically 30–90 days.
 - **Trash grace ≥ 7 days** — Leaves room for users to recover after accidental expiry.
 - **Approval required for Permanent** — Indiscriminate Permanent flagging undermines the TTL policy itself. Define an explicit request-and-review flow.
-- **Use upload/access history for periodic audits** — Review file-storage and DB access history monthly to spot abnormal bulk uploads or users with repeated failures, exporting to Excel for reporting when needed.
+- **Use upload/access history for periodic audits** — Review upload and access history monthly to spot abnormal bulk uploads or users with repeated failures, exporting to Excel for reporting when needed.
 - **Monitor failure status** — Repeated failures for a specific user or collection may indicate embedding-setting or file-format issues; check the processing options in the detail panel.
 - **Orphaned collections** — Define a separate hand-over / hard-delete policy for collections whose owners have been deactivated.
 
