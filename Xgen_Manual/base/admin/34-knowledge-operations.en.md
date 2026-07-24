@@ -1,18 +1,26 @@
 # Knowledge Operations
 
-This chapter covers organization-wide **TTL and retention policies** for knowledge collections. The single menu **Admin Center → Knowledge Operations → Collection Management** is in scope.
+This chapter covers the screens under **Admin Center → Knowledge Operations** in the left sidebar. Here you manage organization-wide **retention policy (TTL)** for knowledge collections and review, on a per-user basis, the history of **files uploaded to collections and file storage, and access to linked databases**.
 
-> For *creating* collections, uploading documents, and running embeddings, see the user-side [Knowledge Management](../user/15-knowledge.md) chapter. This chapter is the admin lens for fleet-wide **lifecycle policy**.
+> For *creating* collections, uploading documents, and running embeddings, see the user-side [Knowledge Management](../user/15-knowledge.md) chapter. This chapter is the admin lens for fleet-wide **policy and audit history**.
 
-## Accessing the Screen
+## Sidebar Layout
 
-Select **Admin Center → Knowledge Operations → Collection Management** in the left sidebar.
+The **Knowledge Operations** section contains three menus.
 
-![Collection Management — TTL policy inputs (max TTL / default TTL / trash grace period) at the top, full collection table below (name / owner / status / expiry / scheduled permanent deletion)](images/admin-knowledge-collection.png)
+| Sidebar menu | Role | Section |
+|---|---|---|
+| Knowledge Collection Management | TTL retention policy + collection upload history | [Knowledge Collection Management](#collection) |
+| File Storage Management | Upload history across all users' file storage | [File Storage Management](#file-storage) |
+| DB Collection Management | Access history across all users' DB links | [DB Collection Management](#db-collection) |
 
-## Layout
+## Knowledge Collection Management { #collection }
 
-### Top — TTL Policy
+Select **Admin Center → Knowledge Operations → Knowledge Collection Management** in the left sidebar. The screen has two tabs at the top: **TTL Policy** and **Upload History**.
+
+![Knowledge Collection Management — TTL Policy tab. Max TTL / default TTL / trash grace period inputs at the top, full collection table below (name / owner / embedding model / status)](images/admin-knowledge-collection.png)
+
+### TTL Policy Tab { #ttl-policy }
 
 Applies to the entire organization.
 
@@ -24,33 +32,92 @@ Applies to the entire organization.
 
 Policy changes apply to **new** collections only; existing collections keep their original expiry. To re-apply, run a dedicated batch.
 
-### Bottom — All Collections
+The collection table below lists every collection in the organization and lets you flag a collection as **Permanent**. Marking a collection Permanent removes it from TTL enforcement, so grant it only after explicit approval from the data owner.
 
-Every collection in the organization, row by row.
+### Upload History Tab { #upload-history }
+
+The **Upload History** tab shows, per user, the history of documents uploaded to knowledge collections — who uploaded which file to which collection, and whether embedding succeeded.
+
+Search by **file name · collection · user** at the top, and narrow by status filter (**All / Completed / Failed / Processing / Pending / Cancelled**). Use **Excel Download** to export the current view; the download options let you set status, search term, and start/end dates.
 
 | Column | Content |
 |---|---|
-| Name | Collection name (with internal ID) |
-| Owner | Creator (individual) or `Shared` (organization-wide) |
-| Status | Active / Permanent / Expired / Scheduled-for-deletion |
-| Expiry | Auto-expiry date per TTL |
-| Scheduled deletion | End of trash grace period (D-day for permanent removal) |
-| Actions | Toggle **Mark Permanent** / **Reset Permanent** |
+| User | Uploading user account |
+| File name | Original uploaded file name |
+| Collection | Target collection |
+| Status | Completed / Failed / Processing / Pending / Cancelled |
+| File size | Original file size |
+| Chunks | Number of chunks generated |
+| Elapsed | Time spent on embedding |
+| Date | Upload timestamp |
 
-Toggling **Mark Permanent** removes the collection from TTL enforcement. Grant Permanent status only after explicit approval from the data owner.
+Click a row to expand a **detail panel** with processing details not shown in the list.
+
+| Detail field | Description |
+|---|---|
+| User account · Session ID | Uploader and session identifier |
+| File type · Collection (internal name) | File type and internal collection name |
+| Chunk size · overlap · chunking strategy | Document splitting settings |
+| Chunks (total/processed) | Processed chunks out of total |
+| Default metadata · force chunking · ontology graph | Processing options applied at upload |
+| Storage encryption | Whether encryption at rest was applied |
+| Retries | Number of processing retries |
+| Duplicate upload | Whether it is the same file (identical files skip the actual upload) |
+| Started · Completed · Directory | Processing window and storage path |
+
+## File Storage Management { #file-storage }
+
+Select **Admin Center → Knowledge Operations → File Storage Management** in the left sidebar. This screen shows **upload history across all users' file storage** — files placed in storage, viewed by user and folder, separate from collections.
+
+Search by **storage · file name · folder** and separately by **user** at the top; a status filter (**All / Completed / Failed / Processing / Pending / Cancelled**) and **Excel Download** are supported.
+
+| Column | Content |
+|---|---|
+| User | Uploading user account |
+| File name | Original uploaded file name |
+| Storage | Target storage |
+| Folder path | Stored folder path |
+| Status | Completed / Failed / Processing / Pending / Cancelled |
+| File size | Original file size |
+| Elapsed | Time spent processing |
+| Date | Upload timestamp |
+
+Click a row to expand the upload's detail panel.
+
+## DB Collection Management { #db-collection }
+
+Select **Admin Center → Knowledge Operations → DB Collection Management** in the left sidebar. This screen shows **access history across all users' DB collections (DB links)** — for audit purposes, which operations users performed against linked databases.
+
+Search by **message · action · user** at the top; a status filter (**All / Success / Info / Warning / Error**) and **Excel Download** are supported.
+
+| Column | Content |
+|---|---|
+| User | Accessing user account |
+| Action | Type of operation performed |
+| Endpoint | Endpoint accessed |
+| Status | Success / Info / Warning / Error |
+| Message | Result message |
+| Date | Access timestamp |
+
+Click a row to expand the access detail panel.
+
+!!! note "Difference from agent-level data-access history"
+    This screen reviews file and DB access history **by user**. To see **which data a specific agent accessed during execution**, use the **Data Access** tab in the agent detail of [AI Service Change History](29-governance-dashboard.md#audit-tracking-detail). Use this screen for the user perspective, the governance screen for the agent perspective.
 
 ## Operational Recommendations
 
 - **Decide TTL once, review semi-annually** — Too short ⇒ repeated re-uploads (operational burden); too long ⇒ disk cost grows. Typically 30–90 days.
 - **Trash grace ≥ 7 days** — Leaves room for users to recover after accidental expiry.
 - **Approval required for Permanent** — Indiscriminate Permanent flagging undermines the TTL policy itself. Define an explicit request-and-review flow.
-- **Pre-expiry notification** — Ensure owners receive a notice at D-7 before expiry.
+- **Use upload/access history for periodic audits** — Review file-storage and DB access history monthly to spot abnormal bulk uploads or users with repeated failures, exporting to Excel for reporting when needed.
+- **Monitor failure status** — Repeated failures for a specific user or collection may indicate embedding-setting or file-format issues; check the processing options in the detail panel.
 - **Orphaned collections** — Define a separate hand-over / hard-delete policy for collections whose owners have been deactivated.
 
 ## Related Chapters
 
 - [Knowledge Management](../user/15-knowledge.md) — user perspective on creating collections and uploading documents
 - [Embedding / Search Settings](24-embedding-settings.md) — embedding model and vector DB configuration that drives retrieval quality
+- [AI Service Change History](29-governance-dashboard.md#audit-tracking) — agent-level data access and change history
 
 ## Contact
 
