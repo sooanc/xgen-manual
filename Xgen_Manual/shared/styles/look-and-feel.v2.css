@@ -193,6 +193,27 @@ textarea {
   height: 0;
 }
 
+/* 좌측(1차) 사이드바는 스크롤바를 다시 노출 — 메뉴가 길어 넘칠 때 '더 있음'을
+ * 사용자가 알 수 있도록. 관리자처럼 항목이 많은 페이지에서 하단 메뉴(데이터 관리·
+ * 지식 운영 등)가 푸터에 가려 보이고 스크롤 단서가 없던 문제 개선.
+ * overflow:auto 라 항목이 넘칠 때만 표시되고, 짧은 메뉴에선 나타나지 않는다. */
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  scrollbar-width: thin;                                  /* Firefox */
+  scrollbar-color: var(--xm-border) transparent;
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar {
+  display: block;                                          /* Chrome, Safari, Edge */
+  width: 8px;
+  height: 8px;
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: var(--xm-border);
+  border-radius: 4px;
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* 섹션 타이틀 — 진한 다크, 일반 대소문자 (대문자 변환 제거) */
 .md-sidebar--primary .md-nav__title {
   color: var(--xm-text-strong);
