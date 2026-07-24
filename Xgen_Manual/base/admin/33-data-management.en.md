@@ -31,9 +31,6 @@ A one-glance view of the operational DB (e.g., PostgreSQL 15.4) and its 131 tabl
 - **Version**: full DB version string
 - **Tables**: total table count
 
-!!! danger "Production DB queries are not sandboxed"
-    The SQL input on the Database screen runs against the **live production database**. Avoid `UPDATE` / `DELETE` / `DROP` here; if you must change data, register the change as a [Batch Job](#batch-jobs) so it goes through review.
-
 ### DB Connection
 
 Register external-database connection profiles (e.g., BigQuery / Snowflake / a separate operational DB) used by data sources and tool nodes.
