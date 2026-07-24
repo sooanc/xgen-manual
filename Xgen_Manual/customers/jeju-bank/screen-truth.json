@@ -312,6 +312,12 @@
       "capturedAt": "2026-07-24T00:00:00.000Z",
       "note": "2026-07-24 MCP: jeju 지식 운영 사이드바에 DB 컬렉션 관리(admin-db-collection) 미노출. ?view= 딥링크로는 렌더되나 사이드바 미노출 → jeju 미보유. 34-knowledge-operations 의 DB 컬렉션 관리 절/사이드바 행 strip. stg 표준은 노출."
     },
+    "no-guardrail-mention": {
+      "ok": false,
+      "source": "manual-exclusion",
+      "capturedAt": "2026-07-24T00:00:00.000Z",
+      "note": "2026-07-24 jeju 는 가드레일(환경 설정 > 가드레일) 보유. 25-pii-policy 도입부의 '가드레일 언급 없음' 변형을 제외 → 가드레일 언급 변형만 노출(중복 방지). 미설정 시 두 변형 모두 노출돼 도입부 문장이 중복됐음."
+    },
     "admin-system-health": {
       "ok": false,
       "notFound": true,

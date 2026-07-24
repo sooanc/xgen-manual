@@ -4,10 +4,10 @@ require_view: gov-control-policy
 <!-- require_view_start: gov-control-policy -->
 # PII Protection Policy
 
-This chapter covers automatic detection and masking policies for personally identifiable information (PII) in data the solution processes. This is a core chapter for regulated industries such as finance, public sector, and healthcare.
+The Personal Information (PII) policy automatically detects and masks personally identifiable information in AI input and output, preventing personal-data leakage. It is a core AI-governance policy in environments where privacy matters most, such as finance, public sector, and healthcare.
 
-> **This chapter focuses on the *Personal Information (PII) tab* of the "AI Control Policy" screen under Admin → AI Governance → Control Policy Management.** The adjacent *Forbidden Words* / *AI Risk Level* tabs are summarized at the end of the chapter. Configuration of an external Guard Model (e.g., Qwen3Guard-Gen vLLM) is a separate screen — see [Guardrail Model Setup](25b-guardrail-model.md). <!-- require_view: admin-system-guardrail -->
-> **This chapter focuses on the *Personal Information (PII) tab* of the "AI Control Policy" screen under Admin → AI Governance → Control Policy Management.** The adjacent *Forbidden Words* / *AI Risk Level* tabs are summarized at the end of the chapter. <!-- require_view: no-guardrail-mention -->
+This chapter explains how to configure and operate the **Personal Information (PII) tab** under Admin → AI Governance → Control Policy Management. The Forbidden Words and AI Risk Level policies are introduced briefly at the end of the chapter, and for Guard Model integration see [Guardrail Model Setup](25b-guardrail-model.md). <!-- require_view: admin-system-guardrail -->
+This chapter explains how to configure and operate the **Personal Information (PII) tab** under Admin → AI Governance → Control Policy Management. The Forbidden Words and AI Risk Level policies are introduced briefly at the end of the chapter. <!-- require_view: no-guardrail-mention -->
 
 ## What PII Is and Why It Must Be Protected
 
@@ -67,7 +67,11 @@ Each row has **Edit / Delete** buttons; the **Status** column toggles a single p
 The **적용 (Apply)** column lets you manage, per policy, **which agents each policy applies to**. Even when a policy is registered and active, it only takes effect on the agents it is applied to.
 
 - **적용 (Apply)** column — shows the current scope the policy applies to.
-- **전체 적용 (Apply to All)** button — designates the target agents this policy applies to.
+- **전체 적용 (Apply to All)** button — opens the **per-agent application** dialog to designate the agents this policy applies to.
+
+Clicking **전체 적용 (Apply to All)** opens the **에이전트별 적용 : _policy name_** (Per-agent application) dialog. Every agent in the organization is listed, and toggling the **마스킹 (Masking)** switch beside each agent applies or removes this policy for that agent individually. Use the **에이전트명 검색 (Search agent)** box at the top to find a specific agent, and the pager at the bottom for long lists.
+
+![Per-agent application dialog — the full agent list for a policy with a per-agent masking toggle, agent-name search at the top, and pagination at the bottom](images/admin-gov-policy-agent-apply.png)
 
 Where **Status** (active/inactive) governs *whether the policy itself is in use*, **적용 (Apply)** determines *which agents the policy is scoped to*. Use it, for example, to apply a resident-registration-number masking policy only to a specific customer-facing agent.
 {% endif %}
