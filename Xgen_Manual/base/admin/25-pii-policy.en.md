@@ -61,6 +61,17 @@ The table shows 6 rows per page, 7 pages in total. Use the **Search** input abov
 
 Each row has **Edit / Delete** buttons; the **Status** column toggles a single policy active or inactive.
 
+{% if customer.id == 'jeju-bank' %}
+## Application Target per Policy { #policy-scope }
+
+The **Application Target** column lets you manage, per policy, **which agents each policy applies to**. Even when a policy is registered and active, it only takes effect on the agents designated as its application targets.
+
+- **Application Target** column — shows the current scope the policy applies to.
+- **Assign Targets** button — selects the target agents this policy applies to.
+
+Where **Status** (active/inactive) governs *whether the policy itself is in use*, **Application Target** determines *which agents the policy is scoped to*. Use it, for example, to apply a resident-registration-number masking policy only to a specific customer-facing agent.
+{% endif %}
+
 ## Adding Custom Policies
 
 Add policies for organization-specific PII (e.g., Korean national ID, employee ID format, customer CIF).
